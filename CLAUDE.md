@@ -112,6 +112,18 @@ Font families are CSS vars: `var(--font-display)` · `var(--font-body)` · `var(
 - All component styles live in the relevant `.astro` file's `<style>` block or in `src/styles/`
 - 0.5px borders are intentional — keeps the aesthetic hairline-thin
 
-## Commit conventions
-- Imperative mood, no trailing period, ≤72 chars subject
+## Git workflow
+After every meaningful change:
+1. Stage the relevant files (`git add <files>` — never `git add .` blindly)
+2. Commit locally with a clean message
+3. Push to `origin main`
+
+**Commit message rules**
+- Imperative mood, no trailing period, ≤72 chars subject line
+- Body line (optional): explain *why*, not *what*
 - Examples: `Add hero section to index page` · `Fix neon glow on nav CTA hover`
+
+**Push**
+- Remote: `https://github.com/lococontigo/my-portfolio.git`
+- Branch: `main`
+- Always push after committing — keep remote in sync with local
