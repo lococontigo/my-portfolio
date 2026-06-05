@@ -1,0 +1,49 @@
+---
+// Props this layout accepts from pages
+
+
+interface Props {
+  title:        string;
+  description?: string;
+  world?:       'dark' | 'light';  // HK or CA
+}
+
+const {
+  title,
+  description = 'Andrew YIP — UX/UI Designer & Developer',
+  world = 'dark'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme={world}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{title} · Andrew Cheng</title>
+  <meta name="description" content={description} />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Design system -->
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="/styles/global.css" />
+  <link rel="stylesheet" href="/styles/typography.css" />
+  <link rel="stylesheet" href="/styles/animations.css" />
+</head>
+<body>
+  <!-- Page transition curtain -->
+  <div id="curtain" aria-hidden="true"></div>
+
+  <!-- Page content goes here -->
+  <slot />
+
+  <!-- GSAP loaded once, at the bottom -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script is:inline src="/scripts/gsap.js"></script>
+</body>
+</html>
