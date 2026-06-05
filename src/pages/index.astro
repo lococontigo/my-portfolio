@@ -2,12 +2,48 @@
 import BaseLayout from '../layouts/base-layout.astro';
 ---
 
-<!-- world="dark" → homepage loads in HK Night -->
-<BaseLayout
-  title="Andrew YIP"
-  world="dark"
->
-  <h1 class="t-display">
-    I build in the space between two cities.
-  </h1>
+<BaseLayout title="Andrew YIP" world="dark">
+  <main class="main">
+
+    <!-- ── Hero ─────────────────────────────── -->
+    <section class="padding-global">
+      <div class="container-main">
+        <div class="hero">
+          <h1 class="t-display">
+            I build in the space<br>between two <em>cities.</em>
+          </h1>
+        </div>
+      </div>
+    </section>
+
+  </main>
 </BaseLayout>
+
+<style>
+  .main {
+    /* Push content below the fixed nav (16px gap + 56px bar + buffer) */
+    padding-top: 96px;
+    min-height:  100vh;
+  }
+
+  .hero {
+    padding-top:    var(--space-2xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  /* Accent italic in display headline */
+  .t-display em {
+    font-style: italic;
+    color:      var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .main  { padding-top: 80px; }
+    .hero  { padding-top: var(--space-xl); }
+  }
+
+  @media (max-width: 520px) {
+    .main  { padding-top: 72px; }
+    .hero  { padding-top: var(--space-lg); }
+  }
+</style>
