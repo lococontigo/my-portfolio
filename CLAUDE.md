@@ -119,6 +119,10 @@ Font families are CSS vars: `var(--font-display)` · `var(--font-body)` · `var(
 - All component styles live in the relevant `.astro` file's `<style>` block or in `src/styles/`
 - 0.5px borders are intentional — keeps the aesthetic hairline-thin
 
+## How to maintain this file
+Whenever a prompt or instruction is significant and reusable across sessions, add it here.
+This keeps Claude's context current without repeating rules every conversation.
+
 ## Git workflow
 After every meaningful change:
 1. Stage the relevant files (`git add <files>` — never `git add .` blindly)
