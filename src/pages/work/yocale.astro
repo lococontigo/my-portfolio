@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/base-layout.astro';
+---
+
+<BaseLayout title="Yocale — Case Study" world="light">
+  <main class="main">
+
+    <section class="padding-global">
+      <div class="container-main">
+        <div class="page-content">
+          <!-- Case study content goes here -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
+
+<style>
+  .main {
+    padding-top: 96px;
+    min-height:  100vh;
+  }
+
+  .page-content {
+    padding-top:    var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  @media (max-width: 768px) {
+    .main { padding-top: 80px; }
+  }
+
+  @media (max-width: 520px) {
+    .main { padding-top: 72px; }
+  }
+</style>
