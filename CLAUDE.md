@@ -106,6 +106,13 @@ Font families are CSS vars: `var(--font-display)` · `var(--font-body)` · `var(
 - `.t-display em` and `.t-heading-*` italic spans should use `color: var(--accent)`
 - Body base: 15px / weight 300 / line-height 1.6
 
+## Layout & responsiveness
+- Max viewport width: **1440px** (`--max-w: 1440px`) unless explicitly specified otherwise
+- Default horizontal gutter: `--gutter: 48px`
+- All layouts must be fully responsive — mobile-first, no fixed widths on content containers
+- Use `clamp()` for fluid type/spacing where scale matters across breakpoints
+- Common breakpoints: 520px (mobile) · 768px (tablet) · 1024px (desktop)
+
 ## CSS conventions
 - **No inline styles** except truly one-off dynamic values (e.g. a swatch's background color)
 - Class naming: BEM-lite — `.block-element` (e.g. `.work-card-title`, `.nav-link`)
