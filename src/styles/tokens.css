@@ -1,0 +1,97 @@
+/* ─────────────────────────────────────────────
+   TOKENS — DARK (HK Night)
+───────────────────────────────────────────── */
+:root, [data-theme="dark"] {
+  --bg:           #111110;
+  --bg-2:         #1a1a18;
+  --bg-3:         #222220;
+  --surface:      #242422;
+  --border:       #2a2a28;
+  --border-2:     #3a3a38;
+
+  --text-1:       #F0EDE6;
+  --text-2:       #A8A49C;
+  --text-3:       #5F5E5A;
+
+  --accent:       #EF9F27;
+  --accent-dim:   rgba(239,159,39,0.12);
+  --accent-2:     #534AB7;
+  --accent-2-dim: rgba(83,74,183,0.14);
+  --danger:       #D4537E;
+  --success:      #1D9E75;
+
+  /* Neon glow layers (HK wall sign) */
+  --neon-sm:  0 0 6px var(--accent), 0 0 14px rgba(239,159,39,0.45);
+  --neon-md:  0 0 8px var(--accent), 0 0 22px rgba(239,159,39,0.5), 0 0 42px rgba(239,159,39,0.2);
+  --neon-lg:  0 0 10px var(--accent), 0 0 30px rgba(239,159,39,0.55), 0 0 60px rgba(239,159,39,0.25), 0 0 100px rgba(239,159,39,0.1);
+
+  --neon-purple: 0 0 8px #534AB7, 0 0 22px rgba(83,74,183,0.5), 0 0 42px rgba(83,74,183,0.2);
+  --neon-pink:   0 0 8px #D4537E, 0 0 22px rgba(212,83,126,0.5), 0 0 42px rgba(212,83,126,0.2);
+  --neon-teal:   0 0 8px #1D9E75, 0 0 22px rgba(29,158,117,0.5), 0 0 42px rgba(29,158,117,0.2);
+
+  --ease:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:  cubic-bezier(0.55, 0, 1, 0.45);
+
+  --r-sm:   3px;
+  --r-md:   6px;
+  --r-lg:   12px;
+  --r-pill: 999px;
+
+  --theme-label: "HK · Dark";
+}
+
+/* ─────────────────────────────────────────────
+   TOKENS — LIGHT (Canadian Stone)
+───────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg:           #F5F3EE;
+  --bg-2:         #ECEAE4;
+  --bg-3:         #E4E1DA;
+  --surface:      #FFFFFF;
+  --border:       #D8D4CB;
+  --border-2:     #C4BFB5;
+
+  --text-1:       #1C1C1A;
+  --text-2:       #6B6860;
+  --text-3:       #A8A49C;
+
+  --accent:       #1D9E75;
+  --accent-dim:   rgba(29,158,117,0.10);
+  --accent-2:     #534AB7;
+  --accent-2-dim: rgba(83,74,183,0.10);
+  --danger:       #C0384F;
+  --success:      #1D9E75;
+
+  /* Light mode: softer glow (like morning neon fading into daylight) */
+  --neon-sm:  0 0 0px transparent, 0 2px 12px rgba(29,158,117,0.25);
+  --neon-md:  0 0 0px transparent, 0 4px 20px rgba(29,158,117,0.35), 0 8px 40px rgba(29,158,117,0.15);
+  --neon-lg:  0 0 0px transparent, 0 6px 28px rgba(29,158,117,0.4), 0 12px 50px rgba(29,158,117,0.2);
+
+  --neon-purple: 0 4px 20px rgba(83,74,183,0.3), 0 8px 40px rgba(83,74,183,0.12);
+  --neon-pink:   0 4px 20px rgba(192,56,79,0.3), 0 8px 40px rgba(192,56,79,0.12);
+  --neon-teal:   var(--neon-md);
+
+  --theme-label: "CA · Light";
+}
+
+/* ─────────────────────────────────────────────
+   SHARED TOKENS (theme-agnostic)
+───────────────────────────────────────────── */
+:root {
+  /* Font families */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Spacing scale — base 8px */
+  --space-xs:  8px;
+  --space-sm:  16px;
+  --space-md:  32px;
+  --space-lg:  64px;
+  --space-xl:  128px;
+  --space-2xl: 240px;
+
+  /* Layout */
+  --max-w:  1440px;
+  --gutter: 48px;
+}
