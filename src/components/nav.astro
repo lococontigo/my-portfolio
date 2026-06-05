@@ -1,0 +1,272 @@
+---
+const pathname = Astro.url.pathname;
+---
+
+<nav class="nav">
+
+  <!-- ── Bar ──────────────────────────────── -->
+  <div class="padding-global">
+    <div class="container-main">
+      <div class="nav-inner">
+
+        <!-- Logo mark -->
+        <a href="/" class="nav-logo" aria-label="Andrew Yip — Home">
+          <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line x1="5"  y1="28" x2="15" y2="2"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="22" y1="2"  x2="35" y2="28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="22" y1="28" x2="35" y2="2"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+
+        <!-- Desktop links -->
+        <div class="nav-links">
+          <a href="/"      class={`nav-link${pathname === '/'      ? ' active' : ''}`}>Work</a>
+          <a href="/about" class={`nav-link${pathname === '/about' ? ' active' : ''}`}>About</a>
+          <a href="mailto:andrewyip30@gmail.com" class="nav-cta">Say hello →</a>
+        </div>
+
+        <!-- Hamburger (mobile) -->
+        <button class="nav-burger" id="nav-burger" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="nav-burger-bar"></span>
+          <span class="nav-burger-bar"></span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Mobile overlay ───────────────────── -->
+  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+    <div class="nav-mobile-inner">
+      <a href="/"      class={`nav-mobile-link${pathname === '/'      ? ' active' : ''}`}>Work</a>
+      <a href="/about" class={`nav-mobile-link${pathname === '/about' ? ' active' : ''}`}>About</a>
+      <a href="mailto:andrewyip30@gmail.com" class="nav-mobile-cta">Say hello →</a>
+    </div>
+  </div>
+
+</nav>
+
+<style>
+  /* ── Fixed shell ───────────────────────── */
+  .nav {
+    position: fixed;
+    top:      0;
+    left:     0;
+    right:    0;
+    z-index:  100;
+  }
+
+  /* Top padding scoped to nav only */
+  .padding-global {
+    padding-top: 16px;
+  }
+
+  /* ── Dark card ─────────────────────────── */
+  .nav-inner {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    height:          56px;
+    padding:         0 24px;
+    background:      var(--bg);
+    border:          0.5px solid var(--border);
+    border-radius:   var(--r-lg);
+    transition:      border-color 0.3s var(--ease);
+  }
+
+  /* ── Logo ──────────────────────────────── */
+  .nav-logo {
+    color:       var(--text-1);
+    display:     flex;
+    align-items: center;
+    flex-shrink: 0;
+    transition:  color 0.2s var(--ease);
+  }
+
+  .nav-logo:hover { color: var(--accent); }
+
+  /* ── Desktop links ─────────────────────── */
+  .nav-links {
+    display:     flex;
+    align-items: center;
+    gap:         4px;
+  }
+
+  .nav-link {
+    font-family:    var(--font-body);
+    font-size:      11px;
+    font-weight:    500;
+    letter-spacing: 0.01em;
+    color:          var(--text-2);
+    padding:        8px 14px;
+    position:       relative;
+    transition:     color 0.2s var(--ease);
+  }
+
+  .nav-link::after {
+    content:          '';
+    position:         absolute;
+    bottom:           4px;
+    left:             14px;
+    right:            14px;
+    height:           0.5px;
+    background:       var(--accent);
+    transform:        scaleX(0);
+    transform-origin: left;
+    transition:       transform 0.2s var(--ease);
+  }
+
+  .nav-link:hover          { color: var(--text-1); }
+  .nav-link:hover::after,
+  .nav-link.active::after  { transform: scaleX(1); }
+  .nav-link.active         { color: var(--text-1); }
+
+  /* ── CTA ───────────────────────────────── */
+  .nav-cta {
+    font-family:    var(--font-body);
+    font-size:      11px;
+    font-weight:    500;
+    letter-spacing: 0.02em;
+    color:          var(--accent);
+    border:         0.5px solid var(--accent);
+    border-radius:  var(--r-sm);
+    padding:        6px 14px;
+    margin-left:    8px;
+    white-space:    nowrap;
+    transition:     all 0.2s var(--ease);
+  }
+
+  .nav-cta:hover {
+    background: var(--accent-dim);
+    box-shadow: var(--neon-sm);
+  }
+
+  /* ── Hamburger ─────────────────────────── */
+  .nav-burger {
+    display:         none;
+    flex-direction:  column;
+    justify-content: center;
+    gap:             6px;
+    width:           32px;
+    height:          32px;
+    padding:         4px;
+    color:           var(--text-2);
+    transition:      color 0.2s var(--ease);
+  }
+
+  .nav-burger:hover { color: var(--text-1); }
+
+  .nav-burger-bar {
+    display:          block;
+    width:            22px;
+    height:           1px;
+    background:       currentColor;
+    border-radius:    1px;
+    transform-origin: center;
+    transition:       transform 0.3s var(--ease), opacity 0.2s;
+  }
+
+  .nav-burger.open .nav-burger-bar:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+  .nav-burger.open .nav-burger-bar:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+
+  /* ── Mobile overlay ────────────────────── */
+  .nav-mobile {
+    position:        fixed;
+    inset:           0;
+    background:      var(--bg);
+    z-index:         99;
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    justify-content: center;
+    opacity:         0;
+    pointer-events:  none;
+    transform:       translateY(-10px);
+    transition:      opacity 0.35s var(--ease), transform 0.35s var(--ease);
+  }
+
+  .nav-mobile.open {
+    opacity:        1;
+    pointer-events: auto;
+    transform:      translateY(0);
+  }
+
+  .nav-mobile-inner {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            var(--space-sm);
+  }
+
+  .nav-mobile-link {
+    font-family:    var(--font-display);
+    font-size:      clamp(36px, 8vw, 56px);
+    font-weight:    300;
+    letter-spacing: -0.02em;
+    line-height:    1.1;
+    color:          var(--text-3);
+    transition:     color 0.2s var(--ease);
+  }
+
+  .nav-mobile-link:hover,
+  .nav-mobile-link.active { color: var(--text-1); }
+
+  .nav-mobile-cta {
+    font-family:    var(--font-body);
+    font-size:      11px;
+    font-weight:    500;
+    letter-spacing: 0.02em;
+    color:          var(--accent);
+    border:         0.5px solid var(--accent);
+    border-radius:  var(--r-sm);
+    padding:        10px 24px;
+    margin-top:     var(--space-xs);
+    transition:     all 0.2s var(--ease);
+  }
+
+  .nav-mobile-cta:hover {
+    background: var(--accent-dim);
+    box-shadow: var(--neon-sm);
+  }
+
+  /* ── Responsive ────────────────────────── */
+  @media (max-width: 768px) {
+    .nav-links  { display: none; }
+    .nav-burger { display: flex; }
+    .nav-inner  { padding: 0 16px; }
+  }
+
+  @media (max-width: 520px) {
+    .padding-global { padding-top: 12px; }
+    .nav-inner      { height: 48px; }
+  }
+</style>
+
+<script>
+  const burger = document.getElementById('nav-burger') as HTMLButtonElement | null;
+  const mobile = document.getElementById('nav-mobile') as HTMLElement | null;
+
+  if (burger && mobile) {
+    burger.addEventListener('click', () => {
+      const isOpen = mobile.classList.toggle('open');
+      burger.classList.toggle('open');
+      burger.setAttribute('aria-expanded', String(isOpen));
+      mobile.setAttribute('aria-hidden', String(!isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    mobile.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobile.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        mobile.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+</script>

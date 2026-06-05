@@ -75,3 +75,29 @@ button {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-3);
 }
+
+/* ─────────────────────────────────────────────
+   LAYOUT UTILITIES
+   Every section: .padding-global > .container-main > content
+───────────────────────────────────────────── */
+.padding-global {
+  padding-inline: var(--gutter);
+}
+
+.container-main {
+  max-width:     var(--max-w);
+  width:         100%;
+  margin-inline: auto;
+}
+
+@media (max-width: 768px) {
+  .padding-global {
+    padding-inline: 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .padding-global {
+    padding-inline: 16px;
+  }
+}

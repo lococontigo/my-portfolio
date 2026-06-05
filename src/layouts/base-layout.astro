@@ -1,6 +1,5 @@
 ---
-// Props this layout accepts from pages
-
+import Nav from '../components/nav.astro';
 
 interface Props {
   title:        string;
@@ -37,6 +36,9 @@ const {
 <body>
   <!-- Page transition curtain -->
   <div id="curtain" aria-hidden="true"></div>
+
+  <!-- Global navigation -->
+  <Nav />
 
   <!-- Page content goes here -->
   <slot />
