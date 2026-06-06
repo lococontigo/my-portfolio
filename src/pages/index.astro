@@ -5,13 +5,46 @@ import BaseLayout from '../layouts/base-layout.astro';
 <BaseLayout title="Andrew YIP" world="dark">
   <main class="main">
 
+    <!-- ── Brief Intro ────────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="intro-content">
+
+            <div class="intro-header">
+              <p class="intro-name">Andrew YIP</p>
+              <div class="intro-meta">
+                <span class="intro-role">UX/UI Designer</span>
+                <div class="intro-location">
+                  <span class="intro-location-dot"></span>
+                  <span class="intro-location-label">BC · Canada</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="intro-logos">
+              <div class="intro-logo-item">Delta Controls</div>
+              <div class="intro-logo-item">Rosemary</div>
+              <div class="intro-logo-item">Blu Bathworks</div>
+              <div class="intro-logo-item">Yocale</div>
+              <div class="intro-logo-item">RKW Communications</div>
+              <div class="intro-logo-item">ANT Rentals</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ── Hero ─────────────────────────────── -->
-    <section class="padding-global">
-      <div class="container-main">
-        <div class="hero">
-          <h1 class="t-display">
-            I build in the space<br>between two <em>cities.</em>
-          </h1>
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="hero">
+            <h1 class="t-display">
+              I build in the space<br>between two <em>cities.</em>
+            </h1>
+          </div>
         </div>
       </div>
     </section>
@@ -21,29 +54,108 @@ import BaseLayout from '../layouts/base-layout.astro';
 
 <style>
   .main {
-    /* Push content below the fixed nav (16px gap + 56px bar + buffer) */
     padding-top: 96px;
     min-height:  100vh;
   }
 
-  .hero {
-    padding-top:    var(--space-2xl);
-    padding-bottom: var(--space-xl);
+  @media (max-width: 768px) { .main { padding-top: 80px; } }
+  @media (max-width: 520px) { .main { padding-top: 72px; } }
+
+  /* ── Intro section ───────────────────────── */
+  .intro-content {
+    display:        flex;
+    flex-direction: column;
+    gap:            80px;
   }
 
-  /* Accent italic in display headline */
-  .t-display em {
-    font-style: italic;
-    color:      var(--accent);
+  .intro-name {
+    font-family:    var(--font-display);
+    font-size:      clamp(44px, 5.5vw, 75px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+  }
+
+  .intro-meta {
+    display:     flex;
+    align-items: center;
+    gap:         8px;
+    margin-top:  16px;
+  }
+
+  .intro-role {
+    font-family: var(--font-body);
+    font-size:   clamp(18px, 2vw, 26px);
+    font-weight: 400;
+    color:       var(--text-1);
+  }
+
+  .intro-location {
+    display:       flex;
+    align-items:   center;
+    gap:           5px;
+    padding:       4px 11px;
+    background:    rgba(239, 159, 39, 0.1);
+    border:        1px solid rgba(239, 159, 39, 0.25);
+    border-radius: var(--r-pill);
+  }
+
+  .intro-location-dot {
+    display:       block;
+    width:         5px;
+    height:        5px;
+    border-radius: 2.5px;
+    background:    var(--accent);
+    flex-shrink:   0;
+  }
+
+  .intro-location-label {
+    font-family:    var(--font-body);
+    font-size:      11px;
+    font-weight:    400;
+    color:          var(--accent);
+    letter-spacing: 0.33px;
+    white-space:    nowrap;
+  }
+
+  .intro-logos {
+    display:     flex;
+    align-items: center;
+    gap:         clamp(16px, 5.3vw, 77px);
+    flex-wrap:   wrap;
+  }
+
+  .intro-logo-item {
+    width:           176px;
+    height:          100px;
+    flex-shrink:     0;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    border:          0.5px solid var(--border);
+    border-radius:   var(--r-md);
+    color:           var(--text-3);
+    font-family:     var(--font-body);
+    font-size:       11px;
+    font-weight:     500;
+    letter-spacing:  0.5px;
+    text-transform:  uppercase;
   }
 
   @media (max-width: 768px) {
-    .main  { padding-top: 80px; }
-    .hero  { padding-top: var(--space-xl); }
+    .intro-content   { gap: 48px; }
+    .intro-logo-item { width: 140px; height: 80px; }
   }
 
   @media (max-width: 520px) {
-    .main  { padding-top: 72px; }
-    .hero  { padding-top: var(--space-lg); }
+    .intro-content   { gap: 32px; }
+    .intro-logo-item { width: calc(50% - 8px); height: 72px; }
+  }
+
+  /* ── Hero section ────────────────────────── */
+  .t-display em {
+    font-style: italic;
+    color:      var(--accent);
   }
 </style>
