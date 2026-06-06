@@ -36,7 +36,7 @@ src/
   pages/
     index.astro        ← loads in HK Night (world="dark")
     about.astro
-    work/*.html        ← static case study pages
+    work/*.astro       ← case study pages (world="light")
   scripts/
     gsap.js
 public/
@@ -112,6 +112,33 @@ Font families are CSS vars: `var(--font-display)` · `var(--font-body)` · `var(
 - All layouts must be fully responsive — mobile-first, no fixed widths on content containers
 - Use `clamp()` for fluid type/spacing where scale matters across breakpoints
 - Common breakpoints: 520px (mobile) · 768px (tablet) · 1024px (desktop)
+
+## Section structure
+Every section on every page must follow this four-layer structure — no exceptions:
+
+```html
+<section>
+  <div class="padding-global">
+    <div class="container-main">
+      <div class="[section]-content">
+        <!-- section content here -->
+      </div>
+    </div>
+  </div>
+</section>
+```
+
+| Layer | Type | Purpose |
+|---|---|---|
+| `<section>` | HTML tag | Semantic grouping |
+| `.padding-global` | `div` | Horizontal gutter (48px → 24px → 16px across breakpoints) |
+| `.container-main` | `div` | Max-width 1440px, centered via `margin-inline: auto` |
+| content `div` | `div` | Section-specific layout — name it after the section (e.g. `.hero`, `.work-grid`) |
+
+Both `.padding-global` and `.container-main` are global utilities defined in `src/styles/global.css`.
+The content div's styles live in the component's scoped `<style>` block.
+
+- Page `<main>` needs `padding-top: 96px` (80px tablet · 72px mobile) to clear the fixed nav
 
 ## CSS conventions
 - **No inline styles** except truly one-off dynamic values (e.g. a swatch's background color)
