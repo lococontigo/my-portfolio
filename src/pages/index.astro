@@ -23,12 +23,12 @@ import BaseLayout from '../layouts/base-layout.astro';
             </div>
 
             <div class="intro-logos">
-              <div class="intro-logo-item">Delta Controls</div>
-              <div class="intro-logo-item">Rosemary</div>
-              <div class="intro-logo-item">Blu Bathworks</div>
-              <div class="intro-logo-item">Yocale</div>
-              <div class="intro-logo-item">RKW Communications</div>
-              <div class="intro-logo-item">ANT Rentals</div>
+              <img class="intro-logo-item" src="/images/Delta%20Controls.svg" alt="Delta Controls" />
+              <img class="intro-logo-item" src="/images/Rosamary%20Diamond.svg" alt="Rosemary Diamond" />
+              <img class="intro-logo-item" src="/images/Blu%20bathworks.svg" alt="Blu Bathworks" />
+              <img class="intro-logo-item" src="/images/Yocale%20AI.svg" alt="Yocale AI" />
+              <img class="intro-logo-item" src="/images/RKW%20Communications.svg" alt="RKW Communications" />
+              <img class="intro-logo-item" src="/images/ANT%20Rentals.svg" alt="ANT Rentals" />
             </div>
 
           </div>
@@ -36,18 +36,7 @@ import BaseLayout from '../layouts/base-layout.astro';
       </div>
     </section>
 
-    <!-- ── Hero ─────────────────────────────── -->
-    <section>
-      <div class="padding-global">
-        <div class="container-main">
-          <div class="hero">
-            <h1 class="t-display">
-              I build in the space<br>between two <em>cities.</em>
-            </h1>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
   </main>
 </BaseLayout>
@@ -127,20 +116,11 @@ import BaseLayout from '../layouts/base-layout.astro';
   }
 
   .intro-logo-item {
-    width:           176px;
-    height:          100px;
-    flex-shrink:     0;
-    display:         flex;
-    align-items:     center;
-    justify-content: center;
-    border:          0.5px solid var(--border);
-    border-radius:   var(--r-md);
-    color:           var(--text-3);
-    font-family:     var(--font-body);
-    font-size:       11px;
-    font-weight:     500;
-    letter-spacing:  0.5px;
-    text-transform:  uppercase;
+    width:       176px;
+    height:      100px;
+    flex-shrink: 0;
+    object-fit:  contain;
+    display:     block;
   }
 
   @media (max-width: 768px) {
