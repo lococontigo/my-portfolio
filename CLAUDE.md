@@ -138,6 +138,13 @@ Every section on every page must follow this four-layer structure — no excepti
 Both `.padding-global` and `.container-main` are global utilities defined in `src/styles/global.css`.
 The content div's styles live in the component's scoped `<style>` block.
 
+**Section spacing** — defined globally in `src/styles/global.css`, do not override per section:
+```
+desktop  →  padding-block: 128px  (--space-xl)
+tablet   →  padding-block: 64px   (--space-lg)
+mobile   →  padding-block: 32px   (--space-md)
+```
+
 - Page `<main>` needs `padding-top: 96px` (80px tablet · 72px mobile) to clear the fixed nav
 
 ## CSS conventions

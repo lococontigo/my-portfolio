@@ -77,6 +77,25 @@ button {
 }
 
 /* ─────────────────────────────────────────────
+   SECTION SPACING
+───────────────────────────────────────────── */
+section {
+  padding-block: var(--space-xl); /* 128px top + bottom */
+}
+
+@media (max-width: 768px) {
+  section {
+    padding-block: var(--space-lg); /* 64px */
+  }
+}
+
+@media (max-width: 520px) {
+  section {
+    padding-block: var(--space-md); /* 32px */
+  }
+}
+
+/* ─────────────────────────────────────────────
    LAYOUT UTILITIES
    Every section: .padding-global > .container-main > content
 ───────────────────────────────────────────── */
