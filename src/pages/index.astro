@@ -132,13 +132,29 @@ import BaseLayout from '../layouts/base-layout.astro';
 
   @media (max-width: 768px) {
     .intro-content { gap: 48px; }
-    .intro-logos   { justify-content: flex-start; flex-wrap: wrap; gap: 16px; }
-    .intro-logo-item { width: 140px; height: 80px; flex-shrink: 0; }
+
+    .intro-logos {
+      justify-content: center;
+      flex-wrap:        wrap;
+      gap:              16px;
+    }
+
+    .intro-logo-item {
+      width:       calc((100% - 32px) / 3);
+      height:      80px;
+      flex-shrink: 0;
+    }
   }
 
   @media (max-width: 520px) {
-    .intro-content   { gap: 32px; }
-    .intro-logo-item { width: calc(50% - 8px); height: 72px; }
+    .intro-content { gap: 32px; }
+
+    .intro-logos { gap: 12px; }
+
+    .intro-logo-item {
+      width:  calc((100% - 24px) / 3);
+      height: 64px;
+    }
   }
 
   /* ── Hero section ────────────────────────── */
