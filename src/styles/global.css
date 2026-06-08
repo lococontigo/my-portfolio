@@ -96,6 +96,17 @@ section {
 }
 
 /* ─────────────────────────────────────────────
+   PAGE SHELL
+───────────────────────────────────────────── */
+.main {
+  padding-top: 96px;
+  min-height:  100vh;
+}
+
+@media (max-width: 768px) { .main { padding-top: 80px; } }
+@media (max-width: 520px) { .main { padding-top: 72px; } }
+
+/* ─────────────────────────────────────────────
    LAYOUT UTILITIES
    Every section: .padding-global > .container-main > content
 ───────────────────────────────────────────── */
