@@ -74,34 +74,28 @@ import Testimonials from '../components/testimonials.astro';
     </section>
 
     <!-- ── Section 2: CTA (left) + Testimonials (right) ── -->
-    <section>
-      <div class="padding-global">
-        <div class="container-main">
-          <div class="about-bottom">
+    <section class="about-split">
 
-            <div class="about-cta">
-              <h2 class="about-cta-heading">Let's build something great together!</h2>
-              <div class="about-cta-actions">
-                <a
-                  href="https://www.linkedin.com/in/andrewthyip/"
-                  class="about-btn-accent"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >Connect on LinkedIn</a>
-                <a href="mailto:andrewthyip@gmail.com" class="about-btn-outline">Say Hello</a>
-              </div>
-            </div>
-
-            <div class="about-testi">
-              <h2 class="about-testi-heading">Testimonials</h2>
-              <div class="about-testi-box">
-                <Testimonials />
-              </div>
-            </div>
-
-          </div>
+      <div class="about-cta">
+        <h2 class="about-cta-heading">Let's build something great together!</h2>
+        <div class="about-cta-actions">
+          <a
+            href="https://www.linkedin.com/in/andrewthyip/"
+            class="about-btn-accent"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Connect on LinkedIn</a>
+          <a href="mailto:andrewthyip@gmail.com" class="about-btn-outline">Say Hello</a>
         </div>
       </div>
+
+      <div class="about-testi">
+        <h2 class="about-testi-heading">Testimonials</h2>
+        <div class="about-testi-box">
+          <Testimonials />
+        </div>
+      </div>
+
     </section>
 
   </main>
