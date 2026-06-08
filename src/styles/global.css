@@ -236,7 +236,7 @@ section {
   background:     var(--bg-2);
   border:         0.5px solid var(--border);
   transition:     color 0.2s var(--ease), border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
-  cursor:         default;
+  cursor:         pointer;
 }
 
 .about-tag:hover {
