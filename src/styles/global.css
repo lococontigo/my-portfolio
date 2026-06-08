@@ -149,20 +149,21 @@ section {
 }
 
 .about-photo-wrap {
-  width:         100%;
   overflow:      hidden;
   border-radius: var(--r-md);
   margin-bottom: var(--space-lg);
+  align-self:    flex-start;
 }
 
 .about-photo {
-  width:   100%;
-  height:  auto;
-  display: block;
+  width:     auto;
+  max-width: 100%;
+  height:    auto;
+  display:   block;
 }
 
 .about-bio {
-  padding: var(--space-lg) var(--space-md);
+  padding: var(--space-xl) var(--space-md);
 }
 
 .about-right {
