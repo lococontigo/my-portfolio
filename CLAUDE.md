@@ -155,6 +155,26 @@ mobile   →  padding-block: 32px   (--space-md)
 
 - Page `<main>` needs `padding-top: 96px` (80px tablet · 72px mobile) to clear the fixed nav
 
+## Case study content spacing
+These values apply inside case study pages (`work/*.astro`). Use `clamp()` or breakpoint overrides to scale down on tablet/mobile as noted.
+
+| Relationship | Desktop | Tablet | Mobile |
+|---|---|---|---|
+| Section title → section content (e.g. "01 Overview" → body) | `80px` | `48px` | `32px` |
+| Title → image | `40px` | `28px` | `20px` |
+| Title → body text | `24px` | `20px` | `16px` |
+| Grid gap | `24px` | `16px` | `12px` |
+| Subtitle → body text | `8px` | `8px` | `8px` |
+
+**Implementation pattern** — prefer `clamp()` for fluid scaling:
+```css
+.section-title   { margin-bottom: clamp(32px, 5.5vw, 80px); } /* section title → content */
+.title-to-image  { margin-bottom: clamp(20px, 2.8vw, 40px); } /* title → image */
+.title-to-body   { margin-bottom: clamp(16px, 1.7vw, 24px); } /* title → body */
+.grid            { gap: clamp(12px, 1.7vw, 24px); }           /* grid gap */
+.subtitle        { margin-bottom: 8px; }                       /* subtitle → body (fixed) */
+```
+
 ## CSS conventions
 - **No inline styles** except truly one-off dynamic values (e.g. a swatch's background color)
 - Class naming: BEM-lite — `.block-element` (e.g. `.work-card-title`, `.nav-link`)
