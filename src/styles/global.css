@@ -150,10 +150,11 @@ section {
 }
 
 .about-photo-wrap {
-  overflow:      hidden;
-  border-radius: var(--r-md);
-  margin-bottom: var(--space-lg);
-  align-self:    flex-start;
+  display:         flex;
+  justify-content: center;
+  overflow:        hidden;
+  border-radius:   var(--r-md);
+  margin-bottom:   var(--space-lg);
 }
 
 .about-photo {
