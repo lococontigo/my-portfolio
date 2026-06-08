@@ -1,0 +1,226 @@
+---
+---
+
+<div class="testi-slider" id="testi-slider">
+
+  <div class="testi-track" id="testi-track">
+
+    <div class="testi-slide active">
+      <span class="testi-quote-mark">"</span>
+      <p class="testi-quote">Placeholder testimonial quote. Replace this with a real collaborator's words — one or two sentences that capture what it was like to work together.</p>
+      <div class="testi-attribution">
+        <span class="testi-dash">—</span>
+        <span class="testi-name">Full Name</span>
+        <span class="testi-sep">·</span>
+        <span class="testi-role">Job Title, Company</span>
+      </div>
+    </div>
+
+    <div class="testi-slide">
+      <span class="testi-quote-mark">"</span>
+      <p class="testi-quote">Placeholder testimonial quote. Replace this with a real collaborator's words — one or two sentences that capture what it was like to work together.</p>
+      <div class="testi-attribution">
+        <span class="testi-dash">—</span>
+        <span class="testi-name">Full Name</span>
+        <span class="testi-sep">·</span>
+        <span class="testi-role">Job Title, Company</span>
+      </div>
+    </div>
+
+    <div class="testi-slide">
+      <span class="testi-quote-mark">"</span>
+      <p class="testi-quote">Placeholder testimonial quote. Replace this with a real collaborator's words — one or two sentences that capture what it was like to work together.</p>
+      <div class="testi-attribution">
+        <span class="testi-dash">—</span>
+        <span class="testi-name">Full Name</span>
+        <span class="testi-sep">·</span>
+        <span class="testi-role">Job Title, Company</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="testi-controls">
+    <button class="testi-btn" id="testi-prev" aria-label="Previous">‹</button>
+    <div class="testi-dots" id="testi-dots">
+      <button class="testi-dot active" aria-label="Slide 1"></button>
+      <button class="testi-dot" aria-label="Slide 2"></button>
+      <button class="testi-dot" aria-label="Slide 3"></button>
+    </div>
+    <button class="testi-btn" id="testi-next" aria-label="Next">›</button>
+  </div>
+
+</div>
+
+<style>
+  .testi-slider {
+    cursor: default;
+  }
+
+  .testi-track {
+    position:   relative;
+    min-height: 168px;
+  }
+
+  .testi-slide {
+    position:       absolute;
+    inset:          0;
+    opacity:        0;
+    transform:      translateY(10px);
+    transition:     opacity 0.55s var(--ease), transform 0.55s var(--ease);
+    pointer-events: none;
+  }
+
+  .testi-slide.active {
+    opacity:        1;
+    transform:      translateY(0);
+    pointer-events: auto;
+  }
+
+  .testi-quote-mark {
+    font-family:   var(--font-display);
+    font-size:     64px;
+    line-height:   1;
+    color:         var(--accent);
+    display:       block;
+    margin-bottom: -10px;
+    opacity:       0.7;
+    user-select:   none;
+  }
+
+  .testi-quote {
+    font-family:    var(--font-display);
+    font-style:     italic;
+    font-size:      20px;
+    font-weight:    300;
+    color:          var(--text-1);
+    line-height:    1.5;
+    max-width:      520px;
+    margin-bottom:  20px;
+    letter-spacing: -0.01em;
+  }
+
+  .testi-attribution {
+    display:     flex;
+    align-items: baseline;
+    gap:         6px;
+  }
+
+  .testi-dash {
+    font-size: 11px;
+    color:     var(--text-3);
+  }
+
+  .testi-name {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 500;
+    color:       var(--text-1);
+  }
+
+  .testi-sep {
+    font-size: 11px;
+    color:     var(--text-3);
+  }
+
+  .testi-role {
+    font-family: var(--font-body);
+    font-size:   11px;
+    color:       var(--text-3);
+  }
+
+  .testi-controls {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    margin-top:      28px;
+    padding-top:     20px;
+    border-top:      0.5px solid var(--border);
+  }
+
+  .testi-dots {
+    display:     flex;
+    align-items: center;
+    gap:         8px;
+  }
+
+  .testi-dot {
+    width:         6px;
+    height:        6px;
+    border-radius: 50%;
+    background:    var(--border-2);
+    cursor:        pointer;
+    border:        none;
+    padding:       0;
+    transition:    all 0.25s var(--ease);
+  }
+
+  .testi-dot.active {
+    background:    var(--accent);
+    box-shadow:    var(--neon-sm);
+    width:         18px;
+    border-radius: var(--r-pill);
+  }
+
+  .testi-btn {
+    width:         32px;
+    height:        32px;
+    display:       inline-flex;
+    align-items:   center;
+    justify-content: center;
+    background:    var(--bg-2);
+    border:        0.5px solid var(--border);
+    border-radius: var(--r-sm);
+    color:         var(--text-2);
+    cursor:        pointer;
+    font-family:   var(--font-body);
+    font-size:     14px;
+    line-height:   1;
+    transition:    all 0.2s var(--ease);
+  }
+
+  .testi-btn:hover {
+    border-color: var(--accent);
+    color:        var(--accent);
+    box-shadow:   var(--neon-sm);
+  }
+
+  @media (max-width: 520px) {
+    .testi-track {
+      min-height: 200px;
+    }
+
+    .testi-quote {
+      font-size: 18px;
+    }
+  }
+</style>
+
+<script>
+  const slider = document.getElementById('testi-slider');
+  const slides = slider.querySelectorAll('.testi-slide');
+  const dots   = slider.querySelectorAll('.testi-dot');
+  const prev   = document.getElementById('testi-prev');
+  const next   = document.getElementById('testi-next');
+  let current  = 0;
+  let timer;
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function startAuto() { timer = setInterval(() => goTo(current + 1), 5000); }
+  function stopAuto()  { clearInterval(timer); }
+
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); }));
+  prev.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+  next.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+  slider.addEventListener('mouseenter', stopAuto);
+  slider.addEventListener('mouseleave', startAuto);
+
+  startAuto();
+</script>
