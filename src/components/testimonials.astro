@@ -225,12 +225,15 @@
 
 <script>
   const slider = document.getElementById('testi-slider');
-  const slides = slider.querySelectorAll('.testi-slide');
-  const dots   = slider.querySelectorAll('.testi-dot');
   const prev   = document.getElementById('testi-prev');
   const next   = document.getElementById('testi-next');
-  let current  = 0;
-  let timer;
+
+  if (!slider || !prev || !next) throw new Error('Testimonials: required elements not found');
+
+  const slides  = slider.querySelectorAll('.testi-slide');
+  const dots    = slider.querySelectorAll('.testi-dot');
+  let current   = 0;
+  let timer     = 0;
 
   function goTo(index) {
     slides[current].classList.remove('active');
@@ -240,7 +243,7 @@
     dots[current].classList.add('active');
   }
 
-  function startAuto() { timer = setInterval(() => goTo(current + 1), 5000); }
+  function startAuto() { timer = window.setInterval(() => goTo(current + 1), 5000); }
   function stopAuto()  { clearInterval(timer); }
 
   dots.forEach((dot, i) => dot.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); }));
