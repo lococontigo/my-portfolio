@@ -31,6 +31,9 @@ const {
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <!-- Design system injected via Astro build (see frontmatter import) -->
+
+  <!-- Per-page head injections (JSON-LD, etc.) -->
+  <slot name="head" />
 </head>
 <body>
   <!-- Page transition curtain -->
