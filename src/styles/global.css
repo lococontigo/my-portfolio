@@ -166,7 +166,8 @@ section {
 }
 
 .about-right {
-  padding: var(--space-xl) var(--space-md);
+  padding:    var(--space-xl) var(--space-md);
+  background: var(--bg-2);
 }
 
 /* ── Left column — typography ───────────────── */
@@ -253,6 +254,11 @@ section {
   grid-template-columns: 1fr 1fr;
   gap:                   var(--space-xl);
   align-items:           start;
+}
+
+.about-cta {
+  background: var(--bg-2);
+  padding:    var(--space-xl) var(--space-md);
 }
 
 .about-cta-heading {
