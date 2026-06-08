@@ -146,7 +146,7 @@ section {
 
 .about-left {
   border-right: 0.5px solid var(--border);
-  padding:      var(--space-xl) var(--space-md);
+  padding:      var(--space-xl) var(--space-lg);
 }
 
 .about-photo-wrap {
@@ -164,7 +164,7 @@ section {
 }
 
 .about-right {
-  padding:    var(--space-xl) var(--space-md);
+  padding:    var(--space-xl) var(--space-lg);
   background: var(--bg-2);
 }
 
@@ -249,12 +249,12 @@ section {
 /* ── Bottom section — CTA + Testimonials ────── */
 .about-cta {
   background:   var(--bg-2);
-  padding:      var(--space-xl) var(--space-md);
+  padding:      var(--space-xl) var(--space-lg);
   border-right: 0.5px solid var(--border);
 }
 
 .about-testi {
-  padding: var(--space-xl) var(--space-md);
+  padding: var(--space-xl) var(--space-lg);
 }
 
 .about-cta-heading {
