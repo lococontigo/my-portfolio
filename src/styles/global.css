@@ -146,6 +146,7 @@ section {
 
 .about-left {
   border-right: 0.5px solid var(--border);
+  padding:      var(--space-xl) var(--space-md);
 }
 
 .about-photo-wrap {
@@ -160,10 +161,6 @@ section {
   max-width: 100%;
   height:    auto;
   display:   block;
-}
-
-.about-bio {
-  padding: var(--space-xl) var(--space-md);
 }
 
 .about-right {
@@ -324,7 +321,7 @@ section {
 
 /* ── About responsive ───────────────────────── */
 @media (max-width: 1024px) {
-  .about-bio   { padding: var(--space-md) var(--space-sm); }
+  .about-left  { padding: var(--space-md) var(--space-sm); }
   .about-right { padding: var(--space-lg) var(--space-sm); }
 }
 
@@ -334,7 +331,7 @@ section {
 }
 
 @media (max-width: 520px) {
-  .about-bio          { padding: var(--space-md) var(--space-xs); }
+  .about-left         { padding: var(--space-md) var(--space-xs); }
   .about-right        { padding: var(--space-md) var(--space-xs); }
   .about-photo-wrap   { aspect-ratio: 1 / 1; }
 }
