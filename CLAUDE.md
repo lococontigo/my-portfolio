@@ -155,16 +155,19 @@ mobile   →  padding-block: 32px   (--space-md)
 
 - Page `<main>` needs `padding-top: 96px` (80px tablet · 72px mobile) to clear the fixed nav
 
-## Case study content spacing
+## Content spacing
 These values apply inside case study pages (`work/*.astro`). Use `clamp()` or breakpoint overrides to scale down on tablet/mobile as noted.
 
 | Relationship | Desktop | Tablet | Mobile |
 |---|---|---|---|
+| Section → section | `128px` | `64px` | `32px` |
 | Section title → section content (e.g. "01 Overview" → body) | `80px` | `48px` | `32px` |
 | Title → image | `40px` | `28px` | `20px` |
 | Title → body text | `24px` | `20px` | `16px` |
 | Grid gap | `24px` | `16px` | `12px` |
 | Subtitle → body text | `8px` | `8px` | `8px` |
+
+Section → section spacing is handled globally via `padding-block` on `<section>` in `global.css` — do not override it per section.
 
 **Implementation pattern** — prefer `clamp()` for fluid scaling:
 ```css
@@ -215,6 +218,17 @@ Every component must work correctly in both worlds using only CSS variables — 
 ## How to maintain this file
 Whenever a prompt or instruction is significant and reusable across sessions, add it here.
 This keeps Claude's context current without repeating rules every conversation.
+
+## Validation rules
+
+After every component or style change:
+- Check localhost:4321 renders without console errors
+- Confirm no hex values exist outside tokens.css (search: #[0-9a-fA-F])
+- Confirm no inline styles were added (search: style=")
+- Confirm all transitions use var(--ease), not a raw cubic-bezier
+
+Before committing:
+- Run npm run build — if it fails, fix before committing
 
 ## Git workflow
 After every meaningful change:
