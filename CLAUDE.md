@@ -2,13 +2,21 @@
 
 ## Project identity
 Personal portfolio for **Andrew Yip** — UX/UI designer + developer.
-Central concept: **Duality** — HK Night (dark mode) and CA Stone (light mode).
-Two cities, one cohesive design system.
+
+### Design concept: Duality
+The portfolio has two visual worlds that physically represent Andrew's biography:
+
+| World | Theme | City | Palette |
+|---|---|---|---|
+| **HK Night** | `data-theme="dark"` | Hong Kong | Deep blacks, amber neon, purple accent |
+| **CA Stone** | `data-theme="light"` | California | Warm stone, teal accent, soft shadows |
+
+These aren't just light/dark modes — they are distinct emotional environments that together tell the story of two cities shaping one designer. Every design decision should reinforce this duality.
 
 ## Stack
 | Layer | Tool |
 |---|---|
-| Framework | Astro (TypeScript) |
+| Framework | Astro |
 | Styling | CSS custom properties — no Tailwind, no CSS-in-JS |
 | Animation | GSAP 3 + ScrollTrigger |
 | Fonts | Cormorant Garamond · DM Sans · JetBrains Mono (Google Fonts) |
@@ -152,6 +160,37 @@ mobile   →  padding-block: 32px   (--space-md)
 - Class naming: BEM-lite — `.block-element` (e.g. `.work-card-title`, `.nav-link`)
 - All component styles live in the relevant `.astro` file's `<style>` block or in `src/styles/`
 - 0.5px borders are intentional — keeps the aesthetic hairline-thin
+
+## SEO & performance
+- Add JSON-LD schema markup on every page (at minimum `Person` on index, `WebPage` on all others)
+- `<title>` format: `Page Name · Andrew YIP`
+- Every `<img>` must have a descriptive `alt` attribute
+- Use `loading="lazy"` on below-the-fold images; hero images get `fetchpriority="high"`
+- Prefer `font-display: swap` (already set via Google Fonts `display=swap`)
+- No render-blocking resources — CSS via frontmatter import, scripts deferred or `is:inline`
+- Target Core Web Vitals: LCP < 2.5s, CLS = 0, INP < 200ms
+
+## Before every task
+Before writing any code, explain your plan step by step and wait for confirmation.
+Only proceed once the plan is approved.
+
+## Hard constraints — never break these
+| Rule | Detail |
+|---|---|
+| No npm packages | Ask before installing anything new |
+| No token edits | Never change hex values in `tokens.css` |
+| No `<link>` for CSS | Always use frontmatter `import '../styles/...'` |
+| No JS in `src/scripts/` | Always `public/scripts/` + `<script is:inline>` |
+| No `ease-in-out` | Always `var(--ease)` or `var(--ease-in)` |
+| No inline styles | Always CSS classes; only exception: truly dynamic one-off values |
+| No TypeScript | Plain `.astro` + vanilla JS only |
+| No Tailwind | CSS custom properties from `tokens.css` only |
+
+## CSS/styling tasks — additional rule
+Use only CSS custom properties from `tokens.css`. **Never hardcode** a hex value, a `px` size, or a font name directly in CSS. Always reference a token (`var(--accent)`, `var(--space-md)`, `var(--font-body)`).
+
+## Component tasks — additional rule
+Every component must work correctly in both worlds using only CSS variables — no theme-specific class forks. The theme switch (`data-theme="dark"` / `data-theme="light"` on `<html>`) should be the only thing that changes the appearance.
 
 ## How to maintain this file
 Whenever a prompt or instruction is significant and reusable across sessions, add it here.
