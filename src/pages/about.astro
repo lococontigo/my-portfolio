@@ -22,15 +22,15 @@ import Testimonials from '../components/testimonials.astro';
     <section class="about-split">
 
       <div class="about-left">
-        <div class="about-photo-wrap">
-          <img
-            src="/images/self-image.png"
-            alt="Andrew Yip, UX/UI Designer"
-            class="about-photo"
-            fetchpriority="high"
-          />
-        </div>
         <div class="about-bio">
+          <div class="about-photo-wrap">
+            <img
+              src="/images/self-image.png"
+              alt="Andrew Yip, UX/UI Designer"
+              class="about-photo"
+              fetchpriority="high"
+            />
+          </div>
           <h1 class="about-name">About <em>Andrew</em></h1>
 
           <p>I come from Hong Kong, a concrete city often known for its fast-paced lifestyle. My design career commenced in Canada, where I started a postgraduate program focused on design and development.</p>
@@ -62,6 +62,7 @@ import Testimonials from '../components/testimonials.astro';
             <span class="about-tag">PHP</span>
             <span class="about-tag">CMS</span>
             <span class="about-tag">Prompt Engineering</span>
+          </div>
           </div>
         </div>
       </div>
