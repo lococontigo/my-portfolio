@@ -114,6 +114,10 @@
    HOMEPAGE — Work featured section
 ───────────────────────────────────────────── */
 
+section:has(.work-featured) {
+  padding-block: var(--space-lg); /* 64px — halves the combined gap between work sections */
+}
+
 .work-featured {
   display:     grid;
   grid-template-columns: 1fr 1fr;
