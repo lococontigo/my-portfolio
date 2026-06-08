@@ -36,7 +36,7 @@ const pathname = Astro.url.pathname;
     <div class="nav-mobile-inner">
       <a href="/"      class={`nav-mobile-link${pathname === '/'      ? ' active' : ''}`}>Work</a>
       <a href="/about" class={`nav-mobile-link${pathname === '/about' ? ' active' : ''}`}>About</a>
-      <a href="mailto:andrewyip30@gmail.com" class="nav-mobile-cta">Say hello →</a>
+      <a href="mailto:andrewthyip@gmail.com" class="nav-mobile-cta">Say hello →</a>
     </div>
   </div>
 
@@ -67,7 +67,17 @@ const pathname = Astro.url.pathname;
     background:      var(--bg);
     border:          0.5px solid var(--border);
     border-radius:   var(--r-lg);
-    transition:      border-color 0.3s var(--ease);
+    transition:      background 0.4s var(--ease),
+                     border-color 0.3s var(--ease),
+                     backdrop-filter 0.4s var(--ease);
+  }
+
+  /* ── Glassmorphism on scroll ───────────── */
+  .nav.scrolled .nav-inner {
+    background:              color-mix(in srgb, var(--bg) 65%, transparent);
+    backdrop-filter:         blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-color:            var(--border-2);
   }
 
   /* ── Logo ──────────────────────────────── */
@@ -252,8 +262,15 @@ const pathname = Astro.url.pathname;
 </style>
 
 <script>
+  const nav    = document.querySelector('.nav') as HTMLElement | null;
   const burger = document.getElementById('nav-burger') as HTMLButtonElement | null;
   const mobile = document.getElementById('nav-mobile') as HTMLElement | null;
+
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+  }
 
   if (burger && mobile) {
     burger.addEventListener('click', () => {
