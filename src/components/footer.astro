@@ -1,0 +1,84 @@
+---
+---
+<footer class="footer">
+  <div class="padding-global">
+    <div class="container-main">
+      <div class="footer-inner">
+
+        <p class="footer-copy">© 2026 Andrew YIP</p>
+
+        <div class="footer-links">
+          <a
+            href="https://www.linkedin.com/in/andrewyip30/"
+            class="footer-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >LinkedIn</a>
+          <a href="mailto:andrewyip30@gmail.com" class="footer-cta">Say hello →</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 0.5px solid var(--border);
+  }
+
+  .footer-inner {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    padding-block:   20px;
+  }
+
+  .footer-copy {
+    font-family: var(--font-body);
+    font-size:   13px;
+    font-weight: 400;
+    color:       var(--text-2);
+  }
+
+  .footer-links {
+    display:     flex;
+    align-items: center;
+    gap:         24px;
+  }
+
+  .footer-link {
+    font-family: var(--font-body);
+    font-size:   13px;
+    font-weight: 400;
+    color:       var(--text-2);
+    transition:  color 0.25s var(--ease);
+  }
+
+  .footer-link:hover {
+    color: var(--text-1);
+  }
+
+  .footer-cta {
+    font-family:   var(--font-body);
+    font-size:     13px;
+    font-weight:   400;
+    color:         var(--accent);
+    border:        0.5px solid var(--accent);
+    border-radius: var(--r-sm);
+    padding:       6px 14px;
+    transition:    color 0.25s var(--ease),
+                   background 0.25s var(--ease),
+                   box-shadow 0.25s var(--ease);
+  }
+
+  .footer-cta:hover {
+    background: var(--accent-dim);
+    box-shadow: var(--neon-sm);
+  }
+
+  @media (max-width: 520px) {
+    .footer-copy  { font-size: 11px; }
+    .footer-links { gap: var(--space-sm); }
+  }
+</style>
