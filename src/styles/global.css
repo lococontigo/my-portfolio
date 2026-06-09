@@ -145,6 +145,7 @@ section {
 .about-split {
   display:               grid;
   grid-template-columns: 1fr 1fr;
+  background:            linear-gradient(90deg, transparent 50%, var(--bg-2) 50%);
 }
 
 .about-left {
@@ -168,8 +169,16 @@ section {
 }
 
 .about-right {
-  padding:    var(--space-xl) var(--space-md);
-  background: var(--bg-2);
+  padding:         var(--space-xl) var(--space-md);
+  background:      var(--bg-2);
+  position:        sticky;
+  top:             0;
+  height:          100vh;
+  display:         flex;
+  flex-direction:  column;
+  justify-content: center;
+  align-self:      start;
+  overflow:        hidden;
 }
 
 /* ── Left column — typography ───────────────── */
@@ -338,8 +347,9 @@ section {
 }
 
 @media (max-width: 768px) {
-  .about-split               { grid-template-columns: 1fr; }
+  .about-split               { grid-template-columns: 1fr; background: none; }
   .about-left, .about-cta   { border-right: none; border-bottom: 0.5px solid var(--border); }
+  .about-right               { position: static; height: auto; }
 }
 
 @media (max-width: 520px) {
