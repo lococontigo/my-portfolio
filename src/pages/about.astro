@@ -19,83 +19,95 @@ import Testimonials from '../components/testimonials.astro';
   <main class="main">
 
     <!-- ── Section 1: Split — photo + bio (left) / Design Journey (right) ── -->
-    <section class="about-split">
+    <section class="about-section">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="about-split">
 
-      <div class="about-left">
-        <div class="about-bio">
-          <div class="about-photo-wrap">
-            <img
-              src="/images/self-image.png"
-              alt="Andrew Yip, UX/UI Designer"
-              class="about-photo"
-              fetchpriority="high"
-            />
-          </div>
-          <h1 class="about-name">About Andrew</h1>
+            <div class="about-left">
+              <div class="about-bio">
+                <div class="about-photo-wrap">
+                  <img
+                    src="/images/self-image.png"
+                    alt="Andrew Yip, UX/UI Designer"
+                    class="about-photo"
+                    fetchpriority="high"
+                  />
+                </div>
+                <h1 class="about-name">About Andrew</h1>
 
-          <p>I come from Hong Kong, a concrete city often known for its fast-paced lifestyle. My design career commenced in Canada, where I started a postgraduate program focused on design and development.</p>
-          <p>Since then, I've been actively involved in the design field. At first, I volunteered to design for a UX community. After that, I put my skills to use by freelancing for a variety of businesses in British Columbia.</p>
+                <p>I come from Hong Kong, a concrete city often known for its fast-paced lifestyle. My design career commenced in Canada, where I started a postgraduate program focused on design and development.</p>
+                <p>Since then, I've been actively involved in the design field. At first, I volunteered to design for a UX community. After that, I put my skills to use by freelancing for a variety of businesses in British Columbia.</p>
 
-          <h2 class="about-subheading">Design Philosophy</h2>
-          <p>As a designer, I believe the nature of design is problem solving rather than just make things pretty.</p>
-          <p>My job is to bridge design thinking and technical execution to deliver user-centric solutions that drive measurable business outcomes.</p>
+                <h2 class="about-subheading">Design Philosophy</h2>
+                <p>As a designer, I believe the nature of design is problem solving rather than just make things pretty.</p>
+                <p>My job is to bridge design thinking and technical execution to deliver user-centric solutions that drive measurable business outcomes.</p>
 
-          <h2 class="about-subheading">Person Facts</h2>
-          <ul class="about-facts">
-            <li>I speak English, Mandarin, Cantonese, and a bit of Spanish.</li>
-            <li>I am a fan of WONG KAR WAI movies.</li>
-            <li>I developed this portfolio using custom code, feel free to inspect.</li>
-          </ul>
+                <h2 class="about-subheading">Person Facts</h2>
+                <ul class="about-facts">
+                  <li>I speak English, Mandarin, Cantonese, and a bit of Spanish.</li>
+                  <li>I am a fan of WONG KAR WAI movies.</li>
+                  <li>I developed this portfolio using custom code, feel free to inspect.</li>
+                </ul>
 
-          <div class="about-tags">
-            <span class="about-tag">UX/UI Design</span>
-            <span class="about-tag">UX Research</span>
-            <span class="about-tag">User Testing</span>
-            <span class="about-tag">Technical SEO</span>
-            <span class="about-tag">Wireframing</span>
-            <span class="about-tag">UI Animation</span>
-            <span class="about-tag">Figma</span>
-            <span class="about-tag">Adobe Creative Suite</span>
-            <span class="about-tag">HTML</span>
-            <span class="about-tag">CSS</span>
-            <span class="about-tag">JavaScript</span>
-            <span class="about-tag">PHP</span>
-            <span class="about-tag">CMS</span>
-            <span class="about-tag">Prompt Engineering</span>
+                <div class="about-tags">
+                  <span class="about-tag">UX/UI Design</span>
+                  <span class="about-tag">UX Research</span>
+                  <span class="about-tag">User Testing</span>
+                  <span class="about-tag">Technical SEO</span>
+                  <span class="about-tag">Wireframing</span>
+                  <span class="about-tag">UI Animation</span>
+                  <span class="about-tag">Figma</span>
+                  <span class="about-tag">Adobe Creative Suite</span>
+                  <span class="about-tag">HTML</span>
+                  <span class="about-tag">CSS</span>
+                  <span class="about-tag">JavaScript</span>
+                  <span class="about-tag">PHP</span>
+                  <span class="about-tag">CMS</span>
+                  <span class="about-tag">Prompt Engineering</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-right">
+              <h2 class="about-journey-heading">Design Journey</h2>
+              <Timeline />
+            </div>
+
           </div>
         </div>
       </div>
-
-      <div class="about-right">
-        <h2 class="about-journey-heading">Design Journey</h2>
-        <Timeline />
-      </div>
-
     </section>
 
     <!-- ── Section 2: CTA (left) + Testimonials (right) ── -->
-    <section class="about-split">
+    <section class="about-section">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="about-split">
 
-      <div class="about-cta">
-        <h2 class="about-cta-heading">Let's build something great together!</h2>
-        <div class="about-cta-actions">
-          <a
-            href="https://www.linkedin.com/in/andrewthyip/"
-            class="about-btn-accent"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Connect on LinkedIn</a>
-          <a href="mailto:andrewthyip@gmail.com" class="about-btn-outline">Say Hello</a>
+            <div class="about-cta">
+              <h2 class="about-cta-heading">Let's build something great together!</h2>
+              <div class="about-cta-actions">
+                <a
+                  href="https://www.linkedin.com/in/andrewthyip/"
+                  class="about-btn-accent"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Connect on LinkedIn</a>
+                <a href="mailto:andrewthyip@gmail.com" class="about-btn-outline">Say Hello</a>
+              </div>
+            </div>
+
+            <div class="about-testi">
+              <h2 class="about-testi-heading">Testimonials</h2>
+              <div class="about-testi-box">
+                <Testimonials />
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
-
-      <div class="about-testi">
-        <h2 class="about-testi-heading">Testimonials</h2>
-        <div class="about-testi-box">
-          <Testimonials />
-        </div>
-      </div>
-
     </section>
 
   </main>
