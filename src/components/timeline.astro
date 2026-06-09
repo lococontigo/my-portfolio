@@ -68,9 +68,11 @@
     <div class="timeline-node"><div class="timeline-dot"></div></div>
     <div class="timeline-body">
       <div class="timeline-year-mobile">Now</div>
-      <div class="timeline-title">Open for New <em>Opportunity!</em></div>
+      <div class="timeline-title-row">
+        <div class="timeline-title">Open for New <em>Opportunity!</em></div>
+        <span class="timeline-current-tag">Current</span>
+      </div>
       <div class="timeline-desc">Building UX for industrial BACnet systems. Design meets the physical world — HVAC, sensors, and the quiet infrastructure that keeps buildings alive.</div>
-      <span class="timeline-current-tag">Current</span>
     </div>
   </div>
 
@@ -140,6 +142,14 @@
     transition:   transform 0.2s var(--ease);
   }
 
+  .timeline-title-row {
+    display:     flex;
+    align-items: center;
+    gap:         10px;
+    flex-wrap:   wrap;
+    margin-bottom: 5px;
+  }
+
   .timeline-title {
     font-family:    var(--font-display);
     font-size:      20px;
@@ -147,7 +157,6 @@
     color:          var(--text-1);
     line-height:    1.2;
     letter-spacing: -0.01em;
-    margin-bottom:  5px;
   }
 
   .timeline-title em {
