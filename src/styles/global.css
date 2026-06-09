@@ -275,7 +275,8 @@ section {
 }
 
 .about-testi {
-  padding: var(--space-xl) var(--space-md);
+  padding:    var(--space-xl) var(--space-md);
+  background: var(--bg);
 }
 
 .about-cta-heading {
