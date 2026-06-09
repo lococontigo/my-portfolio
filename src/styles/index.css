@@ -43,11 +43,21 @@
 
 .intro-location-dot {
   display:       block;
+  position:      relative;
   width:         5px;
   height:        5px;
   border-radius: 2.5px;
   background:    var(--accent);
   flex-shrink:   0;
+}
+
+.intro-location-dot::after {
+  content:       '';
+  position:      absolute;
+  inset:         0;
+  border-radius: inherit;
+  background:    var(--accent);
+  animation:     dot-ping 2s var(--ease-in) infinite;
 }
 
 .intro-location-label {
