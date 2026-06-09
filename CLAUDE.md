@@ -13,6 +13,17 @@ The portfolio has two visual worlds that physically represent Andrew's biography
 
 These aren't just light/dark modes — they are distinct emotional environments that together tell the story of two cities shaping one designer. Every design decision should reinforce this duality.
 
+## Design principles
+Apply these alongside the Duality concept on every design decision:
+
+- **Outcome-driven** — every section should move the visitor toward a goal: understanding Andrew's story, exploring a case study, or making contact. Cut anything that doesn't serve one of these.
+- **Anticipatory** — surface the next likely action before it's asked for (sticky nav CTA, "Open for New Opportunity" status on the timeline, related links at the end of case studies).
+- **Trust by transparency** — real names, roles, and links only (testimonials, LinkedIn, email). No placeholder content in shipped pages.
+- **Micro-interactions, macro impact** — hover/focus states (neon glow, tag highlights, dot-ping) should feel deliberate and reinforce each world's personality — HK Night = electric/neon, CA Stone = soft/warm.
+- **Motion with intent** — animation communicates state or hierarchy (active, current, loading), never decoration for its own sake. Always `var(--ease)` / `var(--ease-in)` per the easing rules below.
+- **Accessible by default** — every interactive element needs a visible focus state, sufficient contrast in both themes, and descriptive alt/aria text.
+- **Consistent across breakpoints** — the duality and interaction language must read the same on mobile, tablet, and desktop — only density and layout change.
+
 ## Stack
 | Layer | Tool |
 |---|---|
@@ -160,11 +171,11 @@ These values apply inside case study pages (`work/*.astro`). Use `clamp()` or br
 
 | Relationship | Desktop | Tablet | Mobile |
 |---|---|---|---|
-| Section → section | `128px` | `64px` | `32px` |
+| Section → section | `128px` | `80px` | `40px` |
 | Section title → section content (e.g. "01 Overview" → body) | `80px` | `48px` | `32px` |
 | Title → image | `40px` | `28px` | `20px` |
-| Title → body text | `24px` | `20px` | `16px` |
-| Grid gap | `24px` | `16px` | `12px` |
+| Title → body text | `24px` | `24px` | `16px` |
+| Grid gap | `24px` | `24px` | `12px` |
 | Subtitle → body text | `8px` | `8px` | `8px` |
 
 Section → section spacing is handled globally via `padding-block` on `<section>` in `global.css` — do not override it per section.
