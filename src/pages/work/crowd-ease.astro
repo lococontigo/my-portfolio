@@ -9,13 +9,13 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 
 const sections = [
-  { id: 'highlight', label: '02-Highlight' },
-  { id: 'problem',   label: '03-Problem' },
-  { id: 'solution',  label: '04-Solution' },
-  { id: 'research',  label: '05-Research' },
-  { id: 'design',    label: '06-Design' },
-  { id: 'identity',  label: '07-Visual Identity' },
-  { id: 'takeaways', label: '08-Takeaways' },
+  { id: 'highlight', label: '01-Highlight' },
+  { id: 'problem',   label: '02-Problem' },
+  { id: 'solution',  label: '03-Solution' },
+  { id: 'research',  label: '04-Research' },
+  { id: 'design',    label: '05-Design' },
+  { id: 'identity',  label: '06-Visual Identity' },
+  { id: 'takeaways', label: '07-Takeaways' },
 ];
 ---
 
@@ -33,7 +33,7 @@ const sections = [
 
     <CaseStudyHighlight
       id="highlight"
-      eyebrow="02"
+      eyebrow="01"
       title="Highlight"
       stats={[
         { value: "Capstone Award", caption: "Langara College Audience Winning" },
@@ -46,7 +46,7 @@ const sections = [
 
     <CaseStudyProblem
       id="problem"
-      eyebrow="03"
+      eyebrow="02"
       title="Problem"
       rows={[
         {
@@ -62,7 +62,7 @@ const sections = [
 
     <CaseStudySolution
       id="solution"
-      eyebrow="04"
+      eyebrow="03"
       title="Solution"
       rows={[
         {
@@ -100,7 +100,7 @@ const sections = [
         <div class="container-main">
           <div class="case-research">
 
-            <CaseStudySectionHeader eyebrow="05" title="Research Insight" />
+            <CaseStudySectionHeader eyebrow="04" title="Research Insight" />
 
             <div class="case-research-cards">
               <CaseStudyInsightCard
@@ -152,7 +152,7 @@ const sections = [
         <div class="container-main">
           <div class="case-design">
 
-            <CaseStudySectionHeader eyebrow="06" title="Design" />
+            <CaseStudySectionHeader eyebrow="05" title="Design" />
 
             <div class="case-design-wireframes">
               <div class="case-design-wireframes-text">
@@ -194,7 +194,7 @@ const sections = [
         <div class="container-main">
           <div class="case-identity">
 
-            <CaseStudySectionHeader eyebrow="07" title="Visual Identity" />
+            <CaseStudySectionHeader eyebrow="06" title="Visual Identity" />
 
             <div class="case-identity-intro">
               <h3 class="case-identity-intro-title">Design System</h3>
@@ -231,7 +231,7 @@ const sections = [
         <div class="container-main">
           <div class="case-takeaways">
 
-            <CaseStudySectionHeader eyebrow="08" title="Takeaways" />
+            <CaseStudySectionHeader eyebrow="07" title="Takeaways" />
 
             <div class="case-takeaways-image">
               <img src="/images/crowd-ease/panelists.png" alt="The Crowd Ease team presenting their project to a panel and audience, with a slide showing team member headshots and a QR code to connect" width="2048" height="769" loading="lazy" />
