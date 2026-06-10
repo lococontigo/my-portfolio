@@ -28,7 +28,9 @@ const {
             ))}
           </div>
 
-          <img class="case-highlight-image" src={imageSrc} alt={imageAlt} loading="lazy" />
+          <div class="case-highlight-image-wrap">
+            <img class="case-highlight-image" data-reveal src={imageSrc} alt={imageAlt} loading="lazy" />
+          </div>
         </div>
 
       </div>
@@ -99,12 +101,17 @@ const {
   }
 
   /* ── Handout image ───────────────────────── */
-  .case-highlight-image {
-    display:       block;
-    width:         100%;
+  .case-highlight-image-wrap {
     aspect-ratio:  792 / 612;
     border-radius: var(--r-lg);
-    object-fit:    cover;
+    overflow:      hidden;
+  }
+
+  .case-highlight-image {
+    display:    block;
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
   }
 
   @media (max-width: 768px) {
