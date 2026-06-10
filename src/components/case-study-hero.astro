@@ -58,7 +58,7 @@ const {
             <dt class="case-meta-label">Role:</dt>
             <dd>
               <ul class="case-meta-list">
-                {role.map((item) => <li>{item}</li>)}
+                {role.map((item: string) => <li>{item}</li>)}
               </ul>
             </dd>
           </dl>
@@ -67,7 +67,7 @@ const {
             <dt class="case-meta-label">Tool:</dt>
             <dd>
               <ul class="case-meta-list">
-                {tools.map((item) => <li>{item}</li>)}
+                {tools.map((item: string) => <li>{item}</li>)}
               </ul>
             </dd>
           </dl>
@@ -76,7 +76,7 @@ const {
             <dt class="case-meta-label">Duration:</dt>
             <dd>
               <ul class="case-meta-list">
-                {duration.map((item) => <li>{item}</li>)}
+                {duration.map((item: string) => <li>{item}</li>)}
               </ul>
             </dd>
           </dl>
