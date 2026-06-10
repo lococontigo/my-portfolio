@@ -1,10 +1,13 @@
 ---
 import CaseStudyVideo from './case-study-video.astro';
+import CaseStudyLottie from './case-study-lottie.astro';
 
 const {
   title,
   fullTitle,
   videoSrc,
+  lottieSrc,
+  lottieAspectRatio,
   role = [],
   tools = [],
   duration = [],
@@ -22,7 +25,11 @@ const {
         </h1>
 
         <div class="case-hero-video-spacing">
-          <CaseStudyVideo videoSrc={videoSrc} />
+          {lottieSrc ? (
+            <CaseStudyLottie lottieSrc={lottieSrc} aspectRatio={lottieAspectRatio} />
+          ) : (
+            <CaseStudyVideo videoSrc={videoSrc} />
+          )}
         </div>
 
         <div class="case-hero-meta">

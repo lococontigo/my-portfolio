@@ -1,18 +1,21 @@
 ---
 import BaseLayout from '../../layouts/base-layout.astro';
+import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 ---
 
-<BaseLayout title="Delta Controls — Case Study" world="light">
+<BaseLayout title="Delta Controls" world="light">
   <main class="main">
 
-    <section class="padding-global">
-      <div class="container-main">
-        <div class="page-content">
-          <!-- Case study content goes here -->
-        </div>
-      </div>
-    </section>
+    <CaseStudyHero
+      title="Delta Controls – [Placeholder Tagline]"
+      fullTitle="Delta Controls: [Placeholder Tagline]"
+      lottieSrc="/videos/delta-controls/source-hero.json"
+      lottieAspectRatio="764 / 212"
+      role={["[Placeholder Role]"]}
+      tools={["[Placeholder Tool]"]}
+      duration={["[Placeholder Duration]"]}
+    />
 
     <CaseStudyKeepReading current="delta" />
 
@@ -23,11 +26,6 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
   .main {
     padding-top: 96px;
     min-height:  100vh;
-  }
-
-  .page-content {
-    padding-top:    var(--space-xl);
-    padding-bottom: var(--space-xl);
   }
 
   @media (max-width: 768px) {
