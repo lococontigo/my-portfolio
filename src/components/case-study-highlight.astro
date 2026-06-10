@@ -20,7 +20,7 @@ const {
 
         <div class="case-highlight-content">
           <div class="case-highlight-stats">
-            {stats.map((stat) => (
+            {stats.map((stat: { value: string; caption: string }) => (
               <div class="case-highlight-stat">
                 <p class="case-highlight-stat-value">{stat.value}</p>
                 <p class="case-highlight-stat-caption">{stat.caption}</p>
