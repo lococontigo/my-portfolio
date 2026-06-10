@@ -1,0 +1,64 @@
+---
+import CaseStudySectionHeader from './case-study-section-header.astro';
+
+const { eyebrow, title, rows = [] } = Astro.props;
+---
+
+<section class="case-problem-section">
+  <div class="padding-global">
+    <div class="container-main">
+      <div class="case-problem">
+
+        <CaseStudySectionHeader eyebrow={eyebrow} title={title} />
+
+        <div class="case-problem-rows">
+          {rows.map((row: { title: string; body: string }) => (
+            <div class="case-problem-row">
+              <h3 class="case-problem-row-title">{row.title}</h3>
+              <p class="case-problem-row-body">{row.body}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .case-problem-rows {
+    display:        flex;
+    flex-direction: column;
+    gap:            clamp(20px, 2.8vw, 40px);
+  }
+
+  .case-problem-row {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-problem-row-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(28px, 3.1vw, 45px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+  }
+
+  .case-problem-row-body {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 400;
+    line-height: 1.49;
+    color:       var(--text-1);
+  }
+
+  @media (max-width: 768px) {
+    .case-problem-row {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+  }
+</style>

@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/base-layout.astro';
 import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyHighlight from '../../components/case-study-highlight.astro';
+import CaseStudyProblem from '../../components/case-study-problem.astro';
 ---
 
 <BaseLayout title="Crowd Ease" world="light">
@@ -26,6 +27,21 @@ import CaseStudyHighlight from '../../components/case-study-highlight.astro';
       ]}
       imageSrc="/images/Handout-Front.svg"
       imageAlt="Crowd Ease promotional handout: app logo and tagline 'Be in the Know - Track Events and Monitor Live Crowds with Ease!' alongside a phone mockup showing live event crowd data"
+    />
+
+    <CaseStudyProblem
+      eyebrow="03"
+      title="Problem"
+      rows={[
+        {
+          title: "Restaurant promotion could be hard.",
+          body: "Managers may have a hard time finding the right promotion strategy for the business. They need insights into effective strategies and actionable steps to achieve optimal results. Without a management assisting tool, it is difficult for a small restaurant to retain its service quality and sales quantity.",
+        },
+        {
+          title: "Restaurant management struggle with resource planning.",
+          body: "Resource planning is one of the biggest headaches for restaurant owners and managers since they commonly lack customer traffic information. As a result, they might encounter instances where there is a rush of customers due to an event nearby, or have a slower than average night, which results in an inaccurate arrangement of staff and inventory.",
+        },
+      ]}
     />
 
     <section class="padding-global">
