@@ -145,16 +145,16 @@ const { sections = [] } = Astro.props;
 
     .nav-links-default,
     .nav-links-sections {
-      grid-area: 1 / 1;
-      transition: opacity 0.3s var(--ease);
+      grid-area:    1 / 1;
+      justify-self: end;
+      transition:   opacity 0.3s var(--ease);
     }
 
     .nav-links-sections {
-      display:      flex;
-      align-items:  center;
-      gap:          4px;
-      justify-self: end;
-      opacity:      0;
+      display:        flex;
+      align-items:    center;
+      gap:            4px;
+      opacity:        0;
       pointer-events: none;
     }
 
