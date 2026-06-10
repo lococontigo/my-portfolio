@@ -3,13 +3,14 @@ import BaseLayout from '../../layouts/base-layout.astro';
 import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyHighlight from '../../components/case-study-highlight.astro';
 import CaseStudyProblem from '../../components/case-study-problem.astro';
+import CaseStudySolution from '../../components/case-study-solution.astro';
 ---
 
 <BaseLayout title="Crowd Ease" world="light">
   <main class="main">
 
     <CaseStudyHero
-      title="Crowd Ease"
+      title="Crowd Ease – Business Productivity App for Restaurant Management & Marketing Strategy"
       fullTitle="Crowd Ease: Business Productivity App for Restaurant Management & Marketing Strategy"
       videoSrc="/videos/crowd_ease_promotional_animation_v1%20(720p).mp4"
       role={["Research", "Design Token", "Map Design", "Project Management"]}
@@ -44,13 +45,38 @@ import CaseStudyProblem from '../../components/case-study-problem.astro';
       ]}
     />
 
-    <section class="padding-global">
-      <div class="container-main">
-        <div class="page-content">
-          <!-- Case study content goes here -->
-        </div>
-      </div>
-    </section>
+    <CaseStudySolution
+      eyebrow="04"
+      title="Solution"
+      rows={[
+        {
+          imageSrc: "/gifs/DASHBOARD.gif",
+          imageAlt: "Crowd Ease home screen showing a bar chart of weekly event participants, a 'View Full Report' button, and a promotional suggestion prompt",
+          title: "Data Visualization for Business Planning Insights",
+          body: "The first element on the homepage is a graph to show the event participants throughout the week because the main purpose of this app is to assist users in getting ready for their business planning. The goal of the data visualization is to facilitate easy analysis at a glance. Then, we give them some calls to action to remind them of the day they should be paying attention to.",
+        },
+        {
+          imageSrc: "/gifs/DATA-.gif",
+          imageAlt: "Crowd Ease home screen leading into the full weekly report with deep data analysis and business strategy suggestions",
+          title: "Deep Data Analyze & Strategy Suggestion",
+          body: "It is the core of the app, where users can find all the analysis and advice they need for marketing and business planning. Users can explore the app and learn about the value we provide to build a significant acquisition funnel, but when it comes to this page, we require users to sign up or log in, in order to access the report. After that, users can use the top arrow to see a brief report covering the period from this week to next week. Crowd Ease will break down each day's events and provide detailed analysis as well as business recommendations.",
+          reverse: true,
+        },
+        {
+          imageSrc: "/gifs/EVENT.gif",
+          imageAlt: "Crowd Ease event list screen with a weekly day picker, search bar, and a filterable list of nearby events",
+          title: "Event Overview & Smart Filtering",
+          body: "The calendar makes it simple for users to switch around days. We offer options for text search, voice search, event category filtering, and location filtering to ensure a seamless user experience and make it simple for users to find the information they require.",
+        },
+        {
+          imageSrc: "/gifs/MAP.gif",
+          imageAlt: "Crowd Ease event detail screen for 'Cocktail for a Cure 2023' showing event info, location, and a live crowd density heat map",
+          title: "Live Crowd Density & Event Location",
+          body: "The team created the map by extracting data from various APIs. As a result, this map shows the crowd density in various colors so that users can see how the crowd is moving and modify their activities accordingly. In order to give the user a greater knowledge of the accuracy, we also combined the heated map with a pin map to show the locations of each event.",
+          reverse: true,
+        },
+      ]}
+    />
 
   </main>
 </BaseLayout>
