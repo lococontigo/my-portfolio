@@ -107,14 +107,20 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
 
             <div class="case-research-image case-research-competitors">
               <img src="/images/crowdeasecompetitors.png" alt="Competitor analysis comparing Crowd Ease against Crowd Alerts, Crowd Vision, and Crowd Connected across real-time crowd tracking, analytics and reporting, and event tracking — Crowd Ease meets all three criteria" width="836" height="535" loading="lazy" />
-              <div class="case-research-competitors-text">
-                <h3 class="case-research-competitors-title">Competitors Analysis</h3>
-                <p class="case-research-competitors-body">Like our competitors, we all use crowd data on the high mobility industry. However, we are not only able to provide real time data, Crowd Ease combines events around a user’s location and provides an analysis so a business can customize their marketing plan and arrange their business accordingly.</p>
-              </div>
             </div>
 
-            <div class="case-research-image">
+            <div class="case-research-caption">
+              <h3 class="case-research-caption-title">Competitors Analysis</h3>
+              <p class="case-research-caption-body">Like our competitors, we all use crowd data on the high mobility industry. However, we are not only able to provide real time data, Crowd Ease combines events around a user’s location and provides an analysis so a business can customize their marketing plan and arrange their business accordingly.</p>
+            </div>
+
+            <div class="case-research-image case-research-userflow">
               <img src="/images/crowdease-userfolw.png" alt="Crowd Ease user flow diagram showing the navigation paths between onboarding, login, home, map, events, report, and profile screens" width="1269" height="751" loading="lazy" />
+            </div>
+
+            <div class="case-research-caption">
+              <h3 class="case-research-caption-title">User Flow</h3>
+              <p class="case-research-caption-body">The team struggled with the user flow as we were unsure of the core feature before beginning to define the interaction design and information architecture of the app. We scheduled an appointment to talk with the app’s developers and other stakeholders and collect feedback on how the app’s features flowed, which was a crucial guidepost for determining the project’s scope.</p>
             </div>
 
             <div class="case-research-image">
@@ -163,27 +169,30 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
     border-radius: var(--r-lg);
   }
 
-  .case-research-competitors {
+  .case-research-competitors,
+  .case-research-userflow {
     background:    var(--bg-2);
     border-radius: var(--r-lg);
     padding:       var(--space-lg);
+    margin-bottom: clamp(20px, 2.8vw, 40px);
   }
 
-  .case-research-competitors img {
+  .case-research-competitors img,
+  .case-research-userflow img {
     max-width:     1196px;
     margin-inline: auto;
   }
 
-  .case-research-competitors-text {
+  .case-research-caption {
     display:               grid;
     grid-template-columns: 1fr 1fr;
     gap:                   clamp(12px, 1.7vw, 24px);
     max-width:             1196px;
     margin-inline:         auto;
-    margin-top:            clamp(20px, 2.8vw, 40px);
+    margin-bottom:         clamp(32px, 5.5vw, 80px);
   }
 
-  .case-research-competitors-title {
+  .case-research-caption-title {
     font-family:    var(--font-display);
     font-size:      clamp(28px, 3.1vw, 45px);
     font-weight:    400;
@@ -192,7 +201,7 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
     color:          var(--text-1);
   }
 
-  .case-research-competitors-body {
+  .case-research-caption-body {
     font-family: var(--font-body);
     font-size:   15px;
     font-weight: 300;
@@ -208,11 +217,12 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
       gap:                   var(--space-sm);
     }
 
-    .case-research-competitors {
+    .case-research-competitors,
+    .case-research-userflow {
       padding: var(--space-md);
     }
 
-    .case-research-competitors-text {
+    .case-research-caption {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
@@ -221,7 +231,8 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
   @media (max-width: 520px) {
     .main { padding-top: 72px; }
 
-    .case-research-competitors {
+    .case-research-competitors,
+    .case-research-userflow {
       padding: var(--space-sm);
     }
   }
