@@ -10,6 +10,7 @@ const {
   lottieAspectRatio,
   role = [],
   tools = [],
+  toolsLabel = 'Tool:',
   duration = [],
 } = Astro.props;
 ---
@@ -43,7 +44,7 @@ const {
           </dl>
 
           <dl class="case-meta-box">
-            <dt class="case-meta-label">Tool:</dt>
+            <dt class="case-meta-label">{toolsLabel}</dt>
             <dd>
               <ul class="case-meta-list">
                 {tools.map((item: string) => <li>{item}</li>)}
