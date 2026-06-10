@@ -1,0 +1,116 @@
+---
+const {
+  eyebrow,
+  title,
+  stats = [],
+  imageSrc,
+  imageAlt,
+} = Astro.props;
+---
+
+<section class="case-highlight-section">
+  <div class="padding-global">
+    <div class="container-main">
+      <div class="case-highlight">
+
+        <div class="case-highlight-heading">
+          <span class="case-highlight-eyebrow">{eyebrow}</span>
+          <h2 class="case-highlight-title">{title}</h2>
+        </div>
+
+        <div class="case-highlight-content">
+          <div class="case-highlight-stats">
+            {stats.map((stat) => (
+              <div class="case-highlight-stat">
+                <p class="case-highlight-stat-value">{stat.value}</p>
+                <p class="case-highlight-stat-caption">{stat.caption}</p>
+              </div>
+            ))}
+          </div>
+
+          <img class="case-highlight-image" src={imageSrc} alt={imageAlt} loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .case-highlight-heading {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-xs);
+    margin-bottom:  clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-highlight-eyebrow {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 400;
+    color:       var(--text-1);
+  }
+
+  .case-highlight-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(36px, 3.6vw, 52px);
+    font-weight:    300;
+    line-height:    1;
+    letter-spacing: -1.04px;
+    color:          var(--text-1);
+  }
+
+  .case-highlight-content {
+    display:        flex;
+    flex-direction: column;
+    gap:            clamp(20px, 2.8vw, 40px);
+  }
+
+  /* ── Stats row ───────────────────────────── */
+  .case-highlight-stats {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-highlight-stat {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            var(--space-xs);
+    text-align:     center;
+  }
+
+  .case-highlight-stat-value {
+    font-family:    var(--font-display);
+    font-size:      clamp(40px, 5.5vw, 80px);
+    font-weight:    300;
+    line-height:    1.2;
+    letter-spacing: -1.04px;
+    color:          var(--accent-2);
+  }
+
+  .case-highlight-stat-caption {
+    font-family: var(--font-body);
+    font-size:   clamp(16px, 1.9vw, 27px);
+    font-weight: 400;
+    line-height: 1.2;
+    color:       var(--text-1);
+  }
+
+  /* ── Handout image ───────────────────────── */
+  .case-highlight-image {
+    display:       block;
+    width:         100%;
+    aspect-ratio:  792 / 612;
+    border-radius: var(--r-lg);
+    object-fit:    cover;
+  }
+
+  @media (max-width: 768px) {
+    .case-highlight-stats {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-md);
+    }
+  }
+</style>
