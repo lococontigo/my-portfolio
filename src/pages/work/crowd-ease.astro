@@ -132,6 +132,44 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
       </div>
     </section>
 
+    <section class="case-design-section">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-design">
+
+            <CaseStudySectionHeader eyebrow="06" title="Design" />
+
+            <div class="case-design-wireframes">
+              <div class="case-design-wireframes-text">
+                <h3 class="case-design-wireframes-title">Wireframes</h3>
+                <p class="case-design-wireframes-body">The team finally grasped the key feature – Analytics and Reporting, considering the event data is an effective indicator for decision-making, and also given that the pain point of restaurant owners is that they have trouble filling up their tables.</p>
+                <p class="case-design-wireframes-body">It was a big validation and I am grateful that my teammates trusted my design suggestion. Following that, we had an agreement on how it would operate, and we created wireframes under that understanding.</p>
+              </div>
+              <div class="case-design-wireframes-image">
+                <img src="/images/crowdease-wireframe-drawing.jpeg" alt="Hand-drawn wireframe sketches mapping out Crowd Ease's home, map, event list, and crowd report screens with annotations" width="1170" height="923" loading="lazy" />
+              </div>
+            </div>
+
+            <div class="case-design-gallery">
+              <img src="/images/crowd-ease/crowdease-mockup-passed-events-rating.png" alt="Passed Events screen prompting the user to rate how much an event affected their business" width="226" height="494" loading="lazy" />
+              <img src="/images/crowd-ease/crowdease-mockup-event-list.png" alt="Event list screen showing a weekly calendar and a list of upcoming events with participant counts" width="226" height="492" loading="lazy" />
+              <img src="/images/crowd-ease/crowdease-mockup-sign-up.png" alt="Sign up screen with email, password, and business name fields, plus social sign-up options" width="226" height="494" loading="lazy" />
+              <img src="/images/crowd-ease/crowdease-mockup-event-detail.png" alt="Event detail screen for the Vancouver Career Fair showing date, location, description, and a map preview" width="226" height="492" loading="lazy" />
+              <img src="/images/crowd-ease/crowdease-mockup-event-filters.png" alt="Event filters overlay with event category and distance options" width="226" height="492" loading="lazy" />
+              <img src="/images/crowd-ease/crowdease-mockup-location-permission.png" alt="Location permission screen asking the user to enable GPS or enter a postal code" width="226" height="492" loading="lazy" />
+              <img src="/images/crowd-ease/crowdease-mockup-profile-settings.png" alt="Profile and settings screen with notification preferences and account options" width="226" height="492" loading="lazy" />
+              <img src="/images/crowd-ease/crowdease-mockup-event-list-alt.png" alt="Event list screen showing a weekly calendar and a list of upcoming events with participant counts" width="226" height="492" loading="lazy" />
+              <img src="/images/crowd-ease/crowdease-mockup-business-insights.png" alt="Business insights screen recommending a focus on concert event promotion, with participation breakdowns by category" width="226" height="493" loading="lazy" />
+              <img src="/images/crowd-ease/crowdease-mockup-map-heatmap.png" alt="Map screen showing a live crowd density heat map around downtown Vancouver" width="226" height="493" loading="lazy" />
+              <img src="/images/crowd-ease/crowdease-mockup-weekly-report.png" alt="Weekly event preview report listing event numbers and participant totals for each day" width="226" height="494" loading="lazy" />
+              <img src="/images/crowd-ease/crowdease-mockup-passed-events.png" alt="Passed Events screen listing past events with options to rate each one" width="226" height="494" loading="lazy" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 </BaseLayout>
 
@@ -216,6 +254,64 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
     color:       var(--text-1);
   }
 
+  /* ── 06 Design ───────────────────────────── */
+  .case-design-wireframes {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    align-items:           center;
+    margin-bottom:         clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-design-wireframes-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(28px, 3.1vw, 45px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+    margin-bottom:  clamp(16px, 1.7vw, 24px);
+  }
+
+  .case-design-wireframes-body {
+    font-family:   var(--font-body);
+    font-size:     15px;
+    font-weight:   300;
+    line-height:   1.6;
+    color:         var(--text-1);
+    margin-bottom: var(--space-sm);
+  }
+
+  .case-design-wireframes-body:last-child {
+    margin-bottom: 0;
+  }
+
+  .case-design-wireframes-image img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-lg);
+  }
+
+  .case-design-gallery {
+    display:               grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-design-gallery img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-md);
+  }
+
+  @media (max-width: 1024px) {
+    .case-design-gallery {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
 
@@ -233,6 +329,15 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
+
+    .case-design-wireframes {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-design-gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   @media (max-width: 520px) {
@@ -241,6 +346,10 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
     .case-research-competitors,
     .case-research-userflow {
       padding: var(--space-sm);
+    }
+
+    .case-design-gallery {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
