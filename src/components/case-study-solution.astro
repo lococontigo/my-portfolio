@@ -1,7 +1,8 @@
 ---
 import CaseStudySectionHeader from './case-study-section-header.astro';
+import CaseStudyVideo from './case-study-video.astro';
 
-const { eyebrow, title, rows = [] } = Astro.props;
+const { eyebrow, title, rows = [], videoSrc } = Astro.props;
 ---
 
 <section class="case-solution-section">
@@ -27,6 +28,12 @@ const { eyebrow, title, rows = [] } = Astro.props;
           </div>
         </div>
 
+        {videoSrc && (
+          <div class="case-solution-video">
+            <CaseStudyVideo videoSrc={videoSrc} autoplay={false} muted={false} loop={false} />
+          </div>
+        )}
+
       </div>
     </div>
   </div>
@@ -37,6 +44,10 @@ const { eyebrow, title, rows = [] } = Astro.props;
     background:    var(--surface-2);
     border-radius: var(--r-lg);
     padding:       var(--space-lg);
+  }
+
+  .case-solution-video {
+    margin-top: clamp(32px, 5.5vw, 80px);
   }
 
   .case-solution-rows {
