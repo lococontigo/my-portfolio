@@ -11,7 +11,7 @@ const {
 ---
 
 <div class="compare-slider" style={`aspect-ratio: ${aspectRatio};`}>
-  <div class="compare-layer compare-layer-after">
+  <div class="compare-layer compare-layer-after" data-after>
     <img src={afterSrc} alt={afterAlt} loading="lazy" />
   </div>
   <div class="compare-layer compare-layer-before" data-clip>
@@ -50,6 +50,8 @@ const {
   }
 
   .compare-layer img {
+    position:   absolute;
+    top:        0;
     display:    block;
     width:      100cqw;
     height:     100%;
@@ -57,14 +59,24 @@ const {
   }
 
   .compare-layer-after {
-    width:   100%;
+    left:    auto;
+    right:   0;
+    width:   50%;
     z-index: 1;
+  }
+
+  .compare-layer-after img {
+    left: 0;
   }
 
   .compare-layer-before {
     z-index:      2;
     width:        50%;
     border-right: 2px solid var(--bg);
+  }
+
+  .compare-layer-before img {
+    right: 0;
   }
 
   .compare-badge {
@@ -137,15 +149,17 @@ const {
 <script>
   document.querySelectorAll<HTMLElement>('.compare-slider').forEach((compare) => {
     const clip = compare.querySelector<HTMLElement>('[data-clip]');
+    const after = compare.querySelector<HTMLElement>('[data-after]');
     const handle = compare.querySelector<HTMLElement>('[data-handle]');
     const knob = compare.querySelector<HTMLElement>('[data-knob]');
-    if (!clip || !handle || !knob) return;
+    if (!clip || !after || !handle || !knob) return;
 
     let dragging = false;
 
     function setPct(pct: number) {
       pct = Math.max(0, Math.min(100, pct));
       clip!.style.width = `${pct}%`;
+      after!.style.width = `${100 - pct}%`;
       handle!.style.left = `${pct}%`;
       knob!.style.left = `${pct}%`;
       knob!.setAttribute('aria-valuenow', String(Math.round(pct)));
