@@ -1,0 +1,196 @@
+---
+const {
+  beforeSrc,
+  afterSrc,
+  beforeAlt,
+  afterAlt,
+  beforeLabel = 'Before',
+  afterLabel = 'After',
+  aspectRatio = '16 / 9',
+} = Astro.props;
+---
+
+<div class="compare-slider" style={`aspect-ratio: ${aspectRatio};`}>
+  <div class="compare-layer compare-layer-after">
+    <img src={afterSrc} alt={afterAlt} loading="lazy" />
+  </div>
+  <div class="compare-layer compare-layer-before" data-clip>
+    <img src={beforeSrc} alt={beforeAlt} loading="lazy" />
+  </div>
+
+  <span class="compare-badge compare-badge-left">{beforeLabel}</span>
+  <span class="compare-badge compare-badge-right">{afterLabel}</span>
+
+  <div class="compare-handle" data-handle></div>
+  <div class="compare-knob" data-knob role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" aria-label="Drag to compare before and after">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="9 6 4 12 9 18"></polyline>
+      <polyline points="15 6 20 12 15 18"></polyline>
+    </svg>
+  </div>
+</div>
+
+<style>
+  .compare-slider {
+    position:       relative;
+    width:          100%;
+    border-radius:  var(--r-lg);
+    overflow:       hidden;
+    background:     var(--bg-3);
+    border:         0.5px solid var(--border);
+    user-select:    none;
+    touch-action:   pan-y;
+    container-type: inline-size;
+  }
+
+  .compare-layer {
+    position: absolute;
+    inset:    0;
+    overflow: hidden;
+  }
+
+  .compare-layer img {
+    display:    block;
+    width:      100cqw;
+    height:     100%;
+    object-fit: cover;
+  }
+
+  .compare-layer-after {
+    width:   100%;
+    z-index: 1;
+  }
+
+  .compare-layer-before {
+    z-index:      2;
+    width:        50%;
+    border-right: 2px solid var(--bg);
+  }
+
+  .compare-badge {
+    position:        absolute;
+    top:             var(--space-sm);
+    z-index:         5;
+    font-family:     var(--font-mono);
+    font-size:       11px;
+    letter-spacing:  0.12em;
+    text-transform:  uppercase;
+    color:           var(--text-on-image);
+    background:      var(--scrim);
+    padding:         6px 11px;
+    border-radius:   var(--r-pill);
+    backdrop-filter: blur(6px);
+  }
+
+  .compare-badge-left  { left:  var(--space-sm); }
+  .compare-badge-right { right: var(--space-sm); }
+
+  .compare-handle {
+    position:  absolute;
+    top:       0;
+    bottom:    0;
+    left:      50%;
+    width:     2.5px;
+    background: var(--bg);
+    z-index:   6;
+    transform: translateX(-50%);
+  }
+
+  .compare-knob {
+    position:        absolute;
+    top:             50%;
+    left:            50%;
+    transform:       translate(-50%, -50%);
+    width:           54px;
+    height:          54px;
+    border-radius:   var(--r-pill);
+    background:      var(--surface);
+    border:          0.5px solid var(--border);
+    box-shadow:      var(--neon-md);
+    color:           var(--text-1);
+    z-index:         7;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    cursor:          ew-resize;
+    transition:      box-shadow 0.25s var(--ease);
+  }
+
+  .compare-knob:hover,
+  .compare-knob:focus-visible {
+    box-shadow: var(--neon-lg);
+  }
+
+  .compare-knob svg {
+    width:  22px;
+    height: 22px;
+  }
+
+  @media (max-width: 520px) {
+    .compare-slider {
+      aspect-ratio: 4 / 5;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.compare-slider').forEach((compare) => {
+    const clip = compare.querySelector<HTMLElement>('[data-clip]');
+    const handle = compare.querySelector<HTMLElement>('[data-handle]');
+    const knob = compare.querySelector<HTMLElement>('[data-knob]');
+    if (!clip || !handle || !knob) return;
+
+    let dragging = false;
+
+    function setPct(pct: number) {
+      pct = Math.max(0, Math.min(100, pct));
+      clip!.style.width = `${pct}%`;
+      handle!.style.left = `${pct}%`;
+      knob!.style.left = `${pct}%`;
+      knob!.setAttribute('aria-valuenow', String(Math.round(pct)));
+    }
+
+    function fromClientX(clientX: number) {
+      const rect = compare.getBoundingClientRect();
+      setPct(((clientX - rect.left) / rect.width) * 100);
+    }
+
+    function start(e: MouseEvent | TouchEvent) {
+      dragging = true;
+      compare.style.cursor = 'ew-resize';
+      if ('touches' in e) {
+        fromClientX(e.touches[0].clientX);
+      } else {
+        fromClientX(e.clientX);
+        e.preventDefault();
+      }
+    }
+
+    function move(e: MouseEvent | TouchEvent) {
+      if (!dragging) return;
+      fromClientX('touches' in e ? e.touches[0].clientX : e.clientX);
+    }
+
+    function end() {
+      dragging = false;
+      compare.style.cursor = '';
+    }
+
+    knob.addEventListener('mousedown', start);
+    compare.addEventListener('mousedown', start);
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', end);
+    knob.addEventListener('touchstart', start, { passive: true });
+    compare.addEventListener('touchstart', start, { passive: true });
+    window.addEventListener('touchmove', move, { passive: true });
+    window.addEventListener('touchend', end);
+
+    knob.addEventListener('keydown', (e: KeyboardEvent) => {
+      const cur = parseFloat(knob.getAttribute('aria-valuenow') || '50');
+      if (e.key === 'ArrowLeft') { setPct(cur - 4); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { setPct(cur + 4); e.preventDefault(); }
+    });
+
+    setPct(50);
+  });
+</script>

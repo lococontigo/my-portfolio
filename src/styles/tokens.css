@@ -103,4 +103,5 @@
   /* Text/overlay for content placed over photographic backgrounds (theme-agnostic) */
   --text-on-image: #F0EDE6;
   --overlay-dark:  rgba(0, 0, 0, 0.2);
+  --scrim:         rgba(17, 17, 16, 0.72);
 }
