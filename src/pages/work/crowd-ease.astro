@@ -187,7 +187,9 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
             </div>
 
             <div class="case-identity-image">
-              <img src="/images/crowd-ease/crowdease-design-system.png" alt="Crowd Ease design system reference: a purple, green, blue, and yellow color palette, the Circular STD typeface specimen with headline, body, and button styles, and a grid of UI icons for navigation, profile, and notifications" width="1440" height="270" loading="lazy" />
+              <img src="/images/crowd-ease/colors.png" alt="Crowd Ease brand color palette: purple, green, blue, and yellow swatches with hex codes B687FF, 90EE90, 68B5DE, and FFFA6E" width="464" height="270" loading="lazy" />
+              <img src="/images/crowd-ease/type.png" alt="Circular STD typeface specimen used for Crowd Ease headings and body text" width="464" height="270" loading="lazy" />
+              <img src="/images/crowd-ease/icons.png" alt="Grid of outlined UI icons used across Crowd Ease for navigation, profile, notifications, and more" width="464" height="270" loading="lazy" />
             </div>
 
           </div>
@@ -368,6 +370,12 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
     color:       var(--text-2);
   }
 
+  .case-identity-image {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
   .case-identity-image img {
     display: block;
     width:   100%;
@@ -408,6 +416,11 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
     }
 
     .case-identity-intro {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-identity-image {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
