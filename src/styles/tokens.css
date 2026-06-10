@@ -99,4 +99,8 @@
 
   /* Case study brand accents (client branding, same in both themes) */
   --accent-delta: #700C1B;
+
+  /* Text/overlay for content placed over photographic backgrounds (theme-agnostic) */
+  --text-on-image: #F0EDE6;
+  --overlay-dark:  rgba(0, 0, 0, 0.2);
 }

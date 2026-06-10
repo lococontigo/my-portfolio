@@ -1,0 +1,90 @@
+---
+const { eyebrow, title, body, imageSrc, imageAlt } = Astro.props;
+---
+
+<section class="case-overview-section">
+  <div class="padding-global">
+    <div class="container-main">
+      <div class="case-overview">
+
+        <img class="case-overview-image" src={imageSrc} alt={imageAlt} loading="lazy" />
+        <div class="case-overview-overlay"></div>
+
+        <div class="case-overview-text">
+          <span class="case-overview-eyebrow">{eyebrow}</span>
+          <h2 class="case-overview-title">{title}</h2>
+          <p class="case-overview-body">{body}</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .case-overview {
+    position:      relative;
+    overflow:       hidden;
+    border-radius:  var(--r-lg);
+    aspect-ratio:   2560 / 879;
+  }
+
+  .case-overview-image {
+    position:    absolute;
+    inset:       0;
+    width:       100%;
+    height:      100%;
+    object-fit:  cover;
+  }
+
+  .case-overview-overlay {
+    position:   absolute;
+    inset:      0;
+    background: var(--overlay-dark);
+  }
+
+  .case-overview-text {
+    position:   relative;
+    display:    flex;
+    flex-direction: column;
+    gap:        var(--space-xs);
+    max-width:  480px;
+    height:     100%;
+    padding:    var(--space-md);
+    justify-content: center;
+  }
+
+  .case-overview-eyebrow {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 400;
+    color:       var(--text-on-image);
+  }
+
+  .case-overview-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(36px, 3.6vw, 52px);
+    font-weight:    300;
+    line-height:    1;
+    letter-spacing: -1.04px;
+    color:          var(--text-on-image);
+  }
+
+  .case-overview-body {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-on-image);
+  }
+
+  @media (max-width: 520px) {
+    .case-overview {
+      aspect-ratio: 4 / 5;
+    }
+
+    .case-overview-text {
+      max-width: 100%;
+    }
+  }
+</style>
