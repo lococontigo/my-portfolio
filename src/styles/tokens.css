@@ -96,4 +96,7 @@
   /* Layout */
   --max-w:  1440px;
   --gutter: 48px;
+
+  /* Case study brand accents (client branding, same in both themes) */
+  --accent-delta: #700C1B;
 }

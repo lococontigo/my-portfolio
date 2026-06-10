@@ -89,7 +89,7 @@ const {
     font-weight:    300;
     line-height:    1;
     letter-spacing: -1.04px;
-    color:          var(--accent-2);
+    color:          var(--case-accent, var(--accent-2));
     margin-bottom:  clamp(20px, 2.8vw, 40px);
   }
 
@@ -109,7 +109,7 @@ const {
     display:        flex;
     flex-direction: column;
     padding:        var(--space-sm);
-    border:         0.5px solid var(--accent-2);
+    border:         0.5px solid var(--case-accent, var(--accent-2));
     border-radius:  var(--r-lg);
     background:     var(--bg-2);
   }
