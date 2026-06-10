@@ -34,6 +34,8 @@ const {
               </svg>
             </button>
 
+            <input class="case-hero-seek" type="range" min="0" max="100" step="0.1" value="0" aria-label="Seek video" />
+
             <span class="case-hero-timestamp">0:00 / 0:00</span>
 
             <button class="case-hero-ctrl-btn case-hero-mute-btn" type="button" aria-pressed="true" aria-label="Unmute video">
@@ -171,8 +173,15 @@ const {
     box-shadow:   var(--neon-purple);
   }
 
+  .case-hero-seek {
+    flex:         1;
+    height:       4px;
+    accent-color: var(--accent-2);
+    cursor:       pointer;
+  }
+
   .case-hero-timestamp {
-    flex:        1;
+    flex-shrink: 0;
     font-family: var(--font-mono);
     font-size:   11px;
     color:       var(--text-1);
@@ -239,7 +248,9 @@ const {
   const video = wrap?.querySelector('.case-hero-video');
   const playBtn = wrap?.querySelector('.case-hero-play-btn');
   const muteBtn = wrap?.querySelector('.case-hero-mute-btn');
+  const seek = wrap?.querySelector('.case-hero-seek');
   const timestamp = wrap?.querySelector('.case-hero-timestamp');
+  let isSeeking = false;
 
   function formatTime(seconds) {
     if (!isFinite(seconds) || seconds < 0) return '0:00';
@@ -273,9 +284,23 @@ const {
       muteBtn.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
     });
 
+    seek?.addEventListener('input', () => {
+      if (!isFinite(video.duration)) return;
+      isSeeking = true;
+      video.currentTime = (Number(seek.value) / 100) * video.duration;
+    });
+
+    seek?.addEventListener('change', () => {
+      isSeeking = false;
+    });
+
     const updateTimestamp = () => {
-      if (!timestamp) return;
-      timestamp.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+      if (timestamp) {
+        timestamp.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+      }
+      if (seek && !isSeeking && isFinite(video.duration)) {
+        seek.value = String((video.currentTime / video.duration) * 100);
+      }
     };
 
     video.addEventListener('loadedmetadata', updateTimestamp);
