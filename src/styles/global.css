@@ -16,9 +16,11 @@ html {
 }
 
 img,
-video {
-  display:   block;
-  max-width: 100%;
+video,
+svg {
+  display:           block;
+  max-width:         100%;
+  -webkit-user-drag: none;
 }
 
 input,
