@@ -4,6 +4,8 @@ import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyHighlight from '../../components/case-study-highlight.astro';
 import CaseStudyProblem from '../../components/case-study-problem.astro';
 import CaseStudySolution from '../../components/case-study-solution.astro';
+import CaseStudySectionHeader from '../../components/case-study-section-header.astro';
+import CaseStudyInsightCard from '../../components/case-study-insight-card.astro';
 ---
 
 <BaseLayout title="Crowd Ease" world="light">
@@ -76,8 +78,49 @@ import CaseStudySolution from '../../components/case-study-solution.astro';
           reverse: true,
         },
       ]}
-      videoSrc="/videos/demo_video_v1%20(crowd%20ease).mp4"
+      videoSrc="/videos/demo.mp4"
     />
+
+    <section class="case-research-section">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-research">
+
+            <CaseStudySectionHeader eyebrow="05" title="Research Insight" />
+
+            <div class="case-research-cards">
+              <CaseStudyInsightCard
+                title="Poor Management and Advertising"
+                body="I have experienced difficulties in keeping track of local events as we do not have a tool to assist us with that. Although we have a point of sale system, our management and advertising are not streamlined, which can be challenging for our business."
+                attribution="Restaurant Manager"
+                imageSrc="/images/shop_3d_Night_Cold.png"
+                imageAlt="3D rendering of a restaurant storefront at night with a striped awning and lit sign"
+              />
+              <CaseStudyInsightCard
+                title="Short Preparation Time"
+                body="As a manager, I usually plan my inventory and staff schedule a week in advance to ensure smooth operations and avoid any last-minute surprises."
+                attribution="Restaurant Owner"
+                imageSrc="/images/Oops.png"
+                imageAlt="3D 'Oops!' text illustration in purple and green"
+              />
+            </div>
+
+            <div class="case-research-image">
+              <img src="/images/crowdeasecompetitors.png" alt="Competitor analysis comparing Crowd Ease against Crowd Alerts, Crowd Vision, and Crowd Connected across real-time crowd tracking, analytics and reporting, and event tracking — Crowd Ease meets all three criteria" width="836" height="535" loading="lazy" />
+            </div>
+
+            <div class="case-research-image">
+              <img src="/images/crowdease-userfolw.png" alt="Crowd Ease user flow diagram showing the navigation paths between onboarding, login, home, map, events, report, and profile screens" width="1269" height="751" loading="lazy" />
+            </div>
+
+            <div class="case-research-image">
+              <img src="/images/teamwork.png" alt="Illustration of a team collaborating around a table with laptops and design materials" width="2048" height="1196" loading="lazy" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 </BaseLayout>
@@ -93,8 +136,36 @@ import CaseStudySolution from '../../components/case-study-solution.astro';
     padding-bottom: var(--space-xl);
   }
 
+  /* ── 05 Research Insight ─────────────────── */
+  .case-research-cards {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-bottom:         clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-research-image {
+    margin-bottom: clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-research-image:last-child {
+    margin-bottom: 0;
+  }
+
+  .case-research-image img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-lg);
+  }
+
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
+
+    .case-research-cards {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
   }
 
   @media (max-width: 520px) {

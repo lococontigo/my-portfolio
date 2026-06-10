@@ -1,0 +1,61 @@
+---
+const { title, body, attribution, imageSrc, imageAlt } = Astro.props;
+---
+
+<div class="insight-card">
+  <div class="insight-card-text">
+    <h3 class="insight-card-title">{title}</h3>
+    <p class="insight-card-body">{body}</p>
+    <p class="insight-card-attribution">– {attribution}</p>
+  </div>
+  <div class="insight-card-image">
+    <img src={imageSrc} alt={imageAlt} loading="lazy" />
+  </div>
+</div>
+
+<style>
+  .insight-card {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-sm);
+    padding:        var(--space-md);
+    background:     var(--bg-2);
+    border-radius:  var(--r-lg);
+  }
+
+  .insight-card-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(20px, 1.9vw, 27px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--accent-2);
+  }
+
+  .insight-card-body,
+  .insight-card-attribution {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-1);
+  }
+
+  .insight-card-attribution {
+    color: var(--text-2);
+  }
+
+  .insight-card-image {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    height:          clamp(140px, 18vw, 220px);
+  }
+
+  .insight-card-image img {
+    display:    block;
+    max-width:  100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+</style>
