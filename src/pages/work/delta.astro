@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/base-layout.astro';
 import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyOverview from '../../components/case-study-overview.astro';
+import CaseStudyHighlight from '../../components/case-study-highlight.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 ---
 
@@ -25,6 +26,22 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
       body="The Source is a digital library dedicated to providing non-technical documents, training, and marketing materials to Delta Controls' partners and employees. This project aimed to rebuild the entire platform for a more intuitive and fluent user experience."
       imageSrc="/images/delta/The-Source-Header-1.svg"
       imageAlt="Illustration of two hands holding a glowing digital book surrounded by a network of icons representing courses, calendars, messaging, and connected devices"
+    />
+
+    <CaseStudyHighlight
+      id="impact"
+      eyebrow="02"
+      title="Impact"
+      stats={[
+        { value: "2-3 clicks", caption: "Average click to access information" },
+        { value: "15% ↑", caption: "Engagement rate" },
+        { value: "22.5% ↑", caption: "Download conversion rate" },
+      ]}
+      compareBeforeSrc="/images/delta/old.svg"
+      compareAfterSrc="/images/delta/new.svg"
+      compareBeforeAlt="Screenshot of the original Source intranet homepage layout"
+      compareAfterAlt="Screenshot of the redesigned Source 2.0 intranet homepage layout"
+      compareAspectRatio="4 / 3"
     />
 
     <CaseStudyKeepReading current="delta" />

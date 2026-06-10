@@ -1,5 +1,6 @@
 ---
 import CaseStudySectionHeader from './case-study-section-header.astro';
+import CaseStudyCompareSlider from './case-study-compare-slider.astro';
 
 const {
   eyebrow,
@@ -7,6 +8,13 @@ const {
   stats = [],
   imageSrc,
   imageAlt,
+  compareBeforeSrc,
+  compareAfterSrc,
+  compareBeforeAlt,
+  compareAfterAlt,
+  compareBeforeLabel = 'Before',
+  compareAfterLabel = 'After',
+  compareAspectRatio = '792 / 612',
   id,
 } = Astro.props;
 ---
@@ -28,9 +36,21 @@ const {
             ))}
           </div>
 
-          <div class="case-highlight-image-wrap">
-            <img class="case-highlight-image" data-reveal src={imageSrc} alt={imageAlt} loading="lazy" />
-          </div>
+          {compareBeforeSrc && compareAfterSrc ? (
+            <CaseStudyCompareSlider
+              beforeSrc={compareBeforeSrc}
+              afterSrc={compareAfterSrc}
+              beforeAlt={compareBeforeAlt}
+              afterAlt={compareAfterAlt}
+              beforeLabel={compareBeforeLabel}
+              afterLabel={compareAfterLabel}
+              aspectRatio={compareAspectRatio}
+            />
+          ) : (
+            <div class="case-highlight-image-wrap">
+              <img class="case-highlight-image" data-reveal src={imageSrc} alt={imageAlt} loading="lazy" />
+            </div>
+          )}
         </div>
 
       </div>
@@ -66,7 +86,7 @@ const {
     font-weight:    300;
     line-height:    1.2;
     letter-spacing: -1.04px;
-    color:          var(--accent-2);
+    color:          var(--case-accent, var(--accent-2));
   }
 
   .case-highlight-stat-caption {
