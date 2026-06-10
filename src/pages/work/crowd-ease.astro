@@ -201,6 +201,27 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
       </div>
     </section>
 
+    <section class="case-takeaways-section">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-takeaways">
+
+            <CaseStudySectionHeader eyebrow="08" title="Takeaways" />
+
+            <div class="case-takeaways-image">
+              <img src="/images/crowd-ease/panelists.png" alt="The Crowd Ease team presenting their project to a panel and audience, with a slide showing team member headshots and a QR code to connect" width="2048" height="769" loading="lazy" />
+            </div>
+
+            <div class="case-takeaways-caption">
+              <h3 class="case-takeaways-caption-title">Acquisition funnel for UX design</h3>
+              <p class="case-takeaways-caption-body">From business perspective, this funnel is an important way to increase user acquisition and retention. In Crowd Ease, we need to remove the blockers and ensure that users discover the value of the product or service before they register an account or commit to a purchase. I understand users build up a level of excitement when they download our app and I need to continue that anticipation and make sure that users have a clear understanding of its benefits and features before they are asked to commit.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 </BaseLayout>
 
@@ -399,6 +420,43 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
     height:  auto;
   }
 
+  /* ── 08 Takeaways ─────────────────────────── */
+  .case-takeaways-image {
+    margin-bottom: clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-takeaways-image img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-lg);
+  }
+
+  .case-takeaways-caption {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    max-width:             var(--max-w);
+    margin-inline:         auto;
+  }
+
+  .case-takeaways-caption-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(28px, 3.1vw, 45px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+  }
+
+  .case-takeaways-caption-body {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-1);
+  }
+
   @media (max-width: 1024px) {
     .case-design-gallery-row {
       grid-template-columns: repeat(4, 1fr);
@@ -438,6 +496,11 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
     }
 
     .case-identity-image {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-takeaways-caption {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
