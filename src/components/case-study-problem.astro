@@ -1,7 +1,7 @@
 ---
 import CaseStudySectionHeader from './case-study-section-header.astro';
 
-const { eyebrow, title, rows = [], id } = Astro.props;
+const { eyebrow, title, headline, rows = [], items = [], imageSrc, imageAlt, id } = Astro.props;
 ---
 
 <section class="case-problem-section" id={id}>
@@ -11,14 +11,37 @@ const { eyebrow, title, rows = [], id } = Astro.props;
 
         <CaseStudySectionHeader eyebrow={eyebrow} title={title} />
 
-        <div class="case-problem-rows">
-          {rows.map((row: { title: string; body: string }) => (
-            <div class="case-problem-row">
-              <h3 class="case-problem-row-title">{row.title}</h3>
-              <p class="case-problem-row-body">{row.body}</p>
+        {headline && <p class="case-problem-headline">{headline}</p>}
+
+        {rows.length > 0 && (
+          <div class="case-problem-rows">
+            {rows.map((row: { title: string; body: string }) => (
+              <div class="case-problem-row">
+                <h3 class="case-problem-row-title">{row.title}</h3>
+                <p class="case-problem-row-body">{row.body}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {items.length > 0 && (
+          <div class="case-problem-items">
+            {items.map((item: { title: string; body: string }) => (
+              <div class="case-problem-item">
+                <h3 class="case-problem-item-title">{item.title}</h3>
+                <p class="case-problem-item-body">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {imageSrc && (
+          <div class="case-problem-media">
+            <div class="case-problem-media-inner">
+              <img src={imageSrc} alt={imageAlt} loading="lazy" />
             </div>
-          ))}
-        </div>
+          </div>
+        )}
 
       </div>
     </div>
@@ -55,8 +78,77 @@ const { eyebrow, title, rows = [], id } = Astro.props;
     color:       var(--text-1);
   }
 
+  /* ── Headline ────────────────────────────── */
+  .case-problem-headline {
+    font-family:    var(--font-display);
+    font-size:      clamp(40px, 4.7vw, 67px);
+    font-weight:    300;
+    line-height:    1.2;
+    letter-spacing: -1.04px;
+    color:          var(--text-1);
+    margin-bottom:  clamp(16px, 1.7vw, 24px);
+  }
+
+  /* ── Items (3-up breakdown) ──────────────── */
+  .case-problem-items {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-bottom:         clamp(20px, 2.8vw, 40px);
+  }
+
+  .case-problem-item {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-xs);
+  }
+
+  .case-problem-item-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(16px, 1.9vw, 27px);
+    font-weight:    300;
+    line-height:    1.2;
+    letter-spacing: -0.84px;
+    color:          var(--text-1);
+  }
+
+  .case-problem-item-body {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 400;
+    line-height: 1.49;
+    color:       var(--text-1);
+  }
+
+  /* ── Media frame ─────────────────────────── */
+  .case-problem-media {
+    position:      relative;
+    aspect-ratio:  1440 / 811;
+    background:    var(--bg-2);
+    border-radius: var(--r-lg);
+  }
+
+  .case-problem-media-inner {
+    position:      absolute;
+    inset:         8.5%;
+    border-radius: var(--r-md);
+    overflow:      hidden;
+  }
+
+  .case-problem-media-inner img {
+    display:    block;
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+  }
+
   @media (max-width: 768px) {
     .case-problem-row {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-problem-items {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }

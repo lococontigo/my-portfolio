@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/base-layout.astro';
 import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyOverview from '../../components/case-study-overview.astro';
 import CaseStudyHighlight from '../../components/case-study-highlight.astro';
+import CaseStudyProblem from '../../components/case-study-problem.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 ---
 
@@ -44,6 +45,20 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
       compareBeforeLabel="Old Source"
       compareAfterLabel="Source 2.0"
       compareAspectRatio="4 / 3"
+    />
+
+    <CaseStudyProblem
+      id="problem"
+      eyebrow="03"
+      title="Problem"
+      headline="Users couldn't navigate and search effectively."
+      items={[
+        { title: "A. Unclear Navigation", body: "Users averaged 4–6 clicks to locate necessary files, which wasted a significant amount of time and reduced productivity." },
+        { title: "B. Ineffective Search", body: "70% of users relied on search capabilities, but results were ineffective due to WordPress preset index constraints." },
+        { title: "C. Unorganized Category & Layout", body: "Tags are all over the place, and users expect more logical layouts." },
+      ]}
+      imageSrc="/gifs/delta/user-problem-Source.gif"
+      imageAlt="Screen recording of a user browsing The Source's original document library, navigating categories and using the search and filter tools"
     />
 
     <CaseStudyKeepReading current="delta" />
