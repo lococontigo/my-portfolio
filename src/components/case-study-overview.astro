@@ -3,30 +3,28 @@ const { eyebrow, title, body, imageSrc, imageAlt } = Astro.props;
 ---
 
 <section class="case-overview-section">
+  <img class="case-overview-image" src={imageSrc} alt={imageAlt} loading="lazy" />
+  <div class="case-overview-overlay"></div>
+
   <div class="padding-global">
     <div class="container-main">
-      <div class="case-overview">
-
-        <img class="case-overview-image" src={imageSrc} alt={imageAlt} loading="lazy" />
-        <div class="case-overview-overlay"></div>
-
-        <div class="case-overview-text">
-          <span class="case-overview-eyebrow">{eyebrow}</span>
-          <h2 class="case-overview-title">{title}</h2>
-          <p class="case-overview-body">{body}</p>
-        </div>
-
+      <div class="case-overview-text">
+        <span class="case-overview-eyebrow">{eyebrow}</span>
+        <h2 class="case-overview-title">{title}</h2>
+        <p class="case-overview-body">{body}</p>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .case-overview {
+  .case-overview-section {
     position:      relative;
     overflow:       hidden;
-    border-radius:  var(--r-lg);
+    display:        flex;
+    align-items:    center;
     aspect-ratio:   2560 / 879;
+    padding-block:  0;
   }
 
   .case-overview-image {
@@ -43,15 +41,16 @@ const { eyebrow, title, body, imageSrc, imageAlt } = Astro.props;
     background: var(--overlay-dark);
   }
 
+  .case-overview-section > .padding-global {
+    position: relative;
+    width:    100%;
+  }
+
   .case-overview-text {
-    position:   relative;
-    display:    flex;
+    display:        flex;
     flex-direction: column;
-    gap:        var(--space-xs);
-    max-width:  480px;
-    height:     100%;
-    padding:    var(--space-md);
-    justify-content: center;
+    gap:            var(--space-xs);
+    max-width:      480px;
   }
 
   .case-overview-eyebrow {
@@ -79,7 +78,7 @@ const { eyebrow, title, body, imageSrc, imageAlt } = Astro.props;
   }
 
   @media (max-width: 520px) {
-    .case-overview {
+    .case-overview-section {
       aspect-ratio: 4 / 5;
     }
 
