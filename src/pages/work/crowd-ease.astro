@@ -107,6 +107,10 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
 
             <div class="case-research-image case-research-competitors">
               <img src="/images/crowdeasecompetitors.png" alt="Competitor analysis comparing Crowd Ease against Crowd Alerts, Crowd Vision, and Crowd Connected across real-time crowd tracking, analytics and reporting, and event tracking — Crowd Ease meets all three criteria" width="836" height="535" loading="lazy" />
+              <div class="case-research-competitors-text">
+                <h3 class="case-research-competitors-title">Competitors Analysis</h3>
+                <p class="case-research-competitors-body">Like our competitors, we all use crowd data on the high mobility industry. However, we are not only able to provide real time data, Crowd Ease combines events around a user’s location and provides an analysis so a business can customize their marketing plan and arrange their business accordingly.</p>
+              </div>
             </div>
 
             <div class="case-research-image">
@@ -170,6 +174,32 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
     margin-inline: auto;
   }
 
+  .case-research-competitors-text {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    max-width:             1196px;
+    margin-inline:         auto;
+    margin-top:            clamp(20px, 2.8vw, 40px);
+  }
+
+  .case-research-competitors-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(28px, 3.1vw, 45px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+  }
+
+  .case-research-competitors-body {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-1);
+  }
+
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
 
@@ -180,6 +210,11 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
 
     .case-research-competitors {
       padding: var(--space-md);
+    }
+
+    .case-research-competitors-text {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
     }
   }
 
