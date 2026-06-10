@@ -1,10 +1,10 @@
 ---
 import CaseStudySectionHeader from './case-study-section-header.astro';
 
-const { eyebrow, title, rows = [] } = Astro.props;
+const { eyebrow, title, rows = [], id } = Astro.props;
 ---
 
-<section class="case-problem-section">
+<section class="case-problem-section" id={id}>
   <div class="padding-global">
     <div class="container-main">
       <div class="case-problem">

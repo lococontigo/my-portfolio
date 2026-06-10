@@ -83,18 +83,21 @@ button {
    SECTION SPACING
 ───────────────────────────────────────────── */
 section {
-  padding-block: var(--space-xl); /* 128px top + bottom */
+  padding-block:     var(--space-xl); /* 128px top + bottom */
+  scroll-margin-top: 96px;            /* clears the fixed nav on anchor scroll */
 }
 
 @media (max-width: 768px) {
   section {
-    padding-block: var(--space-lg); /* 64px */
+    padding-block:     var(--space-lg); /* 64px */
+    scroll-margin-top: 80px;
   }
 }
 
 @media (max-width: 520px) {
   section {
-    padding-block: var(--space-md); /* 32px */
+    padding-block:     var(--space-md); /* 32px */
+    scroll-margin-top: 72px;
   }
 }
 

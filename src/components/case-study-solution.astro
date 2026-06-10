@@ -2,10 +2,10 @@
 import CaseStudySectionHeader from './case-study-section-header.astro';
 import CaseStudyVideo from './case-study-video.astro';
 
-const { eyebrow, title, rows = [], videoSrc } = Astro.props;
+const { eyebrow, title, rows = [], videoSrc, id } = Astro.props;
 ---
 
-<section class="case-solution-section">
+<section class="case-solution-section" id={id}>
   <div class="padding-global">
     <div class="container-main">
       <div class="case-solution">

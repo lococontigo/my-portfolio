@@ -7,12 +7,14 @@ interface Props {
   title:        string;
   description?: string;
   world?:       'dark' | 'light';  // HK or CA
+  sections?:    { id: string; label: string }[];
 }
 
 const {
   title,
   description = 'Andrew YIP — UX/UI Designer & Developer',
-  world = 'dark'
+  world = 'dark',
+  sections = [],
 } = Astro.props;
 ---
 
@@ -40,7 +42,7 @@ const {
   <div id="curtain" aria-hidden="true"></div>
 
   <!-- Global navigation -->
-  <Nav />
+  <Nav sections={sections} />
 
   <!-- Page content goes here -->
   <slot />

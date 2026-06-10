@@ -1,5 +1,6 @@
 ---
 const pathname = Astro.url.pathname;
+const { sections = [] } = Astro.props;
 ---
 
 <nav class="nav">
@@ -16,9 +17,19 @@ const pathname = Astro.url.pathname;
 
         <!-- Desktop links -->
         <div class="nav-links">
-          <a href="/"      class={`nav-link${pathname === '/'      ? ' active' : ''}`}>Work</a>
-          <a href="/about" class={`nav-link${pathname === '/about' ? ' active' : ''}`}>About</a>
-          <a href="mailto:andrewyip30@gmail.com" class="nav-cta">Say hello →</a>
+          <div class="nav-links-default">
+            <a href="/"      class={`nav-link${pathname === '/'      ? ' active' : ''}`}>Work</a>
+            <a href="/about" class={`nav-link${pathname === '/about' ? ' active' : ''}`}>About</a>
+            <a href="mailto:andrewyip30@gmail.com" class="nav-cta">Say hello →</a>
+          </div>
+
+          {sections.length > 0 && (
+            <div class="nav-links-sections">
+              {sections.map((s: { id: string; label: string }) => (
+                <a href={`#${s.id}`} class="nav-link nav-link-section">{s.label}</a>
+              ))}
+            </div>
+          )}
         </div>
 
         <!-- Hamburger (mobile) -->
@@ -102,9 +113,60 @@ const pathname = Astro.url.pathname;
 
   /* ── Desktop links ─────────────────────── */
   .nav-links {
+    display: block;
+  }
+
+  .nav-links-default {
     display:     flex;
     align-items: center;
     gap:         4px;
+  }
+
+  .nav-links-sections {
+    display: none;
+  }
+
+  .nav-link-section {
+    padding:     8px 8px;
+    white-space: nowrap;
+  }
+
+  .nav-link-section::after {
+    left:  8px;
+    right: 8px;
+  }
+
+  /* ── Case study section nav (crossfade) ─── */
+  @media (min-width: 1025px) {
+    .nav-links {
+      display:     grid;
+      align-items: center;
+    }
+
+    .nav-links-default,
+    .nav-links-sections {
+      grid-area: 1 / 1;
+      transition: opacity 0.3s var(--ease);
+    }
+
+    .nav-links-sections {
+      display:      flex;
+      align-items:  center;
+      gap:          4px;
+      justify-self: end;
+      opacity:      0;
+      pointer-events: none;
+    }
+
+    .nav.case-mode .nav-links-default {
+      opacity:        0;
+      pointer-events: none;
+    }
+
+    .nav.case-mode .nav-links-sections {
+      opacity:        1;
+      pointer-events: auto;
+    }
   }
 
   .nav-link {
@@ -290,5 +352,38 @@ const pathname = Astro.url.pathname;
         document.body.style.overflow = '';
       });
     });
+  }
+
+  // ── Case study section nav ────────────────
+  const sectionLinks = document.querySelectorAll('.nav-link-section');
+
+  if (nav && sectionLinks.length) {
+    const hero = document.querySelector('.case-hero-section');
+
+    const updateMode = () => {
+      const threshold = hero
+        ? hero.getBoundingClientRect().bottom + window.scrollY - 96
+        : 400;
+      nav.classList.toggle('case-mode', window.scrollY > threshold);
+    };
+
+    window.addEventListener('scroll', updateMode, { passive: true });
+    updateMode();
+
+    const sectionEls = Array.from(sectionLinks)
+      .map((link) => document.getElementById(link.getAttribute('href').slice(1)))
+      .filter((el) => el);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          sectionLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+          });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+
+    sectionEls.forEach((el) => observer.observe(el));
   }
 </script>
