@@ -248,11 +248,11 @@ const {
   const video = wrap?.querySelector('.case-hero-video');
   const playBtn = wrap?.querySelector('.case-hero-play-btn');
   const muteBtn = wrap?.querySelector('.case-hero-mute-btn');
-  const seek = wrap?.querySelector('.case-hero-seek');
+  const seek = wrap?.querySelector<HTMLInputElement>('.case-hero-seek');
   const timestamp = wrap?.querySelector('.case-hero-timestamp');
   let isSeeking = false;
 
-  function formatTime(seconds) {
+  function formatTime(seconds: number) {
     if (!isFinite(seconds) || seconds < 0) return '0:00';
     const m = Math.floor(seconds / 60);
     const s = Math.floor(seconds % 60).toString().padStart(2, '0');
