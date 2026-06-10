@@ -151,18 +151,22 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
             </div>
 
             <div class="case-design-gallery">
-              <img src="/images/crowd-ease/crowdease-mockup-passed-events-rating.png" alt="Passed Events screen prompting the user to rate how much an event affected their business" width="226" height="494" loading="lazy" />
-              <img src="/images/crowd-ease/crowdease-mockup-event-list.png" alt="Event list screen showing a weekly calendar and a list of upcoming events with participant counts" width="226" height="492" loading="lazy" />
-              <img src="/images/crowd-ease/crowdease-mockup-sign-up.png" alt="Sign up screen with email, password, and business name fields, plus social sign-up options" width="226" height="494" loading="lazy" />
-              <img src="/images/crowd-ease/crowdease-mockup-event-detail.png" alt="Event detail screen for the Vancouver Career Fair showing date, location, description, and a map preview" width="226" height="492" loading="lazy" />
-              <img src="/images/crowd-ease/crowdease-mockup-event-filters.png" alt="Event filters overlay with event category and distance options" width="226" height="492" loading="lazy" />
-              <img src="/images/crowd-ease/crowdease-mockup-location-permission.png" alt="Location permission screen asking the user to enable GPS or enter a postal code" width="226" height="492" loading="lazy" />
-              <img src="/images/crowd-ease/crowdease-mockup-profile-settings.png" alt="Profile and settings screen with notification preferences and account options" width="226" height="492" loading="lazy" />
-              <img src="/images/crowd-ease/crowdease-mockup-event-list-alt.png" alt="Event list screen showing a weekly calendar and a list of upcoming events with participant counts" width="226" height="492" loading="lazy" />
-              <img src="/images/crowd-ease/crowdease-mockup-business-insights.png" alt="Business insights screen recommending a focus on concert event promotion, with participation breakdowns by category" width="226" height="493" loading="lazy" />
-              <img src="/images/crowd-ease/crowdease-mockup-map-heatmap.png" alt="Map screen showing a live crowd density heat map around downtown Vancouver" width="226" height="493" loading="lazy" />
-              <img src="/images/crowd-ease/crowdease-mockup-weekly-report.png" alt="Weekly event preview report listing event numbers and participant totals for each day" width="226" height="494" loading="lazy" />
-              <img src="/images/crowd-ease/crowdease-mockup-passed-events.png" alt="Passed Events screen listing past events with options to rate each one" width="226" height="494" loading="lazy" />
+              <div class="case-design-gallery-row" data-gallery-row="1">
+                <img src="/images/crowd-ease/crowdease-mockup-passed-events-rating.png" alt="Passed Events screen prompting the user to rate how much an event affected their business" width="226" height="494" loading="lazy" />
+                <img src="/images/crowd-ease/crowdease-mockup-event-list.png" alt="Event list screen showing a weekly calendar and a list of upcoming events with participant counts" width="226" height="492" loading="lazy" />
+                <img src="/images/crowd-ease/crowdease-mockup-sign-up.png" alt="Sign up screen with email, password, and business name fields, plus social sign-up options" width="226" height="494" loading="lazy" />
+                <img src="/images/crowd-ease/crowdease-mockup-event-detail.png" alt="Event detail screen for the Vancouver Career Fair showing date, location, description, and a map preview" width="226" height="492" loading="lazy" />
+                <img src="/images/crowd-ease/crowdease-mockup-event-filters.png" alt="Event filters overlay with event category and distance options" width="226" height="492" loading="lazy" />
+                <img src="/images/crowd-ease/crowdease-mockup-location-permission.png" alt="Location permission screen asking the user to enable GPS or enter a postal code" width="226" height="492" loading="lazy" />
+              </div>
+              <div class="case-design-gallery-row" data-gallery-row="2">
+                <img src="/images/crowd-ease/crowdease-mockup-profile-settings.png" alt="Profile and settings screen with notification preferences and account options" width="226" height="492" loading="lazy" />
+                <img src="/images/crowd-ease/crowdease-mockup-event-list-alt.png" alt="Event list screen showing a weekly calendar and a list of upcoming events with participant counts" width="226" height="492" loading="lazy" />
+                <img src="/images/crowd-ease/crowdease-mockup-business-insights.png" alt="Business insights screen recommending a focus on concert event promotion, with participation breakdowns by category" width="226" height="493" loading="lazy" />
+                <img src="/images/crowd-ease/crowdease-mockup-map-heatmap.png" alt="Map screen showing a live crowd density heat map around downtown Vancouver" width="226" height="493" loading="lazy" />
+                <img src="/images/crowd-ease/crowdease-mockup-weekly-report.png" alt="Weekly event preview report listing event numbers and participant totals for each day" width="226" height="494" loading="lazy" />
+                <img src="/images/crowd-ease/crowdease-mockup-passed-events.png" alt="Passed Events screen listing past events with options to rate each one" width="226" height="494" loading="lazy" />
+              </div>
             </div>
 
           </div>
@@ -294,9 +298,17 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
   }
 
   .case-design-gallery {
+    display:        flex;
+    flex-direction: column;
+    gap:            clamp(12px, 1.7vw, 24px);
+    overflow:       hidden;
+  }
+
+  .case-design-gallery-row {
     display:               grid;
     grid-template-columns: repeat(6, 1fr);
     gap:                   clamp(12px, 1.7vw, 24px);
+    will-change:           transform;
   }
 
   .case-design-gallery img {
@@ -307,7 +319,7 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
   }
 
   @media (max-width: 1024px) {
-    .case-design-gallery {
+    .case-design-gallery-row {
       grid-template-columns: repeat(4, 1fr);
     }
   }
@@ -335,7 +347,7 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
       gap:                   var(--space-sm);
     }
 
-    .case-design-gallery {
+    .case-design-gallery-row {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -348,7 +360,7 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
       padding: var(--space-sm);
     }
 
-    .case-design-gallery {
+    .case-design-gallery-row {
       grid-template-columns: repeat(2, 1fr);
     }
   }
