@@ -127,9 +127,6 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
               <img src="/images/crowd-ease/teamwork.png" alt="Illustration of a team collaborating around a table with laptops and design materials" width="2048" height="1196" loading="lazy" />
             </div>
 
-            <div class="case-research-ia">
-              <img src="/images/crowd-ease/Crowd-Ease-IA.svg" alt="Crowd Ease information architecture diagram showing the app's screen hierarchy and navigation structure" width="1357" height="1412" loading="lazy" />
-            </div>
 
           </div>
         </div>
@@ -435,6 +432,12 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
   }
 
   /* ── Information Architecture interlude ──── */
+  .case-ia-image {
+    background:    var(--bg-2);
+    padding:       var(--space-lg);
+    border-radius: var(--r-lg);
+  }
+
   .case-ia-image img {
     display:       block;
     width:         100%;
@@ -496,7 +499,8 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
     }
 
     .case-research-competitors,
-    .case-research-userflow {
+    .case-research-userflow,
+    .case-ia-image {
       padding: var(--space-md);
     }
 
@@ -534,7 +538,8 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
     .main { padding-top: 72px; }
 
     .case-research-competitors,
-    .case-research-userflow {
+    .case-research-userflow,
+    .case-ia-image {
       padding: var(--space-sm);
     }
 
