@@ -1,0 +1,121 @@
+---
+import CaseStudySectionHeader from './case-study-section-header.astro';
+import { caseStudies } from '../data/case-studies.js';
+
+const { current } = Astro.props;
+const items = caseStudies.filter((item) => item.slug !== current);
+---
+
+<section class="keep-reading-section">
+  <div class="padding-global">
+    <div class="container-main">
+      <div class="keep-reading-content">
+
+        <CaseStudySectionHeader eyebrow="Keep Reading" title="More Case Studies" />
+
+        <div class="keep-reading-grid">
+          {items.map((item) => (
+            <a href={item.href} class="keep-reading-card">
+              <div class="keep-reading-card-image">
+                <img src={item.imageSrc} alt={item.imageAlt} loading="lazy" />
+              </div>
+              <div class="keep-reading-card-info">
+                <p class="keep-reading-card-meta">{item.category} · {item.year}</p>
+                <h3 class="keep-reading-card-title">{item.title}</h3>
+                <p class="keep-reading-card-desc">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .keep-reading-grid {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .keep-reading-card {
+    display:        flex;
+    flex-direction: column;
+    overflow:       hidden;
+    background:     var(--surface);
+    border:         0.5px solid var(--border);
+    border-radius:  var(--r-lg);
+    transition:     border-color var(--ease), box-shadow var(--ease), transform var(--ease);
+  }
+
+  .keep-reading-card:hover,
+  .keep-reading-card:focus-visible {
+    border-color: var(--accent);
+    box-shadow:   var(--neon-sm);
+    transform:    translateY(-4px);
+  }
+
+  .keep-reading-card-image {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    height:          clamp(160px, 14vw, 220px);
+    padding:         var(--space-sm);
+    background:      var(--bg-2);
+    overflow:        hidden;
+  }
+
+  .keep-reading-card-image img {
+    display:    block;
+    max-width:  100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform var(--ease);
+  }
+
+  .keep-reading-card:hover .keep-reading-card-image img,
+  .keep-reading-card:focus-visible .keep-reading-card-image img {
+    transform: scale(1.04);
+  }
+
+  .keep-reading-card-info {
+    display:        flex;
+    flex-direction: column;
+    gap:            4px;
+    padding:        var(--space-sm);
+  }
+
+  .keep-reading-card-meta {
+    font-family:    var(--font-body);
+    font-size:      8px;
+    font-weight:    400;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color:          var(--text-3);
+  }
+
+  .keep-reading-card-title {
+    font-family:    var(--font-display);
+    font-size:      27px;
+    font-weight:    400;
+    line-height:    1.2;
+    color:          var(--text-1);
+  }
+
+  .keep-reading-card-desc {
+    font-family: var(--font-body);
+    font-size:   13px;
+    font-weight: 300;
+    line-height: 1.5;
+    color:       var(--text-2);
+  }
+
+  @media (max-width: 768px) {
+    .keep-reading-grid {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+  }
+</style>
