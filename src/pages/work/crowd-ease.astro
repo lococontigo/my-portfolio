@@ -174,6 +174,27 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
       </div>
     </section>
 
+    <section class="case-identity-section" data-theme="dark">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-identity">
+
+            <CaseStudySectionHeader eyebrow="07" title="Visual Identity" />
+
+            <div class="case-identity-intro">
+              <h3 class="case-identity-intro-title">Design System</h3>
+              <p class="case-identity-intro-body">I worked on the UI kit and made the icons using Illustrator in accordance with the Google Material Design Guidelines. I also established the design system to maintain the same design aesthetic across all screens.</p>
+            </div>
+
+            <div class="case-identity-image">
+              <img src="/images/crowd-ease/crowdease-design-system.png" alt="Crowd Ease design system reference: a purple, green, blue, and yellow color palette, the Circular STD typeface specimen with headline, body, and button styles, and a grid of UI icons for navigation, profile, and notifications" width="1440" height="270" loading="lazy" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 </BaseLayout>
 
@@ -318,6 +339,41 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
     border-radius: var(--r-md);
   }
 
+  /* ── 07 Visual Identity ──────────────────── */
+  .case-identity-section {
+    background: var(--bg);
+  }
+
+  .case-identity-intro {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-bottom:         clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-identity-intro-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(28px, 3.1vw, 45px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+  }
+
+  .case-identity-intro-body {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
+  .case-identity-image img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
   @media (max-width: 1024px) {
     .case-design-gallery-row {
       grid-template-columns: repeat(4, 1fr);
@@ -349,6 +405,11 @@ import CaseStudyInsightCard from '../../components/case-study-insight-card.astro
 
     .case-design-gallery-row {
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    .case-identity-intro {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
     }
   }
 
