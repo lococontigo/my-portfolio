@@ -23,18 +23,32 @@ const {
           <video class="case-hero-video" autoplay muted loop playsinline>
             <source src={videoSrc} type="video/mp4" />
           </video>
-          <button class="case-hero-mute-btn" type="button" aria-pressed="true" aria-label="Unmute video">
-            <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M11 5 6 9H2v6h4l5 4V5Z" />
-              <line x1="22" y1="9" x2="16" y2="15" />
-              <line x1="16" y1="9" x2="22" y2="15" />
-            </svg>
-            <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M11 5 6 9H2v6h4l5 4V5Z" />
-              <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-              <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-            </svg>
-          </button>
+          <div class="case-hero-controls">
+            <button class="case-hero-ctrl-btn case-hero-play-btn" type="button" aria-pressed="false" aria-label="Pause video">
+              <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <rect x="6" y="4" width="4" height="16" rx="1" />
+                <rect x="14" y="4" width="4" height="16" rx="1" />
+              </svg>
+              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M7 4v16l13-8z" />
+              </svg>
+            </button>
+
+            <span class="case-hero-timestamp">0:00 / 0:00</span>
+
+            <button class="case-hero-ctrl-btn case-hero-mute-btn" type="button" aria-pressed="true" aria-label="Unmute video">
+              <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M11 5 6 9H2v6h4l5 4V5Z" />
+                <line x1="22" y1="9" x2="16" y2="15" />
+                <line x1="16" y1="9" x2="22" y2="15" />
+              </svg>
+              <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M11 5 6 9H2v6h4l5 4V5Z" />
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div class="case-hero-meta">
@@ -110,35 +124,70 @@ const {
     object-fit: cover;
   }
 
-  .case-hero-mute-btn {
-    position:        absolute;
-    bottom:          var(--space-sm);
-    right:           var(--space-sm);
+  .case-hero-controls {
+    position:       absolute;
+    left:           var(--space-sm);
+    right:          var(--space-sm);
+    bottom:         var(--space-sm);
+    display:        flex;
+    align-items:    center;
+    gap:            var(--space-xs);
+    padding:        var(--space-xs) var(--space-sm);
+    border-radius:  var(--r-pill);
+    background:     color-mix(in srgb, var(--bg) 70%, transparent);
+    opacity:        0;
+    transform:      translateY(6px);
+    transition:     opacity 0.25s var(--ease), transform 0.25s var(--ease);
+    pointer-events: none;
+  }
+
+  .case-hero-video-wrap:hover .case-hero-controls,
+  .case-hero-video-wrap:focus-within .case-hero-controls {
+    opacity:        1;
+    transform:      translateY(0);
+    pointer-events: auto;
+  }
+
+  .case-hero-ctrl-btn {
     display:         flex;
     align-items:     center;
     justify-content: center;
-    width:           40px;
-    height:          40px;
+    flex-shrink:     0;
+    width:           32px;
+    height:          32px;
     border-radius:   var(--r-pill);
     border:          0.5px solid transparent;
-    background:      color-mix(in srgb, var(--bg) 70%, transparent);
     color:           var(--text-1);
     transition:      border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
   }
 
-  .case-hero-mute-btn svg {
-    width:  18px;
-    height: 18px;
+  .case-hero-ctrl-btn svg {
+    width:  16px;
+    height: 16px;
   }
 
-  .case-hero-mute-btn .icon-unmuted { display: none; }
-  .case-hero-mute-btn[aria-pressed="false"] .icon-muted   { display: none; }
-  .case-hero-mute-btn[aria-pressed="false"] .icon-unmuted { display: block; }
-
-  .case-hero-mute-btn:hover {
+  .case-hero-ctrl-btn:hover {
     border-color: var(--accent-2);
     box-shadow:   var(--neon-purple);
   }
+
+  .case-hero-timestamp {
+    flex:        1;
+    font-family: var(--font-mono);
+    font-size:   11px;
+    color:       var(--text-1);
+    white-space: nowrap;
+  }
+
+  /* Play / pause toggle */
+  .case-hero-play-btn .icon-play { display: none; }
+  .case-hero-play-btn[aria-pressed="true"] .icon-pause { display: none; }
+  .case-hero-play-btn[aria-pressed="true"] .icon-play  { display: block; }
+
+  /* Mute / unmute toggle */
+  .case-hero-mute-btn .icon-unmuted { display: none; }
+  .case-hero-mute-btn[aria-pressed="false"] .icon-muted   { display: none; }
+  .case-hero-mute-btn[aria-pressed="false"] .icon-unmuted { display: block; }
 
   /* ── Metadata row ────────────────────────── */
   .case-hero-meta {
@@ -188,12 +237,48 @@ const {
 <script>
   const wrap = document.querySelector('.case-hero-video-wrap');
   const video = wrap?.querySelector('.case-hero-video');
-  const btn = wrap?.querySelector('.case-hero-mute-btn');
+  const playBtn = wrap?.querySelector('.case-hero-play-btn');
+  const muteBtn = wrap?.querySelector('.case-hero-mute-btn');
+  const timestamp = wrap?.querySelector('.case-hero-timestamp');
 
-  btn?.addEventListener('click', () => {
-    if (!(video instanceof HTMLVideoElement)) return;
-    video.muted = !video.muted;
-    btn.setAttribute('aria-pressed', String(video.muted));
-    btn.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
-  });
+  function formatTime(seconds) {
+    if (!isFinite(seconds) || seconds < 0) return '0:00';
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+  }
+
+  if (video instanceof HTMLVideoElement) {
+    playBtn?.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+
+    video.addEventListener('play', () => {
+      playBtn?.setAttribute('aria-pressed', 'false');
+      playBtn?.setAttribute('aria-label', 'Pause video');
+    });
+
+    video.addEventListener('pause', () => {
+      playBtn?.setAttribute('aria-pressed', 'true');
+      playBtn?.setAttribute('aria-label', 'Play video');
+    });
+
+    muteBtn?.addEventListener('click', () => {
+      video.muted = !video.muted;
+      muteBtn.setAttribute('aria-pressed', String(video.muted));
+      muteBtn.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
+    });
+
+    const updateTimestamp = () => {
+      if (!timestamp) return;
+      timestamp.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+    };
+
+    video.addEventListener('loadedmetadata', updateTimestamp);
+    video.addEventListener('timeupdate', updateTimestamp);
+  }
 </script>
