@@ -6,7 +6,6 @@
 // ── IMAGE REVEAL — mask shrinks to show the full image on scroll ──
 function initImageReveal() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (window.innerWidth < 768) return;
 
   document.querySelectorAll('[data-reveal]').forEach((el) => {
     gsap.set(el, { clipPath: 'inset(0 0 30% 0)' });
