@@ -4,6 +4,7 @@ import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyOverview from '../../components/case-study-overview.astro';
 import CaseStudyHighlight from '../../components/case-study-highlight.astro';
 import CaseStudyProblem from '../../components/case-study-problem.astro';
+import CaseStudySolution from '../../components/case-study-solution.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 ---
 
@@ -59,6 +60,32 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
       ]}
       imageSrc="/gifs/delta/user-problem-Source.gif"
       imageAlt="Screen recording of a user browsing The Source's original document library, navigating categories and using the search and filter tools"
+    />
+
+    <CaseStudySolution
+      id="solution"
+      eyebrow="04"
+      title="Solution"
+      mediaRows={[
+        {
+          imageSrc: "/gifs/delta/navigation.gif",
+          imageAlt: "Animated screen recording of The Source 2.0's redesigned homepage with a centralized navigation hub and a hero banner reading 'Your Go-To Resource Hub'",
+          title: "Streamlined Access Through a Centralized Resource Hub",
+          body: "Create a clear navigation system that is consistent with the company's design system. Simplified navigation reduces clicks to 3-4, ensuring faster information retrieval.",
+        },
+        {
+          imageSrc: "/gifs/delta/search.gif",
+          imageAlt: "Animated screen recording of The Source 2.0's category cards and smart search dropdown showing tag suggestions like 'national account' and 'sales and marketing'",
+          title: "Enhanced Discoverability with Smart Search",
+          body: "The Source will use unified smart search, which will allow all documents, categories, and tags to be searched. Users can fill out a feedback form to notify the marketing staff of any missing content.",
+        },
+        {
+          imageSrc: "/gifs/delta/customisation.gif",
+          imageAlt: "Animated screen recording of The Source 2.0's personalized 'Recently Downloaded' section showing document cards for quick access",
+          title: "A Modern, Personalized Resource Experience",
+          body: "Our modern logical layout enhances customization, featuring recent and most-downloaded documents for quick access. Ensuring an efficient user experience tailored to your needs.",
+        },
+      ]}
     />
 
     <CaseStudyKeepReading current="delta" />
