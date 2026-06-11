@@ -6,6 +6,7 @@ import CaseStudyHighlight from '../../components/case-study-highlight.astro';
 import CaseStudyProblem from '../../components/case-study-problem.astro';
 import CaseStudySolution from '../../components/case-study-solution.astro';
 import CaseStudyResearch from '../../components/case-study-research.astro';
+import CaseStudySectionHeader from '../../components/case-study-section-header.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 ---
 
@@ -167,6 +168,26 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
       ]}
     />
 
+    <section class="case-takeaways-section" id="takeaways">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-takeaways">
+
+            <CaseStudySectionHeader eyebrow="07" title="Takeaways" />
+
+            <div class="case-takeaways-content">
+              <h3 class="case-takeaways-heading">Addressing Technical Limitations and Stakeholder Pushback</h3>
+              <div class="case-takeaways-body">
+                <p>The IS (Information Systems) team refused to connect the partner database directly to the communication channel while we are creating the subscribe function. This integration was primarily designed to pre-fill user personal information for a more seamless subscription experience.</p>
+                <p>Our workaround required utilizing a built-in connector within the subscription form and adding an additional step for users to manually enter their information. It may not be ideal for user experience, but this highlights the significance of compromise and flexibility in meeting key user needs while considering time and cost.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
     <CaseStudyKeepReading current="delta" />
 
   </main>
@@ -179,8 +200,43 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
     min-height:    100vh;
   }
 
+  /* ── 07 Takeaways ─────────────────────────── */
+  .case-takeaways-content {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-takeaways-heading {
+    font-family:    var(--font-display);
+    font-size:      clamp(28px, 3.1vw, 45px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+  }
+
+  .case-takeaways-body {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-sm);
+  }
+
+  .case-takeaways-body p {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-1);
+  }
+
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
+
+    .case-takeaways-content {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
   }
 
   @media (max-width: 520px) {
