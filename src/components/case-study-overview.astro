@@ -3,30 +3,30 @@ const { eyebrow, title, body, imageSrc, imageAlt, id } = Astro.props;
 ---
 
 <section class="case-overview-section" id={id}>
-  <div class="padding-global">
-    <div class="container-main">
-      <div class="case-overview">
+  <div class="case-overview">
 
-        <img class="case-overview-image" src={imageSrc} alt={imageAlt} loading="lazy" />
-        <div class="case-overview-overlay"></div>
+    <img class="case-overview-image" src={imageSrc} alt={imageAlt} loading="lazy" />
+    <div class="case-overview-overlay"></div>
 
+    <div class="padding-global">
+      <div class="container-main">
         <div class="case-overview-text">
           <span class="case-overview-eyebrow">{eyebrow}</span>
           <h2 class="case-overview-title">{title}</h2>
           <p class="case-overview-body">{body}</p>
         </div>
-
       </div>
     </div>
+
   </div>
 </section>
 
 <style>
   .case-overview {
-    position:      relative;
-    overflow:       hidden;
-    border-radius:  var(--r-lg);
-    aspect-ratio:   2560 / 879;
+    position:     relative;
+    overflow:     hidden;
+    width:        100%;
+    aspect-ratio: 2560 / 879;
   }
 
   .case-overview-image {
@@ -41,6 +41,15 @@ const { eyebrow, title, body, imageSrc, imageAlt, id } = Astro.props;
     position:   absolute;
     inset:      0;
     background: var(--overlay-dark);
+  }
+
+  .case-overview .padding-global {
+    position: absolute;
+    inset:    0;
+  }
+
+  .case-overview .container-main {
+    height: 100%;
   }
 
   .case-overview-text {
