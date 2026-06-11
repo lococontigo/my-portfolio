@@ -1,7 +1,7 @@
 ---
 import CaseStudySectionHeader from './case-study-section-header.astro';
 
-const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt } = Astro.props;
+const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quotePanels = [] } = Astro.props;
 ---
 
 <section class="case-research-section" id={id}>
@@ -42,6 +42,23 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt } = 
         {imageSrc && (
           <div class="case-research-feedback">
             <img src={imageSrc} alt={imageAlt} loading="lazy" />
+          </div>
+        )}
+
+        {quotePanels.length > 0 && (
+          <div class="case-research-quotes" data-horizontal-scroll>
+            <div class="case-research-quotes-track" data-scroll-track>
+              {quotePanels.map((panel: { imageSrc: string; imageAlt: string; quote: string; attribution: string }) => (
+                <div class="case-research-quote-panel">
+                  <img class="case-research-quote-image" src={panel.imageSrc} alt={panel.imageAlt} loading="lazy" />
+                  <div class="case-research-quote-overlay"></div>
+                  <div class="case-research-quote-content">
+                    <blockquote class="case-research-quote-text">{panel.quote}</blockquote>
+                    <p class="case-research-quote-attribution">{panel.attribution}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
@@ -148,6 +165,14 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt } = 
   }
 
   /* ── Feedback image ──────────────────────── */
+  .case-research-feedback {
+    margin-bottom: clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-research-feedback:last-child {
+    margin-bottom: 0;
+  }
+
   .case-research-feedback img {
     display:       block;
     width:         100%;
@@ -155,11 +180,97 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt } = 
     border-radius: var(--r-lg);
   }
 
+  /* ── Interview quote scroller ────────────── */
+  .case-research-quotes {
+    position:     relative;
+    aspect-ratio: 8 / 9;
+  }
+
+  .case-research-quotes-track {
+    position:     sticky;
+    top:          0;
+    display:      flex;
+    width:        200%;
+    aspect-ratio: 32 / 9;
+  }
+
+  .case-research-quote-panel {
+    position:      relative;
+    flex-shrink:   0;
+    width:         50%;
+    border-radius: var(--r-lg);
+    overflow:      hidden;
+  }
+
+  .case-research-quote-image {
+    display:    block;
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+  }
+
+  .case-research-quote-overlay {
+    position:   absolute;
+    inset:      0;
+    background: var(--scrim);
+  }
+
+  .case-research-quote-content {
+    position:        absolute;
+    inset:           0;
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+    gap:             var(--space-sm);
+    max-width:       720px;
+    padding:         var(--space-lg);
+  }
+
+  .case-research-quote-text {
+    font-family: var(--font-display);
+    font-style:  italic;
+    font-size:   clamp(28px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.3;
+    color:       var(--text-on-image);
+  }
+
+  .case-research-quote-text::before { content: '\201C'; }
+  .case-research-quote-text::after  { content: '\201D'; }
+
+  .case-research-quote-attribution {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 400;
+    color:       var(--text-on-image);
+  }
+
   @media (max-width: 768px) {
     .case-research-survey-grid,
     .case-research-stats {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
+    }
+
+    .case-research-quotes {
+      aspect-ratio: auto;
+    }
+
+    .case-research-quotes-track {
+      position:       static;
+      flex-direction: column;
+      width:          100%;
+      aspect-ratio:   auto;
+      gap:            var(--space-sm);
+    }
+
+    .case-research-quote-panel {
+      width:        100%;
+      aspect-ratio: 16 / 9;
+    }
+
+    .case-research-quote-content {
+      padding: var(--space-md);
     }
   }
 </style>
