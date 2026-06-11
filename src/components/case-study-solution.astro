@@ -1,6 +1,7 @@
 ---
 import CaseStudySectionHeader from './case-study-section-header.astro';
 import CaseStudyVideo from './case-study-video.astro';
+import CaseStudyCompareSlider from './case-study-compare-slider.astro';
 
 const { eyebrow, title, rows = [], mediaRows = [], videoSrc, id, tinted = false } = Astro.props;
 ---
@@ -32,10 +33,26 @@ const { eyebrow, title, rows = [], mediaRows = [], videoSrc, id, tinted = false 
 
         {mediaRows.length > 0 && (
           <div class="case-solution-media-rows">
-            {mediaRows.map((row: { imageSrc: string; imageAlt: string; title: string; body: string }) => (
+            {mediaRows.map((row: { imageSrc?: string; imageAlt?: string; title: string; body: string; compare?: { beforeSrc: string; afterSrc: string; beforeAlt: string; afterAlt: string; beforeLabel?: string; afterLabel?: string; aspectRatio?: string }; iframeSrc?: string; iframeTitle?: string }) => (
               <div class="case-solution-media-row">
                 <div class="case-solution-media-frame">
-                  <img src={row.imageSrc} alt={row.imageAlt} loading="lazy" />
+                  {row.compare ? (
+                    <CaseStudyCompareSlider
+                      beforeSrc={row.compare.beforeSrc}
+                      afterSrc={row.compare.afterSrc}
+                      beforeAlt={row.compare.beforeAlt}
+                      afterAlt={row.compare.afterAlt}
+                      beforeLabel={row.compare.beforeLabel}
+                      afterLabel={row.compare.afterLabel}
+                      aspectRatio={row.compare.aspectRatio}
+                    />
+                  ) : row.iframeSrc ? (
+                    <div class="case-solution-media-embed">
+                      <iframe src={row.iframeSrc} title={row.iframeTitle} loading="lazy" allowfullscreen></iframe>
+                    </div>
+                  ) : (
+                    <img src={row.imageSrc} alt={row.imageAlt} loading="lazy" />
+                  )}
                 </div>
                 <div class="case-solution-media-text">
                   <h3 class="case-solution-media-title">{row.title}</h3>
@@ -149,6 +166,20 @@ const { eyebrow, title, rows = [], mediaRows = [], videoSrc, id, tinted = false 
     aspect-ratio:  16 / 9;
     object-fit:    cover;
     border-radius: var(--r-lg);
+  }
+
+  .case-solution-media-embed {
+    aspect-ratio:  16 / 9;
+    border:        0.5px solid var(--border);
+    border-radius: var(--r-lg);
+    overflow:      hidden;
+  }
+
+  .case-solution-media-embed iframe {
+    display: block;
+    width:   100%;
+    height:  100%;
+    border:  0;
   }
 
   .case-solution-media-text {

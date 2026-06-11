@@ -134,6 +134,39 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
       journeyMapCaption="Based on in-depth interviews with actual users, we were able to identify key spots where they experience major pain points."
     />
 
+    <CaseStudySolution
+      id="ideate"
+      eyebrow="06"
+      title="Ideate & Design"
+      mediaRows={[
+        {
+          compare: {
+            beforeSrc: "/images/delta/Current-Source-IA.svg",
+            afterSrc: "/images/delta/New-Source-IA.svg",
+            beforeAlt: "Information architecture diagram of the current Source's menu structure and navigation paths",
+            afterAlt: "Information architecture diagram of the redesigned Source 2.0 navigation, search, and document flow",
+            beforeLabel: "Before",
+            afterLabel: "After",
+            aspectRatio: "1856 / 1408",
+          },
+          title: "Information Architecture",
+          body: "The IA explains why the previous version couldn't perform an effective search and how the new one addresses the issue.",
+        },
+        {
+          imageSrc: "/images/delta/Flow-chart.svg",
+          imageAlt: "Flow chart showing the user flow from logging in through the Source homepage and library page to finding a document, with subscribe and support escalation paths",
+          title: "User Flow",
+          body: "We don't want the flow to be stopped abruptly because users couldn't find their document. That's why we included a support button that connects user directly to the marketing team.",
+        },
+        {
+          iframeSrc: "https://embed.figma.com/proto/AC3N495joFyyLbJymaIerY/The-Source?content-scaling=fixed&kind=proto&node-id=317-9858&page-id=2%3A44&scaling=scale-down&starting-point-node-id=322%3A11313&embed-host=share",
+          iframeTitle: "The Source 2.0 wireframe and prototype walkthrough",
+          title: "Wireframes & Prototype",
+          body: "We presented this prototype to the Marketing and Sales teams and received good feedback.",
+        },
+      ]}
+    />
+
     <CaseStudyKeepReading current="delta" />
 
   </main>
