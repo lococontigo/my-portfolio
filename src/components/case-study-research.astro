@@ -52,9 +52,13 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
                 <div class="case-research-quote-panel">
                   <img class="case-research-quote-image" src={panel.imageSrc} alt={panel.imageAlt} loading="lazy" />
                   <div class="case-research-quote-overlay"></div>
-                  <div class="case-research-quote-content">
-                    <blockquote class="case-research-quote-text">{panel.quote}</blockquote>
-                    <p class="case-research-quote-attribution">{panel.attribution}</p>
+                  <div class="padding-global">
+                    <div class="container-main">
+                      <div class="case-research-quote-content">
+                        <blockquote class="case-research-quote-text">{panel.quote}</blockquote>
+                        <p class="case-research-quote-attribution">{panel.attribution}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -189,6 +193,8 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
 
   /* ── Interview quote panels ──────────────── */
   .case-research-quotes {
+    width:         100vw;
+    margin-inline: calc(50% - 50vw);
     margin-bottom: clamp(32px, 5.5vw, 80px);
   }
 
@@ -199,11 +205,10 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
   }
 
   .case-research-quote-panel {
-    position:      relative;
-    width:         100%;
-    aspect-ratio:  16 / 9;
-    border-radius: var(--r-lg);
-    overflow:      hidden;
+    position:     relative;
+    width:        100%;
+    aspect-ratio: 16 / 9;
+    overflow:     hidden;
   }
 
   .case-research-quote-image {
@@ -219,15 +224,25 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
     background: var(--scrim);
   }
 
-  .case-research-quote-content {
-    position:        absolute;
-    inset:           0;
+  .case-research-quote-panel .padding-global {
+    position: absolute;
+    inset:    0;
+  }
+
+  .case-research-quote-panel .container-main {
     display:         flex;
-    flex-direction:  column;
+    align-items:     center;
     justify-content: center;
-    gap:             var(--space-sm);
-    width:           100%;
-    padding:         var(--space-lg);
+    height:          100%;
+  }
+
+  .case-research-quote-content {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            var(--space-sm);
+    width:          100%;
+    text-align:     center;
   }
 
   .case-research-quote-text {
@@ -272,10 +287,6 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
     .case-research-stats {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
-    }
-
-    .case-research-quote-content {
-      padding: var(--space-md);
     }
   }
 </style>
