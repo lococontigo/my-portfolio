@@ -159,13 +159,20 @@ const { eyebrow, title, rows = [], mediaRows = [], videoSrc, id, tinted = false 
     gap:            clamp(20px, 2.8vw, 40px);
   }
 
+  .case-solution-media-frame {
+    background:    var(--bg-2);
+    border-radius: var(--r-lg);
+  }
+
   .case-solution-media-frame img {
     display:       block;
     width:         100%;
+    max-width:     1196px;
     height:        auto;
     aspect-ratio:  16 / 9;
     object-fit:    cover;
     border-radius: var(--r-lg);
+    margin-inline: auto;
   }
 
   .case-solution-media-embed {
