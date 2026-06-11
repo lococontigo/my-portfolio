@@ -162,13 +162,12 @@ const { eyebrow, title, rows = [], mediaRows = [], videoSrc, id, tinted = false 
   .case-solution-media-frame {
     background:    var(--bg-2);
     border-radius: var(--r-lg);
-    padding:       var(--space-lg);
   }
 
   .case-solution-media-frame img {
     display:       block;
     width:         100%;
-    max-width:     1196px;
+    max-width:     var(--max-w);
     height:        auto;
     aspect-ratio:  16 / 9;
     object-fit:    cover;
@@ -225,10 +224,6 @@ const { eyebrow, title, rows = [], mediaRows = [], videoSrc, id, tinted = false 
     .case-solution-panel {
       padding: var(--space-md);
     }
-
-    .case-solution-media-frame {
-      padding: var(--space-md);
-    }
   }
 
   @media (max-width: 768px) {
@@ -250,10 +245,6 @@ const { eyebrow, title, rows = [], mediaRows = [], videoSrc, id, tinted = false 
 
   @media (max-width: 520px) {
     .case-solution-panel {
-      padding: var(--space-sm);
-    }
-
-    .case-solution-media-frame {
       padding: var(--space-sm);
     }
   }
