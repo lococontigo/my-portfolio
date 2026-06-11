@@ -46,31 +46,7 @@ function initGalleryRows() {
   });
 }
 
-// ── HORIZONTAL SCROLL — vertical scroll drives horizontal slide ──
-function initResearchScroll() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (window.innerWidth < 768) return;
-
-  document.querySelectorAll('[data-horizontal-scroll]').forEach((wrapper) => {
-    const track = wrapper.querySelector('[data-scroll-track]');
-    if (!track) return;
-
-    gsap.to(track, {
-      xPercent: -50,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: wrapper,
-        pin: true,
-        scrub: true,
-        end: () => `+=${wrapper.offsetWidth}`,
-        invalidateOnRefresh: true,
-      },
-    });
-  });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   initImageReveal();
   initGalleryRows();
-  initResearchScroll();
 });

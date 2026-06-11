@@ -46,8 +46,8 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
         )}
 
         {quotePanels.length > 0 && (
-          <div class="case-research-quotes" data-horizontal-scroll>
-            <div class="case-research-quotes-track" data-scroll-track>
+          <div class="case-research-quotes">
+            <div class="case-research-quotes-track">
               {quotePanels.map((panel: { imageSrc: string; imageAlt: string; quote: string; attribution: string }) => (
                 <div class="case-research-quote-panel">
                   <img class="case-research-quote-image" src={panel.imageSrc} alt={panel.imageAlt} loading="lazy" />
@@ -180,25 +180,19 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
     border-radius: var(--r-lg);
   }
 
-  /* ── Interview quote scroller ────────────── */
-  .case-research-quotes {
-    position:      relative;
-    aspect-ratio:  16 / 9;
-    border-radius: var(--r-lg);
-    overflow:      hidden;
-  }
-
+  /* ── Interview quote panels ──────────────── */
   .case-research-quotes-track {
-    display: flex;
-    width:   200%;
-    height:  100%;
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-sm);
   }
 
   .case-research-quote-panel {
-    position:    relative;
-    flex-shrink: 0;
-    width:       50%;
-    height:      100%;
+    position:      relative;
+    width:         100%;
+    aspect-ratio:  16 / 9;
+    border-radius: var(--r-lg);
+    overflow:      hidden;
   }
 
   .case-research-quote-image {
@@ -221,7 +215,7 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
     flex-direction:  column;
     justify-content: center;
     gap:             var(--space-sm);
-    max-width:       720px;
+    width:           100%;
     padding:         var(--space-lg);
   }
 
@@ -249,27 +243,6 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
     .case-research-stats {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
-    }
-
-    .case-research-quotes {
-      aspect-ratio:  auto;
-      border-radius: 0;
-      overflow:      visible;
-    }
-
-    .case-research-quotes-track {
-      flex-direction: column;
-      width:          100%;
-      height:         auto;
-      gap:            var(--space-sm);
-    }
-
-    .case-research-quote-panel {
-      width:         100%;
-      height:        auto;
-      aspect-ratio:  16 / 9;
-      border-radius: var(--r-lg);
-      overflow:      hidden;
     }
 
     .case-research-quote-content {
