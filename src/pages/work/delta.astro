@@ -5,6 +5,7 @@ import CaseStudyOverview from '../../components/case-study-overview.astro';
 import CaseStudyHighlight from '../../components/case-study-highlight.astro';
 import CaseStudyProblem from '../../components/case-study-problem.astro';
 import CaseStudySolution from '../../components/case-study-solution.astro';
+import CaseStudyResearch from '../../components/case-study-research.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 ---
 
@@ -87,6 +88,33 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
           body: "Our modern logical layout enhances customization, featuring recent and most-downloaded documents for quick access. Ensuring an efficient user experience tailored to your needs.",
         },
       ]}
+    />
+
+    <CaseStudyResearch
+      id="research"
+      eyebrow="05"
+      title="Research"
+      surveyCols={[
+        {
+          label: "Global Survey for Existing Users",
+          items: ["USA, Canada, Europe, Asia", "Anonymous response collection"],
+          imageSrc: "/images/delta/global.png",
+          imageAlt: "Illustration of a glowing digital globe with cyan network lines highlighting global regions, representing the worldwide reach of the survey",
+        },
+        {
+          label: "Cross-Functional Participants",
+          items: ["Department including: sales, technical, support", "Email invitation distribution"],
+          imageSrc: "/images/delta/research-work-cloud%201.png",
+          imageAlt: "Word cloud of frequent terms from user feedback, with 'search', 'find', 'information', and 'content' shown as the largest and most prominent words",
+        },
+      ]}
+      stats={[
+        { value: "43%", title: "Low Usage Frequency", body: "Nearly half of users access the platform less than once per month" },
+        { value: "3/5", title: "Low Satisfaction", body: "The average satisfaction score shows tremendous opportunity for improvement." },
+        { value: "69%", title: "Excessive Clicking", body: "Users require 4-6+ clicks to access needed information" },
+      ]}
+      imageSrc="/images/delta/feedback.png"
+      imageAlt="Screenshot of a Slack message from Andrew Yip sharing survey findings about the Source Portal, including response counts by department and key findings on click counts, satisfaction, and user pain points"
     />
 
     <CaseStudyKeepReading current="delta" />
