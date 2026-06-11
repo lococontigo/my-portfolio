@@ -11,17 +11,17 @@ const {
 ---
 
 <div class="compare-slider" style={`aspect-ratio: ${aspectRatio};`}>
-  <div class="compare-layer compare-layer-after" data-after>
-    <img src={afterSrc} alt={afterAlt} loading="lazy" />
+  <div class="compare-layer compare-layer-after">
+    <img src={afterSrc} alt={afterAlt} loading="lazy" draggable="false" />
   </div>
-  <div class="compare-layer compare-layer-before" data-clip>
-    <img src={beforeSrc} alt={beforeAlt} loading="lazy" />
+  <div class="compare-layer compare-layer-before">
+    <img src={beforeSrc} alt={beforeAlt} loading="lazy" draggable="false" />
   </div>
 
   <span class="compare-badge compare-badge-left">{beforeLabel}</span>
   <span class="compare-badge compare-badge-right">{afterLabel}</span>
 
-  <div class="compare-handle" data-handle></div>
+  <div class="compare-handle"></div>
   <div class="compare-knob" data-knob role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" aria-label="Drag to compare before and after">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <polyline points="9 6 4 12 9 18"></polyline>
@@ -32,51 +32,41 @@ const {
 
 <style>
   .compare-slider {
-    position:       relative;
-    width:          100%;
-    border-radius:  var(--r-lg);
-    overflow:       hidden;
-    background:     var(--bg-3);
-    border:         0.5px solid var(--border);
-    user-select:    none;
-    touch-action:   pan-y;
-    container-type: inline-size;
+    --pos:         50%;
+    position:      relative;
+    width:         100%;
+    border-radius: var(--r-lg);
+    overflow:      hidden;
+    background:    var(--bg-3);
+    border:        0.5px solid var(--border);
+    user-select:   none;
+    touch-action:  pan-y;
+    cursor:        ew-resize;
   }
 
+  /* Both layers are full-size and never move — the top layer
+     is only clipped, so the two images stay pixel-aligned. */
   .compare-layer {
     position: absolute;
     inset:    0;
-    overflow: hidden;
   }
 
   .compare-layer img {
     position:   absolute;
-    top:        0;
+    inset:      0;
     display:    block;
-    width:      100cqw;
+    width:      100%;
     height:     100%;
     object-fit: cover;
   }
 
   .compare-layer-after {
-    left:    auto;
-    right:   0;
-    width:   50%;
     z-index: 1;
   }
 
-  .compare-layer-after img {
-    left: 0;
-  }
-
   .compare-layer-before {
-    z-index:      2;
-    width:        50%;
-    border-right: 2px solid var(--bg);
-  }
-
-  .compare-layer-before img {
-    right: 0;
+    z-index:   2;
+    clip-path: inset(0 calc(100% - var(--pos)) 0 0);
   }
 
   .compare-badge {
@@ -99,20 +89,20 @@ const {
   .compare-badge-right { right: var(--space-sm); }
 
   .compare-handle {
-    position:  absolute;
-    top:       0;
-    bottom:    0;
-    left:      50%;
-    width:     2.5px;
+    position:   absolute;
+    top:        0;
+    bottom:     0;
+    left:       var(--pos);
+    width:      2.5px;
     background: var(--bg);
-    z-index:   6;
-    transform: translateX(-50%);
+    z-index:    6;
+    transform:  translateX(-50%);
   }
 
   .compare-knob {
     position:        absolute;
     top:             50%;
-    left:            50%;
+    left:            var(--pos);
     transform:       translate(-50%, -50%);
     width:           54px;
     height:          54px;
@@ -148,21 +138,21 @@ const {
 
 <script>
   document.querySelectorAll<HTMLElement>('.compare-slider').forEach((compare) => {
-    const clip = compare.querySelector<HTMLElement>('[data-clip]');
-    const after = compare.querySelector<HTMLElement>('[data-after]');
-    const handle = compare.querySelector<HTMLElement>('[data-handle]');
     const knob = compare.querySelector<HTMLElement>('[data-knob]');
-    if (!clip || !after || !handle || !knob) return;
+    if (!knob) return;
 
-    let dragging = false;
+    let pct = 50;
+    let frame = 0;
 
-    function setPct(pct: number) {
-      pct = Math.max(0, Math.min(100, pct));
-      clip!.style.width = `${pct}%`;
-      after!.style.width = `${100 - pct}%`;
-      handle!.style.left = `${pct}%`;
-      knob!.style.left = `${pct}%`;
+    function render() {
+      frame = 0;
+      compare.style.setProperty('--pos', `${pct}%`);
       knob!.setAttribute('aria-valuenow', String(Math.round(pct)));
+    }
+
+    function setPct(next: number) {
+      pct = Math.max(0, Math.min(100, next));
+      if (!frame) frame = requestAnimationFrame(render);
     }
 
     function fromClientX(clientX: number) {
@@ -170,42 +160,22 @@ const {
       setPct(((clientX - rect.left) / rect.width) * 100);
     }
 
-    function start(e: MouseEvent | TouchEvent) {
-      dragging = true;
-      compare.style.cursor = 'ew-resize';
-      if ('touches' in e) {
-        fromClientX(e.touches[0].clientX);
-      } else {
-        fromClientX(e.clientX);
-        e.preventDefault();
-      }
-    }
-
-    function move(e: MouseEvent | TouchEvent) {
-      if (!dragging) return;
-      fromClientX('touches' in e ? e.touches[0].clientX : e.clientX);
-    }
-
-    function end() {
-      dragging = false;
-      compare.style.cursor = '';
-    }
-
-    knob.addEventListener('mousedown', start);
-    compare.addEventListener('mousedown', start);
-    window.addEventListener('mousemove', move);
-    window.addEventListener('mouseup', end);
-    knob.addEventListener('touchstart', start, { passive: true });
-    compare.addEventListener('touchstart', start, { passive: true });
-    window.addEventListener('touchmove', move, { passive: true });
-    window.addEventListener('touchend', end);
-
-    knob.addEventListener('keydown', (e: KeyboardEvent) => {
-      const cur = parseFloat(knob.getAttribute('aria-valuenow') || '50');
-      if (e.key === 'ArrowLeft') { setPct(cur - 4); e.preventDefault(); }
-      if (e.key === 'ArrowRight') { setPct(cur + 4); e.preventDefault(); }
+    compare.addEventListener('pointerdown', (e: PointerEvent) => {
+      compare.setPointerCapture(e.pointerId);
+      fromClientX(e.clientX);
+      if (e.pointerType === 'mouse') e.preventDefault();
     });
 
-    setPct(50);
+    compare.addEventListener('pointermove', (e: PointerEvent) => {
+      if (!compare.hasPointerCapture(e.pointerId)) return;
+      fromClientX(e.clientX);
+    });
+
+    knob.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') { setPct(pct - 4); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { setPct(pct + 4); e.preventDefault(); }
+    });
+
+    render();
   });
 </script>
