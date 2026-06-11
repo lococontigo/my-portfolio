@@ -60,9 +60,9 @@ function initResearchScroll() {
       ease: 'none',
       scrollTrigger: {
         trigger: wrapper,
-        start: 'top top',
-        end: () => `+=${track.offsetHeight}`,
+        pin: true,
         scrub: true,
+        end: () => `+=${wrapper.offsetWidth}`,
         invalidateOnRefresh: true,
       },
     });

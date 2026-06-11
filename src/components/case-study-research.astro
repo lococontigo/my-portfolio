@@ -166,7 +166,7 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
 
   /* ── Feedback image ──────────────────────── */
   .case-research-feedback {
-    margin-bottom: clamp(12px, 1.7vw, 24px);
+    margin-bottom: clamp(32px, 5.5vw, 80px);
   }
 
   .case-research-feedback:last-child {
@@ -182,24 +182,23 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
 
   /* ── Interview quote scroller ────────────── */
   .case-research-quotes {
-    position:     relative;
-    aspect-ratio: 8 / 9;
+    position:      relative;
+    aspect-ratio:  16 / 9;
+    border-radius: var(--r-lg);
+    overflow:      hidden;
   }
 
   .case-research-quotes-track {
-    position:     sticky;
-    top:          0;
-    display:      flex;
-    width:        200%;
-    aspect-ratio: 32 / 9;
+    display: flex;
+    width:   200%;
+    height:  100%;
   }
 
   .case-research-quote-panel {
-    position:      relative;
-    flex-shrink:   0;
-    width:         50%;
-    border-radius: var(--r-lg);
-    overflow:      hidden;
+    position:    relative;
+    flex-shrink: 0;
+    width:       50%;
+    height:      100%;
   }
 
   .case-research-quote-image {
@@ -253,20 +252,24 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
     }
 
     .case-research-quotes {
-      aspect-ratio: auto;
+      aspect-ratio:  auto;
+      border-radius: 0;
+      overflow:      visible;
     }
 
     .case-research-quotes-track {
-      position:       static;
       flex-direction: column;
       width:          100%;
-      aspect-ratio:   auto;
+      height:         auto;
       gap:            var(--space-sm);
     }
 
     .case-research-quote-panel {
-      width:        100%;
-      aspect-ratio: 16 / 9;
+      width:         100%;
+      height:        auto;
+      aspect-ratio:  16 / 9;
+      border-radius: var(--r-lg);
+      overflow:      hidden;
     }
 
     .case-research-quote-content {
