@@ -1,7 +1,7 @@
 ---
 import CaseStudySectionHeader from './case-study-section-header.astro';
 
-const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quotePanels = [] } = Astro.props;
+const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quotePanels = [], journeyMapSrc, journeyMapAlt, journeyMapCaption } = Astro.props;
 ---
 
 <section class="case-research-section" id={id}>
@@ -59,6 +59,13 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
                 </div>
               ))}
             </div>
+          </div>
+        )}
+
+        {journeyMapSrc && (
+          <div class="case-research-journey">
+            <img src={journeyMapSrc} alt={journeyMapAlt} loading="lazy" />
+            {journeyMapCaption && <p class="case-research-journey-caption">{journeyMapCaption}</p>}
           </div>
         )}
 
@@ -181,6 +188,10 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
   }
 
   /* ── Interview quote panels ──────────────── */
+  .case-research-quotes {
+    margin-bottom: clamp(32px, 5.5vw, 80px);
+  }
+
   .case-research-quotes-track {
     display:        flex;
     flex-direction: column;
@@ -236,6 +247,24 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
     font-size:   16px;
     font-weight: 400;
     color:       var(--text-on-image);
+  }
+
+  /* ── User journey map ────────────────────── */
+  .case-research-journey img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    aspect-ratio:  2672 / 2032;
+    border-radius: var(--r-lg);
+  }
+
+  .case-research-journey-caption {
+    margin-top:  var(--space-sm);
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-1);
   }
 
   @media (max-width: 768px) {
