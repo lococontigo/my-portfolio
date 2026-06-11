@@ -1,18 +1,21 @@
 ---
 import BaseLayout from '../../layouts/base-layout.astro';
+import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 ---
 
-<BaseLayout title="Ant Group — Case Study" world="light">
+<BaseLayout title="Ant Equipment Group" world="light">
   <main class="main">
 
-    <section class="padding-global">
-      <div class="container-main">
-        <div class="page-content">
-          <!-- Case study content goes here -->
-        </div>
-      </div>
-    </section>
+    <CaseStudyHero
+      title="Ant Rentals: Building a Brand for Digital Presence"
+      fullTitle="Ant Rentals: Building a Brand for Digital Presence"
+      accentTitle="Ant Rentals"
+      videoSrc="/videos/ant/ant-rentals-demo.mp4"
+      role={["Digital Design", "Content Management", "Web Development"]}
+      tools={["Figma", "Adobe Suite", "WordPress", "HubSpot"]}
+      duration={["2023 – 2024"]}
+    />
 
     <CaseStudyKeepReading current="ant" />
 
@@ -21,13 +24,9 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
 
 <style>
   .main {
-    padding-top: 96px;
-    min-height:  100vh;
-  }
-
-  .page-content {
-    padding-top:    var(--space-xl);
-    padding-bottom: var(--space-xl);
+    --case-accent: var(--accent-ant);
+    padding-top:   96px;
+    min-height:    100vh;
   }
 
   @media (max-width: 768px) {

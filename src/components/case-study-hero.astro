@@ -5,6 +5,7 @@ import CaseStudyLottie from './case-study-lottie.astro';
 const {
   title,
   fullTitle,
+  accentTitle,
   videoSrc,
   lottieSrc,
   lottieAspectRatio,
@@ -13,6 +14,8 @@ const {
   toolsLabel = 'Tool:',
   duration = [],
 } = Astro.props;
+
+const restTitle = accentTitle ? title.slice(accentTitle.length) : title;
 ---
 
 <section class="case-hero-section">
@@ -21,7 +24,9 @@ const {
       <div class="case-hero">
 
         <h1 class="case-hero-title">
-          <span aria-hidden="true">{title}</span>
+          <span aria-hidden="true">
+            {accentTitle && <em class="case-hero-title-accent">{accentTitle}</em>}{restTitle}
+          </span>
           <span class="sr-only">{fullTitle}</span>
         </h1>
 
@@ -89,8 +94,13 @@ const {
     font-weight:    300;
     line-height:    1;
     letter-spacing: -1.04px;
-    color:          var(--case-accent, var(--accent-2));
+    color:          var(--text-1);
     margin-bottom:  clamp(20px, 2.8vw, 40px);
+  }
+
+  .case-hero-title-accent {
+    font-style: normal;
+    color:      var(--case-accent, var(--accent-2));
   }
 
   /* ── Video ───────────────────────────────── */
