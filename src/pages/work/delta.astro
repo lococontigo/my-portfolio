@@ -8,9 +8,19 @@ import CaseStudySolution from '../../components/case-study-solution.astro';
 import CaseStudyResearch from '../../components/case-study-research.astro';
 import CaseStudySectionHeader from '../../components/case-study-section-header.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
+
+const sections = [
+  { id: 'overview',  label: '01-Overview' },
+  { id: 'impact',    label: '02-Impact' },
+  { id: 'problem',   label: '03-Problem' },
+  { id: 'solution',  label: '04-Solution' },
+  { id: 'research',  label: '05-Research' },
+  { id: 'ideate',    label: '06-Ideate & Design' },
+  { id: 'takeaways', label: '07-Takeaways' },
+];
 ---
 
-<BaseLayout title="Delta Controls" world="light">
+<BaseLayout title="Delta Controls" world="light" sections={sections}>
   <main class="main">
 
     <CaseStudyHero
@@ -25,6 +35,7 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
     />
 
     <CaseStudyOverview
+      id="overview"
       eyebrow="01"
       title="Overview"
       body="The Source is a digital library dedicated to providing non-technical documents, training, and marketing materials to Delta Controls' partners and employees. This project aimed to rebuild the entire platform for a more intuitive and fluent user experience."
