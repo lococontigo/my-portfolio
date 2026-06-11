@@ -17,6 +17,25 @@ const sections = [
   { id: 'identity',  label: '06-Visual Identity' },
   { id: 'takeaways', label: '07-Takeaways' },
 ];
+
+const galleryRows = [
+  [
+    { src: "/images/crowd-ease/crowdease-mockup-passed-events-rating.png", alt: "Passed Events screen prompting the user to rate how much an event affected their business", width: 226, height: 494 },
+    { src: "/images/crowd-ease/crowdease-mockup-event-list.png", alt: "Event list screen showing a weekly calendar and a list of upcoming events with participant counts", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowdease-mockup-sign-up.png", alt: "Sign up screen with email, password, and business name fields, plus social sign-up options", width: 226, height: 494 },
+    { src: "/images/crowd-ease/crowdease-mockup-event-detail.png", alt: "Event detail screen for the Vancouver Career Fair showing date, location, description, and a map preview", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowdease-mockup-event-filters.png", alt: "Event filters overlay with event category and distance options", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowdease-mockup-location-permission.png", alt: "Location permission screen asking the user to enable GPS or enter a postal code", width: 226, height: 492 },
+  ],
+  [
+    { src: "/images/crowd-ease/crowdease-mockup-profile-settings.png", alt: "Profile and settings screen with notification preferences and account options", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowdease-mockup-event-list-alt.png", alt: "Event list screen showing a weekly calendar and a list of upcoming events with participant counts", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowdease-mockup-business-insights.png", alt: "Business insights screen recommending a focus on concert event promotion, with participation breakdowns by category", width: 226, height: 493 },
+    { src: "/images/crowd-ease/crowdease-mockup-map-heatmap.png", alt: "Map screen showing a live crowd density heat map around downtown Vancouver", width: 226, height: 493 },
+    { src: "/images/crowd-ease/crowdease-mockup-weekly-report.png", alt: "Weekly event preview report listing event numbers and participant totals for each day", width: 226, height: 494 },
+    { src: "/images/crowd-ease/crowdease-mockup-passed-events.png", alt: "Passed Events screen listing past events with options to rate each one", width: 226, height: 494 },
+  ],
+];
 ---
 
 <BaseLayout title="Crowd Ease" world="light" sections={sections}>
@@ -167,22 +186,19 @@ const sections = [
             </div>
 
             <div class="case-design-gallery">
-              <div class="case-design-gallery-row" data-gallery-row="1">
-                <img src="/images/crowd-ease/crowdease-mockup-passed-events-rating.png" alt="Passed Events screen prompting the user to rate how much an event affected their business" width="226" height="494" loading="lazy" />
-                <img src="/images/crowd-ease/crowdease-mockup-event-list.png" alt="Event list screen showing a weekly calendar and a list of upcoming events with participant counts" width="226" height="492" loading="lazy" />
-                <img src="/images/crowd-ease/crowdease-mockup-sign-up.png" alt="Sign up screen with email, password, and business name fields, plus social sign-up options" width="226" height="494" loading="lazy" />
-                <img src="/images/crowd-ease/crowdease-mockup-event-detail.png" alt="Event detail screen for the Vancouver Career Fair showing date, location, description, and a map preview" width="226" height="492" loading="lazy" />
-                <img src="/images/crowd-ease/crowdease-mockup-event-filters.png" alt="Event filters overlay with event category and distance options" width="226" height="492" loading="lazy" />
-                <img src="/images/crowd-ease/crowdease-mockup-location-permission.png" alt="Location permission screen asking the user to enable GPS or enter a postal code" width="226" height="492" loading="lazy" />
-              </div>
-              <div class="case-design-gallery-row" data-gallery-row="2">
-                <img src="/images/crowd-ease/crowdease-mockup-profile-settings.png" alt="Profile and settings screen with notification preferences and account options" width="226" height="492" loading="lazy" />
-                <img src="/images/crowd-ease/crowdease-mockup-event-list-alt.png" alt="Event list screen showing a weekly calendar and a list of upcoming events with participant counts" width="226" height="492" loading="lazy" />
-                <img src="/images/crowd-ease/crowdease-mockup-business-insights.png" alt="Business insights screen recommending a focus on concert event promotion, with participation breakdowns by category" width="226" height="493" loading="lazy" />
-                <img src="/images/crowd-ease/crowdease-mockup-map-heatmap.png" alt="Map screen showing a live crowd density heat map around downtown Vancouver" width="226" height="493" loading="lazy" />
-                <img src="/images/crowd-ease/crowdease-mockup-weekly-report.png" alt="Weekly event preview report listing event numbers and participant totals for each day" width="226" height="494" loading="lazy" />
-                <img src="/images/crowd-ease/crowdease-mockup-passed-events.png" alt="Passed Events screen listing past events with options to rate each one" width="226" height="494" loading="lazy" />
-              </div>
+              {galleryRows.map((row) => (
+                <div class="case-design-gallery-row">
+                  <div class="case-design-gallery-track">
+                    {[row, row].map((set, si) => (
+                      <div class="case-design-gallery-set" aria-hidden={si === 1 ? 'true' : undefined}>
+                        {set.map((img) => (
+                          <img src={img.src} alt={si === 0 ? img.alt : ''} width={img.width} height={img.height} loading="lazy" />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
 
           </div>
@@ -387,22 +403,33 @@ const sections = [
   }
 
   .case-design-gallery {
+    width:          100vw;
+    margin-inline:  calc(50% - 50vw);
     display:        flex;
     flex-direction: column;
     gap:            clamp(12px, 1.7vw, 24px);
-    overflow:       hidden;
   }
 
   .case-design-gallery-row {
-    display:               grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap:                   clamp(12px, 1.7vw, 24px);
-    will-change:           transform;
+    overflow: hidden;
+  }
+
+  .case-design-gallery-track {
+    display:     flex;
+    gap:         clamp(12px, 1.7vw, 24px);
+    width:       max-content;
+    will-change: transform;
+  }
+
+  .case-design-gallery-set {
+    display: flex;
+    gap:     clamp(12px, 1.7vw, 24px);
   }
 
   .case-design-gallery img {
     display:       block;
-    width:         100%;
+    flex-shrink:   0;
+    width:         clamp(140px, 15vw, 226px);
     height:        auto;
     border-radius: var(--r-md);
   }
@@ -501,12 +528,6 @@ const sections = [
     color:       var(--text-1);
   }
 
-  @media (max-width: 1024px) {
-    .case-design-gallery-row {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
 
@@ -529,10 +550,6 @@ const sections = [
     .case-design-wireframes {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
-    }
-
-    .case-design-gallery-row {
-      grid-template-columns: repeat(3, 1fr);
     }
 
     .case-identity-intro {
@@ -558,10 +575,6 @@ const sections = [
     .case-research-userflow,
     .case-ia-image {
       padding: var(--space-sm);
-    }
-
-    .case-design-gallery-row {
-      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>

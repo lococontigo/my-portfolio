@@ -3,6 +3,8 @@
    GSAP 3 + ScrollTrigger are loaded globally in base-layout.astro
 ═══════════════════════════════════════════ */
 
+gsap.registerPlugin(ScrollTrigger);
+
 // ── IMAGE REVEAL — mask shrinks to show the full image on scroll ──
 function initImageReveal() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -22,17 +24,20 @@ function initImageReveal() {
   });
 }
 
-// ── GALLERY ROWS — alternating rows slide in/out from opposite sides ──
+// ── GALLERY ROWS — split-track horizontal parallax ──
+// Vertical scroll drives a single progress value; the top track glides
+// right while the bottom track glides left, in opposite directions.
 function initGalleryRows() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   document.querySelectorAll('.case-design-gallery').forEach((gallery) => {
-    gallery.querySelectorAll('.case-design-gallery-row').forEach((row, i) => {
-      const fromX = i % 2 === 0 ? -100 : 100;
-      gsap.fromTo(row,
+    gallery.querySelectorAll('.case-design-gallery-track').forEach((track, i) => {
+      const fromX = i === 0 ? -50 : 0;
+      const toX   = i === 0 ? 0 : -50;
+      gsap.fromTo(track,
         { xPercent: fromX },
         {
-          xPercent: -fromX,
+          xPercent: toX,
           ease: 'none',
           scrollTrigger: {
             trigger: gallery,
