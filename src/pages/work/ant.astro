@@ -98,6 +98,10 @@ const sections = [
                   <img src="/images/ant/Career.svg" alt="Laptop mockup of an Ant Rentals job posting page for a Mobile Service Mechanic position in Burnaby" width="1024" height="624" loading="lazy" />
                 </div>
               </div>
+
+              <div class="case-deliverables-row case-deliverables-row--image">
+                <img src="/images/ant/hero-section.png" alt="Ant Rentals website hero banner reading &quot;Western Canada's Largest Independent Source for Equipment Rentals and Sales&quot; over a photo of a fleet of yellow boom lifts, with &quot;Equipment Rentals&quot; and &quot;Create An Account&quot; buttons" width="1196" height="485" loading="lazy" />
+              </div>
             </div>
 
           </div>
@@ -168,10 +172,7 @@ const sections = [
   .case-deliverables-rows {
     display:        flex;
     flex-direction: column;
-    gap:            clamp(32px, 5.5vw, 80px);
-    padding:        var(--space-md);
-    background:     var(--bg-2);
-    border-radius:  var(--r-lg);
+    gap:            clamp(12px, 1.7vw, 24px);
   }
 
   .case-deliverables-row {
@@ -179,6 +180,9 @@ const sections = [
     grid-template-columns: 1fr 1fr;
     gap:                   clamp(12px, 1.7vw, 24px);
     align-items:           center;
+    padding:               var(--space-md);
+    background:            var(--bg-2);
+    border-radius:         var(--r-lg);
   }
 
   .case-deliverables-row img {
@@ -208,6 +212,15 @@ const sections = [
     grid-template-columns: 1fr 1fr;
     gap:                   clamp(12px, 1.7vw, 24px);
     width:                 100%;
+  }
+
+  .case-deliverables-row--image {
+    display:         flex;
+    justify-content: center;
+  }
+
+  .case-deliverables-row--image img {
+    max-width: 1196px;
   }
 
   @media (max-width: 520px) {
