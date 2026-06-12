@@ -2,12 +2,14 @@
 import BaseLayout from '../../layouts/base-layout.astro';
 import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyHighlight from '../../components/case-study-highlight.astro';
+import CaseStudyProblem from '../../components/case-study-problem.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 import CaseStudySectionHeader from '../../components/case-study-section-header.astro';
 
 const sections = [
   { id: 'impact',   label: '01-Impact' },
   { id: 'identity', label: '02-Visual Identity' },
+  { id: 'approach', label: '04-Approach' },
 ];
 ---
 
@@ -63,6 +65,17 @@ const sections = [
         </div>
       </div>
     </section>
+
+    <CaseStudyProblem
+      id="approach"
+      eyebrow="04"
+      title="Approach"
+      rows={[
+        { title: "Build on the brand", body: "Corporate with WOW branding, we have an elaborated brand guideline and my job is to build on top with all sort of marketing materials, like social media post, website, and presentation etc." },
+        { title: "Optimize existing website", body: "There was an existing WordPress website when I took over and I found some places that would be optimized to avoid confusion." },
+        { title: "Design for more", body: "Apart from the existing web architecture, I integrated a blog section, a career page, and an online rental system to scale the business." },
+      ]}
+    />
 
     <CaseStudyKeepReading current="ant" />
 
