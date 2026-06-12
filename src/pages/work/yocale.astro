@@ -12,6 +12,7 @@ const sections = [
   { id: 'challenge', label: '03-Challenge' },
   { id: 'approach',  label: '04-Approach' },
   { id: 'identity',  label: '05-Visual Identity' },
+  { id: 'features',  label: '06-Feature Launches' },
 ];
 ---
 
@@ -117,6 +118,60 @@ const sections = [
               <img src="/images/yocale/colors.png" alt="Yocale brand color palette: coral #F37063, navy #034796, a coral-to-blue gradient, and a light pink-to-blue gradient, each with hex codes" width="464" height="270" loading="lazy" />
               <img src="/images/yocale/type.png" alt="Yocale typography: General Sans typeface shown in regular weight for headings and bold weight for the 'abc123' sample" width="464" height="270" loading="lazy" />
               <img src="/images/yocale/logo.png" alt="Yocale logo wordmark and icon mark in coral with a starburst accent" width="464" height="270" loading="lazy" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-features-section" id="features">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-features">
+
+            <CaseStudySectionHeader eyebrow="06" title="Feature Launches" />
+
+            <div class="feature-grid">
+              <div class="feature-card">
+                <div class="feature-card-image">
+                  <img src="/images/yocale/invoicing.jpg" alt="Yocale invoicing interface showing an itemized receipt with services, subtotal, tax, and total, alongside a staff member holding a barcode scanner and product" width="708" height="354" loading="lazy" />
+                </div>
+                <div class="feature-card-info">
+                  <span class="feature-card-number">01</span>
+                  <h3 class="feature-card-title">Invoicing</h3>
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-card-image">
+                  <img src="/images/yocale/integrated-payments.png" alt="Yocale integrated payments landing page showing 'Integrated Payments &amp; Point of Sale Made Simple' messaging, adoption statistics, and a suite of supported payment devices" width="708" height="355" loading="lazy" />
+                </div>
+                <div class="feature-card-info">
+                  <span class="feature-card-number">02</span>
+                  <h3 class="feature-card-title">Integrated Payments</h3>
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-card-image">
+                  <img src="/images/yocale/gift-card.png" alt="Yocale gift card management interface showing preset values and a digital gift card balance, with a salon stylist cutting a client's hair in the background" width="708" height="355" loading="lazy" />
+                </div>
+                <div class="feature-card-info">
+                  <span class="feature-card-number">03</span>
+                  <h3 class="feature-card-title">Gift Card</h3>
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-card-image">
+                  <img src="/images/yocale/bnpl.png" alt="Yocale 'Buy Now, Pay Later' promotional banner showing a phone displaying Affirm, Klarna, and Afterpay payment options" width="708" height="355" loading="lazy" />
+                </div>
+                <div class="feature-card-info">
+                  <span class="feature-card-number">04</span>
+                  <h3 class="feature-card-title">Buy Now Pay Later</h3>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -232,6 +287,51 @@ const sections = [
     height:  auto;
   }
 
+  /* ── 06 Feature Launches ──────────────────── */
+  .feature-grid {
+    display:               grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .feature-card {
+    display:        flex;
+    flex-direction: column;
+    border-radius:  var(--r-lg);
+    overflow:       hidden;
+    background:     var(--bg-2);
+  }
+
+  .feature-card-image img {
+    display:      block;
+    width:        100%;
+    height:       auto;
+    aspect-ratio: 708 / 355;
+    object-fit:   cover;
+  }
+
+  .feature-card-info {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-xs);
+    padding:        var(--space-md);
+  }
+
+  .feature-card-number {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 400;
+    color:       var(--text-2);
+  }
+
+  .feature-card-title {
+    font-family: var(--font-display);
+    font-size:   36px;
+    font-weight: 400;
+    line-height: 1.2;
+    color:       var(--text-1);
+  }
+
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
 
@@ -255,6 +355,11 @@ const sections = [
     }
 
     .case-identity-grid {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .feature-grid {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
