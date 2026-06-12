@@ -1,14 +1,15 @@
 ---
 import CaseStudyVideo from './case-study-video.astro';
-import CaseStudyLottie from './case-study-lottie.astro';
+import CaseStudyGif from './case-study-gif.astro';
 
 const {
   title,
   fullTitle,
   accentTitle,
   videoSrc,
-  lottieSrc,
-  lottieAspectRatio,
+  gifSrc,
+  gifAspectRatio,
+  gifAlt,
   role = [],
   tools = [],
   toolsLabel = 'Tool:',
@@ -31,8 +32,8 @@ const restTitle = accentTitle ? title.slice(accentTitle.length) : title;
         </h1>
 
         <div class="case-hero-video-spacing">
-          {lottieSrc ? (
-            <CaseStudyLottie lottieSrc={lottieSrc} aspectRatio={lottieAspectRatio} />
+          {gifSrc ? (
+            <CaseStudyGif gifSrc={gifSrc} alt={gifAlt} aspectRatio={gifAspectRatio} />
           ) : videoSrc ? (
             <CaseStudyVideo videoSrc={videoSrc} />
           ) : (
