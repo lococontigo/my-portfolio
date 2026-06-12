@@ -8,6 +8,7 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
 const sections = [
   { id: 'impact',   label: '01-Impact' },
   { id: 'overview', label: '02-Overview' },
+  { id: 'identity', label: '05-Visual Identity' },
 ];
 ---
 
@@ -47,6 +48,24 @@ const sections = [
                 <p>Yocale is a cloud-based platform that helps service-based businesses, like salons or med spas, to manage and schedule their appointments.</p>
                 <p>Business Made Simple, we believe small businesses are the backbone of our economy and our job is to empower them by giving them a tool they need to run the business effortlessly.</p>
               </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-identity-section" id="identity">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-identity">
+
+            <CaseStudySectionHeader eyebrow="05" title="Visual Identity" />
+
+            <div class="case-identity-grid">
+              <img src="/images/yocale/colors.png" alt="Yocale brand color palette: coral #F37063, navy #034796, a coral-to-blue gradient, and a light pink-to-blue gradient, each with hex codes" width="464" height="270" loading="lazy" />
+              <img src="/images/yocale/type.png" alt="Yocale typography: General Sans typeface shown in regular weight for headings and bold weight for the 'abc123' sample" width="464" height="270" loading="lazy" />
+              <img src="/images/yocale/logo.png" alt="Yocale logo wordmark and icon mark in coral with a starburst accent" width="464" height="270" loading="lazy" />
             </div>
 
           </div>
@@ -96,10 +115,28 @@ const sections = [
     color:       var(--text-2);
   }
 
+  /* ── 05 Visual Identity ───────────────────── */
+  .case-identity-grid {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-identity-grid img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
 
     .case-overview-content {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-identity-grid {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
