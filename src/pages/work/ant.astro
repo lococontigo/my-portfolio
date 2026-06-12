@@ -7,9 +7,10 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
 import CaseStudySectionHeader from '../../components/case-study-section-header.astro';
 
 const sections = [
-  { id: 'impact',   label: '01-Impact' },
-  { id: 'identity', label: '02-Visual Identity' },
-  { id: 'approach', label: '04-Approach' },
+  { id: 'impact',       label: '01-Impact' },
+  { id: 'identity',     label: '02-Visual Identity' },
+  { id: 'approach',     label: '04-Approach' },
+  { id: 'deliverables', label: '05-Deliverables' },
 ];
 ---
 
@@ -77,6 +78,25 @@ const sections = [
       ]}
     />
 
+    <section class="case-deliverables-section" id="deliverables">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-deliverables">
+
+            <CaseStudySectionHeader eyebrow="05" title="Deliverables" />
+
+            <div class="case-deliverables-rows">
+              <div class="case-deliverables-row">
+                <img src="/images/ant/Blog.svg" alt="Laptop mockup showing the Ant Rentals WordPress blog page with featured posts and a forklift promotion" width="1024" height="624" loading="lazy" />
+                <p class="case-deliverables-row-label">WordPress</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
     <CaseStudyKeepReading current="ant" />
 
   </main>
@@ -136,7 +156,43 @@ const sections = [
     }
   }
 
+  /* ── 05 Deliverables ─────────────────────── */
+  .case-deliverables-rows {
+    display:        flex;
+    flex-direction: column;
+    gap:            clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-deliverables-row {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    align-items:           center;
+  }
+
+  .case-deliverables-row img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
+  .case-deliverables-row-label {
+    font-family:    var(--font-display);
+    font-size:      clamp(40px, 5.5vw, 80px);
+    font-weight:    300;
+    line-height:    1.2;
+    letter-spacing: -1.04px;
+    color:          var(--case-accent, var(--accent-2));
+  }
+
   @media (max-width: 520px) {
     .main { padding-top: 72px; }
+  }
+
+  @media (max-width: 768px) {
+    .case-deliverables-row {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
   }
 </style>
