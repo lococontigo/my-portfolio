@@ -2,10 +2,12 @@
 import BaseLayout from '../../layouts/base-layout.astro';
 import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyHighlight from '../../components/case-study-highlight.astro';
+import CaseStudySectionHeader from '../../components/case-study-section-header.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 
 const sections = [
-  { id: 'impact', label: '01-Impact' },
+  { id: 'impact',   label: '01-Impact' },
+  { id: 'overview', label: '02-Overview' },
 ];
 ---
 
@@ -32,6 +34,26 @@ const sections = [
       ]}
     />
 
+    <section class="case-overview-section" id="overview">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-overview">
+
+            <CaseStudySectionHeader eyebrow="02" title="Overview" />
+
+            <div class="case-overview-content">
+              <h3 class="case-overview-heading">Yocale</h3>
+              <div class="case-overview-body">
+                <p>Yocale is a cloud-based platform that helps service-based businesses, like salons or med spas, to manage and schedule their appointments.</p>
+                <p>Business Made Simple, we believe small businesses are the backbone of our economy and our job is to empower them by giving them a tool they need to run the business effortlessly.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
     <CaseStudyKeepReading current="yocale" />
 
   </main>
@@ -45,8 +67,42 @@ const sections = [
     min-height:          100vh;
   }
 
+  /* ── 02 Overview ──────────────────────────── */
+  .case-overview-content {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-overview-heading {
+    font-family: var(--font-display);
+    font-size:   36px;
+    font-weight: 400;
+    line-height: 1.2;
+    color:       var(--text-1);
+  }
+
+  .case-overview-body {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-sm);
+  }
+
+  .case-overview-body p {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
+
+    .case-overview-content {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
   }
 
   @media (max-width: 520px) {
