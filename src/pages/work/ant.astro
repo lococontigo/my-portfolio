@@ -12,6 +12,15 @@ const sections = [
   { id: 'approach',     label: '04-Approach' },
   { id: 'deliverables', label: '05-Deliverables' },
 ];
+
+const sliderCards = [
+  { src: '/images/ant/Card/default-2.png', w: 453, h: 576, alt: 'Material Handling category card showing a telehandler lifting a red counterweight attachment' },
+  { src: '/images/ant/Card/default.png',   w: 453, h: 566, alt: 'Aerial Work Platforms category card showing an orange and cream JLG telescopic boom lift' },
+  { src: '/images/ant/Card/default-1.png', w: 453, h: 566, alt: 'Earth Moving category card showing a John Deere compact track loader with a bucket' },
+  { src: '/images/ant/Card/default-5.png', w: 453, h: 566, alt: 'Forklifts category card showing a red Hangcha forklift' },
+  { src: '/images/ant/Card/default-3.png', w: 453, h: 576, alt: 'Compaction category card showing a yellow BOMAG tandem roller' },
+  { src: '/images/ant/Card/default-4.png', w: 453, h: 566, alt: 'Air Compressors category card showing a towable ELGi diesel air compressor' },
+];
 ---
 
 <BaseLayout title="Ant Equipment Group" world="light" sections={sections}>
@@ -101,6 +110,22 @@ const sections = [
 
               <div class="case-deliverables-row case-deliverables-row--image">
                 <img src="/images/ant/hero-section.png" alt="Ant Rentals website hero banner reading &quot;Western Canada's Largest Independent Source for Equipment Rentals and Sales&quot; over a photo of a fleet of yellow boom lifts, with &quot;Equipment Rentals&quot; and &quot;Create An Account&quot; buttons" width="1196" height="485" loading="lazy" />
+              </div>
+
+              <div class="case-deliverables-row case-deliverables-row--slider">
+                <div class="case-deliverables-coupon">
+                  <img src="/images/ant/coupon-1.png" alt="Ant Rentals promotional coupon reading &quot;Save $500 on rent&quot; with coupon code NEW2024, valid for new online customers until September 30th, 2024" width="514" height="591" loading="lazy" />
+                </div>
+                <div class="case-deliverables-marquee" data-marquee aria-label="Ant Rentals equipment categories">
+                  <div class="case-deliverables-marquee-track" data-marquee-track>
+                    {sliderCards.map((card) => (
+                      <img src={card.src} alt={card.alt} width={card.w} height={card.h} loading="lazy" />
+                    ))}
+                    {sliderCards.map((card) => (
+                      <img src={card.src} alt="" width={card.w} height={card.h} loading="lazy" aria-hidden="true" />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -221,6 +246,41 @@ const sections = [
 
   .case-deliverables-row--image img {
     max-width: 1196px;
+  }
+
+  /* Row 4 — coupon + continuous card marquee */
+  .case-deliverables-row--slider {
+    --slider-media-h: clamp(360px, 42vw, 560px);
+  }
+
+  .case-deliverables-coupon {
+    display:         flex;
+    justify-content: center;
+  }
+
+  .case-deliverables-coupon img {
+    width:     auto;
+    height:    var(--slider-media-h);
+    max-width: 100%;
+  }
+
+  .case-deliverables-marquee {
+    position:  relative;
+    overflow:  hidden;
+    min-width: 0;
+  }
+
+  .case-deliverables-marquee-track {
+    display: flex;
+    gap:     clamp(12px, 1.7vw, 24px);
+    width:   max-content;
+  }
+
+  .case-deliverables-marquee-track img {
+    width:         auto;
+    height:        var(--slider-media-h);
+    flex:          none;
+    border-radius: var(--r-lg);
   }
 
   @media (max-width: 520px) {

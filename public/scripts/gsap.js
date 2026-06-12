@@ -51,7 +51,30 @@ function initGalleryRows() {
   });
 }
 
+// ── MARQUEE — seamless continuous horizontal scroll of cards ──
+// The track holds the card set rendered twice; sliding it -50% lands
+// exactly one set over, so the loop is invisible. Pauses on hover.
+function initMarquee() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  document.querySelectorAll('[data-marquee]').forEach((marquee) => {
+    const track = marquee.querySelector('[data-marquee-track]');
+    if (!track) return;
+
+    const tween = gsap.to(track, {
+      xPercent: -50,
+      ease: 'none',
+      duration: 30,
+      repeat: -1,
+    });
+
+    marquee.addEventListener('mouseenter', () => tween.pause());
+    marquee.addEventListener('mouseleave', () => tween.resume());
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initImageReveal();
   initGalleryRows();
+  initMarquee();
 });
