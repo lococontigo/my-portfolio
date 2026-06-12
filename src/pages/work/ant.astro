@@ -278,19 +278,27 @@ const sliderCards = [
     padding:       var(--space-md);
     background:    var(--bg-2);
     border-radius: var(--r-lg);
+    cursor:        grab;
+    touch-action:  pan-y;
+  }
+
+  .case-deliverables-marquee.is-dragging {
+    cursor: grabbing;
   }
 
   .case-deliverables-marquee-track {
-    display: flex;
-    gap:     clamp(12px, 1.7vw, 24px);
-    width:   max-content;
+    display:     flex;
+    gap:         clamp(12px, 1.7vw, 24px);
+    width:       max-content;
+    user-select: none;
   }
 
   .case-deliverables-marquee-track img {
-    width:         auto;
-    height:        var(--slider-media-h);
-    flex:          none;
-    border-radius: var(--r-lg);
+    width:          auto;
+    height:         var(--slider-media-h);
+    flex:           none;
+    border-radius:  var(--r-lg);
+    pointer-events: none;
   }
 
   @media (max-width: 520px) {
