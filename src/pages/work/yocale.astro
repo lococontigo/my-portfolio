@@ -1,18 +1,20 @@
 ---
 import BaseLayout from '../../layouts/base-layout.astro';
+import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 ---
 
-<BaseLayout title="Yocale — Case Study" world="light">
+<BaseLayout title="Yocale" world="light">
   <main class="main">
 
-    <section class="padding-global">
-      <div class="container-main">
-        <div class="page-content">
-          <!-- Case study content goes here -->
-        </div>
-      </div>
-    </section>
+    <CaseStudyHero
+      title="Yocale: Building a Design Growth System that Makes Lead Generation Effortless"
+      fullTitle="Yocale: Building a Design Growth System that Makes Lead Generation Effortless"
+      accentTitle="Yocale"
+      role={["GTM Design", "Landing Page Design", "Technical SEO", "Web Development"]}
+      tools={["Figma", "Webflow", "Claude", "Ahrefs"]}
+      duration={["2025 – 2026"]}
+    />
 
     <CaseStudyKeepReading current="yocale" />
 
@@ -21,13 +23,10 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
 
 <style>
   .main {
-    padding-top: 96px;
-    min-height:  100vh;
-  }
-
-  .page-content {
-    padding-top:    var(--space-xl);
-    padding-bottom: var(--space-xl);
+    --case-accent:       var(--accent-yocale);
+    --case-accent-solid: var(--accent-yocale-2);
+    padding-top:         96px;
+    min-height:          100vh;
   }
 
   @media (max-width: 768px) {

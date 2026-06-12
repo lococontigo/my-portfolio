@@ -33,8 +33,15 @@ const restTitle = accentTitle ? title.slice(accentTitle.length) : title;
         <div class="case-hero-video-spacing">
           {lottieSrc ? (
             <CaseStudyLottie lottieSrc={lottieSrc} aspectRatio={lottieAspectRatio} />
-          ) : (
+          ) : videoSrc ? (
             <CaseStudyVideo videoSrc={videoSrc} />
+          ) : (
+            <div class="case-hero-video-empty">
+              <svg class="case-hero-video-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 4v16l13-8z" />
+              </svg>
+              <p class="case-hero-video-empty-label">Demo video coming soon</p>
+            </div>
           )}
         </div>
 
@@ -99,13 +106,41 @@ const restTitle = accentTitle ? title.slice(accentTitle.length) : title;
   }
 
   .case-hero-title-accent {
-    font-style: normal;
-    color:      var(--case-accent, var(--accent-2));
+    font-style:           normal;
+    background:           var(--case-accent, var(--accent-2));
+    background-clip:      text;
+    -webkit-background-clip: text;
+    color:                transparent;
   }
 
   /* ── Video ───────────────────────────────── */
   .case-hero-video-spacing {
     margin-bottom: clamp(20px, 2.8vw, 40px);
+  }
+
+  .case-hero-video-empty {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    justify-content: center;
+    gap:            var(--space-xs);
+    aspect-ratio:   16 / 9;
+    border:         0.5px solid var(--border);
+    border-radius:  var(--r-lg);
+    background:     var(--bg-3);
+    color:          var(--text-3);
+  }
+
+  .case-hero-video-empty-icon {
+    width:  32px;
+    height: 32px;
+  }
+
+  .case-hero-video-empty-label {
+    font-family:    var(--font-body);
+    font-size:      11px;
+    font-weight:    500;
+    letter-spacing: 0.01em;
   }
 
   /* ── Metadata row ────────────────────────── */
@@ -119,7 +154,7 @@ const restTitle = accentTitle ? title.slice(accentTitle.length) : title;
     display:        flex;
     flex-direction: column;
     padding:        var(--space-sm);
-    border:         0.5px solid var(--case-accent, var(--accent-2));
+    border:         0.5px solid var(--case-accent-solid, var(--accent-2));
     border-radius:  var(--r-lg);
     background:     var(--bg-2);
   }
