@@ -1,0 +1,26 @@
+---
+const { src, alt, width, height, maxWidth } = Astro.props;
+
+const style = maxWidth ? `--deliverable-max-w: ${maxWidth}` : undefined;
+---
+
+<div class="deliverable-image" style={style}>
+  <img src={src} alt={alt} width={width} height={height} loading="lazy" />
+</div>
+
+<style>
+  .deliverable-image {
+    display:         flex;
+    justify-content: center;
+    padding:         var(--space-md);
+    background:      var(--bg-2);
+    border-radius:   var(--r-lg);
+  }
+
+  .deliverable-image img {
+    display:   block;
+    width:     100%;
+    height:    auto;
+    max-width: var(--deliverable-max-w, 100%);
+  }
+</style>

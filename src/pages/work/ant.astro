@@ -5,6 +5,8 @@ import CaseStudyHighlight from '../../components/case-study-highlight.astro';
 import CaseStudyProblem from '../../components/case-study-problem.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 import CaseStudySectionHeader from '../../components/case-study-section-header.astro';
+import CaseStudyDeliverableImage from '../../components/case-study-deliverable-image.astro';
+import CaseStudyDeliverableSlider from '../../components/case-study-deliverable-slider.astro';
 
 const sections = [
   { id: 'impact',       label: '01-Impact' },
@@ -108,27 +110,24 @@ const sliderCards = [
                 </div>
               </div>
 
-              <div class="case-deliverables-row case-deliverables-row--image">
-                <img src="/images/ant/hero-section.png" alt="Ant Rentals website hero banner reading &quot;Western Canada's Largest Independent Source for Equipment Rentals and Sales&quot; over a photo of a fleet of yellow boom lifts, with &quot;Equipment Rentals&quot; and &quot;Create An Account&quot; buttons" width="1196" height="485" loading="lazy" />
-              </div>
+              <CaseStudyDeliverableImage
+                src="/images/ant/hero-section.png"
+                alt="Ant Rentals website hero banner reading &quot;Western Canada's Largest Independent Source for Equipment Rentals and Sales&quot; over a photo of a fleet of yellow boom lifts, with &quot;Equipment Rentals&quot; and &quot;Create An Account&quot; buttons"
+                width="1196"
+                height="485"
+                maxWidth="1196px"
+              />
 
-              <div class="case-deliverables-row case-deliverables-row--slider">
-                <div class="case-deliverables-coupon">
-                  <img src="/images/ant/coupon-1.png" alt="Ant Rentals promotional coupon reading &quot;Save $500 on rent&quot; with coupon code NEW2024, valid for new online customers until September 30th, 2024" width="514" height="591" loading="lazy" />
-                </div>
-                <div class="case-deliverables-marquee" data-marquee aria-label="Ant Rentals equipment categories">
-                  <div class="case-deliverables-marquee-track" data-marquee-track>
-                    {sliderCards.map((card) => (
-                      <img src={card.src} alt={card.alt} width={card.w} height={card.h} loading="lazy" />
-                    ))}
-                    {sliderCards.map((card) => (
-                      <img src={card.src} alt="" width={card.w} height={card.h} loading="lazy" aria-hidden="true" />
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <CaseStudyDeliverableSlider
+                mediaSrc="/images/ant/coupon-1.png"
+                mediaAlt="Ant Rentals promotional coupon reading &quot;Save $500 on rent&quot; with coupon code NEW2024, valid for new online customers until September 30th, 2024"
+                mediaWidth="514"
+                mediaHeight="591"
+                cards={sliderCards}
+                ariaLabel="Ant Rentals equipment categories"
+              />
 
-              <div class="case-deliverables-row case-deliverables-row--image case-deliverables-row--advantages">
+              <div class="case-deliverables-row--advantages">
                 <img src="/images/ant/advantages.png" alt="Banner highlighting Ant Rentals advantages: Newest Fleet in Town, Ontime Delivery Guarantee, Easy Online Rental, Largest Selection For Parts, and 24/7 Service Support, over a photo of construction equipment at dusk" width="1440" height="358" loading="lazy" />
               </div>
 
@@ -274,77 +273,14 @@ const sliderCards = [
     width:                 100%;
   }
 
-  .case-deliverables-row--image {
+  .case-deliverables-row--advantages {
     display:         flex;
     justify-content: center;
-  }
-
-  .case-deliverables-row--image img {
-    max-width: 1196px;
-  }
-
-  .case-deliverables-row--advantages {
-    padding:       0;
-    background:    none;
-    border-radius: 0;
   }
 
   .case-deliverables-row--advantages img {
     max-width:     var(--max-w);
     border-radius: var(--r-lg);
-  }
-
-  /* Row 4 — coupon + continuous card marquee */
-  .case-deliverables-row--slider {
-    --slider-media-h: clamp(360px, 42vw, 560px);
-    gap:              24px;
-    padding:          0;
-    background:       none;
-    border-radius:    0;
-  }
-
-  .case-deliverables-coupon {
-    display:         flex;
-    justify-content: center;
-    padding:         var(--space-md);
-    background:      var(--bg-2);
-    border-radius:   var(--r-lg);
-  }
-
-  .case-deliverables-coupon img {
-    width:     auto;
-    height:    var(--slider-media-h);
-    max-width: 100%;
-  }
-
-  .case-deliverables-marquee {
-    position:      relative;
-    overflow:      hidden;
-    min-width:     0;
-    padding:       var(--space-md);
-    background:    var(--bg-2);
-    border-radius: var(--r-lg);
-    cursor:        grab;
-    touch-action:  pan-y;
-  }
-
-  .case-deliverables-marquee.is-dragging {
-    cursor: grabbing;
-  }
-
-  .case-deliverables-marquee-track {
-    display:     flex;
-    gap:         clamp(12px, 1.7vw, 24px);
-    width:       max-content;
-    user-select: none;
-  }
-
-  .case-deliverables-marquee-track img {
-    width:          auto;
-    height:         var(--slider-media-h);
-    flex:           none;
-    border-radius:  var(--r-lg);
-    pointer-events: none;
   }
 
   /* Row 6 — static review/blog grid + wall calendar */

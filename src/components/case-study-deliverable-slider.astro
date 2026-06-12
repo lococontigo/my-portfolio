@@ -1,0 +1,87 @@
+---
+const {
+  mediaSrc,
+  mediaAlt,
+  mediaWidth,
+  mediaHeight,
+  cards = [],
+  ariaLabel,
+} = Astro.props;
+---
+
+<div class="deliverable-slider">
+  <div class="deliverable-slider-media">
+    <img src={mediaSrc} alt={mediaAlt} width={mediaWidth} height={mediaHeight} loading="lazy" />
+  </div>
+  <div class="deliverable-slider-marquee" data-marquee aria-label={ariaLabel}>
+    <div class="deliverable-slider-track" data-marquee-track>
+      {cards.map((card) => (
+        <img src={card.src} alt={card.alt} width={card.w} height={card.h} loading="lazy" />
+      ))}
+      {cards.map((card) => (
+        <img src={card.src} alt="" width={card.w} height={card.h} loading="lazy" aria-hidden="true" />
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .deliverable-slider {
+    --slider-media-h: clamp(360px, 42vw, 560px);
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   24px;
+    align-items:           center;
+  }
+
+  .deliverable-slider-media {
+    display:         flex;
+    justify-content: center;
+    padding:         var(--space-md);
+    background:      var(--bg-2);
+    border-radius:   var(--r-lg);
+  }
+
+  .deliverable-slider-media img {
+    width:     auto;
+    height:    var(--slider-media-h);
+    max-width: 100%;
+  }
+
+  .deliverable-slider-marquee {
+    position:      relative;
+    overflow:      hidden;
+    min-width:     0;
+    padding:       var(--space-md);
+    background:    var(--bg-2);
+    border-radius: var(--r-lg);
+    cursor:        grab;
+    touch-action:  pan-y;
+  }
+
+  .deliverable-slider-marquee.is-dragging {
+    cursor: grabbing;
+  }
+
+  .deliverable-slider-track {
+    display:     flex;
+    gap:         clamp(12px, 1.7vw, 24px);
+    width:       max-content;
+    user-select: none;
+  }
+
+  .deliverable-slider-track img {
+    width:          auto;
+    height:         var(--slider-media-h);
+    flex:           none;
+    border-radius:  var(--r-lg);
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    .deliverable-slider {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+  }
+</style>
