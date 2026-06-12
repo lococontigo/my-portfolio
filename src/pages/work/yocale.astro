@@ -3,12 +3,14 @@ import BaseLayout from '../../layouts/base-layout.astro';
 import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyHighlight from '../../components/case-study-highlight.astro';
 import CaseStudySectionHeader from '../../components/case-study-section-header.astro';
+import CaseStudyDeliverableImage from '../../components/case-study-deliverable-image.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 
 const sections = [
-  { id: 'impact',   label: '01-Impact' },
-  { id: 'overview', label: '02-Overview' },
-  { id: 'identity', label: '05-Visual Identity' },
+  { id: 'impact',    label: '01-Impact' },
+  { id: 'overview',  label: '02-Overview' },
+  { id: 'challenge', label: '03-Challenge' },
+  { id: 'identity',  label: '05-Visual Identity' },
 ];
 ---
 
@@ -49,6 +51,31 @@ const sections = [
                 <p>Business Made Simple, we believe small businesses are the backbone of our economy and our job is to empower them by giving them a tool they need to run the business effortlessly.</p>
               </div>
             </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-challenge-section" id="challenge">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-challenge">
+
+            <CaseStudySectionHeader eyebrow="03" title="Challenge" />
+
+            <div class="case-challenge-content">
+              <h3 class="case-challenge-heading">Missing Brand Identity</h3>
+              <p class="case-challenge-body">Yocale has no unified visual identity across marketing channels (email, social media, website etc). On top of that, the design and content of the website is outdated and needs to be optimized for a better user experience.</p>
+            </div>
+
+            <CaseStudyDeliverableImage
+              src="/images/yocale/challenge.png"
+              alt="Screenshot of Yocale's outdated website homepage showing the 'Why Yocale' and 'Our Promise' sections with a tablet mockup of the booking calendar"
+              width="1196"
+              height="560"
+              maxWidth="1196px"
+            />
 
           </div>
         </div>
@@ -115,6 +142,30 @@ const sections = [
     color:       var(--text-2);
   }
 
+  /* ── 03 Challenge ─────────────────────────── */
+  .case-challenge-content {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-bottom:         clamp(20px, 2.8vw, 40px);
+  }
+
+  .case-challenge-heading {
+    font-family: var(--font-display);
+    font-size:   clamp(28px, 3.1vw, 45px);
+    font-weight: 400;
+    line-height: 1.2;
+    color:       var(--text-1);
+  }
+
+  .case-challenge-body {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
   /* ── 05 Visual Identity ───────────────────── */
   .case-identity-grid {
     display:               grid;
@@ -132,6 +183,11 @@ const sections = [
     .main { padding-top: 80px; }
 
     .case-overview-content {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-challenge-content {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
