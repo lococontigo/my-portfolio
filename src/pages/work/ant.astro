@@ -128,8 +128,27 @@ const sliderCards = [
                 </div>
               </div>
 
-                            <div class="case-deliverables-row case-deliverables-row--image case-deliverables-row--advantages">
+              <div class="case-deliverables-row case-deliverables-row--image case-deliverables-row--advantages">
                 <img src="/images/ant/advantages.png" alt="Banner highlighting Ant Rentals advantages: Newest Fleet in Town, Ontime Delivery Guarantee, Easy Online Rental, Largest Selection For Parts, and 24/7 Service Support, over a photo of construction equipment at dusk" width="1440" height="358" loading="lazy" />
+              </div>
+
+              <div class="case-deliverables-row case-deliverables-row--reviews">
+                <div class="case-deliverables-reviews">
+                  <div class="case-deliverables-reviews-grid">
+                    <div class="case-deliverables-reviews-col">
+                      <img src="/images/ant/review-blog/testimonial-1.png" alt="Customer review card from Samantha Swansy, rated 5 stars, titled &quot;Satisfied With The Facilities At Ant Equipment Rentals&quot;" width="378" height="282" loading="lazy" />
+                      <img src="/images/ant/review-blog/testimonial-3.png" alt="Customer review card from Ken Fisher, rated 5 stars, titled &quot;Fantastic Team At Ant Equipment Rentals&quot;" width="378" height="282" loading="lazy" />
+                      <img src="/images/ant/review-blog/testimonial-2.png" alt="Customer review card from Travis PrintPrint, rated 5 stars, titled &quot;Great Customer Service At Ant Equipment Rentals&quot;" width="378" height="252" loading="lazy" />
+                    </div>
+                    <div class="case-deliverables-reviews-col">
+                      <img src="/images/ant/review-blog/blog-post-3.png" alt="Blog post card dated Nov 17, 2023, titled &quot;The Ant Goes Marching: Ant Equipment Rentals Burnaby, B.C.&quot;, with a photo of a staff member in an Ant Rentals polo shirt standing in front of equipment" width="286" height="459" loading="lazy" />
+                      <img src="/images/ant/review-blog/blog-post-4.png" alt="Blog post card dated Feb 07, 2024, titled &quot;Calgary, Get Ready! Ant Rentals Sets the Stage for Grand Opening!&quot;, with an aerial photo of a snow-covered facility and the Ant Rentals logo" width="286" height="371" loading="lazy" />
+                    </div>
+                  </div>
+                </div>
+                <div class="case-deliverables-calendar">
+                  <img src="/images/ant/wall-calendar.png" alt="Ant Rentals 2024 wall calendar mockup showing a January grid alongside a photo of a telehandler lifting a crane attachment inside a glass-domed atrium, with company contact details" width="586" height="759" loading="lazy" />
+                </div>
               </div>
             </div>
 
@@ -314,6 +333,57 @@ const sliderCards = [
     flex:           none;
     border-radius:  var(--r-lg);
     pointer-events: none;
+  }
+
+  /* Row 6 — static review/blog grid + wall calendar */
+  .case-deliverables-row--reviews {
+    gap:              24px;
+    padding:          0;
+    background:       none;
+    border-radius:    0;
+  }
+
+  .case-deliverables-reviews {
+    position:      relative;
+    overflow:      hidden;
+    padding:       var(--space-md);
+    background:    var(--bg-2);
+    border-radius: var(--r-lg);
+  }
+
+  .case-deliverables-reviews-grid {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    width:                 120%;
+  }
+
+  .case-deliverables-reviews-col {
+    display:        flex;
+    flex-direction: column;
+    gap:            clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-deliverables-reviews-col img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-md);
+  }
+
+  .case-deliverables-calendar {
+    display:         flex;
+    justify-content: center;
+    padding:         var(--space-md);
+    background:      var(--bg-2);
+    border-radius:   var(--r-lg);
+  }
+
+  .case-deliverables-calendar img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-md);
   }
 
   @media (max-width: 520px) {
