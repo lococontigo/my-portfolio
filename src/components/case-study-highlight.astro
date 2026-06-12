@@ -86,7 +86,10 @@ const {
     font-weight:    300;
     line-height:    1.2;
     letter-spacing: -1.04px;
-    color:          var(--case-accent, var(--accent-2));
+    background:     var(--case-accent, var(--accent-2));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color:          transparent;
   }
 
   .case-highlight-stat-caption {

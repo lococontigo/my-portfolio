@@ -1,10 +1,15 @@
 ---
 import BaseLayout from '../../layouts/base-layout.astro';
 import CaseStudyHero from '../../components/case-study-hero.astro';
+import CaseStudyHighlight from '../../components/case-study-highlight.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
+
+const sections = [
+  { id: 'impact', label: '01-Impact' },
+];
 ---
 
-<BaseLayout title="Yocale" world="light">
+<BaseLayout title="Yocale" world="light" sections={sections}>
   <main class="main">
 
     <CaseStudyHero
@@ -14,6 +19,17 @@ import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro
       role={["GTM Design", "Landing Page Design", "Technical SEO", "Web Development"]}
       tools={["Figma", "Webflow", "Claude", "Ahrefs"]}
       duration={["2025 – 2026"]}
+    />
+
+    <CaseStudyHighlight
+      id="impact"
+      eyebrow="01"
+      title="Impact"
+      stats={[
+        { value: "5.15%", caption: "CTR" },
+        { value: "4", caption: "feature release launches" },
+        { value: "40% ↓", caption: "Bounce rate" },
+      ]}
     />
 
     <CaseStudyKeepReading current="yocale" />
