@@ -3,9 +3,11 @@ import BaseLayout from '../../layouts/base-layout.astro';
 import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyHighlight from '../../components/case-study-highlight.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
+import CaseStudySectionHeader from '../../components/case-study-section-header.astro';
 
 const sections = [
-  { id: 'impact', label: '01-Impact' },
+  { id: 'impact',   label: '01-Impact' },
+  { id: 'identity', label: '02-Visual Identity' },
 ];
 ---
 
@@ -33,6 +35,24 @@ const sections = [
       ]}
     />
 
+    <section class="case-identity-section" id="identity">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-identity">
+
+            <CaseStudySectionHeader eyebrow="02" title="Visual Identity" />
+
+            <div class="case-identity-grid">
+              <img src="/images/ant/colors.png" alt="Ant Rentals brand color palette swatches with hex codes" width="464" height="212" loading="lazy" />
+              <img src="/images/ant/type.png" alt="Ant Rentals typography: Montserrat typeface shown in regular and bold weights" width="464" height="212" loading="lazy" />
+              <img src="/images/ant/logo.png" alt="Ant Rentals logo lockups shown in two sizes" width="464" height="212" loading="lazy" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
     <CaseStudyKeepReading current="ant" />
 
   </main>
@@ -45,8 +65,26 @@ const sections = [
     min-height:    100vh;
   }
 
+  /* ── 02 Visual Identity ──────────────────── */
+  .case-identity-grid {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-identity-grid img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
+
+    .case-identity-grid {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
   }
 
   @media (max-width: 520px) {
