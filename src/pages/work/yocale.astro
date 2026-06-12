@@ -10,6 +10,7 @@ const sections = [
   { id: 'impact',    label: '01-Impact' },
   { id: 'overview',  label: '02-Overview' },
   { id: 'challenge', label: '03-Challenge' },
+  { id: 'approach',  label: '04-Approach' },
   { id: 'identity',  label: '05-Visual Identity' },
 ];
 ---
@@ -76,6 +77,29 @@ const sections = [
               height="560"
               maxWidth="1196px"
             />
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-approach-section" id="approach">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-approach">
+
+            <CaseStudySectionHeader eyebrow="04" title="Approach" />
+
+            <div class="case-approach-content">
+              <div class="case-approach-item">
+                <h3 class="case-approach-heading">Build a system</h3>
+                <p class="case-approach-body">Build a system that makes branding consistent, and bring all the pieces together and create a reusable visual library for brand identity and fast delivery.</p>
+              </div>
+              <div class="case-approach-item">
+                <h3 class="case-approach-heading">Design for success</h3>
+                <p class="case-approach-body">Design and develop web pages for product GTM launches and SEO optimization.</p>
+              </div>
+            </div>
 
           </div>
         </div>
@@ -166,6 +190,35 @@ const sections = [
     color:       var(--text-2);
   }
 
+  /* ── 04 Approach ──────────────────────────── */
+  .case-approach-content {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-lg);
+  }
+
+  .case-approach-item {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-approach-heading {
+    font-family: var(--font-display);
+    font-size:   36px;
+    font-weight: 400;
+    line-height: 1.2;
+    color:       var(--text-1);
+  }
+
+  .case-approach-body {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
   /* ── 05 Visual Identity ───────────────────── */
   .case-identity-grid {
     display:               grid;
@@ -188,6 +241,15 @@ const sections = [
     }
 
     .case-challenge-content {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-approach-content {
+      gap: var(--space-md);
+    }
+
+    .case-approach-item {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
