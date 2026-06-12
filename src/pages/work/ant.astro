@@ -90,6 +90,14 @@ const sections = [
                 <img src="/images/ant/Blog.svg" alt="Laptop mockup showing the Ant Rentals WordPress blog page with featured posts and a forklift promotion" width="1024" height="624" loading="lazy" />
                 <p class="case-deliverables-row-label">WordPress</p>
               </div>
+
+              <div class="case-deliverables-row case-deliverables-row--stacked">
+                <p class="case-deliverables-row-label">Web Development</p>
+                <div class="case-deliverables-row-images">
+                  <img src="/images/ant/rental.svg" alt="Laptop mockup of the Ant Rentals Equipment Rentals page showing categories for aerial work platforms, air compressors, compaction, earth moving, and material handling equipment" width="1024" height="624" loading="lazy" />
+                  <img src="/images/ant/Career.svg" alt="Laptop mockup of an Ant Rentals job posting page for a Mobile Service Mechanic position in Burnaby" width="1024" height="624" loading="lazy" />
+                </div>
+              </div>
             </div>
 
           </div>
@@ -188,12 +196,31 @@ const sections = [
     color:          var(--case-accent, var(--accent-2));
   }
 
+  .case-deliverables-row--stacked {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            clamp(20px, 2.8vw, 40px);
+  }
+
+  .case-deliverables-row-images {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    width:                 100%;
+  }
+
   @media (max-width: 520px) {
     .main { padding-top: 72px; }
   }
 
   @media (max-width: 768px) {
     .case-deliverables-row {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-deliverables-row-images {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
