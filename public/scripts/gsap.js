@@ -111,8 +111,35 @@ function initMarquee() {
   });
 }
 
+// ── PARALLAX — full-bleed image drifts within its frame on scroll ──
+// The image is rendered 20% taller than its container, so it can slide
+// from its top edge up to its bottom edge without ever revealing a gap.
+function initParallax() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  document.querySelectorAll('[data-parallax]').forEach((frame) => {
+    const img = frame.querySelector('img');
+    if (!img) return;
+
+    gsap.fromTo(img,
+      { yPercent: 0 },
+      {
+        yPercent: -16.67,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: frame,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+      }
+    );
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initImageReveal();
   initGalleryRows();
   initMarquee();
+  initParallax();
 });
