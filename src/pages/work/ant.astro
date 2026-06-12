@@ -112,10 +112,6 @@ const sliderCards = [
                 <img src="/images/ant/hero-section.png" alt="Ant Rentals website hero banner reading &quot;Western Canada's Largest Independent Source for Equipment Rentals and Sales&quot; over a photo of a fleet of yellow boom lifts, with &quot;Equipment Rentals&quot; and &quot;Create An Account&quot; buttons" width="1196" height="485" loading="lazy" />
               </div>
 
-              <div class="case-deliverables-row case-deliverables-row--image case-deliverables-row--advantages">
-                <img src="/images/ant/advantages.png" alt="Banner highlighting Ant Rentals advantages: Newest Fleet in Town, Ontime Delivery Guarantee, Easy Online Rental, Largest Selection For Parts, and 24/7 Service Support, over a photo of construction equipment at dusk" width="1440" height="358" loading="lazy" />
-              </div>
-
               <div class="case-deliverables-row case-deliverables-row--slider">
                 <div class="case-deliverables-coupon">
                   <img src="/images/ant/coupon-1.png" alt="Ant Rentals promotional coupon reading &quot;Save $500 on rent&quot; with coupon code NEW2024, valid for new online customers until September 30th, 2024" width="514" height="591" loading="lazy" />
@@ -130,6 +126,10 @@ const sliderCards = [
                     ))}
                   </div>
                 </div>
+              </div>
+
+                            <div class="case-deliverables-row case-deliverables-row--image case-deliverables-row--advantages">
+                <img src="/images/ant/advantages.png" alt="Banner highlighting Ant Rentals advantages: Newest Fleet in Town, Ontime Delivery Guarantee, Easy Online Rental, Largest Selection For Parts, and 24/7 Service Support, over a photo of construction equipment at dusk" width="1440" height="358" loading="lazy" />
               </div>
             </div>
 
@@ -252,8 +252,15 @@ const sliderCards = [
     max-width: 1196px;
   }
 
+  .case-deliverables-row--advantages {
+    padding:       0;
+    background:    none;
+    border-radius: 0;
+  }
+
   .case-deliverables-row--advantages img {
-    max-width: var(--max-w);
+    max-width:     var(--max-w);
+    border-radius: var(--r-lg);
   }
 
   /* Row 4 — coupon + continuous card marquee */
