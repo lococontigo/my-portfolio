@@ -337,6 +337,7 @@ const sliderCards = [
 
   /* Row 6 — static review/blog grid + wall calendar */
   .case-deliverables-row--reviews {
+    align-items:      stretch;
     gap:              24px;
     padding:          0;
     background:       none;
@@ -380,9 +381,9 @@ const sliderCards = [
   }
 
   .case-deliverables-calendar img {
-    display:       block;
     width:         100%;
-    height:        auto;
+    height:        100%;
+    object-fit:    contain;
     border-radius: var(--r-md);
   }
 
