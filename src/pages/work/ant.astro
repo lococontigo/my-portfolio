@@ -138,7 +138,7 @@ const sliderCards = [
                     <div class="case-deliverables-reviews-col">
                       <img src="/images/ant/review-blog/testimonial-1.png" alt="Customer review card from Samantha Swansy, rated 5 stars, titled &quot;Satisfied With The Facilities At Ant Equipment Rentals&quot;" width="378" height="282" loading="lazy" />
                       <img src="/images/ant/review-blog/testimonial-3.png" alt="Customer review card from Ken Fisher, rated 5 stars, titled &quot;Fantastic Team At Ant Equipment Rentals&quot;" width="378" height="282" loading="lazy" />
-                      <img src="/images/ant/review-blog/testimonial-2.png" alt="Customer review card from Travis PrintPrint, rated 5 stars, titled &quot;Great Customer Service At Ant Equipment Rentals&quot;" width="378" height="252" loading="lazy" />
+                      <img class="case-deliverables-reviews-fill" src="/images/ant/review-blog/testimonial-2.png" alt="Customer review card from Travis PrintPrint, rated 5 stars, titled &quot;Great Customer Service At Ant Equipment Rentals&quot;" width="378" height="252" loading="lazy" />
                     </div>
                     <div class="case-deliverables-reviews-col">
                       <img src="/images/ant/review-blog/blog-post-3.png" alt="Blog post card dated Nov 17, 2023, titled &quot;The Ant Goes Marching: Ant Equipment Rentals Burnaby, B.C.&quot;, with a photo of a staff member in an Ant Rentals polo shirt standing in front of equipment" width="286" height="459" loading="lazy" />
@@ -357,6 +357,7 @@ const sliderCards = [
     grid-template-columns: 1fr 1fr;
     gap:                   clamp(12px, 1.7vw, 24px);
     width:                 120%;
+    height:                100%;
   }
 
   .case-deliverables-reviews-col {
@@ -370,6 +371,12 @@ const sliderCards = [
     width:         100%;
     height:        auto;
     border-radius: var(--r-md);
+  }
+
+  .case-deliverables-reviews-col img.case-deliverables-reviews-fill {
+    flex:       1;
+    height:     100%;
+    object-fit: cover;
   }
 
   .case-deliverables-calendar {
