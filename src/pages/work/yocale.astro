@@ -155,23 +155,34 @@ const sections = [
 
               <div class="feature-card">
                 <div class="feature-card-image">
-                  <img src="/images/yocale/gift-card.png" alt="Yocale gift card management interface showing preset values and a digital gift card balance, with a salon stylist cutting a client's hair in the background" width="708" height="355" loading="lazy" />
+                  <img src="/images/yocale/bnpl.png" alt="Yocale 'Buy Now, Pay Later' promotional banner showing a phone displaying Affirm, Klarna, and Afterpay payment options" width="708" height="355" loading="lazy" />
                 </div>
                 <div class="feature-card-info">
                   <span class="feature-card-number">03</span>
-                  <h3 class="feature-card-title">Gift Card</h3>
+                  <h3 class="feature-card-title">Buy Now Pay Later</h3>
                 </div>
               </div>
 
               <div class="feature-card">
                 <div class="feature-card-image">
-                  <img src="/images/yocale/bnpl.png" alt="Yocale 'Buy Now, Pay Later' promotional banner showing a phone displaying Affirm, Klarna, and Afterpay payment options" width="708" height="355" loading="lazy" />
+                  <img src="/images/yocale/gift-card.png" alt="Yocale gift card management interface showing preset values and a digital gift card balance, with a salon stylist cutting a client's hair in the background" width="708" height="355" loading="lazy" />
                 </div>
+
                 <div class="feature-card-info">
                   <span class="feature-card-number">04</span>
-                  <h3 class="feature-card-title">Buy Now Pay Later</h3>
+                  <h3 class="feature-card-title">Gift Card</h3>
                 </div>
               </div>
+            </div>
+
+            <div class="feature-gallery">
+              <CaseStudyDeliverableImage
+                src="/images/yocale/section-article.png"
+                alt="Yocale 'Buy Now, Pay Later' blog article preview with the heading 'Let Clients Book Bigger Services. You Get Paid In Full, Upfront', stat cards for '2-3x higher average tickets' and '0 chasing and risk', and a panel showing Affirm, Afterpay, and Klarna logos"
+                width="1196"
+                height="293"
+                maxWidth="1196px"
+              />
             </div>
 
           </div>
@@ -330,6 +341,10 @@ const sections = [
     font-weight: 400;
     line-height: 1.2;
     color:       var(--text-1);
+  }
+
+  .feature-gallery {
+    margin-top: clamp(32px, 5.5vw, 80px);
   }
 
   @media (max-width: 768px) {
