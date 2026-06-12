@@ -48,6 +48,17 @@ const sections = [
               <img src="/images/ant/logo.png" alt="Ant Rentals logo lockups shown in two sizes" width="464" height="212" loading="lazy" />
             </div>
 
+            <div class="case-identity-gallery">
+              <img src="/images/ant/Post-for-Meta.png" alt="Social media post announcing the new XCMG N25 Forklift with its specifications" width="1080" height="1080" loading="lazy" />
+              <img src="/images/ant/brand-new-equipment.png" alt="Ant Rentals social media post announcing brand new equipment, showing a delivery truck transporting a boom lift" width="1080" height="1080" loading="lazy" />
+              <img src="/images/ant/service-post.png" alt="Ant Rentals social media post for its regular maintenance program, showing a technician servicing equipment" width="1080" height="1080" loading="lazy" />
+              <img src="/images/ant/Canada-Day-Instagram-Post.png" alt="Ant Rentals Canada Day Instagram post with a maple leaf graphic and construction equipment" width="1080" height="1080" loading="lazy" />
+              <img src="/images/ant/forklift-division.png" alt="Ant Rentals social media post promoting its forklift rentals and sales division" width="1080" height="1080" loading="lazy" />
+              <img src="/images/ant/hail-storm.png" alt="Ant Rentals social media post offering hail storm damage recovery support for Calgary" width="1080" height="1080" loading="lazy" />
+              <img src="/images/ant/spring-projects.png" alt="Ant Rentals social media post promoting equipment pre-orders for spring projects, featuring a boom lift" width="1512" height="1512" loading="lazy" />
+              <img src="/images/ant/compaction.png" alt="Ant Rentals social media post advertising a 15% off new stock offer on compaction equipment" width="1080" height="1080" loading="lazy" />
+            </div>
+
           </div>
         </div>
       </div>
@@ -78,11 +89,36 @@ const sections = [
     height:  auto;
   }
 
+  .case-identity-gallery {
+    display:               grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(20px, 2.8vw, 40px);
+  }
+
+  .case-identity-gallery img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-lg);
+  }
+
+  @media (max-width: 1024px) {
+    .case-identity-gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
 
     .case-identity-grid {
       grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-identity-gallery {
+      grid-template-columns: repeat(2, 1fr);
       gap:                   var(--space-sm);
     }
   }
