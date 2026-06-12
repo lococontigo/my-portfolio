@@ -46,11 +46,11 @@ const {
               afterLabel={compareAfterLabel}
               aspectRatio={compareAspectRatio}
             />
-          ) : (
+          ) : imageSrc ? (
             <div class="case-highlight-image-wrap">
               <img class="case-highlight-image" data-reveal src={imageSrc} alt={imageAlt} loading="lazy" />
             </div>
-          )}
+          ) : null}
         </div>
 
       </div>
