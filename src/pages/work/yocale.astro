@@ -223,6 +223,11 @@ const sections = [
               />
             </div>
 
+            <div class="feature-gallery-row-4">
+              <img src="/images/yocale/never lose track of a payment.png" alt="Yocale invoicing dashboard showing a list of invoices with date, client, and status columns, and a status filter dropdown open with Draft, Outstanding, Partially Paid, Paid, and Voided options" width="708" height="630" loading="lazy" />
+              <img src="/images/yocale/accept every way to pay.png" alt="Yocale payment integrations panel showing Affirm, Klarna, and Afterpay cards via Stripe, each enabled with a toggle switch and edit button" width="708" height="630" loading="lazy" />
+            </div>
+
           </div>
         </div>
       </div>
@@ -396,6 +401,20 @@ const sections = [
     margin-top: clamp(12px, 1.7vw, 24px);
   }
 
+  .feature-gallery-row-4 {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(12px, 1.7vw, 24px);
+  }
+
+  .feature-gallery-row-4 img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-lg);
+  }
+
   .feature-scanner-image {
     display:         flex;
     align-items:     center;
@@ -474,6 +493,11 @@ const sections = [
     }
 
     .feature-gallery-row-2 {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .feature-gallery-row-4 {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
