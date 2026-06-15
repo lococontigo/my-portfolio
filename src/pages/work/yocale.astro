@@ -229,9 +229,11 @@ const sections = [
             </div>
 
             <div class="feature-gallery-row-5">
-              <img src="/images/yocale/Group 60302.png" alt="Yocale mobile screen showing a hand using a phone for integrated payments near retail shelves, with the heading 'Integrated Payments &amp; Point of Sale Made Simple'" width="343" height="515" loading="lazy" />
-              <img src="/images/yocale/Group 60300.png" alt="Yocale mobile screen with the heading 'Let Clients Book Bigger Services. You Get Paid In Full, Upfront', stat cards for '2-3x higher average tickets' and '0 chasing and risk', and a panel showing Affirm, Afterpay, and Klarna logos" width="343" height="515" loading="lazy" />
-              <img src="/images/yocale/Group 60301.png" alt="Yocale mobile screen showing an invoice creation interface with line items and a signature panel, with the heading 'Create Invoices In Seconds. Get Paid Fast.'" width="343" height="515" loading="lazy" />
+              <div class="feature-gallery-row-5-grid">
+                <img src="/images/yocale/Group 60302.png" alt="Yocale mobile screen showing a hand using a phone for integrated payments near retail shelves, with the heading 'Integrated Payments &amp; Point of Sale Made Simple'" width="343" height="515" loading="lazy" />
+                <img src="/images/yocale/Group 60300.png" alt="Yocale mobile screen with the heading 'Let Clients Book Bigger Services. You Get Paid In Full, Upfront', stat cards for '2-3x higher average tickets' and '0 chasing and risk', and a panel showing Affirm, Afterpay, and Klarna logos" width="343" height="515" loading="lazy" />
+                <img src="/images/yocale/Group 60301.png" alt="Yocale mobile screen showing an invoice creation interface with line items and a signature panel, with the heading 'Create Invoices In Seconds. Get Paid Fast.'" width="343" height="515" loading="lazy" />
+              </div>
             </div>
 
           </div>
@@ -422,13 +424,21 @@ const sections = [
   }
 
   .feature-gallery-row-5 {
+    margin-top:    clamp(12px, 1.7vw, 24px);
+    padding:       var(--space-md);
+    background:    var(--bg-2);
+    border-radius: var(--r-lg);
+  }
+
+  .feature-gallery-row-5-grid {
     display:               grid;
     grid-template-columns: repeat(3, 1fr);
     gap:                   clamp(12px, 1.7vw, 24px);
-    margin-top:            clamp(12px, 1.7vw, 24px);
+    max-width:             1196px;
+    margin-inline:         auto;
   }
 
-  .feature-gallery-row-5 img {
+  .feature-gallery-row-5-grid img {
     display: block;
     width:   100%;
     height:  auto;
@@ -521,7 +531,7 @@ const sections = [
       gap:                   var(--space-sm);
     }
 
-    .feature-gallery-row-5 {
+    .feature-gallery-row-5-grid {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
