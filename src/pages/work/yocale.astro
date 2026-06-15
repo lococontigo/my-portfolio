@@ -228,6 +228,12 @@ const sections = [
               <img src="/images/yocale/accept every way to pay.png" alt="Yocale payment integrations panel showing Affirm, Klarna, and Afterpay cards via Stripe, each enabled with a toggle switch and edit button" width="708" height="630" loading="lazy" />
             </div>
 
+            <div class="feature-gallery-row-5">
+              <img src="/images/yocale/Group 60302.png" alt="Yocale mobile screen showing a hand using a phone for integrated payments near retail shelves, with the heading 'Integrated Payments &amp; Point of Sale Made Simple'" width="343" height="515" loading="lazy" />
+              <img src="/images/yocale/Group 60300.png" alt="Yocale mobile screen with the heading 'Let Clients Book Bigger Services. You Get Paid In Full, Upfront', stat cards for '2-3x higher average tickets' and '0 chasing and risk', and a panel showing Affirm, Afterpay, and Klarna logos" width="343" height="515" loading="lazy" />
+              <img src="/images/yocale/Group 60301.png" alt="Yocale mobile screen showing an invoice creation interface with line items and a signature panel, with the heading 'Create Invoices In Seconds. Get Paid Fast.'" width="343" height="515" loading="lazy" />
+            </div>
+
           </div>
         </div>
       </div>
@@ -415,6 +421,19 @@ const sections = [
     border-radius: var(--r-lg);
   }
 
+  .feature-gallery-row-5 {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(12px, 1.7vw, 24px);
+  }
+
+  .feature-gallery-row-5 img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
   .feature-scanner-image {
     display:         flex;
     align-items:     center;
@@ -498,6 +517,11 @@ const sections = [
     }
 
     .feature-gallery-row-4 {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .feature-gallery-row-5 {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
