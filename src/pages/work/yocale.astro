@@ -185,6 +185,34 @@ const sections = [
               />
             </div>
 
+            <div class="feature-gallery-row-2">
+              <div class="feature-scanner-image">
+                <img src="/images/yocale/Scanner.png" alt="Photo of a hand using a barcode scanner on a product box, overlaid with a Yocale interface card showing 'Hand cream', quantity 88, price $45.00, and brand 'Necessaire'" width="536" height="480" loading="lazy" />
+              </div>
+              <div class="feature-gift-cards">
+                <div class="gift-card-row" data-marquee aria-label="Yocale gift card designs: Thank You, Congrats, For You">
+                  <div class="gift-card-track" data-marquee-track>
+                    <img src="/images/yocale/gift_cards/Thank You.png" alt="Yocale 'Thank You' gift card design in deep plum with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/Congrats.png" alt="Yocale 'Congrats' gift card design in deep rust with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/For You.png" alt="Yocale 'For You' gift card design in deep navy with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/Thank You.png" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/Congrats.png" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/For You.png" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                  </div>
+                </div>
+                <div class="gift-card-row" data-marquee data-marquee-reverse aria-label="Yocale gift card designs: Just Because, With Love, Happy Birthday">
+                  <div class="gift-card-track" data-marquee-track>
+                    <img src="/images/yocale/gift_cards/Just Because.png" alt="Yocale 'Just Because' gift card design in deep maroon with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/With Love.png" alt="Yocale 'With Love' gift card design in deep indigo with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/Happy Birthday.png" alt="Yocale 'Happy Birthday' gift card design in forest green with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/Just Because.png" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/With Love.png" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/Happy Birthday.png" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -347,6 +375,58 @@ const sections = [
     margin-top: clamp(32px, 5.5vw, 80px);
   }
 
+  .feature-gallery-row-2 {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(32px, 5.5vw, 80px);
+  }
+
+  .feature-scanner-image {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    padding:         var(--space-md);
+    background:      var(--bg-2);
+    border-radius:   var(--r-lg);
+  }
+
+  .feature-scanner-image img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
+  .feature-gift-cards {
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+    gap:             clamp(12px, 1.7vw, 24px);
+    padding:         var(--space-md);
+    background:      var(--bg-2);
+    border-radius:   var(--r-lg);
+    overflow:        hidden;
+  }
+
+  .gift-card-row {
+    overflow: hidden;
+  }
+
+  .gift-card-track {
+    display:     flex;
+    gap:         clamp(12px, 1.7vw, 24px);
+    width:       max-content;
+    will-change: transform;
+  }
+
+  .gift-card-track img {
+    display:       block;
+    flex-shrink:   0;
+    width:         clamp(160px, 22vw, 280px);
+    height:        auto;
+    border-radius: var(--r-md);
+  }
+
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
 
@@ -375,6 +455,11 @@ const sections = [
     }
 
     .feature-grid {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .feature-gallery-row-2 {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }

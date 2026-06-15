@@ -63,16 +63,15 @@ function initMarquee() {
     const track = marquee.querySelector('[data-marquee-track]');
     if (!track) return;
 
-    const tween = gsap.to(track, {
-      xPercent: -50,
-      ease: 'none',
-      duration: 30,
-      repeat: -1,
-    });
+    const reverse = marquee.hasAttribute('data-marquee-reverse');
+    const tween = reverse
+      ? gsap.fromTo(track, { xPercent: -50 }, { xPercent: 0, ease: 'none', duration: 30, repeat: -1 })
+      : gsap.to(track, { xPercent: -50, ease: 'none', duration: 30, repeat: -1 });
 
     let dragging = false;
     let startX = 0;
     let startTime = 0;
+    const dir = reverse ? -1 : 1;
 
     // px the track travels over one full loop = one card set's width
     const setWidth = () => track.offsetWidth / 2 || 1;
@@ -93,8 +92,8 @@ function initMarquee() {
       if (!dragging) return;
       const dx = e.clientX - startX;
       const dur = tween.duration();
-      // drag left (dx < 0) advances the playhead forward
-      let t = startTime - (dx / setWidth()) * dur;
+      // drag left (dx < 0) advances the playhead forward; reversed for data-marquee-reverse
+      let t = startTime - dir * (dx / setWidth()) * dur;
       t = ((t % dur) + dur) % dur;   // wrap into [0, dur)
       tween.time(t);
     });
