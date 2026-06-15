@@ -236,6 +236,15 @@ const sections = [
               </div>
             </div>
 
+            <div class="feature-gallery-row-6">
+              <div class="feature-gallery-row-6-item">
+                <img src="/images/yocale/mockup-bnpl.png" alt="Yocale mobile checkout screen showing an invoice with 'Amount due $450.00', Affirm and Klarna buy-now-pay-later options, payment method selection with Affirm selected, and a 'Confirm payment' button" width="550" height="708" loading="lazy" />
+              </div>
+              <div class="feature-gallery-row-6-item">
+                <img src="/images/yocale/Commission.png" alt="Photo of a woman checking her phone, with a 'Blowdry Commission' card overlay showing a discounted price of $49.00 from $70.00 and staff member 'Natan Jein'" width="536" height="480" loading="lazy" />
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -444,6 +453,28 @@ const sections = [
     height:  auto;
   }
 
+  .feature-gallery-row-6 {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(12px, 1.7vw, 24px);
+  }
+
+  .feature-gallery-row-6-item {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    padding:         0 clamp(32px, 5.5vw, 80px);
+    background:      var(--bg-2);
+    border-radius:   var(--r-lg);
+  }
+
+  .feature-gallery-row-6-item img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
   .feature-scanner-image {
     display:         flex;
     align-items:     center;
@@ -532,6 +563,11 @@ const sections = [
     }
 
     .feature-gallery-row-5-grid {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .feature-gallery-row-6 {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
     }
