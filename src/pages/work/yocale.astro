@@ -250,6 +250,25 @@ const sections = [
       </div>
     </section>
 
+    <section class="case-features-section" id="features">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-features">
+
+            <CaseStudySectionHeader eyebrow="07" title="Landing Pages"/>
+
+            <div class="landing-video-placeholder">
+              <svg class="landing-video-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 4v16l13-8z" />
+              </svg>
+              <p class="landing-video-label">Demo video coming soon</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
     <CaseStudyKeepReading current="yocale" />
 
   </main>
@@ -519,6 +538,33 @@ const sections = [
     width:         auto;
     height:        var(--gift-card-row-h);
     border-radius: var(--r-md);
+  }
+
+  /* ── 07 Landing Pages ────────────────────── */
+  .landing-video-placeholder {
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    justify-content: center;
+    gap:             var(--space-xs);
+    margin-top:      clamp(32px, 5.5vw, 80px);
+    aspect-ratio:    16 / 9;
+    border:          0.5px solid var(--border);
+    border-radius:   var(--r-lg);
+    background:      var(--bg-3);
+    color:           var(--text-3);
+  }
+
+  .landing-video-icon {
+    width:  32px;
+    height: 32px;
+  }
+
+  .landing-video-label {
+    font-family:    var(--font-body);
+    font-size:      11px;
+    font-weight:    500;
+    letter-spacing: 0.01em;
   }
 
   @media (max-width: 768px) {
