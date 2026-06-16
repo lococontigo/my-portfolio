@@ -13,6 +13,7 @@ const sections = [
   { id: 'approach',  label: '04-Approach' },
   { id: 'identity',  label: '05-Visual Identity' },
   { id: 'features',  label: '06-Feature Launches' },
+  { id: 'landing',  label: '07-Landing Pages' },
 ];
 ---
 
@@ -250,7 +251,7 @@ const sections = [
       </div>
     </section>
 
-    <section class="case-features-section" id="features">
+    <section class="case-features-section" id="landing">
       <div class="padding-global">
         <div class="container-main">
           <div class="case-features">
@@ -269,10 +270,10 @@ const sections = [
               <div class="landing-content-body">
                 <p>Marketing has a playbook on converting traffic into a lead. Almost all successful landing pages are following this formula:</p>
                 <ol class="landing-content-list">
-                  <li>1. Hook — Awareness &amp; Primary Value Proposition</li>
-                  <li>2. Core Value — Interest &amp; How to address my problem</li>
-                  <li>3. Social Proof — Remove Objections &amp; Build Desire</li>c:\Users\andre\Downloads\hero header.png
-                  <li>4. Call To Action — The Conversion</li>
+                  <li>1. Hook — Awareness &amp; (Awareness & Primary Value Proposition) </li>
+                  <li>2. Core Value — Interest &amp; (Interest & How to address my problem)</li>
+                  <li>3. Social Proof — Remove Objections &amp; (Remove Objections & Build Desire)</li>
+                  <li>4. Call To Action — (The Conversion)</li>
                 </ol>
               </div>
             </div>
@@ -308,6 +309,16 @@ const sections = [
               <div class="landing-localization">
                 <h3 class="landing-localization-title">Localization</h3>
                 <p class="landing-localization-body">Latam is also our service area and our target audiences. To expand our business and provide value proposition to the Spanish readers. We worked together on a landing page which Latin America sales can spread this around.</p>
+              </div>
+
+              <div class="landing-gallery-row-4" data-parallax>
+                <img
+                  src="/images/yocale/Yocale Pay.png"
+                  alt="Yocale Pay full-page landing page showing the hero headline, feature highlights, and call-to-action section"
+                  width="1440"
+                  height="800"
+                  loading="lazy"
+                />
               </div>
             </div>
 
@@ -711,6 +722,22 @@ const sections = [
     font-weight: 300;
     line-height: 1.6;
     color:       var(--text-2);
+  }
+
+  .landing-gallery-row-4 {
+    height:        clamp(480px, 55.6vw, 800px);
+    overflow:      hidden;
+    border-radius: var(--r-lg);
+    margin-top:    clamp(12px, 1.7vw, 24px);
+  }
+
+  .landing-gallery-row-4 img {
+    display:         block;
+    width:           100%;
+    height:          120%;
+    object-fit:      cover;
+    object-position: top center;
+    will-change:     transform;
   }
 
   @media (max-width: 768px) {
