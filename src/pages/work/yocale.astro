@@ -320,6 +320,16 @@ const sections = [
                   loading="lazy"
                 />
               </div>
+
+              <div class="landing-gallery-row-5">
+                <CaseStudyDeliverableImage
+                  src="/images/yocale/tracking.png"
+                  alt="Yocale analytics tracking dashboard showing session data, conversion metrics, and user behaviour insights"
+                  width="1196"
+                  height="678"
+                  maxWidth="1196px"
+                />
+              </div>
             </div>
 
           </div>
@@ -722,6 +732,14 @@ const sections = [
     font-weight: 300;
     line-height: 1.6;
     color:       var(--text-2);
+  }
+
+  .landing-gallery-row-5 {
+    margin-top: clamp(12px, 1.7vw, 24px);
+  }
+
+  .landing-gallery-row-5 :global(.deliverable-image) {
+    padding-bottom: 0;
   }
 
   .landing-gallery-row-4 {
