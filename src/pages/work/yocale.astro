@@ -264,6 +264,19 @@ const sections = [
               <p class="landing-video-label">Demo video coming soon</p>
             </div>
 
+            <div class="landing-content">
+              <h3 class="landing-content-title">Conversion Funnel</h3>
+              <div class="landing-content-body">
+                <p>Marketing has a playbook on converting traffic into a lead. Almost all successful landing pages are following this formula:</p>
+                <ol class="landing-content-list">
+                  <li>Hook — Awareness &amp; Primary Value Proposition</li>
+                  <li>Core Value — Interest &amp; How to address my problem</li>
+                  <li>Social Proof — Remove Objections &amp; Build Desire</li>
+                  <li>Call To Action — The Conversion</li>
+                </ol>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -567,6 +580,41 @@ const sections = [
     letter-spacing: 0.01em;
   }
 
+  .landing-content {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(20px, 2.8vw, 40px);
+  }
+
+  .landing-content-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(27px, 3.1vw, 45px);
+    font-weight:    400;
+    line-height:    1.1;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+  }
+
+  .landing-content-body {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-xs);
+  }
+
+  .landing-content-body p,
+  .landing-content-list li {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
+  .landing-content-list {
+    padding-left: var(--space-sm);
+  }
+
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
 
@@ -617,6 +665,10 @@ const sections = [
     .feature-gallery-row-6 {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
+    }
+
+    .landing-content {
+      grid-template-columns: 1fr;
     }
   }
 
