@@ -136,9 +136,47 @@ function initParallax() {
   });
 }
 
+// ── CLOSING PARALLAX — img[data-parallax] drifts up slower than the page ──
+// The image is taller than its frame; the overflow (img height − frame height)
+// is the slack it can pan through without ever revealing a gap. The image
+// pans the full slack over the scroll traversal, so it tracks at < 1× the
+// scroll speed — slower than the page, creating depth.
+function initClosingParallax() {
+  if (window.innerWidth < 768) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const img = document.querySelector('img[data-parallax]');
+  if (!img) return;
+
+  const frame = img.parentElement;
+
+  gsap.fromTo(img,
+    { y: 0 },
+    {
+      // recompute the slack on every refresh so it survives the lazy image
+      // loading in and any responsive resize
+      y: () => -(img.offsetHeight - frame.offsetHeight),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: frame,
+        start:   'top bottom',
+        end:     'bottom top',
+        scrub:   true,
+        invalidateOnRefresh: true,
+      },
+    }
+  );
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initImageReveal();
   initGalleryRows();
   initMarquee();
   initParallax();
+  initClosingParallax();
 });
+
+// Lazy-loaded / late-decoding images can change layout after DOMContentLoaded,
+// which throws off ScrollTrigger's cached measurements — recompute once
+// everything has loaded.
+window.addEventListener('load', () => ScrollTrigger.refresh());
