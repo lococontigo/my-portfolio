@@ -269,12 +269,22 @@ const sections = [
               <div class="landing-content-body">
                 <p>Marketing has a playbook on converting traffic into a lead. Almost all successful landing pages are following this formula:</p>
                 <ol class="landing-content-list">
-                  <li>Hook — Awareness &amp; Primary Value Proposition</li>
-                  <li>Core Value — Interest &amp; How to address my problem</li>
-                  <li>Social Proof — Remove Objections &amp; Build Desire</li>
-                  <li>Call To Action — The Conversion</li>
+                  <li>1. Hook — Awareness &amp; Primary Value Proposition</li>
+                  <li>2. Core Value — Interest &amp; How to address my problem</li>
+                  <li>3. Social Proof — Remove Objections &amp; Build Desire</li>
+                  <li>4. Call To Action — The Conversion</li>
                 </ol>
               </div>
+            </div>
+
+            <div class="landing-gallery">
+              <CaseStudyDeliverableImage
+                src="/images/yocale/Container.png"
+                alt="Yocale landing page layout showing the full-width container structure and section hierarchy"
+                width="1196"
+                height="720"
+                maxWidth="1196px"
+              />
             </div>
 
           </div>
@@ -613,6 +623,10 @@ const sections = [
 
   .landing-content-list {
     padding-left: var(--space-sm);
+  }
+
+  .landing-gallery {
+    margin-top: clamp(32px, 5.5vw, 80px);
   }
 
   @media (max-width: 768px) {
