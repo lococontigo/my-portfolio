@@ -4,6 +4,7 @@ import CaseStudyHero from '../../components/case-study-hero.astro';
 import CaseStudyHighlight from '../../components/case-study-highlight.astro';
 import CaseStudySectionHeader from '../../components/case-study-section-header.astro';
 import CaseStudyDeliverableImage from '../../components/case-study-deliverable-image.astro';
+import CaseStudyCompareSlider from '../../components/case-study-compare-slider.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 
 const sections = [
@@ -14,6 +15,7 @@ const sections = [
   { id: 'identity',  label: '05-Visual Identity' },
   { id: 'features',  label: '06-Feature Launches' },
   { id: 'landing',  label: '07-Landing Pages' },
+  { id: 'webdev',   label: '08-Web Development' },
 ];
 ---
 
@@ -330,6 +332,35 @@ const sections = [
                   maxWidth="1196px"
                 />
               </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-webdev-section" id="webdev">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-webdev">
+
+            <CaseStudySectionHeader eyebrow="08" title="Web Development" />
+
+            <div class="webdev-compare">
+              <CaseStudyCompareSlider
+                beforeSrc="/images/yocale/old blog.png"
+                afterSrc="/images/yocale/new blog.png"
+                beforeAlt="Screenshot of the original Yocale blog layout from 2023 showing all posts on a single page with no category structure"
+                afterAlt="Screenshot of the redesigned Yocale blog layout from 2024 showing structured categories and improved navigation"
+                beforeLabel="Before · 2023"
+                afterLabel="After · 2024"
+                aspectRatio="1440 / 1798"
+              />
+            </div>
+
+            <div class="webdev-content">
+              <h3 class="webdev-content-title">Redesign to solve SEO issues</h3>
+              <p class="webdev-content-body">The site always has orphan pages with blog as the original layout is dumping the latest 100 blogs into that page while there are more than 100 content. So I restructured the blog section and make sure every category is being indexed and shown.</p>
             </div>
 
           </div>
@@ -756,6 +787,35 @@ const sections = [
     will-change: transform;
   }
 
+  /* ── 08 Web Development ──────────────────── */
+  .webdev-compare {
+    margin-top: clamp(32px, 5.5vw, 80px);
+  }
+
+  .webdev-content {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(20px, 2.8vw, 40px);
+  }
+
+  .webdev-content-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(27px, 3.1vw, 45px);
+    font-weight:    400;
+    line-height:    1.1;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+  }
+
+  .webdev-content-body {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
 
@@ -817,6 +877,10 @@ const sections = [
     }
 
     .landing-localization {
+      grid-template-columns: 1fr;
+    }
+
+    .webdev-content {
       grid-template-columns: 1fr;
     }
   }
