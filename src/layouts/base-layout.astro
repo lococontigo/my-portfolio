@@ -16,6 +16,9 @@ const {
   world = 'dark',
   sections = [],
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const fullTitle    = `${title} · Andrew YIP`;
 ---
 
 <!DOCTYPE html>
@@ -23,9 +26,17 @@ const {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
-  <title>{title} · Andrew YIP</title>
+  <title>{fullTitle}</title>
   <meta name="description" content={description} />
-  <link rel="icon" type="image/png" href="/images/logo.png" />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content={canonicalURL} />
+  <meta property="og:title"       content={fullTitle} />
+  <meta property="og:description" content={description} />
+
+  <link rel="icon" type="image/png" href="/images/andrew-yip-logo.png" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

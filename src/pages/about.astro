@@ -4,14 +4,15 @@ import Timeline from '../components/timeline.astro';
 import Testimonials from '../components/testimonials.astro';
 ---
 
-<BaseLayout title="About" world="dark">
+<BaseLayout title="About" world="dark" description="Andrew Yip is a UX/UI designer and developer based in Vancouver, BC. He specialises in product design, design systems, and web development for SaaS companies.">
   <script slot="head" is:inline type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Andrew Yip",
-    "jobTitle": "UX/UI Designer",
-    "url": "https://andrewcheng.design/about",
+    "jobTitle": "UX/UI Designer & Developer",
+    "url": "https://andrewthyip.com",
+    "image": "https://andrewthyip.com/images/andrew-yip-designer-photo.webp",
     "sameAs": ["https://www.linkedin.com/in/andrewthyip/"]
   }
   </script>
@@ -28,7 +29,7 @@ import Testimonials from '../components/testimonials.astro';
               <div class="about-bio">
                 <div class="about-photo-wrap">
                   <img
-                    src="/images/self-image.png"
+                    src="/images/andrew-yip-designer-photo.webp"
                     alt="Andrew Yip, UX/UI Designer"
                     class="about-photo"
                     fetchpriority="high"
@@ -39,7 +40,7 @@ import Testimonials from '../components/testimonials.astro';
                 <p>I come from Hong Kong, a concrete city often known for its fast-paced lifestyle. My design career commenced in Canada, where I started a postgraduate program focused on design and development.</p>
                 <p>Since then, I've been actively involved in the design field. At first, I volunteered to design for a UX community. After that, I put my skills to use by freelancing for a variety of businesses in British Columbia.</p>
 
-                <h2 class="about-subheading">Design Philosophy</h2>
+                <h2 class="about-subheading">Work Philosophy</h2>
                 <p>As a designer, I believe the nature of design is problem solving rather than just make things pretty.</p>
                 <p>My job is to bridge design thinking and technical execution to deliver user-centric solutions that drive measurable business outcomes.</p>
 
@@ -47,7 +48,7 @@ import Testimonials from '../components/testimonials.astro';
                 <ul class="about-facts">
                   <li>I speak English, Mandarin, Cantonese, and a bit of Spanish.</li>
                   <li>I am a fan of WONG KAR WAI movies.</li>
-                  <li>I developed this portfolio using custom code, feel free to inspect.</li>
+                  <li>I developed this portfolio using Astro, feel free to inspect.</li>
                 </ul>
 
                 <div class="about-tags">
@@ -90,11 +91,11 @@ import Testimonials from '../components/testimonials.astro';
               <div class="about-cta-actions">
                 <a
                   href="https://www.linkedin.com/in/andrewthyip/"
-                  class="about-btn-accent"
+                  class="about-btn-outline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >Connect on LinkedIn</a>
-                <a href="mailto:andrewthyip@gmail.com" class="about-btn-outline">Say Hello</a>
+                <a href="mailto:andrewthyip@gmail.com" class="about-btn-accent">Say Hello</a>
               </div>
             </div>
 

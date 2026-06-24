@@ -11,6 +11,7 @@
 .intro-name {
   font-family:    var(--font-display);
   font-size:      clamp(44px, 5.5vw, 75px);
+  margin:         0;
   font-weight:    400;
   line-height:    1.2;
   letter-spacing: -0.28px;
@@ -85,6 +86,14 @@
   display:         block;
   animation:       fade-up 0.6s var(--ease) both;
   animation-delay: 200ms;
+  transition:      transform 0.25s var(--ease), filter 0.25s var(--ease);
+}
+
+@media (hover: hover) {
+  .intro-logo-item:hover {
+    transform: scale(1.08);
+    filter:    brightness(1.2) drop-shadow(0 0 8px var(--accent-dim));
+  }
 }
 
 .intro-logo-item:nth-child(2) { animation-delay: 300ms; }
@@ -154,6 +163,13 @@ section:has(.work-featured) {
   line-height:    1;
   letter-spacing: -1.04px;
   color:          var(--text-1);
+  transition:     color 0.3s var(--ease);
+}
+
+@media (hover: hover) {
+  .work-featured:hover .work-featured-title {
+    color: var(--accent);
+  }
 }
 
 .work-featured-desc {
@@ -171,7 +187,7 @@ section:has(.work-featured) {
   gap:            6px;
   padding:        10px 14px;
   font-family:    var(--font-body);
-  font-size:      13px;
+  font-size:      12px;
   font-weight:    400;
   color:          var(--text-2);
   letter-spacing: 0.26px;
@@ -192,17 +208,19 @@ section:has(.work-featured) {
   position:      relative;
   border-radius: var(--r-lg);
   overflow:      hidden;
+  transition:    transform 0.6s var(--ease);
 }
 
 .work-featured-img {
-  width:      100%;
-  height:     auto;
-  display:    block;
-  transition: transform 0.6s var(--ease);
+  width:   100%;
+  height:  auto;
+  display: block;
 }
 
-.work-featured:hover .work-featured-img {
-  transform: scale(1.03);
+@media (hover: hover) {
+  .work-featured:hover .work-featured-visual {
+    transform: scale(1.03);
+  }
 }
 
 @media (max-width: 768px) {

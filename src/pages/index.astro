@@ -3,7 +3,18 @@ import BaseLayout from '../layouts/base-layout.astro';
 import '../styles/index.css';
 ---
 
-<BaseLayout title="Andrew YIP" world="dark">
+<BaseLayout title="Andrew YIP" world="dark" description="UX/UI designer and developer based in Vancouver. I build intuitive products, design systems, and landing pages for SaaS and enterprise companies.">
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Andrew Yip",
+    "jobTitle": "UX/UI Designer & Developer",
+    "url": "https://andrewthyip.com",
+    "sameAs": ["https://www.linkedin.com/in/andrewthyip/"],
+    "knowsAbout": ["UX Design", "UI Design", "Web Development", "Design Systems"]
+  }
+  </script>
   <main class="main">
 
     <!-- ── Brief Intro ────────────────────────── -->
@@ -13,7 +24,7 @@ import '../styles/index.css';
           <div class="intro-content">
 
             <div class="intro-header">
-              <p class="intro-name">Andrew YIP</p>
+              <h1 class="intro-name">Andrew YIP</h1>
               <div class="intro-meta">
                 <span class="intro-role">UX/UI Designer</span>
                 <div class="intro-location">
@@ -49,14 +60,14 @@ import '../styles/index.css';
                 <p class="work-featured-desc">Yocale is an all-in-one business management and client scheduling software designed for appointment-based businesses.</p>
               </div>
               <a href="/work/yocale" class="work-featured-link">
-                Read the case study →
+                See My Work →
               </a>
             </div>
 
             <div class="work-featured-visual">
               <a href="/work/yocale">
                 <img
-                  src="/images/yocale%20thumbnail.png"
+                  src="/images/yocale-mockup.webp"
                   alt="Yocale dashboard — booking management interface"
                   class="work-featured-img"
                   loading="lazy"
@@ -77,11 +88,11 @@ import '../styles/index.css';
 
             <div class="work-featured-info">
               <div class="work-featured-text">
-                <h2 class="work-featured-title">Delta Intelligent Building Technologies Resources Intranet</h2>
+                <h2 class="work-featured-title">Delta Intelligent Building Technologies </h2>
                 <p class="work-featured-desc">The Source is a digital library dedicated to providing non-technical documents, training, and marketing materials to Delta Controls’ partners and employees.</p>
               </div>
               <a href="/work/delta" class="work-featured-link">
-                Read the case study →
+                Read the Case Study →
               </a>
             </div>
 
@@ -90,6 +101,71 @@ import '../styles/index.css';
                 <img
                   src="/images/Mac-Studio-mockup.svg"
                   alt="Delta Intelligent Building Technologies Resources Intranet Mockup"
+                  class="work-featured-img"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Work: ANT Rentals ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Ant Equipment Group</h2>
+                <p class="work-featured-desc">ANT is western Canada’s largest independent source for equipment rentals and sales.</p>
+              </div>
+              <a href="/work/ant" class="work-featured-link">
+                See My Work →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/work/ant">
+                <img
+                  src="/images/ant-mockup.svg"
+                  alt="ANT rentals blog mockup"
+                  class="work-featured-img"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Work: Crowd Ease ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Crowd Ease</h2>
+                <p class="work-featured-desc">Crowd Ease is a mobile app that assists restaurant plan their resources and marketing strategy by providing event information and live crowd tracking.</p>
+              </div>
+              <a href="/work/crowd-ease" class="work-featured-link">
+                Read the Case Study →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/work/crowd-ease">
+                <img
+                  src="/images/UI-CROWDEASE-1.svg"
+                  alt="ANT rentals blog mockup"
                   class="work-featured-img"
                   loading="lazy"
                 />

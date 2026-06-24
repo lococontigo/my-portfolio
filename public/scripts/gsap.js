@@ -168,12 +168,105 @@ function initClosingParallax() {
   );
 }
 
+// ── QUOTE PANEL HORIZONTAL SCROLL ────────────────────────────
+// Pins the quotes section and converts vertical scroll into
+// horizontal movement across the interview panels.
+function initQuotePanelScroll() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const quotes = document.querySelector('.case-research-quotes');
+  const track  = document.querySelector('.case-research-quotes-track');
+  if (!quotes || !track) return;
+
+  const panels = track.querySelectorAll('.case-research-quote-panel');
+  if (panels.length < 2) return;
+
+  const totalMove = window.innerWidth * (panels.length - 1);
+
+  gsap.to(track, {
+    x:    -totalMove,
+    ease: 'none',
+    scrollTrigger: {
+      trigger:             quotes,
+      pin:                 true,
+      start:               'top top',
+      end:                 () => `+=${totalMove}`,
+      scrub:               1,
+      invalidateOnRefresh: true,
+    },
+  });
+}
+
+// ── STAT COUNTER — counts from 0 to final value on scroll ──
+function initStatCounters() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  document.querySelectorAll('.case-highlight-stats').forEach((group) => {
+    group.querySelectorAll('.case-highlight-stat-value').forEach((el, i) => {
+      const original = el.textContent.trim();
+      // Matches a single number (int or decimal) with optional prefix/suffix.
+      // Fails on multi-number strings like "2-3 clicks" — those are skipped.
+      const match = original.match(/^([^0-9]*)([0-9]+(?:\.[0-9]+)?)([^0-9]*)$/);
+      if (!match) return;
+
+      const prefix  = match[1];
+      const end     = parseFloat(match[2]);
+      const suffix  = match[3];
+      const counter = { val: 0 };
+
+      el.textContent = prefix + '0' + suffix;
+
+      gsap.to(counter, {
+        val:          end,
+        duration:     1.4,
+        ease:         'power4.out',
+        delay:        i * 0.15,
+        onUpdate:     () => { el.textContent = prefix + Math.round(counter.val) + suffix; },
+        onComplete:   () => { el.textContent = original; },
+        scrollTrigger: {
+          trigger:       group,
+          start:         'top 80%',
+          toggleActions: 'play none none none',
+        },
+      });
+    });
+  });
+}
+
+// ── STAGGER REVEAL — children fade up in sequence when parent enters view ──
+function initStaggerReveal() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  document.querySelectorAll('[data-stagger-reveal]').forEach((group) => {
+    group.querySelectorAll('[data-stagger-child]').forEach((child, i) => {
+      gsap.fromTo(child,
+        { opacity: 0, y: 20 },
+        {
+          opacity:  1,
+          y:        0,
+          duration: 0.7,
+          ease:     'power4.out',
+          delay:    i * 0.15,
+          scrollTrigger: {
+            trigger:       group,
+            start:         'top 85%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initImageReveal();
   initGalleryRows();
   initMarquee();
   initParallax();
   initClosingParallax();
+  initQuotePanelScroll();
+  initStatCounters();
+  initStaggerReveal();
 });
 
 // Lazy-loaded / late-decoding images can change layout after DOMContentLoaded,

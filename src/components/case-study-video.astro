@@ -92,13 +92,15 @@ const muteLabel = muted ? 'Unmute video' : 'Mute video';
     align-items:     center;
     justify-content: center;
     flex-shrink:     0;
-    width:           32px;
-    height:          32px;
+    width:           40px;
+    height:          40px;
     border-radius:   var(--r-pill);
     border:          0.5px solid transparent;
     color:           var(--text-1);
-    transition:      border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    transition:      border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.1s var(--ease);
   }
+
+  .case-video-ctrl-btn:active { transform: scale(0.96); }
 
   .case-video-ctrl-btn svg {
     width:  16px;
@@ -120,7 +122,7 @@ const muteLabel = muted ? 'Unmute video' : 'Mute video';
   .case-video-timestamp {
     flex-shrink: 0;
     font-family: var(--font-mono);
-    font-size:   11px;
+    font-size:   12px;
     color:       var(--text-1);
     white-space: nowrap;
   }

@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+# Large GIFs — too big for GitHub (host on CDN or compress before committing)
+public/gifs/yocale/0621(1).gif
+public/gifs/yocale/transparent.gif

@@ -85,13 +85,12 @@
   }
 
   .testi-track {
-    position:   relative;
-    min-height: 220px;
+    display: grid;
   }
 
   .testi-slide {
-    position:       absolute;
-    inset:          0;
+    grid-area:      1 / 1;
+    padding:        var(--space-md);
     opacity:        0;
     transform:      translateY(10px);
     transition:     opacity 0.55s var(--ease), transform 0.55s var(--ease);
@@ -106,7 +105,7 @@
 
   .testi-quote-mark {
     font-family:   var(--font-display);
-    font-size:     64px;
+    font-size:     61px;
     line-height:   1;
     color:         var(--accent);
     display:       block;
@@ -128,31 +127,30 @@
   }
 
   .testi-attribution {
-    display:     flex;
-    align-items: baseline;
-    gap:         6px;
+    display:        flex;
+    flex-direction: column;
+    gap:            4px;
   }
 
   .testi-dash {
-    font-size: 11px;
+    font-size: 12px;
     color:     var(--text-3);
   }
 
   .testi-name {
     font-family: var(--font-body);
-    font-size:   15px;
+    font-size:   16px;
     font-weight: 500;
     color:       var(--text-1);
   }
 
   .testi-sep {
-    font-size: 11px;
-    color:     var(--text-3);
+    display: none;
   }
 
   .testi-role {
     font-family: var(--font-body);
-    font-size:   11px;
+    font-size:   12px;
     color:       var(--text-3);
   }
 
@@ -182,6 +180,11 @@
     transition:    all 0.25s var(--ease);
   }
 
+  .testi-dot:focus-visible {
+    outline:        2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
   .testi-dot.active {
     background:    var(--accent);
     box-shadow:    var(--neon-sm);
@@ -190,8 +193,8 @@
   }
 
   .testi-btn {
-    width:         32px;
-    height:        32px;
+    width:         40px;
+    height:        40px;
     display:       inline-flex;
     align-items:   center;
     justify-content: center;
@@ -201,7 +204,7 @@
     color:         var(--text-2);
     cursor:        pointer;
     font-family:   var(--font-body);
-    font-size:     14px;
+    font-size:     16px;
     line-height:   1;
     transition:    all 0.2s var(--ease);
   }
@@ -213,12 +216,8 @@
   }
 
   @media (max-width: 520px) {
-    .testi-track {
-      min-height: 300px;
-    }
-
     .testi-quote {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 </style>
@@ -235,7 +234,7 @@
   let current   = 0;
   let timer     = 0;
 
-  function goTo(index) {
+  function goTo(index: number) {
     slides[current].classList.remove('active');
     dots[current].classList.remove('active');
     current = (index + slides.length) % slides.length;
@@ -251,6 +250,13 @@
   next.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
   slider.addEventListener('mouseenter', stopAuto);
   slider.addEventListener('mouseleave', startAuto);
+
+  // Keyboard navigation
+  slider.setAttribute('tabindex', '0');
+  slider.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'ArrowLeft')  { stopAuto(); goTo(current - 1); startAuto(); }
+    if (e.key === 'ArrowRight') { stopAuto(); goTo(current + 1); startAuto(); }
+  });
 
   startAuto();
 </script>

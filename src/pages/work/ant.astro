@@ -16,16 +16,41 @@ const sections = [
 ];
 
 const sliderCards = [
-  { src: '/images/ant/Card/default-2.png', w: 453, h: 576, alt: 'Material Handling category card showing a telehandler lifting a red counterweight attachment' },
-  { src: '/images/ant/Card/default.png',   w: 453, h: 566, alt: 'Aerial Work Platforms category card showing an orange and cream JLG telescopic boom lift' },
-  { src: '/images/ant/Card/default-1.png', w: 453, h: 566, alt: 'Earth Moving category card showing a John Deere compact track loader with a bucket' },
-  { src: '/images/ant/Card/default-5.png', w: 453, h: 566, alt: 'Forklifts category card showing a red Hangcha forklift' },
-  { src: '/images/ant/Card/default-3.png', w: 453, h: 576, alt: 'Compaction category card showing a yellow BOMAG tandem roller' },
-  { src: '/images/ant/Card/default-4.png', w: 453, h: 566, alt: 'Air Compressors category card showing a towable ELGi diesel air compressor' },
+  { src: '/images/ant/Card/ant-equipment-card-material-handling.webp', w: 453, h: 576, alt: 'Material Handling category card showing a telehandler lifting a red counterweight attachment' },
+  { src: '/images/ant/Card/ant-equipment-card-aerial-work-platforms.webp',   w: 453, h: 566, alt: 'Aerial Work Platforms category card showing an orange and cream JLG telescopic boom lift' },
+  { src: '/images/ant/Card/ant-equipment-card-earth-moving.webp', w: 453, h: 566, alt: 'Earth Moving category card showing a John Deere compact track loader with a bucket' },
+  { src: '/images/ant/Card/ant-equipment-card-forklifts.webp', w: 453, h: 566, alt: 'Forklifts category card showing a red Hangcha forklift' },
+  { src: '/images/ant/Card/ant-equipment-card-compaction.webp', w: 453, h: 576, alt: 'Compaction category card showing a yellow BOMAG tandem roller' },
+  { src: '/images/ant/Card/ant-equipment-card-air-compressors.webp', w: 453, h: 566, alt: 'Air Compressors category card showing a towable ELGi diesel air compressor' },
+];
+
+const identityRows = [
+  [
+    { src: '/images/ant/ant-xcmg-forklift-social-post.webp', w: 1080, h: 1080, alt: 'Social media post announcing the new XCMG N25 Forklift with its specifications' },
+    { src: '/images/ant/ant-brand-new-equipment-social-post.webp', w: 1080, h: 1080, alt: 'Ant Rentals social media post announcing brand new equipment, showing a delivery truck transporting a boom lift' },
+    { src: '/images/ant/ant-maintenance-service-social-post.webp', w: 1080, h: 1080, alt: 'Ant Rentals social media post for its regular maintenance program, showing a technician servicing equipment' },
+    { src: '/images/ant/ant-canada-day-social-post.webp', w: 1080, h: 1080, alt: 'Ant Rentals Canada Day Instagram post with a maple leaf graphic and construction equipment' },
+  ],
+  [
+    { src: '/images/ant/ant-forklift-division-social-post.webp', w: 1080, h: 1080, alt: 'Ant Rentals social media post promoting its forklift rentals and sales division' },
+    { src: '/images/ant/ant-hail-storm-recovery-social-post.webp', w: 1080, h: 1080, alt: 'Ant Rentals social media post offering hail storm damage recovery support for Calgary' },
+    { src: '/images/ant/ant-spring-projects-social-post.webp', w: 1512, h: 1512, alt: 'Ant Rentals social media post promoting equipment pre-orders for spring projects, featuring a boom lift' },
+    { src: '/images/ant/ant-compaction-equipment-social-post.webp', w: 1080, h: 1080, alt: 'Ant Rentals social media post advertising a 15% off new stock offer on compaction equipment' },
+  ],
 ];
 ---
 
-<BaseLayout title="Ant Equipment Group" world="light" sections={sections}>
+<BaseLayout title="Ant Equipment Group" world="light" sections={sections} description="How I built Ant Rentals' digital brand presence from the ground up — driving 1k+ monthly visitors, 80% engagement lift, and 40% bounce rate reduction through digital design and WordPress development.">
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Ant Rentals: Building a Brand for Digital Presence",
+    "description": "Digital design, content management, and web development for ANT Equipment Group — western Canada's largest independent equipment rental source.",
+    "url": "https://andrewthyip.com/work/ant/",
+    "author": { "@type": "Person", "name": "Andrew Yip", "url": "https://andrewthyip.com" }
+  }
+  </script>
   <main class="main">
 
     <CaseStudyHero
@@ -56,21 +81,26 @@ const sliderCards = [
 
             <CaseStudySectionHeader eyebrow="02" title="Visual Identity" />
 
-            <div class="case-identity-grid">
-              <img src="/images/ant/colors.png" alt="Ant Rentals brand color palette swatches with hex codes" width="464" height="212" loading="lazy" />
-              <img src="/images/ant/type.png" alt="Ant Rentals typography: Montserrat typeface shown in regular and bold weights" width="464" height="212" loading="lazy" />
-              <img src="/images/ant/logo.png" alt="Ant Rentals logo lockups shown in two sizes" width="464" height="212" loading="lazy" />
+            <div class="case-identity-grid" data-stagger-reveal>
+              <img src="/images/ant/ant-brand-color-palette.webp" alt="Ant Rentals brand color palette swatches with hex codes" width="464" height="212" loading="lazy" data-stagger-child />
+              <img src="/images/ant/ant-brand-typography.webp" alt="Ant Rentals typography: Montserrat typeface shown in regular and bold weights" width="464" height="212" loading="lazy" data-stagger-child />
+              <img src="/images/ant/ant-equipment-logo.webp" alt="Ant Rentals logo lockups shown in two sizes" width="464" height="212" loading="lazy" data-stagger-child />
             </div>
 
-            <div class="case-identity-gallery">
-              <img src="/images/ant/Post-for-Meta.png" alt="Social media post announcing the new XCMG N25 Forklift with its specifications" width="1080" height="1080" loading="lazy" />
-              <img src="/images/ant/brand-new-equipment.png" alt="Ant Rentals social media post announcing brand new equipment, showing a delivery truck transporting a boom lift" width="1080" height="1080" loading="lazy" />
-              <img src="/images/ant/service-post.png" alt="Ant Rentals social media post for its regular maintenance program, showing a technician servicing equipment" width="1080" height="1080" loading="lazy" />
-              <img src="/images/ant/Canada-Day-Instagram-Post.png" alt="Ant Rentals Canada Day Instagram post with a maple leaf graphic and construction equipment" width="1080" height="1080" loading="lazy" />
-              <img src="/images/ant/forklift-division.png" alt="Ant Rentals social media post promoting its forklift rentals and sales division" width="1080" height="1080" loading="lazy" />
-              <img src="/images/ant/hail-storm.png" alt="Ant Rentals social media post offering hail storm damage recovery support for Calgary" width="1080" height="1080" loading="lazy" />
-              <img src="/images/ant/spring-projects.png" alt="Ant Rentals social media post promoting equipment pre-orders for spring projects, featuring a boom lift" width="1512" height="1512" loading="lazy" />
-              <img src="/images/ant/compaction.png" alt="Ant Rentals social media post advertising a 15% off new stock offer on compaction equipment" width="1080" height="1080" loading="lazy" />
+            <div class="case-design-gallery">
+              {identityRows.map((row) => (
+                <div class="case-design-gallery-row">
+                  <div class="case-design-gallery-track">
+                    {[row, row].map((set, si) => (
+                      <div class="case-design-gallery-set" aria-hidden={si === 1 ? 'true' : undefined}>
+                        {set.map((img) => (
+                          <img src={img.src} alt={si === 0 ? img.alt : ''} width={img.w} height={img.h} loading="lazy" />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
 
           </div>
@@ -83,8 +113,8 @@ const sliderCards = [
       eyebrow="04"
       title="Approach"
       rows={[
-        { title: "Build on the brand", body: "Corporate with WOW branding, we have an elaborated brand guideline and my job is to build on top with all sort of marketing materials, like social media post, website, and presentation etc." },
-        { title: "Optimize existing website", body: "There was an existing WordPress website when I took over and I found some places that would be optimized to avoid confusion." },
+        { title: "Build on the brand", body: "Ant Rentals had a strong corporate brand with detailed guidelines. My job was to expand that identity across marketing materials — social media posts, website pages, and presentations." },
+        { title: "Optimize existing website", body: "When I joined, an existing WordPress site was already in place. I identified key areas that needed optimization to reduce confusion and improve the user journey." },
         { title: "Design for more", body: "Apart from the existing web architecture, I integrated a blog section, a career page, and an online rental system to scale the business." },
       ]}
     />
@@ -111,7 +141,7 @@ const sliderCards = [
               </div>
 
               <CaseStudyDeliverableImage
-                src="/images/ant/hero-section.png"
+                src="/images/ant/ant-website-hero-section.webp"
                 alt="Ant Rentals website hero banner reading &quot;Western Canada's Largest Independent Source for Equipment Rentals and Sales&quot; over a photo of a fleet of yellow boom lifts, with &quot;Equipment Rentals&quot; and &quot;Create An Account&quot; buttons"
                 width="1196"
                 height="485"
@@ -119,7 +149,7 @@ const sliderCards = [
               />
 
               <CaseStudyDeliverableSlider
-                mediaSrc="/images/ant/coupon-1.png"
+                mediaSrc="/images/ant/ant-equipment-rental-coupon.webp"
                 mediaAlt="Ant Rentals promotional coupon reading &quot;Save $500 on rent&quot; with coupon code NEW2024, valid for new online customers until September 30th, 2024"
                 mediaWidth="514"
                 mediaHeight="591"
@@ -128,25 +158,25 @@ const sliderCards = [
               />
 
               <div class="case-deliverables-row--advantages">
-                <img src="/images/ant/advantages.png" alt="Banner highlighting Ant Rentals advantages: Newest Fleet in Town, Ontime Delivery Guarantee, Easy Online Rental, Largest Selection For Parts, and 24/7 Service Support, over a photo of construction equipment at dusk" width="1440" height="358" loading="lazy" />
+                <img src="/images/ant/ant-equipment-advantages-banner.webp" alt="Banner highlighting Ant Rentals advantages: Newest Fleet in Town, Ontime Delivery Guarantee, Easy Online Rental, Largest Selection For Parts, and 24/7 Service Support, over a photo of construction equipment at dusk" width="1440" height="358" loading="lazy" />
               </div>
 
               <div class="case-deliverables-row case-deliverables-row--reviews">
                 <div class="case-deliverables-reviews">
                   <div class="case-deliverables-reviews-grid">
                     <div class="case-deliverables-reviews-col">
-                      <img src="/images/ant/review-blog/testimonial-1.png" alt="Customer review card from Samantha Swansy, rated 5 stars, titled &quot;Satisfied With The Facilities At Ant Equipment Rentals&quot;" width="378" height="282" loading="lazy" />
-                      <img src="/images/ant/review-blog/testimonial-3.png" alt="Customer review card from Ken Fisher, rated 5 stars, titled &quot;Fantastic Team At Ant Equipment Rentals&quot;" width="378" height="282" loading="lazy" />
-                      <img src="/images/ant/review-blog/testimonial-2.png" alt="Customer review card from Travis PrintPrint, rated 5 stars, titled &quot;Great Customer Service At Ant Equipment Rentals&quot;" width="378" height="252" loading="lazy" />
+                      <img src="/images/ant/review-blog/ant-testimonial-samantha-swansy.webp" alt="Customer review card from Samantha Swansy, rated 5 stars, titled &quot;Satisfied With The Facilities At Ant Equipment Rentals&quot;" width="378" height="282" loading="lazy" />
+                      <img src="/images/ant/review-blog/ant-testimonial-ken-fisher.webp" alt="Customer review card from Ken Fisher, rated 5 stars, titled &quot;Fantastic Team At Ant Equipment Rentals&quot;" width="378" height="282" loading="lazy" />
+                      <img src="/images/ant/review-blog/test2.png" alt="Customer review card from Travis PrintPrint, rated 5 stars, titled &quot;Great Customer Service At Ant Equipment Rentals&quot;" width="378" height="282" loading="lazy" />
                     </div>
                     <div class="case-deliverables-reviews-col">
-                      <img src="/images/ant/review-blog/blog-post-3.png" alt="Blog post card dated Nov 17, 2023, titled &quot;The Ant Goes Marching: Ant Equipment Rentals Burnaby, B.C.&quot;, with a photo of a staff member in an Ant Rentals polo shirt standing in front of equipment" width="286" height="459" loading="lazy" />
-                      <img src="/images/ant/review-blog/blog-post-4.png" alt="Blog post card dated Feb 07, 2024, titled &quot;Calgary, Get Ready! Ant Rentals Sets the Stage for Grand Opening!&quot;, with an aerial photo of a snow-covered facility and the Ant Rentals logo" width="286" height="371" loading="lazy" />
+                      <img src="/images/ant/review-blog/ant-blog-post-burnaby-grand-opening.webp" alt="Blog post card dated Nov 17, 2023, titled &quot;The Ant Goes Marching: Ant Equipment Rentals Burnaby, B.C.&quot;, with a photo of a staff member in an Ant Rentals polo shirt standing in front of equipment" width="286" height="459" loading="lazy" />
+                      <img src="/images/ant/review-blog/ant-blog-post-calgary-grand-opening.webp" alt="Blog post card dated Feb 07, 2024, titled &quot;Calgary, Get Ready! Ant Rentals Sets the Stage for Grand Opening!&quot;, with an aerial photo of a snow-covered facility and the Ant Rentals logo" width="286" height="371" loading="lazy" />
                     </div>
                   </div>
                 </div>
                 <div class="case-deliverables-calendar">
-                  <img src="/images/ant/wall-calendar.png" alt="Ant Rentals 2024 wall calendar mockup showing a January grid alongside a photo of a telehandler lifting a crane attachment inside a glass-domed atrium, with company contact details" width="586" height="759" loading="lazy" />
+                  <img src="/images/ant/ant-2024-wall-calendar-mockup.webp" alt="Ant Rentals 2024 wall calendar mockup showing a January grid alongside a photo of a telehandler lifting a crane attachment inside a glass-domed atrium, with company contact details" width="586" height="759" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -161,7 +191,7 @@ const sliderCards = [
         <div class="container-main">
           <div class="case-closing">
             <div class="case-closing-media">
-              <img src="/images/ant/closing.png" alt="Silhouette of Ant Rentals boom lifts, scissor lifts, and telehandlers against a dramatic orange sunset sky" width="1728" height="816" loading="lazy" data-parallax />
+              <img src="/images/ant/ant-equipment-fleet-sunset.webp" alt="Silhouette of Ant Rentals boom lifts, scissor lifts, and telehandlers against a dramatic orange sunset sky" width="1728" height="816" loading="lazy" data-parallax />
             </div>
           </div>
         </div>
@@ -194,41 +224,65 @@ const sliderCards = [
     height:  auto;
   }
 
-  .case-identity-gallery {
-    display:               grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap:                   clamp(12px, 1.7vw, 24px);
-    margin-top:            clamp(20px, 2.8vw, 40px);
+  /* Split-track horizontal parallax gallery (driven by initGalleryRows) */
+  .case-design-gallery {
+    width:          100vw;
+    margin-inline:  calc(50% - 50vw);
+    margin-top:     clamp(20px, 2.8vw, 40px);
+    display:        flex;
+    flex-direction: column;
+    gap:            clamp(12px, 1.7vw, 24px);
   }
 
-  .case-identity-gallery img {
+  .case-design-gallery-row {
+    overflow: hidden;
+  }
+
+  .case-design-gallery-track {
+    display:     flex;
+    gap:         clamp(12px, 1.7vw, 24px);
+    width:       max-content;
+    will-change: transform;
+  }
+
+  .case-design-gallery-set {
+    display: flex;
+    gap:     clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-design-gallery img {
     display:       block;
-    width:         100%;
+    flex-shrink:   0;
+    width:         clamp(200px, 26vw, 360px);
     height:        auto;
     border-radius: var(--r-lg);
-  }
-
-  @media (max-width: 1024px) {
-    .case-identity-gallery {
-      grid-template-columns: repeat(3, 1fr);
-    }
   }
 
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
 
+    .case-design-gallery { width: 100%; margin-inline: 0; }
+
     .case-identity-grid {
       grid-template-columns: 1fr;
-      gap:                   var(--space-sm);
-    }
-
-    .case-identity-gallery {
-      grid-template-columns: repeat(2, 1fr);
       gap:                   var(--space-sm);
     }
   }
 
   /* ── 05 Deliverables ─────────────────────── */
+  .case-deliverables :global(.deliverable-slider) {
+    align-items: stretch;
+  }
+
+  .case-deliverables :global(.deliverable-slider-marquee) {
+    display:         flex;
+    align-items:     center;
+  }
+
+  .case-deliverables :global(.deliverable-slider-track img) {
+    height: 430px;
+  }
+
   .case-deliverables-rows {
     display:        flex;
     flex-direction: column;
@@ -253,9 +307,10 @@ const sliderCards = [
 
   .case-deliverables-row-label {
     font-family:    var(--font-display);
-    font-size:      clamp(40px, 5.5vw, 80px);
+    font-size:      clamp(39px, 5.5vw, 76px);
     font-weight:    300;
     line-height:    1.2;
+    text-align:     center;
     letter-spacing: -1.04px;
     color:          var(--case-accent, var(--accent-2));
   }
@@ -280,6 +335,8 @@ const sliderCards = [
   }
 
   .case-deliverables-row--advantages img {
+    width:         100%;
+    height:        auto;
     max-width:     var(--max-w);
     border-radius: var(--r-lg);
   }
@@ -337,10 +394,18 @@ const sliderCards = [
   }
 
   /* ── Closing ──────────────────────────────── */
+  .case-closing-section {
+    padding-bottom: 0;
+  }
+
+  :global(.keep-reading-section) {
+    padding-bottom: var(--space-lg);
+  }
+
   .case-closing-media {
     position:      relative;
     width:         100vw;
-    height:        500px;
+    height:        800px;
     margin-inline: calc(50% - 50vw);
     overflow:      hidden;
   }
@@ -350,12 +415,8 @@ const sliderCards = [
     top:        0;
     left:       0;
     width:      100%;
-    height:     816px;
+    height:     1200px;
     object-fit: cover;
-  }
-
-  @media (max-width: 520px) {
-    .main { padding-top: 72px; }
   }
 
   @media (max-width: 768px) {
@@ -367,6 +428,31 @@ const sliderCards = [
     .case-deliverables-row-images {
       grid-template-columns: 1fr;
       gap:                   var(--space-sm);
+    }
+
+    /* Reviews collage: drop the cropped-peek effect, show cards naturally */
+    .case-deliverables-reviews {
+      aspect-ratio: auto;
+    }
+
+    .case-deliverables-reviews-grid {
+      width: 100%;
+    }
+
+    .case-closing-media { height: 400px; }
+
+    .case-deliverables :global(.deliverable-slider-track img) {
+      height: 280px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .main { padding-top: 72px; }
+
+    .case-closing-media { height: 280px; }
+
+    .case-deliverables :global(.deliverable-slider-track img) {
+      height: 200px;
     }
   }
 </style>

@@ -20,25 +20,35 @@ const sections = [
 
 const galleryRows = [
   [
-    { src: "/images/crowd-ease/crowdease-mockup-passed-events-rating.png", alt: "Passed Events screen prompting the user to rate how much an event affected their business", width: 226, height: 494 },
-    { src: "/images/crowd-ease/crowdease-mockup-event-list.png", alt: "Event list screen showing a weekly calendar and a list of upcoming events with participant counts", width: 226, height: 492 },
-    { src: "/images/crowd-ease/crowdease-mockup-sign-up.png", alt: "Sign up screen with email, password, and business name fields, plus social sign-up options", width: 226, height: 494 },
-    { src: "/images/crowd-ease/crowdease-mockup-event-detail.png", alt: "Event detail screen for the Vancouver Career Fair showing date, location, description, and a map preview", width: 226, height: 492 },
-    { src: "/images/crowd-ease/crowdease-mockup-event-filters.png", alt: "Event filters overlay with event category and distance options", width: 226, height: 492 },
-    { src: "/images/crowd-ease/crowdease-mockup-location-permission.png", alt: "Location permission screen asking the user to enable GPS or enter a postal code", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-passed-events-rating.webp", alt: "Passed Events screen prompting the user to rate how much an event affected their business", width: 226, height: 494 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-event-list.webp", alt: "Event list screen showing a weekly calendar and a list of upcoming events with participant counts", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-sign-up.webp", alt: "Sign up screen with email, password, and business name fields, plus social sign-up options", width: 226, height: 494 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-event-detail.webp", alt: "Event detail screen for the Vancouver Career Fair showing date, location, description, and a map preview", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-event-filters.webp", alt: "Event filters overlay with event category and distance options", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-location-permission.webp", alt: "Location permission screen asking the user to enable GPS or enter a postal code", width: 226, height: 492 },
   ],
   [
-    { src: "/images/crowd-ease/crowdease-mockup-profile-settings.png", alt: "Profile and settings screen with notification preferences and account options", width: 226, height: 492 },
-    { src: "/images/crowd-ease/crowdease-mockup-event-list-alt.png", alt: "Event list screen showing a weekly calendar and a list of upcoming events with participant counts", width: 226, height: 492 },
-    { src: "/images/crowd-ease/crowdease-mockup-business-insights.png", alt: "Business insights screen recommending a focus on concert event promotion, with participation breakdowns by category", width: 226, height: 493 },
-    { src: "/images/crowd-ease/crowdease-mockup-map-heatmap.png", alt: "Map screen showing a live crowd density heat map around downtown Vancouver", width: 226, height: 493 },
-    { src: "/images/crowd-ease/crowdease-mockup-weekly-report.png", alt: "Weekly event preview report listing event numbers and participant totals for each day", width: 226, height: 494 },
-    { src: "/images/crowd-ease/crowdease-mockup-passed-events.png", alt: "Passed Events screen listing past events with options to rate each one", width: 226, height: 494 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-profile-settings.webp", alt: "Profile and settings screen with notification preferences and account options", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-event-list-alt.webp", alt: "Event list screen showing a weekly calendar and a list of upcoming events with participant counts", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-business-insights.webp", alt: "Business insights screen recommending a focus on concert event promotion, with participation breakdowns by category", width: 226, height: 493 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-map-heatmap.webp", alt: "Map screen showing a live crowd density heat map around downtown Vancouver", width: 226, height: 493 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-weekly-report.webp", alt: "Weekly event preview report listing event numbers and participant totals for each day", width: 226, height: 494 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-passed-events.webp", alt: "Passed Events screen listing past events with options to rate each one", width: 226, height: 494 },
   ],
 ];
 ---
 
-<BaseLayout title="Crowd Ease" world="light" sections={sections}>
+<BaseLayout title="Crowd Ease" world="light" sections={sections} description="How I led UX research, map design, and project management for Crowd Ease — a Capstone Award-winning business productivity app that helps restaurants plan resources using live crowd data.">
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Crowd Ease: Business Productivity App for Restaurant Management & Marketing Strategy",
+    "description": "UX research, design tokens, map design, and project management for Crowd Ease — a Langara College Capstone Award-winning mobile app.",
+    "url": "https://andrewthyip.com/work/crowd-ease/",
+    "author": { "@type": "Person", "name": "Andrew Yip", "url": "https://andrewthyip.com" }
+  }
+  </script>
   <main class="main">
 
     <CaseStudyHero
@@ -58,7 +68,7 @@ const galleryRows = [
       stats={[
         { value: "Capstone Award", caption: "Langara College Audience Winning" },
         { value: "Cross-functional", caption: "4 developers & 3 designers" },
-        { value: "8 weeks Built MVP", caption: "Agile Development" },
+        { value: "8 weeks Built MVP", caption: "Agile development" },
       ]}
       imageSrc="/images/crowd-ease/Handout-Front.svg"
       imageAlt="Crowd Ease promotional handout: app logo and tagline 'Be in the Know - Track Events and Monitor Live Crowds with Ease!' alongside a phone mockup showing live event crowd data"
@@ -94,8 +104,8 @@ const galleryRows = [
         {
           imageSrc: "/gifs/crowd-ease/DATA-.gif",
           imageAlt: "Crowd Ease home screen leading into the full weekly report with deep data analysis and business strategy suggestions",
-          title: "Deep Data Analyze & Strategy Suggestion",
-          body: "It is the core of the app, where users can find all the analysis and advice they need for marketing and business planning. Users can explore the app and learn about the value we provide to build a significant acquisition funnel, but when it comes to this page, we require users to sign up or log in, in order to access the report. After that, users can use the top arrow to see a brief report covering the period from this week to next week. Crowd Ease will break down each day's events and provide detailed analysis as well as business recommendations.",
+          title: "Deep Data Analysis & Strategy Suggestions",
+          body: "This is the core of the app — where users find all the analysis and advice they need for marketing and business planning. Users can explore the app and discover its value before they're asked to sign up or log in to access the full report. From there, the top arrow reveals a brief weekly preview. Crowd Ease breaks down each day's events and provides detailed analysis alongside business recommendations.",
           reverse: true,
         },
         {
@@ -108,7 +118,7 @@ const galleryRows = [
           imageSrc: "/gifs/crowd-ease/MAP.gif",
           imageAlt: "Crowd Ease event detail screen for 'Cocktail for a Cure 2023' showing event info, location, and a live crowd density heat map",
           title: "Live Crowd Density & Event Location",
-          body: "The team created the map by extracting data from various APIs. As a result, this map shows the crowd density in various colors so that users can see how the crowd is moving and modify their activities accordingly. In order to give the user a greater knowledge of the accuracy, we also combined the heated map with a pin map to show the locations of each event.",
+          body: "The team built the map by extracting data from various APIs. It shows crowd density in color gradients so users can see how crowds are moving and plan accordingly. To give users greater confidence in the data's accuracy, we combined the heat map with a pin map showing the exact location of each event.",
           reverse: true,
         },
       ]}
@@ -127,38 +137,38 @@ const galleryRows = [
                 title="Poor Management and Advertising"
                 body="I have experienced difficulties in keeping track of local events as we do not have a tool to assist us with that. Although we have a point of sale system, our management and advertising are not streamlined, which can be challenging for our business."
                 attribution="Restaurant Manager"
-                imageSrc="/images/crowd-ease/shop_3d_Night_Cold.png"
+                imageSrc="/images/crowd-ease/crowd-ease-3d-night-scene.webp"
                 imageAlt="3D rendering of a restaurant storefront at night with a striped awning and lit sign"
               />
               <CaseStudyInsightCard
                 title="Short Preparation Time"
                 body="As a manager, I usually plan my inventory and staff schedule a week in advance to ensure smooth operations and avoid any last-minute surprises."
                 attribution="Restaurant Owner"
-                imageSrc="/images/crowd-ease/Oops.png"
+                imageSrc="/images/crowd-ease/crowd-ease-empty-state-error.webp"
                 imageAlt="3D 'Oops!' text illustration in purple and green"
               />
             </div>
 
             <div class="case-research-image case-research-competitors">
-              <img src="/images/crowd-ease/crowdeasecompetitors.png" alt="Competitor analysis comparing Crowd Ease against Crowd Alerts, Crowd Vision, and Crowd Connected across real-time crowd tracking, analytics and reporting, and event tracking — Crowd Ease meets all three criteria" width="836" height="535" loading="lazy" />
+              <img src="/images/crowd-ease/crowd-ease-competitor-analysis.webp" alt="Competitor analysis comparing Crowd Ease against Crowd Alerts, Crowd Vision, and Crowd Connected across real-time crowd tracking, analytics and reporting, and event tracking — Crowd Ease meets all three criteria" width="836" height="535" loading="lazy" />
             </div>
 
             <div class="case-research-caption">
               <h3 class="case-research-caption-title">Competitors Analysis</h3>
-              <p class="case-research-caption-body">Like our competitors, we all use crowd data on the high mobility industry. However, we are not only able to provide real time data, Crowd Ease combines events around a user’s location and provides an analysis so a business can customize their marketing plan and arrange their business accordingly.</p>
+              <p class="case-research-caption-body">Like our competitors, we work with crowd data in the high-mobility industry. But we provide more than just real-time data — Crowd Ease combines nearby event information with crowd analytics, giving businesses the insights they need to customize their marketing and plan operations accordingly.</p>
             </div>
 
             <div class="case-research-image case-research-userflow">
-              <img src="/images/crowd-ease/crowdease-userfolw.png" alt="Crowd Ease user flow diagram showing the navigation paths between onboarding, login, home, map, events, report, and profile screens" width="1269" height="751" loading="lazy" />
+              <img src="/images/crowd-ease/crowd-ease-user-flow-diagram.webp" alt="Crowd Ease user flow diagram showing the navigation paths between onboarding, login, home, map, events, report, and profile screens" width="1269" height="751" loading="lazy" />
             </div>
 
             <div class="case-research-caption">
               <h3 class="case-research-caption-title">User Flow</h3>
-              <p class="case-research-caption-body">The team struggled with the user flow as we were unsure of the core feature before beginning to define the interaction design and information architecture of the app. We scheduled an appointment to talk with the app’s developers and other stakeholders and collect feedback on how the app’s features flowed, which was a crucial guidepost for determining the project’s scope.</p>
+              <p class="case-research-caption-body">The team struggled with the user flow early on — we weren’t yet aligned on the core feature before defining the interaction design and information architecture. We held a session with developers and key stakeholders to gather feedback on how the app’s features should flow, which became a crucial guidepost for scoping the project.</p>
             </div>
 
             <div class="case-research-image">
-              <img src="/images/crowd-ease/teamwork.png" alt="Illustration of a team collaborating around a table with laptops and design materials" width="2048" height="1196" loading="lazy" />
+              <img src="/images/crowd-ease/crowd-ease-team-photo.webp" alt="Illustration of a team collaborating around a table with laptops and design materials" width="2048" height="1196" loading="lazy" />
             </div>
 
 
@@ -218,10 +228,10 @@ const galleryRows = [
               <p class="case-identity-intro-body">I worked on the UI kit and made the icons using Illustrator in accordance with the Google Material Design Guidelines. I also established the design system to maintain the same design aesthetic across all screens.</p>
             </div>
 
-            <div class="case-identity-image">
-              <img src="/images/crowd-ease/colors.png" alt="Crowd Ease brand color palette: purple, green, blue, and yellow swatches with hex codes B687FF, 90EE90, 68B5DE, and FFFA6E" width="464" height="270" loading="lazy" />
-              <img src="/images/crowd-ease/type.png" alt="Circular STD typeface specimen used for Crowd Ease headings and body text" width="464" height="270" loading="lazy" />
-              <img src="/images/crowd-ease/icons.png" alt="Grid of outlined UI icons used across Crowd Ease for navigation, profile, notifications, and more" width="464" height="270" loading="lazy" />
+            <div class="case-identity-image" data-stagger-reveal>
+              <img src="/images/crowd-ease/crowd-ease-brand-color-palette.webp" alt="Crowd Ease brand color palette: purple, green, blue, and yellow swatches with hex codes B687FF, 90EE90, 68B5DE, and FFFA6E" width="464" height="270" loading="lazy" data-stagger-child />
+              <img src="/images/crowd-ease/crowd-ease-brand-typography.webp" alt="Circular STD typeface specimen used for Crowd Ease headings and body text" width="464" height="270" loading="lazy" data-stagger-child />
+              <img src="/images/crowd-ease/crowd-ease-icon-set.webp" alt="Grid of outlined UI icons used across Crowd Ease for navigation, profile, notifications, and more" width="464" height="270" loading="lazy" data-stagger-child />
             </div>
 
           </div>
@@ -251,12 +261,12 @@ const galleryRows = [
             <CaseStudySectionHeader eyebrow="07" title="Takeaways" />
 
             <div class="case-takeaways-image">
-              <img src="/images/crowd-ease/panelists.png" alt="The Crowd Ease team presenting their project to a panel and audience, with a slide showing team member headshots and a QR code to connect" width="2048" height="769" loading="lazy" />
+              <img src="/images/crowd-ease/crowd-ease-presentation-panelists.webp" alt="The Crowd Ease team presenting their project to a panel and audience, with a slide showing team member headshots and a QR code to connect" width="2048" height="769" loading="lazy" />
             </div>
 
             <div class="case-takeaways-caption">
               <h3 class="case-takeaways-caption-title">Acquisition funnel for UX design</h3>
-              <p class="case-takeaways-caption-body">From business perspective, this funnel is an important way to increase user acquisition and retention. In Crowd Ease, we need to remove the blockers and ensure that users discover the value of the product or service before they register an account or commit to a purchase. I understand users build up a level of excitement when they download our app and I need to continue that anticipation and make sure that users have a clear understanding of its benefits and features before they are asked to commit.</p>
+              <p class="case-takeaways-caption-body">From a business perspective, the acquisition funnel is a critical driver of user acquisition and retention. In Crowd Ease, our job is to remove blockers and ensure users discover the product's value before they're asked to register or commit to a purchase. I understand that users build up excitement when they download a new app — my job is to sustain that momentum and make sure they have a clear picture of the benefits before being asked to commit.</p>
             </div>
 
           </div>
@@ -335,7 +345,7 @@ const galleryRows = [
 
   .case-research-caption-title {
     font-family:    var(--font-display);
-    font-size:      clamp(28px, 3.1vw, 45px);
+    font-size:      clamp(25px, 3.1vw, 39px);
     font-weight:    400;
     line-height:    1.2;
     letter-spacing: -0.28px;
@@ -344,7 +354,7 @@ const galleryRows = [
 
   .case-research-caption-body {
     font-family: var(--font-body);
-    font-size:   15px;
+    font-size:   16px;
     font-weight: 300;
     line-height: 1.6;
     color:       var(--text-1);
@@ -374,7 +384,7 @@ const galleryRows = [
 
   .case-design-wireframes-title {
     font-family:    var(--font-display);
-    font-size:      clamp(28px, 3.1vw, 45px);
+    font-size:      clamp(25px, 3.1vw, 39px);
     font-weight:    400;
     line-height:    1.2;
     letter-spacing: -0.28px;
@@ -384,7 +394,7 @@ const galleryRows = [
 
   .case-design-wireframes-body {
     font-family:   var(--font-body);
-    font-size:     15px;
+    font-size:     16px;
     font-weight:   300;
     line-height:   1.6;
     color:         var(--text-1);
@@ -448,7 +458,7 @@ const galleryRows = [
 
   .case-identity-intro-title {
     font-family:    var(--font-display);
-    font-size:      clamp(28px, 3.1vw, 45px);
+    font-size:      clamp(25px, 3.1vw, 39px);
     font-weight:    400;
     line-height:    1.2;
     letter-spacing: -0.28px;
@@ -457,7 +467,7 @@ const galleryRows = [
 
   .case-identity-intro-body {
     font-family: var(--font-body);
-    font-size:   15px;
+    font-size:   16px;
     font-weight: 300;
     line-height: 1.6;
     color:       var(--text-2);
@@ -513,7 +523,7 @@ const galleryRows = [
 
   .case-takeaways-caption-title {
     font-family:    var(--font-display);
-    font-size:      clamp(28px, 3.1vw, 45px);
+    font-size:      clamp(25px, 3.1vw, 39px);
     font-weight:    400;
     line-height:    1.2;
     letter-spacing: -0.28px;
@@ -522,7 +532,7 @@ const galleryRows = [
 
   .case-takeaways-caption-body {
     font-family: var(--font-body);
-    font-size:   15px;
+    font-size:   16px;
     font-weight: 300;
     line-height: 1.6;
     color:       var(--text-1);
@@ -530,6 +540,8 @@ const galleryRows = [
 
   @media (max-width: 768px) {
     .main { padding-top: 80px; }
+
+    .case-design-gallery { width: 100%; margin-inline: 0; }
 
     .case-research-cards {
       grid-template-columns: 1fr;

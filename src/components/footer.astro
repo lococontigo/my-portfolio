@@ -9,12 +9,12 @@
 
         <div class="footer-links">
           <a
-            href="https://www.linkedin.com/in/andrewyip30/"
+            href="https://www.linkedin.com/in/andrewthyip/"
             class="footer-link"
             target="_blank"
             rel="noopener noreferrer"
           >LinkedIn</a>
-          <a href="mailto:andrewyip30@gmail.com" class="footer-cta">Say hello →</a>
+          <a href="mailto:andrewthyip@gmail.com" class="footer-cta">Say hello →</a>
         </div>
 
       </div>
@@ -36,7 +36,7 @@
 
   .footer-copy {
     font-family: var(--font-body);
-    font-size:   13px;
+    font-size:   12px;
     font-weight: 400;
     color:       var(--text-2);
   }
@@ -49,7 +49,7 @@
 
   .footer-link {
     font-family: var(--font-body);
-    font-size:   13px;
+    font-size:   12px;
     font-weight: 400;
     color:       var(--text-2);
     transition:  color 0.25s var(--ease);
@@ -61,7 +61,7 @@
 
   .footer-cta {
     font-family:   var(--font-body);
-    font-size:     13px;
+    font-size:     12px;
     font-weight:   400;
     color:         var(--accent);
     border:        0.5px solid var(--accent);
@@ -69,16 +69,16 @@
     padding:       6px 14px;
     transition:    color 0.25s var(--ease),
                    background 0.25s var(--ease),
-                   box-shadow 0.25s var(--ease);
+                   box-shadow 0.25s var(--ease),
+                   transform 0.1s var(--ease);
   }
 
-  .footer-cta:hover {
-    background: var(--accent-dim);
-    box-shadow: var(--neon-sm);
-  }
+  .footer-cta:hover  { background: var(--accent-dim); box-shadow: var(--neon-sm); }
+  .footer-cta:active { transform: scale(0.96); }
 
   @media (max-width: 520px) {
-    .footer-copy  { font-size: 11px; }
-    .footer-links { gap: var(--space-sm); }
+    .footer-copy  { font-size: 10px; }
+    .footer-inner { flex-direction: column; gap: var(--space-sm); text-align: center; }
+    .footer-links { gap: 12px; }
   }
 </style>

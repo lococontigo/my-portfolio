@@ -5,6 +5,7 @@ import CaseStudyHighlight from '../../components/case-study-highlight.astro';
 import CaseStudySectionHeader from '../../components/case-study-section-header.astro';
 import CaseStudyDeliverableImage from '../../components/case-study-deliverable-image.astro';
 import CaseStudyCompareSlider from '../../components/case-study-compare-slider.astro';
+import CaseStudyGif from '../../components/case-study-gif.astro';
 import CaseStudyKeepReading from '../../components/case-study-keep-reading.astro';
 
 const sections = [
@@ -19,13 +20,26 @@ const sections = [
 ];
 ---
 
-<BaseLayout title="Yocale" world="light" sections={sections}>
+<BaseLayout title="Yocale" world="light" sections={sections} description="How I built a design growth system for Yocale that makes lead generation effortless — achieving 5.15% CTR and 40% bounce rate reduction through GTM design, landing pages, and technical SEO.">
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Yocale: Building a Design Growth System that Makes Lead Generation Effortless",
+    "description": "GTM design, landing page design, technical SEO, and web development for Yocale — a SaaS booking platform.",
+    "url": "https://andrewthyip.com/work/yocale/",
+    "author": { "@type": "Person", "name": "Andrew Yip", "url": "https://andrewthyip.com" }
+  }
+  </script>
   <main class="main">
 
     <CaseStudyHero
       title="Yocale: Building a Design Growth System that Makes Lead Generation Effortless"
       fullTitle="Yocale: Building a Design Growth System that Makes Lead Generation Effortless"
       accentTitle="Yocale"
+      gifSrc="/gifs/yocale/haaland.gif"
+      gifAlt="Animated walkthrough of the Yocale landing page design system"
+      gifAspectRatio="1440 / 900"
       role={["GTM Design", "Landing Page Design", "Technical SEO", "Web Development"]}
       tools={["Figma", "Webflow", "Claude", "Ahrefs"]}
       duration={["2025 – 2026"]}
@@ -36,8 +50,8 @@ const sections = [
       eyebrow="01"
       title="Impact"
       stats={[
-        { value: "5.15%", caption: "CTR" },
-        { value: "4", caption: "feature release launches" },
+        { value: "5.15%", caption: "Click-through rate" },
+        { value: "4", caption: "Feature release launches" },
         { value: "40% ↓", caption: "Bounce rate" },
       ]}
     />
@@ -52,10 +66,18 @@ const sections = [
             <div class="case-overview-content">
               <h3 class="case-overview-heading">Yocale</h3>
               <div class="case-overview-body">
-                <p>Yocale is a cloud-based platform that helps service-based businesses, like salons or med spas, to manage and schedule their appointments.</p>
-                <p>Business Made Simple, we believe small businesses are the backbone of our economy and our job is to empower them by giving them a tool they need to run the business effortlessly.</p>
+                <p>Yocale is a cloud-based platform that helps service-based businesses — like salons and med spas — manage appointments, payments, and client relationships in one place.</p>
+                <p>Our tagline is <em>Business Made Simple</em>. We believe small businesses are the backbone of the economy, and our job is to give them the tools they need to run effortlessly.</p>
               </div>
             </div>
+
+            <CaseStudyDeliverableImage
+              src="/gifs/yocale/yocale.homepage.gif"
+              alt="Animated walkthrough of the Yocale homepage showcasing the booking management platform"
+              width="1196"
+              height="720"
+              maxWidth="1196px"
+            />
 
           </div>
         </div>
@@ -71,11 +93,11 @@ const sections = [
 
             <div class="case-challenge-content">
               <h3 class="case-challenge-heading">Missing Brand Identity</h3>
-              <p class="case-challenge-body">Yocale has no unified visual identity across marketing channels (email, social media, website etc). On top of that, the design and content of the website is outdated and needs to be optimized for a better user experience.</p>
+              <p class="case-challenge-body">Yocale had no unified visual identity across marketing channels — email, social media, and the website. On top of that, the design and content of the website were outdated and needed optimization for a better user experience.</p>
             </div>
 
             <CaseStudyDeliverableImage
-              src="/images/yocale/challenge.png"
+              src="/images/yocale/yocale-outdated-website-challenge.webp"
               alt="Screenshot of Yocale's outdated website homepage showing the 'Why Yocale' and 'Our Promise' sections with a tablet mockup of the booking calendar"
               width="1196"
               height="560"
@@ -97,7 +119,7 @@ const sections = [
             <div class="case-approach-content">
               <div class="case-approach-item">
                 <h3 class="case-approach-heading">Build a system</h3>
-                <p class="case-approach-body">Build a system that makes branding consistent, and bring all the pieces together and create a reusable visual library for brand identity and fast delivery.</p>
+                <p class="case-approach-body">Establish a reusable visual library — colors, typography, components — that keeps branding consistent across every marketing channel and enables fast delivery.</p>
               </div>
               <div class="case-approach-item">
                 <h3 class="case-approach-heading">Design for success</h3>
@@ -117,10 +139,10 @@ const sections = [
 
             <CaseStudySectionHeader eyebrow="05" title="Visual Identity" />
 
-            <div class="case-identity-grid">
-              <img src="/images/yocale/colors.png" alt="Yocale brand color palette: coral #F37063, navy #034796, a coral-to-blue gradient, and a light pink-to-blue gradient, each with hex codes" width="464" height="270" loading="lazy" />
-              <img src="/images/yocale/type.png" alt="Yocale typography: General Sans typeface shown in regular weight for headings and bold weight for the 'abc123' sample" width="464" height="270" loading="lazy" />
-              <img src="/images/yocale/logo.png" alt="Yocale logo wordmark and icon mark in coral with a starburst accent" width="464" height="270" loading="lazy" />
+            <div class="case-identity-grid" data-stagger-reveal>
+              <img src="/images/yocale/yocale-brand-color-palette.webp" alt="Yocale brand color palette: coral #F37063, navy #034796, a coral-to-blue gradient, and a light pink-to-blue gradient, each with hex codes" width="464" height="270" loading="lazy" data-stagger-child />
+              <img src="/images/yocale/yocale-brand-typography.webp" alt="Yocale typography: General Sans typeface shown in regular weight for headings and bold weight for the 'abc123' sample" width="464" height="270" loading="lazy" data-stagger-child />
+              <img src="/images/yocale/yocale-logo.webp" alt="Yocale logo wordmark and icon mark in coral with a starburst accent" width="464" height="270" loading="lazy" data-stagger-child />
             </div>
 
           </div>
@@ -148,7 +170,7 @@ const sections = [
 
               <div class="feature-card">
                 <div class="feature-card-image">
-                  <img src="/images/yocale/integrated-payments.png" alt="Yocale integrated payments landing page showing 'Integrated Payments &amp; Point of Sale Made Simple' messaging, adoption statistics, and a suite of supported payment devices" width="708" height="355" loading="lazy" />
+                  <img src="/images/yocale/yocale-integrated-payments-landing.webp" alt="Yocale integrated payments landing page showing 'Integrated Payments &amp; Point of Sale Made Simple' messaging, adoption statistics, and a suite of supported payment devices" width="708" height="355" loading="lazy" />
                 </div>
                 <div class="feature-card-info">
                   <span class="feature-card-number">02</span>
@@ -158,7 +180,7 @@ const sections = [
 
               <div class="feature-card">
                 <div class="feature-card-image">
-                  <img src="/images/yocale/bnpl.png" alt="Yocale 'Buy Now, Pay Later' promotional banner showing a phone displaying Affirm, Klarna, and Afterpay payment options" width="708" height="355" loading="lazy" />
+                  <img src="/images/yocale/yocale-buy-now-pay-later-banner.webp" alt="Yocale 'Buy Now, Pay Later' promotional banner showing a phone displaying Affirm, Klarna, and Afterpay payment options" width="708" height="355" loading="lazy" />
                 </div>
                 <div class="feature-card-info">
                   <span class="feature-card-number">03</span>
@@ -168,7 +190,7 @@ const sections = [
 
               <div class="feature-card">
                 <div class="feature-card-image">
-                  <img src="/images/yocale/gift-card.png" alt="Yocale gift card management interface showing preset values and a digital gift card balance, with a salon stylist cutting a client's hair in the background" width="708" height="355" loading="lazy" />
+                  <img src="/images/yocale/yocale-gift-card-feature.webp" alt="Yocale gift card management interface showing preset values and a digital gift card balance, with a salon stylist cutting a client's hair in the background" width="708" height="355" loading="lazy" />
                 </div>
 
                 <div class="feature-card-info">
@@ -180,7 +202,7 @@ const sections = [
 
             <div class="feature-gallery">
               <CaseStudyDeliverableImage
-                src="/images/yocale/BNOK.png"
+                src="/images/yocale/yocale-bnpl-checkout-flow.webp"
                 alt="Yocale 'Buy Now, Pay Later' blog article preview with the heading 'Let Clients Book Bigger Services. You Get Paid In Full, Upfront', stat cards for '2-3x higher average tickets' and '0 chasing and risk', and a panel showing Affirm, Afterpay, and Klarna logos"
                 width="1196"
                 height="467"
@@ -190,27 +212,27 @@ const sections = [
 
             <div class="feature-gallery-row-2">
               <div class="feature-scanner-image">
-                <img src="/images/yocale/Scanner.png" alt="Photo of a hand using a barcode scanner on a product box, overlaid with a Yocale interface card showing 'Hand cream', quantity 88, price $45.00, and brand 'Necessaire'" width="536" height="480" loading="lazy" />
+                <img src="/images/yocale/yocale-payment-scanner-mockup.webp" alt="Photo of a hand using a barcode scanner on a product box, overlaid with a Yocale interface card showing 'Hand cream', quantity 88, price $45.00, and brand 'Necessaire'" width="536" height="480" loading="lazy" />
               </div>
               <div class="feature-gift-cards">
                 <div class="gift-card-row" data-marquee aria-label="Yocale gift card designs: Thank You, Congrats, For You">
                   <div class="gift-card-track" data-marquee-track>
-                    <img src="/images/yocale/gift_cards/Thank You.png" alt="Yocale 'Thank You' gift card design in deep plum with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
-                    <img src="/images/yocale/gift_cards/Congrats.png" alt="Yocale 'Congrats' gift card design in deep rust with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
-                    <img src="/images/yocale/gift_cards/For You.png" alt="Yocale 'For You' gift card design in deep navy with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
-                    <img src="/images/yocale/gift_cards/Thank You.png" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
-                    <img src="/images/yocale/gift_cards/Congrats.png" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
-                    <img src="/images/yocale/gift_cards/For You.png" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-thank-you.webp" alt="Yocale 'Thank You' gift card design in deep plum with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-congrats.webp" alt="Yocale 'Congrats' gift card design in deep rust with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-for-you.webp" alt="Yocale 'For You' gift card design in deep navy with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-thank-you.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-congrats.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-for-you.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
                   </div>
                 </div>
                 <div class="gift-card-row" data-marquee data-marquee-reverse aria-label="Yocale gift card designs: Just Because, With Love, Happy Birthday">
                   <div class="gift-card-track" data-marquee-track>
-                    <img src="/images/yocale/gift_cards/Just Because.png" alt="Yocale 'Just Because' gift card design in deep maroon with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
-                    <img src="/images/yocale/gift_cards/With Love.png" alt="Yocale 'With Love' gift card design in deep indigo with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
-                    <img src="/images/yocale/gift_cards/Happy Birthday.png" alt="Yocale 'Happy Birthday' gift card design in forest green with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
-                    <img src="/images/yocale/gift_cards/Just Because.png" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
-                    <img src="/images/yocale/gift_cards/With Love.png" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
-                    <img src="/images/yocale/gift_cards/Happy Birthday.png" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-just-because.webp" alt="Yocale 'Just Because' gift card design in deep maroon with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-with-love.webp" alt="Yocale 'With Love' gift card design in deep indigo with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-happy-birthday.webp" alt="Yocale 'Happy Birthday' gift card design in forest green with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-just-because.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-with-love.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-happy-birthday.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
                   </div>
                 </div>
               </div>
@@ -218,7 +240,7 @@ const sections = [
 
             <div class="feature-gallery-row-3">
               <CaseStudyDeliverableImage
-                src="/images/yocale/nav.png"
+                src="/images/yocale/yocale-navigation-design.webp"
                 alt="Yocale website navigation bar with the 'Features' menu open, showing a mega-menu of feature categories including Online Calendar, Online Booking, Marketing, Virtual Meeting, Client Management, Point of Sale, Notifications, Reserve with Google, Client Portal, Business Management, Form &amp; Annotation, Integrated Payment, Invoicing, Yocale Pay, and Yocale Marketing, set against a hero background photo of two people"
                 width="1196"
                 height="573"
@@ -227,24 +249,24 @@ const sections = [
             </div>
 
             <div class="feature-gallery-row-4">
-              <img src="/images/yocale/never lose track of a payment.png" alt="Yocale invoicing dashboard showing a list of invoices with date, client, and status columns, and a status filter dropdown open with Draft, Outstanding, Partially Paid, Paid, and Voided options" width="708" height="630" loading="lazy" />
-              <img src="/images/yocale/accept every way to pay.png" alt="Yocale payment integrations panel showing Affirm, Klarna, and Afterpay cards via Stripe, each enabled with a toggle switch and edit button" width="708" height="630" loading="lazy" />
+              <img src="/images/yocale/yocale-never-lose-track-payment.webp" alt="Yocale invoicing dashboard showing a list of invoices with date, client, and status columns, and a status filter dropdown open with Draft, Outstanding, Partially Paid, Paid, and Voided options" width="708" height="630" loading="lazy" />
+              <img src="/images/yocale/yocale-accept-every-way-to-pay.webp" alt="Yocale payment integrations panel showing Affirm, Klarna, and Afterpay cards via Stripe, each enabled with a toggle switch and edit button" width="708" height="630" loading="lazy" />
             </div>
 
             <div class="feature-gallery-row-5">
               <div class="feature-gallery-row-5-grid">
-                <img src="/images/yocale/Group 60302.png" alt="Yocale mobile screen showing a hand using a phone for integrated payments near retail shelves, with the heading 'Integrated Payments &amp; Point of Sale Made Simple'" width="343" height="515" loading="lazy" />
-                <img src="/images/yocale/Group 60300.png" alt="Yocale mobile screen with the heading 'Let Clients Book Bigger Services. You Get Paid In Full, Upfront', stat cards for '2-3x higher average tickets' and '0 chasing and risk', and a panel showing Affirm, Afterpay, and Klarna logos" width="343" height="515" loading="lazy" />
-                <img src="/images/yocale/Group 60301.png" alt="Yocale mobile screen showing an invoice creation interface with line items and a signature panel, with the heading 'Create Invoices In Seconds. Get Paid Fast.'" width="343" height="515" loading="lazy" />
+                <img src="/images/yocale/yocale-gift-card-feature-mockup.webp" alt="Yocale mobile screen showing a hand using a phone for integrated payments near retail shelves, with the heading 'Integrated Payments &amp; Point of Sale Made Simple'" width="343" height="515" loading="lazy" />
+                <img src="/images/yocale/yocale-invoicing-feature-mockup.webp" alt="Yocale mobile screen with the heading 'Let Clients Book Bigger Services. You Get Paid In Full, Upfront', stat cards for '2-3x higher average tickets' and '0 chasing and risk', and a panel showing Affirm, Afterpay, and Klarna logos" width="343" height="515" loading="lazy" />
+                <img src="/images/yocale/yocale-integrated-payments-mockup.webp" alt="Yocale mobile screen showing an invoice creation interface with line items and a signature panel, with the heading 'Create Invoices In Seconds. Get Paid Fast.'" width="343" height="515" loading="lazy" />
               </div>
             </div>
 
             <div class="feature-gallery-row-6">
               <div class="feature-gallery-row-6-item">
-                <img src="/images/yocale/mockup-bnpl.png" alt="Yocale mobile checkout screen showing an invoice with 'Amount due $450.00', Affirm and Klarna buy-now-pay-later options, payment method selection with Affirm selected, and a 'Confirm payment' button" width="550" height="708" loading="lazy" />
+                <img src="/images/yocale/yocale-bnpl-mockup.webp" alt="Yocale mobile checkout screen showing an invoice with 'Amount due $450.00', Affirm and Klarna buy-now-pay-later options, payment method selection with Affirm selected, and a 'Confirm payment' button" width="550" height="708" loading="lazy" />
               </div>
               <div class="feature-gallery-row-6-item">
-                <img src="/images/yocale/Commission.png" alt="Photo of a woman checking her phone, with a 'Blowdry Commission' card overlay showing a discounted price of $49.00 from $70.00 and staff member 'Natan Jein'" width="536" height="480" loading="lazy" />
+                <img src="/images/yocale/yocale-commission-tracking-feature.webp" alt="Photo of a woman checking her phone, with a 'Blowdry Commission' card overlay showing a discounted price of $49.00 from $70.00 and staff member 'Natan Jein'" width="536" height="480" loading="lazy" />
               </div>
             </div>
 
@@ -260,29 +282,26 @@ const sections = [
 
             <CaseStudySectionHeader eyebrow="07" title="Landing Pages"/>
 
-            <div class="landing-video-placeholder">
-              <svg class="landing-video-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M7 4v16l13-8z" />
-              </svg>
-              <p class="landing-video-label">Demo video coming soon</p>
+            <div class="landing-gif-wrap">
+              <CaseStudyGif gifSrc="/gifs/yocale/0621(1).gif" alt="Animated walkthrough of Yocale landing page designs" aspectRatio="16 / 9" />
             </div>
 
             <div class="landing-content">
               <h3 class="landing-content-title">Conversion Funnel</h3>
               <div class="landing-content-body">
-                <p>Marketing has a playbook on converting traffic into a lead. Almost all successful landing pages are following this formula:</p>
+                <p>High-converting landing pages follow a proven formula. Every section moves the visitor one step closer to becoming a lead:</p>
                 <ol class="landing-content-list">
-                  <li>1. Hook — Awareness &amp; (Awareness & Primary Value Proposition) </li>
-                  <li>2. Core Value — Interest &amp; (Interest & How to address my problem)</li>
-                  <li>3. Social Proof — Remove Objections &amp; (Remove Objections & Build Desire)</li>
-                  <li>4. Call To Action — (The Conversion)</li>
+                  <li>Hook — Lead with awareness and the primary value proposition</li>
+                  <li>Core Value — Show how the product solves their specific problem</li>
+                  <li>Social Proof — Remove objections and build desire through credibility</li>
+                  <li>Call to Action — Drive the conversion</li>
                 </ol>
               </div>
             </div>
 
             <div class="landing-gallery">
               <CaseStudyDeliverableImage
-                src="/images/yocale/Container.png"
+                src="/images/yocale/yocale-landing-page-container-layout.webp"
                 alt="Yocale landing page layout showing the full-width container structure and section hierarchy"
                 width="1196"
                 height="720"
@@ -291,7 +310,7 @@ const sections = [
 
               <div class="landing-gallery-row-2">
                 <CaseStudyDeliverableImage
-                  src="/images/yocale/hero header.png"
+                  src="/images/yocale/yocale-hero-header-design.webp"
                   alt="Yocale hero header design showing the headline, subheading, CTA button, and phone mockup on a clean background"
                   width="1296"
                   height="589"
@@ -301,21 +320,21 @@ const sections = [
 
               <div class="landing-gallery-row-3">
                 <div class="landing-row-3-left">
-                  <img src="/images/yocale/clients_quotes.png" alt="Yocale Spanish-language landing page section showing two client testimonials from Preet and Elena with their photos and quotes" width="574" height="575" loading="lazy" />
+                  <img src="/images/yocale/yocale-client-testimonials.webp" alt="Yocale Spanish-language landing page section showing two client testimonials from Preet and Elena with their photos and quotes" width="574" height="575" loading="lazy" />
                 </div>
                 <div class="landing-row-3-right">
-                  <img src="/images/yocale/Section data.png" alt="Yocale Spanish-language 'Beneficios de Yocale' section showing a laptop mockup alongside four statistics: 86% reduction in no-shows, 34% increase in client bookings, 30% increase in recurring bookings, and 64% increase in new bookings" width="611" height="358" loading="lazy" />
+                  <img src="/images/yocale/yocale-spanish-landing-page-statistics.webp" alt="Yocale Spanish-language 'Beneficios de Yocale' section showing a laptop mockup alongside four statistics: 86% reduction in no-shows, 34% increase in client bookings, 30% increase in recurring bookings, and 64% increase in new bookings" width="611" height="358" loading="lazy" />
                 </div>
               </div>
 
               <div class="landing-localization">
                 <h3 class="landing-localization-title">Localization</h3>
-                <p class="landing-localization-body">Latam is also our service area and our target audiences. To expand our business and provide value proposition to the Spanish readers. We worked together on a landing page which Latin America sales can spread this around.</p>
+                <p class="landing-localization-body">Latin America is both a key service region and a core target audience. To reach Spanish-speaking users, we built a fully localized landing page that the Latin America sales team could share directly.</p>
               </div>
 
               <div class="landing-gallery-row-4" data-parallax>
                 <img
-                  src="/images/yocale/Yocale Pay.png"
+                  src="/images/yocale/yocale-pay-landing-page.webp"
                   alt="Yocale Pay full-page landing page showing the hero headline, feature highlights, and call-to-action section"
                   width="1440"
                   height="800"
@@ -325,7 +344,7 @@ const sections = [
 
               <div class="landing-gallery-row-5">
                 <CaseStudyDeliverableImage
-                  src="/images/yocale/tracking.png"
+                  src="/images/yocale/yocale-seo-tracking-dashboard.webp"
                   alt="Yocale analytics tracking dashboard showing session data, conversion metrics, and user behaviour insights"
                   width="1196"
                   height="678"
@@ -348,21 +367,78 @@ const sections = [
 
             <div class="webdev-compare">
               <CaseStudyCompareSlider
-                beforeSrc="/images/yocale/old blog.png"
-                afterSrc="/images/yocale/new blog.png"
+                beforeSrc="/images/yocale/old-blog.svg"
+                afterSrc="/images/yocale/new-blog.svg"
                 beforeAlt="Screenshot of the original Yocale blog layout from 2023 showing all posts on a single page with no category structure"
                 afterAlt="Screenshot of the redesigned Yocale blog layout from 2024 showing structured categories and improved navigation"
-                beforeLabel="Before · 2023"
-                afterLabel="After · 2024"
-                aspectRatio="1440 / 1798"
+                beforeLabel="Before"
+                afterLabel="After"
+                aspectRatio="1440 / 1176"
               />
             </div>
 
             <div class="webdev-content">
               <h3 class="webdev-content-title">Redesign to solve SEO issues</h3>
-              <p class="webdev-content-body">The site always has orphan pages with blog as the original layout is dumping the latest 100 blogs into that page while there are more than 100 content. So I restructured the blog section and make sure every category is being indexed and shown.</p>
+              <p class="webdev-content-body">The site had orphan pages in the blog section — the original layout was dumping the latest 100 posts onto a single page while the archive had far more. I restructured the blog with proper categories so every post is indexed and discoverable.</p>
             </div>
 
+            <div class="webdev-gif">
+              <CaseStudyDeliverableImage
+                src="/gifs/yocale/Figma MCP.gif"
+                alt="Screen recording of the Figma and Webflow MCP Bridge App automating web component creation from designs, showing tool call logs and element builder execution"
+                width="1182"
+                height="640"
+                maxWidth="1196px"
+              />
+            </div>
+
+            <div class="webdev-ai-content">
+              <h3 class="webdev-content-title">AI is taking our job </h3>
+              <p class="webdev-content-body">Figma and Webflow each have an MCP that enables certain web component automation (with proper auto-layout), but the current limitation is that they can't automate animations yet.</p>
+            </div>
+
+            <div class="webdev-gif">
+              <CaseStudyDeliverableImage
+                src="/gifs/yocale/Webflow web component.gif"
+                alt="Screen recording of a Webflow component being built and configured with editable properties for a pricing card, demonstrating reusable web component creation"
+                width="932"
+                height="640"
+                maxWidth="1196px"
+              />
+            </div>
+
+            <div class="webdev-content">
+              <h3 class="webdev-content-title">Webflow Component</h3>
+              <p class="webdev-content-body">Creating reusable web components shortens development time and ensures faster delivery. After all, time is money in the SaaS world.</p>
+            </div>
+
+            <div class="webdev-gif">
+              <CaseStudyDeliverableImage
+                src="/gifs/yocale/Notion to Figma Sync.gif"
+                alt="Screen recording of the Notion to Figma Sync plugin syncing Notion database content into Figma design layers, demonstrating content translation across languages"
+                width="868"
+                height="640"
+                maxWidth="1196px"
+              />
+            </div>
+
+            <div class="webdev-content">
+              <h3 class="webdev-content-title">Notion to Figma</h3>
+              <p class="webdev-content-body">Working with a content writer, we needed a system to test how content worked within the design. I discovered a plugin that syncs a Notion database with Figma (layers need to be named accordingly). With one click, you can localize designs across different content and languages.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-closing-section">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-closing">
+            <div class="case-closing-media">
+              <img src="/images/yocale/yocale-client-star-ratings.webp" alt="Yocale client star ratings and reviews showcasing customer satisfaction across the platform" width="1196" height="984" loading="lazy" data-parallax />
+            </div>
           </div>
         </div>
       </div>
@@ -386,11 +462,16 @@ const sections = [
     display:               grid;
     grid-template-columns: 1fr 1fr;
     gap:                   clamp(12px, 1.7vw, 24px);
+    margin-bottom:         40px;
+  }
+
+  .case-overview :global(.deliverable-image) {
+    margin-bottom: 40px;
   }
 
   .case-overview-heading {
     font-family: var(--font-display);
-    font-size:   36px;
+    font-size:   39px;
     font-weight: 400;
     line-height: 1.2;
     color:       var(--text-1);
@@ -404,7 +485,7 @@ const sections = [
 
   .case-overview-body p {
     font-family: var(--font-body);
-    font-size:   15px;
+    font-size:   16px;
     font-weight: 300;
     line-height: 1.6;
     color:       var(--text-2);
@@ -420,7 +501,7 @@ const sections = [
 
   .case-challenge-heading {
     font-family: var(--font-display);
-    font-size:   clamp(28px, 3.1vw, 45px);
+    font-size:   clamp(25px, 3.1vw, 39px);
     font-weight: 400;
     line-height: 1.2;
     color:       var(--text-1);
@@ -428,7 +509,7 @@ const sections = [
 
   .case-challenge-body {
     font-family: var(--font-body);
-    font-size:   15px;
+    font-size:   16px;
     font-weight: 300;
     line-height: 1.6;
     color:       var(--text-2);
@@ -449,7 +530,7 @@ const sections = [
 
   .case-approach-heading {
     font-family: var(--font-display);
-    font-size:   36px;
+    font-size:   39px;
     font-weight: 400;
     line-height: 1.2;
     color:       var(--text-1);
@@ -457,7 +538,7 @@ const sections = [
 
   .case-approach-body {
     font-family: var(--font-body);
-    font-size:   15px;
+    font-size:   16px;
     font-weight: 300;
     line-height: 1.6;
     color:       var(--text-2);
@@ -503,7 +584,7 @@ const sections = [
     display:        flex;
     flex-direction: column;
     gap:            var(--space-xs);
-    padding:        var(--space-md);
+    padding:        var(--space-sm);
   }
 
   .feature-card-number {
@@ -515,7 +596,7 @@ const sections = [
 
   .feature-card-title {
     font-family: var(--font-display);
-    font-size:   36px;
+    font-size:   39px;
     font-weight: 400;
     line-height: 1.2;
     color:       var(--text-1);
@@ -615,6 +696,7 @@ const sections = [
     justify-content: center;
     gap:             clamp(12px, 1.7vw, 24px);
     padding:         var(--space-md);
+    padding-inline:  0;
     background:      var(--bg-2);
     border-radius:   var(--r-lg);
     overflow:        hidden;
@@ -640,6 +722,14 @@ const sections = [
   }
 
   /* ── 07 Landing Pages ────────────────────── */
+  .landing-gif-wrap {
+    max-width:     1440px;
+    margin-inline: auto;
+    padding:       var(--space-md);
+    background:    #000;
+    border-radius: var(--r-lg);
+  }
+
   .landing-video-placeholder {
     display:         flex;
     flex-direction:  column;
@@ -661,7 +751,7 @@ const sections = [
 
   .landing-video-label {
     font-family:    var(--font-body);
-    font-size:      11px;
+    font-size:      12px;
     font-weight:    500;
     letter-spacing: 0.01em;
   }
@@ -675,11 +765,12 @@ const sections = [
 
   .landing-content-title {
     font-family:    var(--font-display);
-    font-size:      clamp(27px, 3.1vw, 45px);
+    font-size:      clamp(25px, 3.1vw, 39px);
     font-weight:    400;
     line-height:    1.1;
     letter-spacing: -0.28px;
     color:          var(--text-1);
+    text-wrap:      balance;
   }
 
   .landing-content-body {
@@ -691,7 +782,7 @@ const sections = [
   .landing-content-body p,
   .landing-content-list li {
     font-family: var(--font-body);
-    font-size:   15px;
+    font-size:   16px;
     font-weight: 300;
     line-height: 1.6;
     color:       var(--text-2);
@@ -703,6 +794,10 @@ const sections = [
 
   .landing-gallery {
     margin-top: clamp(32px, 5.5vw, 80px);
+  }
+
+  .landing-gallery :global(.deliverable-image:first-child) {
+    padding-bottom: 0;
   }
 
   .landing-gallery-row-2 {
@@ -750,16 +845,17 @@ const sections = [
 
   .landing-localization-title {
     font-family:    var(--font-display);
-    font-size:      clamp(27px, 3.1vw, 45px);
+    font-size:      clamp(25px, 3.1vw, 39px);
     font-weight:    400;
     line-height:    1.1;
     letter-spacing: -0.28px;
     color:          var(--text-1);
+    text-wrap:      balance;
   }
 
   .landing-localization-body {
     font-family: var(--font-body);
-    font-size:   15px;
+    font-size:   16px;
     font-weight: 300;
     line-height: 1.6;
     color:       var(--text-2);
@@ -777,7 +873,7 @@ const sections = [
     height:        clamp(480px, 55.6vw, 800px);
     overflow:      hidden;
     border-radius: var(--r-lg);
-    margin-top:    clamp(12px, 1.7vw, 24px);
+    margin-top:    80px;
   }
 
   .landing-gallery-row-4 img {
@@ -801,19 +897,31 @@ const sections = [
 
   .webdev-content-title {
     font-family:    var(--font-display);
-    font-size:      clamp(27px, 3.1vw, 45px);
+    font-size:      clamp(25px, 3.1vw, 39px);
     font-weight:    400;
     line-height:    1.1;
     letter-spacing: -0.28px;
     color:          var(--text-1);
+    text-wrap:      balance;
   }
 
   .webdev-content-body {
     font-family: var(--font-body);
-    font-size:   15px;
+    font-size:   16px;
     font-weight: 300;
     line-height: 1.6;
     color:       var(--text-2);
+  }
+
+  .webdev-gif {
+    margin-top: clamp(32px, 5.5vw, 80px);
+  }
+
+  .webdev-ai-content {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(20px, 2.8vw, 40px);
   }
 
   @media (max-width: 768px) {
@@ -880,12 +988,48 @@ const sections = [
       grid-template-columns: 1fr;
     }
 
-    .webdev-content {
+    .webdev-content,
+    .webdev-ai-content {
       grid-template-columns: 1fr;
     }
   }
 
+  /* ── Closing ──────────────────────────────── */
+  .case-closing-section {
+    padding-bottom: 0;
+    background:     var(--bg-2);
+  }
+
+  :global(.keep-reading-section) {
+    padding-block: var(--space-lg);
+  }
+
+  .case-closing-media {
+    position:      relative;
+    width:         100vw;
+    height:        800px;
+    margin-inline: calc(50% - 50vw);
+    overflow:      hidden;
+  }
+
+  .case-closing-media img {
+    position:   absolute;
+    top:        0;
+    left:       0;
+    width:      100%;
+    height:     984px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .landing-gallery-row-4 { height: clamp(280px, 55vw, 480px); }
+    .case-closing-media { height: 450px; }
+    .case-closing-media img { height: 600px; }
+  }
+
   @media (max-width: 520px) {
     .main { padding-top: 72px; }
+    .case-closing-media { height: 280px; }
+    .case-closing-media img { height: 400px; }
   }
 </style>

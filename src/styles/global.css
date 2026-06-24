@@ -84,7 +84,7 @@ button {
    SECTION SPACING
 ───────────────────────────────────────────── */
 section {
-  padding-block:     var(--space-xl); /* 128px top + bottom */
+  padding-block:     80px;
   scroll-margin-top: 96px;            /* clears the fixed nav on anchor scroll */
 }
 
@@ -190,30 +190,33 @@ section {
 /* ── Left column — typography ───────────────── */
 .about-name {
   font-family:    var(--font-display);
-  font-size:      clamp(52px, 5.5vw, 75px);
+  font-size:      clamp(49px, 5.5vw, 76px);
   font-weight:    400;
   color:          var(--text-1);
   letter-spacing: -0.02em;
   margin-bottom:  var(--space-sm);
+  text-wrap:      balance;
 }
 
 .about-bio p {
   font-family:   var(--font-body);
-  font-size:     15px;
+  font-size:     16px;
   font-weight:   300;
   color:         var(--text-2);
   line-height:   1.65;
   margin-bottom: var(--space-xs);
+  text-wrap:     pretty;
 }
 
 .about-subheading {
   font-family:    var(--font-display);
-  font-size:      36px;
+  font-size:      39px;
   font-weight:    400;
   color:          var(--text-1);
   margin-top:     var(--space-md);
   margin-bottom:  8px;
   letter-spacing: -0.01em;
+  text-wrap:      balance;
 }
 
 /* ── Facts list ─────────────────────────────── */
@@ -231,6 +234,7 @@ section {
   font-weight: 300;
   color:       var(--text-2);
   line-height: 1.5;
+  text-wrap:   pretty;
 }
 
 /* ── Skill tags ─────────────────────────────── */
@@ -247,7 +251,7 @@ section {
   padding:        4px 10px;
   border-radius:  var(--r-pill);
   font-family:    var(--font-body);
-  font-size:      11px;
+  font-size:      12px;
   font-weight:    500;
   letter-spacing: 0.03em;
   color:          var(--text-2);
@@ -266,18 +270,22 @@ section {
 /* ── Right column — Design Journey ─────────── */
 .about-journey-heading {
   font-family:    var(--font-display);
-  font-size:      clamp(36px, 3.8vw, 52px);
+  font-size:      clamp(39px, 3.8vw, 49px);
   font-weight:    300;
   color:          var(--text-1);
   letter-spacing: -0.02em;
   margin-bottom:  clamp(32px, 5.5vw, 80px);
+  text-wrap:      balance;
 }
 
 /* ── Bottom section — CTA + Testimonials ────── */
 .about-cta {
-  background:   var(--bg-2);
-  padding:      var(--space-xl) var(--space-md);
-  border-right: 0.5px solid var(--border);
+  display:         flex;
+  flex-direction:  column;
+  justify-content: center;
+  background:      var(--bg-2);
+  padding:         var(--space-xl) var(--space-md);
+  border-right:    0.5px solid var(--border);
 }
 
 .about-testi {
@@ -287,58 +295,58 @@ section {
 
 .about-cta-heading {
   font-family:    var(--font-display);
-  font-size:      clamp(52px, 5.5vw, 75px);
+  font-size:      clamp(49px, 5.5vw, 76px);
   font-weight:    400;
   color:          var(--text-1);
   letter-spacing: -0.02em;
   line-height:    1.1;
   margin-bottom:  var(--space-md);
+  text-wrap:      balance;
 }
 
 .about-cta-actions {
-  display:   flex;
-  gap:       var(--space-xs);
-  flex-wrap: wrap;
+  display:    flex;
+  gap:        var(--space-xs);
+  flex-wrap:  wrap;
+  align-self: flex-start;
 }
 
 .about-btn-outline {
   font-family:   var(--font-body);
-  font-size:     17px;
+  font-size:     16px;
   font-weight:   400;
   color:         var(--text-1);
   border:        0.5px solid var(--border-2);
   border-radius: var(--r-sm);
   padding:       10px 28px;
-  transition:    border-color 0.25s var(--ease);
+  transition:    border-color 0.25s var(--ease), transform 0.1s var(--ease);
 }
 
-.about-btn-outline:hover {
-  border-color: var(--text-1);
-}
+.about-btn-outline:hover  { border-color: var(--text-1); }
+.about-btn-outline:active { transform: scale(0.96); }
 
 .about-btn-accent {
   font-family:   var(--font-body);
-  font-size:     17px;
+  font-size:     16px;
   font-weight:   400;
   color:         var(--accent);
   border:        0.5px solid var(--accent);
   border-radius: var(--r-sm);
   padding:       10px 28px;
-  transition:    background 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  transition:    background 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.1s var(--ease);
 }
 
-.about-btn-accent:hover {
-  background: var(--accent-dim);
-  box-shadow: var(--neon-sm);
-}
+.about-btn-accent:hover  { background: var(--accent-dim); box-shadow: var(--neon-sm); }
+.about-btn-accent:active { transform: scale(0.96); }
 
 .about-testi-heading {
   font-family:    var(--font-display);
-  font-size:      clamp(36px, 3.8vw, 52px);
+  font-size:      clamp(39px, 3.8vw, 49px);
   font-weight:    300;
   color:          var(--text-1);
   letter-spacing: -0.02em;
   margin-bottom:  var(--space-md);
+  text-wrap:      balance;
 }
 
 .about-testi-box {
@@ -357,6 +365,7 @@ section {
   .about-split               { grid-template-columns: 1fr; background: none; }
   .about-left, .about-cta   { border-right: none; border-bottom: 0.5px solid var(--border); }
   .about-right               { position: static; height: auto; }
+  .about-testi               { order: -1; }
 }
 
 @media (max-width: 520px) {

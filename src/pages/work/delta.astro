@@ -20,14 +20,24 @@ const sections = [
 ];
 ---
 
-<BaseLayout title="Delta Controls" world="light" sections={sections}>
+<BaseLayout title="Delta Controls" world="light" sections={sections} description="How I redesigned Delta Controls' internal resource intranet (The Source 2.0) — improving navigation, search, and engagement by 15% through UX research, design, and development.">
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Delta Controls Resource Intranet: The Source 2.0",
+    "description": "UX research, design, and development of Delta Controls' internal resource hub — reducing average clicks to find content from 4–6 to 2–3.",
+    "url": "https://andrewthyip.com/work/delta/",
+    "author": { "@type": "Person", "name": "Andrew Yip", "url": "https://andrewthyip.com" }
+  }
+  </script>
   <main class="main">
 
     <CaseStudyHero
-      title="Delta Controls Resource Intranet: The Source 2.0 Overcoming Navigation Difficulties and Ineffective Search"
-      fullTitle="Delta Controls Resource Intranet: The Source 2.0 Overcoming Navigation Difficulties and Ineffective Search"
+      title="Delta Controls Resource Intranet: The Source 2.0 — Overcoming Navigation Difficulties and Ineffective Search"
+      fullTitle="Delta Controls Resource Intranet: The Source 2.0 — Overcoming Navigation Difficulties and Ineffective Search"
       accentTitle="Delta Controls"
-      gifSrc="/gifs/delta/the_source_video.gif"
+      gifSrc="/gifs/delta/ezgif.com-crop.gif"
       gifAspectRatio="1440 / 900"
       gifAlt="Animated walkthrough of The Source 2.0 intranet redesign showing the homepage, navigation, and search"
       role={["Research", "Design", "Development"]}
@@ -71,7 +81,7 @@ const sections = [
       items={[
         { title: "A. Unclear Navigation", body: "Users averaged 4–6 clicks to locate necessary files, which wasted a significant amount of time and reduced productivity." },
         { title: "B. Ineffective Search", body: "70% of users relied on search capabilities, but results were ineffective due to WordPress preset index constraints." },
-        { title: "C. Unorganized Category & Layout", body: "Tags are all over the place, and users expect more logical layouts." },
+        { title: "C. Unorganized Category & Layout", body: "Tags were inconsistently organized, and users expected a more logical content structure." },
       ]}
       imageSrc="/gifs/delta/user-problem-Source.gif"
       imageAlt="Screen recording of a user browsing The Source's original document library, navigating categories and using the search and filter tools"
@@ -93,13 +103,13 @@ const sections = [
           imageSrc: "/gifs/delta/search.gif",
           imageAlt: "Animated screen recording of The Source 2.0's category cards and smart search dropdown showing tag suggestions like 'national account' and 'sales and marketing'",
           title: "Enhanced Discoverability with Smart Search",
-          body: "The Source will use unified smart search, which will allow all documents, categories, and tags to be searched. Users can fill out a feedback form to notify the marketing staff of any missing content.",
+          body: "The Source uses a unified smart search that allows all documents, categories, and tags to be searched. Users can also fill out a feedback form to notify the marketing team of any missing content.",
         },
         {
           imageSrc: "/gifs/delta/customisation.gif",
           imageAlt: "Animated screen recording of The Source 2.0's personalized 'Recently Downloaded' section showing document cards for quick access",
           title: "A Modern, Personalized Resource Experience",
-          body: "Our modern logical layout enhances customization, featuring recent and most-downloaded documents for quick access. Ensuring an efficient user experience tailored to your needs.",
+          body: "Our modern, logical layout enhances customization, featuring recent and most-downloaded documents for quick access — ensuring an efficient experience tailored to each user's needs.",
         },
       ]}
     />
@@ -112,7 +122,7 @@ const sections = [
         {
           label: "Global Survey for Existing Users",
           items: ["USA, Canada, Europe, Asia", "Anonymous response collection"],
-          imageSrc: "/images/delta/global.png",
+          imageSrc: "/images/delta/delta-controls-global-navigation.webp",
           imageAlt: "Illustration of a glowing digital globe with cyan network lines highlighting global regions, representing the worldwide reach of the survey",
         },
         {
@@ -127,7 +137,7 @@ const sections = [
         { value: "3/5", title: "Low Satisfaction", body: "The average satisfaction score shows tremendous opportunity for improvement." },
         { value: "69%", title: "Excessive Clicking", body: "Users require 4-6+ clicks to access needed information" },
       ]}
-      imageSrc="/images/delta/feedback.png"
+      imageSrc="/images/delta/delta-controls-user-feedback.webp"
       imageAlt="Screenshot of a Slack message from Andrew Yip sharing survey findings about the Source Portal, including response counts by department and key findings on click counts, satisfaction, and user pain points"
       quotePanels={[
         {
@@ -170,7 +180,7 @@ const sections = [
           imageSrc: "/images/delta/Flow-chart.svg",
           imageAlt: "Flow chart showing the user flow from logging in through the Source homepage and library page to finding a document, with subscribe and support escalation paths",
           title: "User Flow",
-          body: "We don't want the flow to be stopped abruptly because users couldn't find their document. That's why we included a support button that connects user directly to the marketing team.",
+          body: "We didn't want the flow to stop abruptly if users couldn't find their document. That's why we included a support button that connects users directly to the marketing team.",
         },
         {
           iframeSrc: "https://embed.figma.com/proto/AC3N495joFyyLbJymaIerY/The-Source?content-scaling=fixed&kind=proto&node-id=317-9858&page-id=2%3A44&scaling=scale-down&starting-point-node-id=322%3A11313&embed-host=share",
@@ -191,7 +201,7 @@ const sections = [
             <div class="case-takeaways-content">
               <h3 class="case-takeaways-heading">Addressing Technical Limitations and Stakeholder Pushback</h3>
               <div class="case-takeaways-body">
-                <p>The IS (Information Systems) team refused to connect the partner database directly to the communication channel while we are creating the subscribe function. This integration was primarily designed to pre-fill user personal information for a more seamless subscription experience.</p>
+                <p>The IS (Information Systems) team refused to connect the partner database directly to the communication channel while creating the subscribe function. This integration was primarily designed to pre-fill user information for a more seamless subscription experience.</p>
                 <p>Our workaround required utilizing a built-in connector within the subscription form and adding an additional step for users to manually enter their information. It may not be ideal for user experience, but this highlights the significance of compromise and flexibility in meeting key user needs while considering time and cost.</p>
               </div>
             </div>
@@ -223,7 +233,7 @@ const sections = [
 
   .case-takeaways-heading {
     font-family:    var(--font-display);
-    font-size:      clamp(28px, 3.1vw, 45px);
+    font-size:      clamp(25px, 3.1vw, 39px);
     font-weight:    400;
     line-height:    1.2;
     letter-spacing: -0.28px;
@@ -238,7 +248,7 @@ const sections = [
 
   .case-takeaways-body p {
     font-family: var(--font-body);
-    font-size:   15px;
+    font-size:   16px;
     font-weight: 300;
     line-height: 1.6;
     color:       var(--text-1);

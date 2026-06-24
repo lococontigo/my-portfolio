@@ -16,7 +16,7 @@ export const caseStudies = [
     category: 'Product Design',
     year: '2026',
     description: 'Booking & business management platform',
-    imageSrc: '/images/yocale thumbnail.png',
+    imageSrc: '/images/yocale-case-study-thumbnail.webp',
     imageAlt: 'Yocale dashboard — booking management interface',
   },
   {
