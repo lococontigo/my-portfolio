@@ -20,7 +20,8 @@ const sections = [
 ];
 ---
 
-<BaseLayout title="Yocale" world="light" sections={sections} description="How I built a design growth system for Yocale that makes lead generation effortless — achieving 5.15% CTR and 40% bounce rate reduction through GTM design, landing pages, and technical SEO.">
+<BaseLayout title="Yocale" world="light" sections={sections} description="Yocale design growth system: 5.15% CTR and 40% bounce rate reduction through GTM design, landing pages, and technical SEO.">
+  <link slot="head" rel="preload" as="video" href="/videos/yocale/hero-demo.mp4" />
   <script slot="head" is:inline type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,7 +38,7 @@ const sections = [
       title="Yocale: Building a Design Growth System that Makes Lead Generation Effortless"
       fullTitle="Yocale: Building a Design Growth System that Makes Lead Generation Effortless"
       accentTitle="Yocale"
-      gifSrc="/gifs/yocale/haaland.gif"
+      gifVideoSrc="/videos/yocale/hero-demo.mp4"
       gifAlt="Animated walkthrough of the Yocale landing page design system"
       gifAspectRatio="1440 / 900"
       role={["GTM Design", "Landing Page Design", "Technical SEO", "Web Development"]}

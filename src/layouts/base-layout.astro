@@ -25,7 +25,7 @@ const fullTitle    = `${title} · Andrew YIP`;
 <html lang="en" data-theme={world}>
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalURL} />
@@ -35,9 +35,13 @@ const fullTitle    = `${title} · Andrew YIP`;
   <meta property="og:url"         content={canonicalURL} />
   <meta property="og:title"       content={fullTitle} />
   <meta property="og:description" content={description} />
-  <meta property="og:image"       content={new URL('/images/OG/OG.png', Astro.site)} />
+  <meta property="og:image"        content={new URL('/images/OG/OG.png', Astro.site)} />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"    content="Andrew YIP — UX/UI Designer & Developer" />
 
-  <link rel="icon" type="image/png" href="/images/andrew-yip-logo.png" />
+  <link rel="icon"    type="image/png" href="/images/andrew-yip-logo.png" />
+  <link rel="sitemap" href="/sitemap.xml" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
