@@ -24,6 +24,15 @@ const fullTitle    = `${title} · Andrew YIP`;
 <!DOCTYPE html>
 <html lang="en" data-theme={world}>
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XYG0FY3YJM"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XYG0FY3YJM');
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{fullTitle}</title>
