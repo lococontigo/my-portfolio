@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/base-layout.astro';
+---
+<BaseLayout title="404 — Page Not Found" world="dark" description="This page doesn't exist. Let's get you back on track.">
+  <main class="notfound">
+    <div class="notfound-scrim"></div>
+    <div class="notfound-content">
+      <p class="notfound-title">404</p>
+      <a href="/" class="notfound-btn">Return to Homepage</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .notfound {
+    position:        relative;
+    min-height:      100vh;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    background:      url('/gifs/in_the_mood_for_love.gif') center / cover no-repeat;
+  }
+
+  /* Dark scrim for text legibility over the GIF */
+  .notfound-scrim {
+    position:   absolute;
+    inset:      0;
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  .notfound-content {
+    position:        relative;
+    z-index:         1;
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    gap:             var(--space-md);
+    text-align:      center;
+    padding:         var(--space-md);
+  }
+
+  .notfound-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(95px, 22vw, 233px);
+    font-weight:    300;
+    line-height:    1;
+    letter-spacing: -0.02em;
+    color:          var(--text-1);
+    text-shadow:    var(--neon-sm);
+  }
+
+  .notfound-btn {
+    font-family:    var(--font-body);
+    font-size:      16px;
+    font-weight:    400;
+    color:          var(--accent);
+    border:         0.5px solid var(--accent);
+    border-radius:  var(--r-sm);
+    padding:        12px 32px;
+    transition:     background 0.25s var(--ease),
+                    box-shadow 0.25s var(--ease),
+                    transform 0.1s var(--ease);
+  }
+
+  .notfound-btn:hover  { background: var(--accent-dim); box-shadow: var(--neon-sm); }
+  .notfound-btn:active { transform: scale(0.96); }
+</style>
