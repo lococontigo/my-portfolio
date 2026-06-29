@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   world?:       'dark' | 'light';  // HK or CA
   sections?:    { id: string; label: string }[];
+  chrome?:      boolean;           // render nav + footer (default true)
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   description = 'Andrew YIP — UX/UI Designer & Developer',
   world = 'dark',
   sections = [],
+  chrome = true,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -69,13 +71,13 @@ const fullTitle    = `${title} · Andrew YIP`;
   <div id="curtain" aria-hidden="true"></div>
 
   <!-- Global navigation -->
-  <Nav sections={sections} />
+  {chrome && <Nav sections={sections} />}
 
   <!-- Page content goes here -->
   <slot />
 
   <!-- Global footer -->
-  <Footer />
+  {chrome && <Footer />}
 
   <!-- GSAP loaded once, at the bottom -->
   <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

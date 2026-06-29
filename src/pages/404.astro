@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/base-layout.astro';
 ---
-<BaseLayout title="404 — Page Not Found" world="dark" description="This page doesn't exist. Let's get you back on track.">
+<BaseLayout title="404 — Page Not Found" world="dark" description="This page doesn't exist. Let's get you back on track." chrome={false}>
   <main class="notfound">
     <div class="notfound-scrim"></div>
     <div class="notfound-content">
@@ -40,13 +40,14 @@ import BaseLayout from '../layouts/base-layout.astro';
   }
 
   .notfound-title {
-    font-family:    var(--font-display);
-    font-size:      clamp(95px, 22vw, 233px);
-    font-weight:    300;
-    line-height:    1;
-    letter-spacing: -0.02em;
-    color:          var(--text-1);
-    text-shadow:    var(--neon-sm);
+    font-family:          var(--font-display);
+    font-size:            clamp(95px, 22vw, 233px);
+    font-weight:          300;
+    line-height:          1;
+    letter-spacing:       -0.02em;
+    font-variant-numeric: proportional-nums lining-nums;
+    color:                #fff;
+    text-shadow:          var(--neon-sm);
   }
 
   .notfound-btn {
