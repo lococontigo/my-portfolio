@@ -51,6 +51,12 @@ const fullTitle    = `${title} · Andrew YIP`;
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt"    content="Andrew YIP — UX/UI Designer & Developer" />
 
+  <!-- Twitter / X card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={new URL('/images/OG/OG.png', Astro.site)} />
+
   <link rel="icon" type="image/png"     href="/images/andrew-yip-logo.png"      media="(prefers-color-scheme: light)" />
   <link rel="icon" type="image/svg+xml" href="/images/new%20logodark.svg"        media="(prefers-color-scheme: dark)" />
   <link rel="sitemap" href="/sitemap.xml" />

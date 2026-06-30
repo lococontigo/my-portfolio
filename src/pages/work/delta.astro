@@ -24,6 +24,16 @@ const sections = [
   <script slot="head" is:inline type="application/ld+json">
   {
     "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://andrewthyip.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Delta Controls", "item": "https://andrewthyip.com/work/delta/" }
+    ]
+  }
+  </script>
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
     "@type": "CreativeWork",
     "name": "Delta Controls Resource Intranet: The Source 2.0",
     "description": "UX research, design, and development of Delta Controls' internal resource hub — reducing average clicks to find content from 4–6 to 2–3.",
