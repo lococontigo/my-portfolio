@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/base-layout.astro';
 ---
 <BaseLayout title="404 — Page Not Found" world="dark" description="This page doesn't exist. Let's get you back on track." chrome={false}>
+  <link slot="head" rel="preload" as="image" href="/gifs/in_the_mood_for_love.gif" fetchpriority="high" />
   <main class="notfound">
     <div class="notfound-scrim"></div>
     <div class="notfound-content">
@@ -18,7 +19,8 @@ import BaseLayout from '../layouts/base-layout.astro';
     display:         flex;
     align-items:     center;
     justify-content: center;
-    background:      url('/gifs/in_the_mood_for_love.gif') center / cover no-repeat;
+    background:      url('/gifs/in_the_mood_for_love.gif') center / cover no-repeat,
+                     url('/images/fallback.png') center / cover no-repeat;
   }
 
   /* Dark scrim for text legibility over the GIF */
