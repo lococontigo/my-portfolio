@@ -179,3 +179,236 @@ import Testimonials from '../components/testimonials.astro';
 
   </main>
 </BaseLayout>
+
+<style>
+  /* ── Split hero layout ──────────────────────── */
+  .about-section {
+    padding-block: 0;
+  }
+
+  .about-split {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    background:            linear-gradient(90deg, transparent 50%, var(--bg-2) 50%);
+  }
+
+  .about-left {
+    border-right: 0.5px solid var(--border);
+    padding:      var(--space-xl) var(--space-md);
+  }
+
+  .about-photo-wrap {
+    display:         flex;
+    justify-content: center;
+    overflow:        hidden;
+    border-radius:   var(--r-md);
+    margin-bottom:   var(--space-lg);
+  }
+
+  .about-photo {
+    width:     auto;
+    max-width: 100%;
+    height:    auto;
+    display:   block;
+  }
+
+  .about-right {
+    padding:         var(--space-xl) var(--space-md);
+    background:      var(--bg-2);
+    position:        sticky;
+    top:             0;
+    height:          100vh;
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+    align-self:      start;
+    overflow:        hidden;
+  }
+
+  /* ── Left column — typography ───────────────── */
+  .about-name {
+    font-family:    var(--font-display);
+    font-size:      clamp(49px, 5.5vw, 76px);
+    font-weight:    400;
+    color:          var(--text-1);
+    letter-spacing: -0.02em;
+    margin-bottom:  var(--space-sm);
+    text-wrap:      balance;
+  }
+
+  .about-bio p {
+    font-family:   var(--font-body);
+    font-size:     16px;
+    font-weight:   300;
+    color:         var(--text-2);
+    line-height:   1.65;
+    margin-bottom: var(--space-xs);
+    text-wrap:     pretty;
+  }
+
+  .about-subheading {
+    font-family:    var(--font-display);
+    font-size:      39px;
+    font-weight:    400;
+    color:          var(--text-1);
+    margin-top:     var(--space-md);
+    margin-bottom:  8px;
+    letter-spacing: -0.01em;
+    text-wrap:      balance;
+  }
+
+  /* ── Facts list ─────────────────────────────── */
+  .about-facts {
+    list-style:     disc;
+    padding-left:   var(--space-sm);
+    display:        flex;
+    flex-direction: column;
+    gap:            4px;
+  }
+
+  .about-facts li {
+    font-family: var(--font-body);
+    font-size:   15px;
+    font-weight: 300;
+    color:       var(--text-2);
+    line-height: 1.5;
+    text-wrap:   pretty;
+  }
+
+  /* ── Skill tags ─────────────────────────────── */
+  .about-tags {
+    display:    flex;
+    flex-wrap:  wrap;
+    gap:        12px;
+    margin-top: var(--space-md);
+  }
+
+  .about-tag {
+    display:        inline-flex;
+    align-items:    center;
+    padding:        4px 10px;
+    border-radius:  var(--r-pill);
+    font-family:    var(--font-body);
+    font-size:      12px;
+    font-weight:    500;
+    letter-spacing: 0.03em;
+    color:          var(--text-2);
+    background:     var(--bg-2);
+    border:         0.5px solid var(--border);
+    transition:     color 0.2s var(--ease), border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+    cursor:         pointer;
+  }
+
+  .about-tag:hover {
+    color:        var(--accent);
+    border-color: var(--accent);
+    box-shadow:   var(--neon-sm);
+  }
+
+  /* ── Right column — Design Journey ─────────── */
+  .about-journey-heading {
+    font-family:    var(--font-display);
+    font-size:      clamp(39px, 3.8vw, 49px);
+    font-weight:    300;
+    color:          var(--text-1);
+    letter-spacing: -0.02em;
+    margin-bottom:  clamp(32px, 5.5vw, 80px);
+    text-wrap:      balance;
+  }
+
+  /* ── Bottom section — CTA + Testimonials ────── */
+  .about-cta {
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+    background:      var(--bg-2);
+    padding:         var(--space-xl) var(--space-md);
+    border-right:    0.5px solid var(--border);
+  }
+
+  .about-testi {
+    padding:    var(--space-xl) var(--space-md);
+    background: var(--bg);
+  }
+
+  .about-cta-heading {
+    font-family:    var(--font-display);
+    font-size:      clamp(49px, 5.5vw, 76px);
+    font-weight:    400;
+    color:          var(--text-1);
+    letter-spacing: -0.02em;
+    line-height:    1.1;
+    margin-bottom:  var(--space-md);
+    text-wrap:      balance;
+  }
+
+  .about-cta-actions {
+    display:    flex;
+    gap:        var(--space-xs);
+    flex-wrap:  wrap;
+    align-self: flex-start;
+  }
+
+  .about-btn-outline {
+    font-family:   var(--font-body);
+    font-size:     16px;
+    font-weight:   400;
+    color:         var(--text-1);
+    border:        0.5px solid var(--border-2);
+    border-radius: var(--r-sm);
+    padding:       10px 28px;
+    transition:    border-color 0.25s var(--ease), transform 0.1s var(--ease);
+  }
+
+  .about-btn-outline:hover  { border-color: var(--text-1); }
+  .about-btn-outline:active { transform: scale(0.96); }
+
+  .about-btn-accent {
+    font-family:   var(--font-body);
+    font-size:     16px;
+    font-weight:   400;
+    color:         var(--accent);
+    border:        0.5px solid var(--accent);
+    border-radius: var(--r-sm);
+    padding:       10px 28px;
+    transition:    background 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.1s var(--ease);
+  }
+
+  .about-btn-accent:hover  { background: var(--accent-dim); box-shadow: var(--neon-sm); }
+  .about-btn-accent:active { transform: scale(0.96); }
+
+  .about-testi-heading {
+    font-family:    var(--font-display);
+    font-size:      clamp(39px, 3.8vw, 49px);
+    font-weight:    300;
+    color:          var(--text-1);
+    letter-spacing: -0.02em;
+    margin-bottom:  var(--space-md);
+    text-wrap:      balance;
+  }
+
+  .about-testi-box {
+    border:        0.5px solid var(--border);
+    border-radius: var(--r-lg);
+    padding:       var(--space-md) var(--space-sm);
+  }
+
+  /* ── About responsive ───────────────────────── */
+  @media (max-width: 1024px) {
+    .about-left  { padding: var(--space-md) var(--space-sm); }
+    .about-right { padding: var(--space-lg) var(--space-sm); }
+  }
+
+  @media (max-width: 768px) {
+    .about-split               { grid-template-columns: 1fr; background: none; }
+    .about-left, .about-cta   { border-right: none; border-bottom: 0.5px solid var(--border); }
+    .about-right               { position: static; height: auto; }
+    .about-testi               { order: -1; }
+  }
+
+  @media (max-width: 520px) {
+    .about-left         { padding: var(--space-md) var(--space-xs); }
+    .about-right        { padding: var(--space-md) var(--space-xs); }
+    .about-photo-wrap   { aspect-ratio: 1 / 1; }
+  }
+</style>
