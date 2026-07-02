@@ -1,0 +1,42 @@
+# Andrew Yip — UX/UI Designer & Developer
+
+> Andrew Yip is a UX/UI designer and developer based in Vancouver, BC, Canada.
+> Originally from Hong Kong, he completed a postgraduate program in Web and Mobile App Design & Development at Langara College before building his career in British Columbia.
+> He specialises in product design, design systems, landing pages, and front-end development for SaaS and enterprise companies.
+> Available for freelance projects and full-time roles.
+
+## Key Pages
+
+- [Portfolio & Work](https://andrewthyip.com/): Homepage with overview of all case studies and client work
+- [About Andrew Yip](https://andrewthyip.com/about/): Background, work philosophy, career timeline, skills, and testimonials
+- [Yocale Case Study](https://andrewthyip.com/work/yocale/): GTM design system — 5.15% CTR lift, 40% bounce rate reduction, 22.5% download lift
+- [Delta Controls Case Study](https://andrewthyip.com/work/delta/): Enterprise intranet redesign — navigation reduced from 4–6 clicks to 2–3 clicks, 15% engagement increase
+- [Ant Equipment Group Case Study](https://andrewthyip.com/work/ant/): Brand and web design — 1,000+ monthly visitors, 80% engagement lift
+- [Crowd Ease Case Study](https://andrewthyip.com/work/crowd-ease/): Capstone Award-winning restaurant and event management mobile app (Langara College 2023, selected by audience vote)
+
+## Key Facts
+
+- **Name:** Andrew Yip
+- **Location:** Vancouver, BC, Canada
+- **Role:** UX/UI Designer & Developer
+- **Specialisms:** Product design, design systems, landing page design, UX research, front-end development (Astro, Webflow, WordPress), Figma
+- **Tools:** Figma, Webflow, WordPress, Astro, Ahrefs, GSAP, Claude
+- **Languages spoken:** English, Mandarin, Cantonese, Spanish
+- **Clients:** Yocale (SaaS, booking & scheduling platform), Delta Controls (enterprise building automation), Ant Equipment Group (equipment rental & sales, western Canada), Khachak Studio, Rosemary Diamond, Blu Bathworks, RKW Communications
+- **Education:** Langara College — Web and Mobile App Design & Development
+- **LinkedIn:** https://www.linkedin.com/in/andrewthyip/
+- **Contact:** andrewthyip@gmail.com
+- **Open for:** Freelance UX/UI design and development projects, and full-time roles in Vancouver, BC
+
+## Testimonials
+
+- Allan Lanzador, Director of Marketing, Delta Controls Inc. — recommends Andrew for UX web skills and solution-finding ability
+- Winall Lopes, Senior SAP Consultant, IBM — notes reliability, punctuality, and ability to thrive in complex challenges
+- Aurelio Selman, Web Development Specialist — cites experience, passion, and leadership
+- Ana Rodriguez, Senior Graphic Designer — highlights design thinking and project management skills
+- Florida Joca, Software Developer — notes creativity, strategic thinking, and deep understanding of user needs
+- Khachak Studio (client) — successfully brought business online and acquired new clients through Andrew's web design work
+
+## Content Licensing
+
+Case study content may be cited with attribution to Andrew Yip (andrewthyip.com).
