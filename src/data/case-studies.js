@@ -1,7 +1,7 @@
 export const caseStudies = [
   {
     slug: 'crowd-ease',
-    href: '/work/crowd-ease',
+    href: '/work/crowd-ease/',
     title: 'Crowd Ease',
     category: 'Mobile App',
     year: '2023',
@@ -11,7 +11,7 @@ export const caseStudies = [
   },
   {
     slug: 'yocale',
-    href: '/work/yocale',
+    href: '/work/yocale/',
     title: 'Yocale',
     category: 'Product Design',
     year: '2026',
@@ -21,7 +21,7 @@ export const caseStudies = [
   },
   {
     slug: 'delta',
-    href: '/work/delta',
+    href: '/work/delta/',
     title: 'Delta Controls',
     category: 'Web Platform',
     year: '2025',
@@ -31,7 +31,7 @@ export const caseStudies = [
   },
   {
     slug: 'ant',
-    href: '/work/ant',
+    href: '/work/ant/',
     title: 'Ant Equipment Group',
     category: 'Web Design',
     year: '2024',
