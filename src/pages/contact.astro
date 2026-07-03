@@ -231,6 +231,17 @@ import BaseLayout from '../layouts/base-layout.astro';
     color: var(--text-3);
   }
 
+  /* Autofill (Chrome/Edge/Safari) ignores background — override via inset shadow */
+  .contact-input:-webkit-autofill,
+  .contact-input:-webkit-autofill:hover,
+  .contact-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--bg-2) inset;
+    box-shadow:         0 0 0 1000px var(--bg-2) inset;
+    -webkit-text-fill-color: var(--text-1);
+    caret-color:             var(--text-1);
+    transition: background-color 9999s var(--ease) 0s;
+  }
+
   .contact-input:hover {
     border-color: var(--border-2);
   }
