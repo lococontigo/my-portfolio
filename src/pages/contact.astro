@@ -47,7 +47,6 @@ import BaseLayout from '../layouts/base-layout.astro';
 
                 <!-- Honeypot — Web3Forms spam check, hidden from humans -->
                 <input type="checkbox" name="botcheck" class="contact-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
-                <input type="hidden" name="subject" value="New message from andrewthyip.com" />
                 <input type="hidden" name="from_name" value="andrewthyip.com contact form" />
 
                 <div class="contact-form-grid">
@@ -104,6 +103,9 @@ import BaseLayout from '../layouts/base-layout.astro';
 
         var formData = new FormData(form);
         formData.append('access_key', '9eed3f9e-06a2-44b5-8691-423fe0a83b33');
+
+        var senderName = (formData.get('name') || '').toString().trim();
+        formData.set('subject', senderName ? 'Project inquiry from ' + senderName : 'New project inquiry — andrewthyip.com');
 
         var originalText = submitBtn.textContent;
 
