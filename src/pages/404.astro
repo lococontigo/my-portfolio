@@ -6,8 +6,7 @@ import BaseLayout from '../layouts/base-layout.astro';
   <main class="notfound">
     <div class="notfound-scrim"></div>
     <div class="notfound-content">
-      <p class="notfound-title">404</p>
-      <p class="notfound-message">The page you're looking for can't be found.</p>
+      <p class="notfound-title">The page you're looking for can't be found.</p>
       <a href="/" class="notfound-btn">Return to Homepage</a>
     </div>
   </main>
@@ -43,20 +42,14 @@ import BaseLayout from '../layouts/base-layout.astro';
   }
 
   .notfound-title {
-    font-family:          var(--font-display);
-    font-size:            clamp(95px, 22vw, 233px);
-    font-weight:          300;
-    line-height:          1;
-    letter-spacing:       -0.02em;
-    font-variant-numeric: proportional-nums lining-nums;
-    color:                #fff;
-  }
-
-  .notfound-message {
-    font-family: var(--font-body);
-    font-size:   15px;
-    font-weight: 300;
-    color:       rgba(255, 255, 255, 0.65);
+    font-family:    var(--font-display);
+    font-size:      clamp(28px, 4.5vw, 52px);
+    font-weight:    300;
+    line-height:    1.2;
+    letter-spacing: -0.02em;
+    text-wrap:      balance;
+    max-width:      min(720px, 80vw);
+    color:          #fff;
   }
 
   .notfound-btn {
