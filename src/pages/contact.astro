@@ -76,6 +76,11 @@ import BaseLayout from '../layouts/base-layout.astro';
                   </div>
                 </div>
 
+                <!-- hCaptcha — verified server-side by Web3Forms -->
+                <div class="contact-captcha">
+                  <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
+                </div>
+
                 <button type="submit" class="contact-submit">Send Message</button>
 
                 <p id="contact-status" class="contact-status" role="status" aria-live="polite"></p>
@@ -90,6 +95,7 @@ import BaseLayout from '../layouts/base-layout.astro';
 
   </main>
 
+  <script is:inline src="https://web3forms.com/client/script/captcha.js" async defer></script>
   <script is:inline>
     (function () {
       var form      = document.getElementById('contact-form');
@@ -106,6 +112,13 @@ import BaseLayout from '../layouts/base-layout.astro';
 
         var senderName = (formData.get('name') || '').toString().trim();
         formData.set('subject', senderName ? 'Project inquiry from ' + senderName : 'New project inquiry — andrewthyip.com');
+
+        if (!(formData.get('h-captcha-response') || '').toString()) {
+          status.textContent = 'Please complete the captcha check before sending.';
+          status.classList.remove('is-success');
+          status.classList.add('is-error');
+          return;
+        }
 
         var originalText = submitBtn.textContent;
 
@@ -136,6 +149,7 @@ import BaseLayout from '../layouts/base-layout.astro';
         } finally {
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
+          if (window.hcaptcha) window.hcaptcha.reset();
         }
       });
     })();
@@ -264,6 +278,12 @@ import BaseLayout from '../layouts/base-layout.astro';
     height:         1px;
     opacity:        0;
     pointer-events: none;
+  }
+
+  /* ── Captcha ───────────────────────────── */
+  .contact-captcha {
+    margin-top: var(--space-sm);
+    min-height: 78px; /* reserve widget height — avoids CLS when the iframe loads */
   }
 
   /* ── Submit ────────────────────────────── */
