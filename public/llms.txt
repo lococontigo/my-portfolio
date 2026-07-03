@@ -9,6 +9,7 @@
 
 - [Portfolio & Work](https://andrewthyip.com/): Homepage with overview of all case studies and client work
 - [About Andrew Yip](https://andrewthyip.com/about/): Background, work philosophy, career timeline, skills, and testimonials
+- [Contact](https://andrewthyip.com/contact/): Contact form for project inquiries, freelance work, and full-time opportunities
 - [Yocale Case Study](https://andrewthyip.com/work/yocale/): GTM design system — 5.15% CTR lift, 40% bounce rate reduction, 22.5% download lift
 - [Delta Controls Case Study](https://andrewthyip.com/work/delta/): Enterprise intranet redesign — navigation reduced from 4–6 clicks to 2–3 clicks, 15% engagement increase
 - [Ant Equipment Group Case Study](https://andrewthyip.com/work/ant/): Brand and web design — 1,000+ monthly visitors, 80% engagement lift

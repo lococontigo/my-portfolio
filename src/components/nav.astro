@@ -20,7 +20,7 @@ const { sections = [] } = Astro.props;
           <div class="nav-links-default">
             <a href="/"       class={`nav-link${pathname === '/'       ? ' active' : ''}`}>Work</a>
             <a href="/about/" class={`nav-link${pathname === '/about/' ? ' active' : ''}`}>About</a>
-            <a href="mailto:andrewthyip@gmail.com" class="nav-cta">Say hello →</a>
+            <a href="/contact/" class="nav-cta">Say hello →</a>
           </div>
 
           {sections.length > 0 && (
@@ -48,7 +48,7 @@ const { sections = [] } = Astro.props;
     <div class="nav-mobile-inner">
       <a href="/"       class={`nav-mobile-link${pathname === '/'       ? ' active' : ''}`}>Work</a>
       <a href="/about/" class={`nav-mobile-link${pathname === '/about/' ? ' active' : ''}`}>About</a>
-      <a href="mailto:andrewthyip@gmail.com" class="nav-mobile-cta">Say hello →</a>
+      <a href="/contact/" class="nav-mobile-cta">Say hello →</a>
     </div>
   </div>
 
