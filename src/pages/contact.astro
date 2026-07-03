@@ -30,7 +30,7 @@ import BaseLayout from '../layouts/base-layout.astro';
           <div class="contact">
 
             <div class="contact-intro">
-              <h1 class="t-display contact-title">Let&rsquo;s build something great together!</h1>
+              <h1 class="contact-title">Let&rsquo;s build something great together!</h1>
 
               <div class="contact-guide">
                 <p class="t-body">You can start from sending:</p>
@@ -152,8 +152,15 @@ import BaseLayout from '../layouts/base-layout.astro';
 
   /* ── Intro (left) ──────────────────────── */
   .contact-title {
-    max-width:     14ch;
-    margin-bottom: clamp(32px, 5.5vw, 80px);
+    font-family:    var(--font-display);
+    font-size:      clamp(49px, 6.5vw, 88px);
+    font-weight:    400;
+    color:          var(--text-1);
+    letter-spacing: -0.02em;
+    line-height:    1.1;
+    max-width:      14ch;
+    margin-bottom:  clamp(32px, 5.5vw, 80px);
+    text-wrap:      balance;
   }
 
   .contact-guide p + ul,
