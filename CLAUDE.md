@@ -196,6 +196,7 @@ Section → section spacing is handled globally via `padding-block` on `<section
 - 0.5px borders are intentional — keeps the aesthetic hairline-thin
 
 ## SEO & performance
+- **Keep `public/llms.txt` in sync** — whenever a page, section, or piece of content is majorly edited, added, replaced, or removed, update `public/llms.txt` in the same change so AI crawlers never see stale guidance
 - Add JSON-LD schema markup on every page (at minimum `Person` on index, `WebPage` on all others)
 - `<title>` format: `Page Name · Andrew YIP`
 - Every `<img>` must have a descriptive `alt` attribute
