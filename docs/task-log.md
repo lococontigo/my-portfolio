@@ -9,7 +9,7 @@ Running log of every task assigned across the 5-agent team, owned by the PM. See
 ## 2026-07-17 — Testimonial slider: hover doesn't reliably pause auto-advance
 - **Task:** Fix bug in `src/components/testimonials.astro` — auto-slide should stay paused whenever the mouse is hovering the slider, so visitors get enough time to read.
 - **Owner:** Full-Stack Developer
-- **Status:** In progress (fix dispatched, awaiting implementation + verification)
+- **Status:** Done — committed (`534e97f`) and pushed to origin/main
 - **Notes:**
   - Root cause found: `startAuto()` is called unconditionally at the end of every dot-click, prev/next-click, and keydown handler, regardless of hover state. If a visitor interacts with the controls while still hovering, the 5s auto-advance timer silently restarts underneath them, since no fresh `mouseenter`/`mouseleave` pair fires to correct it.
   - The base hover listeners (`mouseenter`→`stopAuto`, `mouseleave`→`startAuto` on `#testi-slider`) were already correct — confirmed the CSS grid-stacking/`pointer-events` theory in the original bug report doesn't hold up.
