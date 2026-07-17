@@ -6,6 +6,16 @@ Running log of every task assigned across the 5-agent team, owned by the PM. See
 
 ---
 
+## 2026-07-17 — Testimonial slider: implicit-any TS warning on goTo()
+- **Task:** Fix "Parameter 'index' implicitly has an 'any' type" warning on `goTo(index)` in `src/components/testimonials.astro`, introduced as a side effect of stripping TS type annotations in the previous hover-pause fix.
+- **Owner:** Full-Stack Developer
+- **Status:** Done
+- **Notes:**
+  - Root cause: `tsconfig.json` extends `astro/tsconfigs/strict` (enables `noImplicitAny`), and Astro's tooling type-checks plain-JS `<script>` blocks in `.astro` files against it. `goTo` is a custom function so TS can't infer `index`'s type without help; other handlers in the same file are fine because their param types are inferred from built-in signatures (`Array.forEach`, `addEventListener`'s DOM-lib overloads).
+  - Fixed with a JSDoc comment (`/** @param {number} index */`) — resolves the warning without reintroducing real TypeScript syntax, honoring CLAUDE.md's "no TypeScript" rule.
+  - Agent stopped short of running `npx astro check` for full verification since it would've required installing `@astrojs/check`, a new npm package — correctly deferred rather than installing without asking. Verified via IDE diagnostics instead (warning gone, only a benign hint remains).
+  - Routine, in-territory, pre-approved by PM — no escalation needed.
+
 ## 2026-07-17 — Testimonial slider: hover doesn't reliably pause auto-advance
 - **Task:** Fix bug in `src/components/testimonials.astro` — auto-slide should stay paused whenever the mouse is hovering the slider, so visitors get enough time to read.
 - **Owner:** Full-Stack Developer
