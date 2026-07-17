@@ -227,6 +227,30 @@ Use only CSS custom properties from `tokens.css`. **Never hardcode** a hex value
 ## Component tasks — additional rule
 Every component must work correctly in both worlds using only CSS variables — no theme-specific class forks. The theme switch (`data-theme="dark"` / `data-theme="light"` on `<html>`) should be the only thing that changes the appearance.
 
+## 10. GSAP animation rules
+GSAP 3 + ScrollTrigger are loaded once, globally, in `base-layout.astro` via CDN `<script is:inline>` tags, followed by `public/scripts/gsap.js`. Never add a second GSAP `<script>` include on an individual page.
+
+- **Every scroll-driven or ambient animation function must bail out first** if the visitor prefers reduced motion:
+  ```js
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  ```
+  This is non-negotiable — every `init*` function in `gsap.js` starts with this guard.
+- **Bind behavior with `data-*` attributes, not classes.** Existing hooks: `data-reveal`, `data-marquee` (+ `data-marquee-track`, `data-marquee-reverse`), `data-parallax`, `data-stagger-reveal` (+ `data-stagger-child`). Add new animations the same way — a data attribute the component opts into, read by a dedicated `init*()` function in `gsap.js`.
+- **Easing split by animation type:**
+  - Scroll-scrubbed tweens (`scrollTrigger: { scrub: true }`) use `ease: 'none'` — the scrollbar itself is the easing curve.
+  - Discrete reveal/counter tweens (triggered once on entry) use `ease: 'power4.out'`.
+  - This GSAP `ease` option is separate from the CSS `var(--ease)` rule above — `var(--ease)` governs CSS `transition`, GSAP tweens use GSAP's own eases.
+- **Recompute on load, not just DOMContentLoaded**: lazy/late-decoding images can shift layout after `DOMContentLoaded`, so `window.addEventListener('load', () => ScrollTrigger.refresh())` runs once at the end of `gsap.js`. Any new animation whose measurements depend on image dimensions should set `invalidateOnRefresh: true` on its `scrollTrigger`.
+- All animation logic lives in `public/scripts/gsap.js` (per the hard constraint: no JS in `src/scripts/`, always `public/scripts/` + `is:inline`). New animation functions get added to the `initX()` list and registered in the `DOMContentLoaded` listener at the bottom of the file.
+
+## 11. Neon-sign button color exception
+The `.btn-sign` / `.btn-sign-teal` buttons (see `src/styles/andrew-ui-kit.html`, "03 · Buttons") are the **one sanctioned exception** to "never hardcode a hex/rgba value in CSS."
+
+- Base state (background, text color, border, radius) still uses tokens as normal: `var(--accent)`, `var(--success)`, `var(--bg)`, `var(--r-sm)`.
+- The **hover glow** (`text-shadow` and part of `box-shadow`) hand-tunes raw `rgba()`/hex values layered on top of the token-based glow (`var(--neon-lg)`, `var(--neon-teal)`) — e.g. `text-shadow: 0 0 8px var(--accent), 0 0 18px rgba(239,159,39,0.6)`. These specific glow-intensity values are calibrated by eye to sell the "backlit Hong Kong neon sign" effect and are exempt from the token-only rule.
+- This exception is scoped **only** to the neon-sign button hover glow. Every other component — including all other buttons in `.btn`, `.btn-primary`, `.btn-ghost`, etc. — must still use tokens exclusively with no exceptions.
+- Do not extend this exception to new components without updating this section first.
+
 ## How to maintain this file
 Whenever a prompt or instruction is significant and reusable across sessions, add it here.
 This keeps Claude's context current without repeating rules every conversation.
