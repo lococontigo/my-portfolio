@@ -245,8 +245,9 @@
   const dots    = slider.querySelectorAll('.testi-dot');
   let current   = 0;
   let timer     = 0;
+  let hovering  = false;
 
-  function goTo(index: number) {
+  function goTo(index) {
     slides[current].classList.remove('active');
     dots[current].classList.remove('active');
     current = (index + slides.length) % slides.length;
@@ -257,17 +258,17 @@
   function startAuto() { timer = window.setInterval(() => goTo(current + 1), 5000); }
   function stopAuto()  { clearInterval(timer); }
 
-  dots.forEach((dot, i) => dot.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); }));
-  prev.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
-  next.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
-  slider.addEventListener('mouseenter', stopAuto);
-  slider.addEventListener('mouseleave', startAuto);
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { stopAuto(); goTo(i); if (!hovering) startAuto(); }));
+  prev.addEventListener('click', () => { stopAuto(); goTo(current - 1); if (!hovering) startAuto(); });
+  next.addEventListener('click', () => { stopAuto(); goTo(current + 1); if (!hovering) startAuto(); });
+  slider.addEventListener('mouseenter', () => { hovering = true; stopAuto(); });
+  slider.addEventListener('mouseleave', () => { hovering = false; startAuto(); });
 
   // Keyboard navigation
   slider.setAttribute('tabindex', '0');
-  slider.addEventListener('keydown', (e: KeyboardEvent) => {
-    if (e.key === 'ArrowLeft')  { stopAuto(); goTo(current - 1); startAuto(); }
-    if (e.key === 'ArrowRight') { stopAuto(); goTo(current + 1); startAuto(); }
+  slider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft')  { stopAuto(); goTo(current - 1); if (!hovering) startAuto(); }
+    if (e.key === 'ArrowRight') { stopAuto(); goTo(current + 1); if (!hovering) startAuto(); }
   });
 
   startAuto();
