@@ -247,8 +247,7 @@
   let timer     = 0;
   let hovering  = false;
 
-  /** @param {number} index */
-  function goTo(index) {
+  function goTo(index: number) {
     slides[current].classList.remove('active');
     dots[current].classList.remove('active');
     current = (index + slides.length) % slides.length;
@@ -267,7 +266,7 @@
 
   // Keyboard navigation
   slider.setAttribute('tabindex', '0');
-  slider.addEventListener('keydown', (e) => {
+  slider.addEventListener('keydown', (e: KeyboardEvent) => {
     if (e.key === 'ArrowLeft')  { stopAuto(); goTo(current - 1); if (!hovering) startAuto(); }
     if (e.key === 'ArrowRight') { stopAuto(); goTo(current + 1); if (!hovering) startAuto(); }
   });

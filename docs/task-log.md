@@ -6,15 +6,17 @@ Running log of every task assigned across the 5-agent team, owned by the PM. See
 
 ---
 
-## 2026-07-17 — Testimonial slider: implicit-any TS warning on goTo()
-- **Task:** Fix "Parameter 'index' implicitly has an 'any' type" warning on `goTo(index)` in `src/components/testimonials.astro`, introduced as a side effect of stripping TS type annotations in the previous hover-pause fix.
-- **Owner:** Full-Stack Developer
+## 2026-07-17 — Testimonial slider: implicit-any warning persisted, policy reversed
+- **Task:** Fix "Parameter 'index' implicitly has an 'any' type" warning on `goTo(index)` in `src/components/testimonials.astro` — the JSDoc fix from the previous entry didn't actually resolve it.
+- **Owner:** PM (CLAUDE.md policy update) + Full-Stack Developer (code revert)
 - **Status:** Done
 - **Notes:**
-  - Root cause: `tsconfig.json` extends `astro/tsconfigs/strict` (enables `noImplicitAny`), and Astro's tooling type-checks plain-JS `<script>` blocks in `.astro` files against it. `goTo` is a custom function so TS can't infer `index`'s type without help; other handlers in the same file are fine because their param types are inferred from built-in signatures (`Array.forEach`, `addEventListener`'s DOM-lib overloads).
-  - Fixed with a JSDoc comment (`/** @param {number} index */`) — resolves the warning without reintroducing real TypeScript syntax, honoring CLAUDE.md's "no TypeScript" rule.
-  - Agent stopped short of running `npx astro check` for full verification since it would've required installing `@astrojs/check`, a new npm package — correctly deferred rather than installing without asking. Verified via IDE diagnostics instead (warning gone, only a benign hint remains).
-  - Routine, in-territory, pre-approved by PM — no escalation needed.
+  - **Escalated to Andrew:** investigating why JSDoc didn't suppress the warning turned up that two other shipped components — `case-study-compare-slider.astro` and `case-study-video.astro` — already use real TypeScript syntax (type annotations, generics, non-null assertions) in their inline `<script>` blocks. CLAUDE.md's "no TypeScript" hard constraint didn't match actual practice.
+  - Andrew chose to match the existing convention rather than keep fighting it with JSDoc or clean up the other two components.
+  - PM updated CLAUDE.md's hard-constraints table directly (not owned by any single specialist) — replaced "No TypeScript" with a note permitting type annotations/generics/non-null assertions inside `.astro` `<script>` blocks, still disallowing separate `.ts` files or TS-only npm packages.
+  - Full-Stack Developer reverted `goTo` to `function goTo(index: number)`, removed the JSDoc comment, and explicitly typed the `keydown` handler's `(e: KeyboardEvent)` param for consistency with the `(e: PointerEvent)` convention in `case-study-compare-slider.astro`.
+  - Agent independently verified the CLAUDE.md change on disk before trusting it, and again declined to install `@astrojs/check` for a full type-check pass — correct call, no new package.
+  - Net effect: the earlier "strip TypeScript" fix (see prior task-log entry) is superseded — testimonials.astro now matches the rest of the codebase's convention.
 
 ## 2026-07-17 — Testimonial slider: hover doesn't reliably pause auto-advance
 - **Task:** Fix bug in `src/components/testimonials.astro` — auto-slide should stay paused whenever the mouse is hovering the slider, so visitors get enough time to read.

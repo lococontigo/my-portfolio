@@ -218,8 +218,10 @@ Only proceed once the plan is approved.
 | No JS in `src/scripts/` | Always `public/scripts/` + `<script is:inline>` |
 | No `ease-in-out` | Always `var(--ease)` or `var(--ease-in)` |
 | No inline styles | Always CSS classes; only exception: truly dynamic one-off values |
-| No TypeScript | Plain `.astro` + vanilla JS only |
+| TypeScript in scripts | See note below — type annotations/generics are allowed inside `.astro` `<script>` blocks; no separate `.ts` files or TS-only npm packages |
 | No Tailwind | CSS custom properties from `tokens.css` only |
+
+**Note on TypeScript in scripts (updated 2026-07-17):** the original "no TypeScript" wording didn't match established practice — `case-study-compare-slider.astro` and `case-study-video.astro` already ship with real TS syntax in their `<script>` blocks (type annotations like `next: number`, generics like `querySelectorAll<HTMLElement>`, non-null assertions like `knob!`), and Astro/Vite transpiles this at build time with no extra tooling. Going forward: type annotations, generics, and non-null assertions are fine inside a component's inline `<script>` block, since the strict `tsconfig.json` (`astro/tsconfigs/strict`) will otherwise flag implicit-`any` errors on untyped function parameters anyway. Still off-limits: a separate `.ts`/`.tsx` file, shared `interface`/`type` declarations imported across files, or any TS-specific npm package — this project stays plain Astro components with locally-scoped script logic, just no longer fighting the type checker with JSDoc workarounds.
 
 ## CSS/styling tasks — additional rule
 Use only CSS custom properties from `tokens.css`. **Never hardcode** a hex value, a `px` size, or a font name directly in CSS. Always reference a token (`var(--accent)`, `var(--space-md)`, `var(--font-body)`).
