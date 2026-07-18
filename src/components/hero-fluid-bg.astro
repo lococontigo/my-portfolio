@@ -643,7 +643,10 @@ const { debugPanel = true } = Astro.props;
         vec3 ink = mix(iLow, iMid, smoothstep(0.0, 0.5, t));
         ink = mix(ink, iHigh, smoothstep(0.6, 1.0, t));
         vec3 col = mix(stone, ink, clamp(t * uGlow, 0.0, 1.0));
-        col *= mix(1.0 - uVignette * 0.12, 1.0, vig);
+        // Vignette should only shape the ink itself, never darken the flat
+        // resting "stone" base — gate its influence by density (t) so a
+        // dye-free region (t = 0) renders as pure stone with zero falloff.
+        col *= 1.0 - uVignette * 0.12 * (1.0 - vig) * t;
 
         float dn = fract(sin(dot(vUv + uTime, vec2(12.9898,78.233))) * 43758.5453);
         col += (dn - 0.5) / 255.0;

@@ -6,6 +6,16 @@ Running log of every task assigned across the 5-agent team, owned by the PM. See
 
 ---
 
+## 2026-07-18 — Hero background didn't match the rest of the page
+- **Task:** Andrew reported the hero's background color didn't match the rest of the page.
+- **Owner:** PM (diagnosis), Full-Stack Developer (fix)
+- **Status:** Done — committed locally, not pushed
+- **Notes:**
+  - Confirmed visually with a Playwright screenshot before touching anything — the hero showed a visible grayish gradient instead of the flat `--bg` cream used everywhere else.
+  - Root cause traced in `hero-fluid-bg.astro`'s `displayShader`: the "stone" resting color already matched `--bg` exactly (`#F5F3EE`), but a vignette darkening multiplier was applied unconditionally, permanently darkening edges/corners by up to ~7% regardless of whether any fluid/dye was actually present — a structural mismatch, not a transient one from the intro animation.
+  - Fix: gated the vignette's influence by density (`t`), so a dye-free region always renders as pure `stone` with zero falloff, while the vignette still shapes the ink wherever fluid is actually visible. One-line GLSL change.
+  - Verified by sampling actual canvas pixels at all four corners post-fix — pixel-identical to the nav bar's background pixel (`#F5F3EE`) in both cases.
+
 ## 2026-07-18 — Rest of /services page: full build (5 sections)
 - **Task:** Build everything below the hero per Figma node 595:530 — services offered, workflow, client work, testimonials, closing CTA.
 - **Owner:** PM (Figma research, content-ambiguity resolution), Full-Stack Developer (implementation)
