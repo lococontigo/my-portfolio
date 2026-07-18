@@ -16,6 +16,7 @@
 
   --accent:       #EF9F27;
   --accent-dim:   rgba(239,159,39,0.12);
+  --accent-text:  var(--accent);
   --accent-2:     #534AB7;
   --accent-2-dim: rgba(83,74,183,0.14);
   --danger:       #D4537E;
@@ -59,6 +60,7 @@
 
   --accent:       #1D9E75;
   --accent-dim:   rgba(29,158,117,0.10);
+  --accent-text:  #146A4F;
   --accent-2:     #534AB7;
   --accent-2-dim: rgba(83,74,183,0.10);
   --danger:       #C0384F;
@@ -108,4 +110,9 @@
   --text-on-image: #F0EDE6;
   --overlay-dark:  rgba(0, 0, 0, 0.2);
   --scrim:         rgba(17, 17, 16, 0.72);
+
+  /* Fixed dark ink for text/icons on an accent-filled surface (e.g. .btn-primary) —
+     intentionally identical in both themes; --text-1/--bg flip per theme and fail
+     contrast in one theme or the other on top of --accent. See docs/design-decisions.md #2. */
+  --text-on-accent: #111110;
 }

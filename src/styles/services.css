@@ -1,0 +1,225 @@
+/* ─────────────────────────────────────────────
+   SERVICES PAGE — Hero section
+───────────────────────────────────────────── */
+
+.hero-section {
+  position:    relative;
+  height:      100vh;
+  overflow:    hidden;
+  display:     flex;
+  align-items: center;
+}
+
+/* Canvas (HeroFluidBg) sits behind everything at z-index 0, content above */
+.hero-section > .padding-global {
+  position: relative;
+  z-index:  1;
+  width:    100%;
+}
+
+.hero-content {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(32px, 5.5vw, 80px);
+}
+
+.hero-header {
+  position:       relative;
+  display:        flex;
+  flex-direction: column;
+  max-width:      44ch;
+}
+
+/* Scrim behind the headline/body — guarantees legible contrast against the
+   animated fluid canvas (QA 2026-07-17, Finding 1): the intro sweep and
+   click-drag splats can locally darken/lighten the canvas under the text
+   with no other guardrail. Pairs --scrim with --text-on-image, the same
+   convention used for text-over-imagery elsewhere (case-study-research.astro,
+   case-study-compare-slider.astro). Sits between the canvas (z-index 0) and
+   the text (default flow, above this z-index: -1 layer); pointer-events:
+   none keeps click-drag interaction reaching the canvas underneath. */
+.hero-header::before {
+  content:        '';
+  position:       absolute;
+  inset:          0;
+  z-index:        -1;
+  pointer-events: none;
+  background:     radial-gradient(ellipse 120% 130% at 32% 42%, var(--scrim) 0%, transparent 75%);
+}
+
+.hero-headline {
+  font-family:    var(--font-display);
+  font-size:      clamp(44px, 5.5vw, 75px);
+  font-weight:    300;
+  line-height:    1.15;
+  letter-spacing: -0.28px;
+  color:          var(--text-on-image);
+  margin-top:     var(--space-sm);
+  margin-bottom:  clamp(16px, 1.7vw, 24px);
+  text-wrap:      balance;
+}
+
+.hero-body {
+  font-family: var(--font-body);
+  font-size:   15px;
+  font-weight: 300;
+  line-height: 1.6;
+  color:       var(--text-on-image);
+  max-width:   56ch;
+  margin-bottom: var(--space-md);
+}
+
+.hero-cta {
+  align-self: flex-start;
+}
+
+/* ─────────────────────────────────────────────
+   Location pill — verbatim from src/styles/index.css:35-71
+───────────────────────────────────────────── */
+
+.intro-location {
+  display:       flex;
+  align-items:   center;
+  gap:           5px;
+  padding:       4px 11px;
+  background:    var(--accent-dim);
+  border:        1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  border-radius: var(--r-pill);
+}
+
+.intro-location-dot {
+  display:       block;
+  position:      relative;
+  width:         5px;
+  height:        5px;
+  border-radius: 2.5px;
+  background:    var(--accent-text);
+  flex-shrink:   0;
+}
+
+.intro-location-dot::after {
+  content:       '';
+  position:      absolute;
+  inset:         0;
+  border-radius: inherit;
+  background:    var(--accent-text);
+  animation:     dot-ping 2s var(--ease-in) infinite;
+}
+
+.intro-location-label {
+  font-family:    var(--font-body);
+  font-size:      11px;
+  font-weight:    400;
+  color:          var(--accent-text);
+  letter-spacing: 0.33px;
+  white-space:    nowrap;
+}
+
+/* ─────────────────────────────────────────────
+   Client logo row — verbatim from src/styles/index.css:75-130
+───────────────────────────────────────────── */
+
+.intro-logos {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+}
+
+.intro-logo-item {
+  width:           176px;
+  height:          100px;
+  flex-shrink:     1;
+  object-fit:      contain;
+  display:         block;
+  animation:       fade-up 0.6s var(--ease) both;
+  animation-delay: 200ms;
+  transition:      transform 0.25s var(--ease), filter 0.25s var(--ease);
+}
+
+@media (hover: hover) {
+  .intro-logo-item:hover {
+    transform: scale(1.08);
+    filter:    brightness(1.2) drop-shadow(0 0 8px var(--accent-dim));
+  }
+}
+
+.intro-logo-item:nth-child(2) { animation-delay: 300ms; }
+.intro-logo-item:nth-child(3) { animation-delay: 400ms; }
+.intro-logo-item:nth-child(4) { animation-delay: 500ms; }
+.intro-logo-item:nth-child(5) { animation-delay: 600ms; }
+.intro-logo-item:nth-child(6) { animation-delay: 700ms; }
+
+@media (max-width: 768px) {
+  .intro-logos {
+    justify-content: center;
+    flex-wrap:        wrap;
+    gap:              var(--space-sm);
+  }
+
+  .intro-logo-item {
+    width:       calc((100% - 32px) / 3);
+    height:      80px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .intro-logos { gap: 12px; }
+
+  .intro-logo-item {
+    width:  calc((100% - 24px) / 3);
+    height: 64px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Buttons — ported from src/styles/andrew-ui-kit.html:424-608
+   (first time this system becomes real, shipped CSS)
+───────────────────────────────────────────── */
+
+.btn {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             8px;
+  padding:         10px 20px;
+  font-family:     var(--font-body);
+  font-size:       11px;
+  font-weight:     500;
+  letter-spacing:  0.02em;
+  border-radius:   var(--r-sm);
+  cursor:          pointer;
+  border:          none;
+  text-decoration: none;
+  transition:      all 0.2s var(--ease);
+  position:        relative;
+  overflow:        hidden;
+  white-space:     nowrap;
+}
+
+/* Neon filled — the HK wall sign. Text color is intentionally a fixed
+   dark ink (--text-on-accent) rather than a theme-flipping token, so it
+   stays legible against the accent-filled background in both themes —
+   see docs/design-decisions.md §2. */
+.btn-primary {
+  background: var(--accent);
+  color:      var(--text-on-accent);
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  background:     var(--accent);
+  box-shadow:      var(--neon-md);
+  transform:       translateY(-1px);
+  letter-spacing:  0.04em;
+}
+
+.btn-primary:active {
+  transform:  translateY(0);
+  box-shadow: var(--neon-sm);
+}
+
+.btn-lg { padding: 14px 32px; font-size: 15px; }
+
+@media (max-width: 520px) {
+  .hero-cta { align-self: stretch; text-align: center; justify-content: center; }
+}

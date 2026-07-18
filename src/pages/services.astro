@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/base-layout.astro';
+import HeroFluidBg from '../components/hero-fluid-bg.astro';
+import '../styles/services.css';
+---
+
+<BaseLayout
+  title="Services"
+  world="light"
+  description="Websites built to grow your business. UX strategy, thoughtful design, and modern web development from Andrew Yip — designer and developer based in Vancouver, Canada."
+>
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Services · Andrew YIP",
+    "url": "https://andrewthyip.com/services/",
+    "description": "Websites built to grow your business. UX strategy, thoughtful design, and modern web development from Andrew Yip — designer and developer based in Vancouver, Canada.",
+    "about": {
+      "@type": "Person",
+      "name": "Andrew Yip",
+      "jobTitle": "UX/UI Designer & Developer",
+      "url": "https://andrewthyip.com"
+    }
+  }
+  </script>
+
+  <main class="main">
+
+    <!-- ── Hero ───────────────────────────────── -->
+    <section class="hero-section">
+      <HeroFluidBg debugPanel={true} />
+
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="hero-content">
+
+            <div class="hero-header">
+              <div class="intro-location">
+                <span class="intro-location-dot"></span>
+                <span class="intro-location-label">Vancouver · Canada</span>
+              </div>
+
+              <h1 class="hero-headline">Websites Built to Grow Your Business</h1>
+
+              <p class="hero-body">Your website should do more than look professional. It should build trust, guide visitors naturally, and support your business goals. I combine UX strategy, thoughtful design, and modern web development to create websites that are easy to use, easy to manage, and built for long-term growth.</p>
+
+              <a href="/contact/" class="btn btn-primary btn-lg hero-cta">Get A Free Consultation</a>
+            </div>
+
+            <div class="intro-logos">
+              <img class="intro-logo-item" src="/images/Delta%20Controls.svg"     alt="Delta Controls"     width="176" height="100" />
+              <img class="intro-logo-item" src="/images/Rosamary%20Diamond.svg"   alt="Rosemary Diamond"   width="176" height="100" />
+              <img class="intro-logo-item" src="/images/Blu%20bathworks.svg"      alt="Blu Bathworks"      width="176" height="100" />
+              <img class="intro-logo-item" src="/images/Yocale%20AI.svg"          alt="Yocale AI"          width="176" height="100" />
+              <img class="intro-logo-item" src="/images/RKW%20Communications.svg" alt="RKW Communications" width="176" height="100" />
+              <img class="intro-logo-item" src="/images/ANT%20Rentals.svg"        alt="ANT Rentals"        width="176" height="100" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
