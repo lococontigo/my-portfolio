@@ -6,6 +6,19 @@ Running log of every task assigned across the 5-agent team, owned by the PM. See
 
 ---
 
+## 2026-07-18 — Split-screen homepage (Phase 2 of the original site-restructure plan)
+- **Task:** Build the split-screen entry gate scoped at the very start of this project — "I'm hiring" (dark, → portfolio) / "I need a website" (light, → services) — using two real reference photos Andrew provided.
+- **Owner:** PM (routing decision, image review), Full-Stack Developer (build), SEO Specialist (llms.txt/sitemap)
+- **Status:** Done — committed locally, not pushed
+- **Notes:**
+  - **Escalated the routing question before building**: the reference screenshots linked to `andrewthyip.com/portfolio`, a route that didn't exist. Confirmed with Andrew: this becomes the actual new `/`, with the current portfolio homepage relocated to `/portfolio/`. This is exactly the "new route" escalation trigger from `docs/team-structure.md` — resolved via a direct question rather than assumed.
+  - `src/pages/index.astro` (old homepage) moved to `src/pages/portfolio.astro` unchanged; new `src/pages/index.astro` built as a minimal two-panel gate using `chrome={false}` (an existing `BaseLayout` prop that hides Nav/Footer — no new layout work needed).
+  - **Architectural first**: this page needs both themes simultaneously, side by side — nothing else on the site does this. Solved cleanly with existing tokens: `tokens.css`'s `[data-theme="dark"]`/`[data-theme="light"]` selectors already apply to any element, not just `<html>`, so each panel just carries its own `data-theme` attribute and all tokens resolve correctly per side. No new tokens or architecture needed.
+  - Updated three places that assumed `/` was the portfolio: `nav.astro` (logo + "Work" link + active-state checks → `/portfolio/`), `services.astro` ("See All Projects" link), and confirmed `404.astro` correctly needs no change since `/` is now genuinely the homepage.
+  - **Caught a real visual bug via actual screenshot comparison, not just trusting the build report**: the light/services panel reused the same dark `--scrim` token as the dark panel, turning its already-bright reference photo into a muddy gray on hover instead of staying light and airy. Fixed with a `color-mix(in srgb, var(--bg) 55%, transparent)` tint scoped to the light panel (resolves correctly since that panel carries `data-theme="light"`). The fix also caught and corrected a follow-on contrast issue (headline text needed to flip from light-on-dark to dark-on-light once the backdrop stopped going dark).
+  - `public/llms.txt` and `public/sitemap.xml` updated to reflect the new routing (also added a missing `/services/` entry to both, a pre-existing gap unrelated to today's change).
+  - Verified thoroughly with real Playwright screenshots: neutral state, both hover states (before and after the scrim fix), `/portfolio/` nav active-state, and mobile stacking — not just code review.
+
 ## 2026-07-18 — Sticky "Our Workflow" column
 - **Task:** Andrew wanted the "How It's Gonna Work..." heading + "Our Workflow" subtitle/paragraph to stick in place while the Timeline scrolls past on the right (two dispatches: sticky on the subtitle/paragraph column first, then a follow-up to pull the heading into the same sticky box since it was originally a separate full-width element above the two-column grid).
 - **Owner:** Full-Stack Developer

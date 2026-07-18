@@ -7,7 +7,8 @@
 
 ## Key Pages
 
-- [Portfolio & Work](https://andrewthyip.com/): Homepage with overview of all case studies and client work
+- [Portfolio & Work](https://andrewthyip.com/portfolio/): Overview of all case studies and client work
+- [Services](https://andrewthyip.com/services/): Services offered, process/workflow, client work examples, and testimonials — for businesses looking to have a website designed and built
 - [About Andrew Yip](https://andrewthyip.com/about/): Background, work philosophy, career timeline, skills, and testimonials
 - [Contact](https://andrewthyip.com/contact/): Contact form for project inquiries, freelance work, and full-time opportunities
 - [Yocale Case Study](https://andrewthyip.com/work/yocale/): GTM design system — 5.15% CTR lift, 40% bounce rate reduction, 22.5% download lift

@@ -11,14 +11,14 @@ const { sections = [] } = Astro.props;
       <div class="nav-inner">
 
         <!-- Logo mark -->
-        <a href="/" class="nav-logo" aria-label="Andrew Yip — Home">
+        <a href="/portfolio/" class="nav-logo" aria-label="Andrew Yip — Home">
           <img src="/images/andrew-yip-logo.webp" alt="Andrew Yip" class="nav-logo-img" width="60" height="60" />
         </a>
 
         <!-- Desktop links -->
         <div class="nav-links">
           <div class="nav-links-default">
-            <a href="/"       class={`nav-link${pathname === '/'       ? ' active' : ''}`}>Work</a>
+            <a href="/portfolio/" class={`nav-link${pathname === '/portfolio/' ? ' active' : ''}`}>Work</a>
             <a href="/about/" class={`nav-link${pathname === '/about/' ? ' active' : ''}`}>About</a>
             <a href="/contact/" class="nav-cta">Say hello →</a>
           </div>
@@ -46,7 +46,7 @@ const { sections = [] } = Astro.props;
   <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
     <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Close navigation">×</button>
     <div class="nav-mobile-inner">
-      <a href="/"       class={`nav-mobile-link${pathname === '/'       ? ' active' : ''}`}>Work</a>
+      <a href="/portfolio/" class={`nav-mobile-link${pathname === '/portfolio/' ? ' active' : ''}`}>Work</a>
       <a href="/about/" class={`nav-mobile-link${pathname === '/about/' ? ' active' : ''}`}>About</a>
       <a href="/contact/" class="nav-mobile-cta">Say hello →</a>
     </div>

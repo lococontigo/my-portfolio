@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/base-layout.astro';
+import '../styles/index.css';
+---
+
+<BaseLayout title="UX/UI Designer & Developer" world="dark" description="UX/UI designer and developer based in Vancouver. I build intuitive products, design systems, and landing pages for SaaS and enterprise companies.">
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Andrew Yip",
+    "jobTitle": "UX/UI Designer & Developer",
+    "url": "https://andrewthyip.com",
+    "sameAs": ["https://www.linkedin.com/in/andrewthyip/"],
+    "knowsAbout": ["UX Design", "UI Design", "Web Development", "Design Systems"]
+  }
+  </script>
+  <main class="main">
+
+    <!-- ── Brief Intro ────────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="intro-content">
+
+            <div class="intro-header">
+              <h1 class="intro-name">Andrew YIP</h1>
+              <div class="intro-meta">
+                <span class="intro-role">Designer & Developer</span>
+                <div class="intro-location">
+                  <span class="intro-location-dot"></span>
+                  <span class="intro-location-label">Vancouver · Canada</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="intro-logos">
+              <img class="intro-logo-item" src="/images/Delta%20Controls.svg"     alt="Delta Controls"     width="176" height="100" />
+              <img class="intro-logo-item" src="/images/Rosamary%20Diamond.svg"   alt="Rosemary Diamond"   width="176" height="100" />
+              <img class="intro-logo-item" src="/images/Blu%20bathworks.svg"      alt="Blu Bathworks"      width="176" height="100" />
+              <img class="intro-logo-item" src="/images/Yocale%20AI.svg"          alt="Yocale AI"          width="176" height="100" />
+              <img class="intro-logo-item" src="/images/RKW%20Communications.svg" alt="RKW Communications" width="176" height="100" />
+              <img class="intro-logo-item" src="/images/ANT%20Rentals.svg"        alt="ANT Rentals"        width="176" height="100" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Work: Yocale ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Yocale</h2>
+                <p class="work-featured-desc">Yocale is an all-in-one business management and client scheduling software designed for appointment-based businesses.</p>
+              </div>
+              <a href="/work/yocale/" class="work-featured-link">
+                See My Work →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/work/yocale/">
+                <img
+                  src="/images/yocale-mockup.webp"
+                  alt="Yocale dashboard — booking management interface"
+                  class="work-featured-img"
+                  width="704" height="704"
+                  fetchpriority="high"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Work: Delta Controls ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Delta Intelligent Building Technologies </h2>
+                <p class="work-featured-desc">The Source is a digital library dedicated to providing non-technical documents, training, and marketing materials to Delta Controls’ partners and employees.</p>
+              </div>
+              <a href="/work/delta/" class="work-featured-link">
+                Read the Case Study →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/work/delta/">
+                <img
+                  src="/images/Mac-Studio-mockup.svg"
+                  alt="Delta Intelligent Building Technologies Resources Intranet Mockup"
+                  class="work-featured-img"
+                  width="704" height="704"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Work: ANT Rentals ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Ant Equipment Group</h2>
+                <p class="work-featured-desc">ANT is western Canada’s largest independent source for equipment rentals and sales.</p>
+              </div>
+              <a href="/work/ant/" class="work-featured-link">
+                See My Work →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/work/ant/">
+                <img
+                  src="/images/ant-mockup.svg"
+                  alt="ANT rentals blog mockup"
+                  class="work-featured-img"
+                  width="704" height="704"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Work: Crowd Ease ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Crowd Ease</h2>
+                <p class="work-featured-desc">Crowd Ease is a mobile app that assists restaurant plan their resources and marketing strategy by providing event information and live crowd tracking.</p>
+              </div>
+              <a href="/work/crowd-ease/" class="work-featured-link">
+                Read the Case Study →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/work/crowd-ease/">
+                <img
+                  src="/images/UI-CROWDEASE-1.svg"
+                  alt="Crowd Ease mobile app interface showing event tracking and live crowd data"
+                  class="work-featured-img"
+                  width="704" height="704"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

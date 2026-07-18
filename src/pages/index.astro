@@ -1,185 +1,171 @@
 ---
 import BaseLayout from '../layouts/base-layout.astro';
-import '../styles/index.css';
 ---
 
-<BaseLayout title="UX/UI Designer & Developer" world="dark" description="UX/UI designer and developer based in Vancouver. I build intuitive products, design systems, and landing pages for SaaS and enterprise companies.">
+<BaseLayout title="Home" world="dark" description="Andrew Yip is a UX/UI designer and developer based in Vancouver. Explore his portfolio or get a new website built for your business." chrome={false}>
   <script slot="head" is:inline type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Andrew Yip",
-    "jobTitle": "UX/UI Designer & Developer",
-    "url": "https://andrewthyip.com",
-    "sameAs": ["https://www.linkedin.com/in/andrewthyip/"],
-    "knowsAbout": ["UX Design", "UI Design", "Web Development", "Design Systems"]
+    "@type": "WebPage",
+    "name": "Andrew Yip — Home",
+    "url": "https://andrewthyip.com/",
+    "description": "Andrew Yip is a UX/UI designer and developer based in Vancouver. Explore his portfolio or get a new website built for your business."
   }
   </script>
-  <main class="main">
 
-    <!-- ── Brief Intro ────────────────────────── -->
-    <section>
-      <div class="padding-global">
-        <div class="container-main">
-          <div class="intro-content">
+  <main class="split-gate">
 
-            <div class="intro-header">
-              <h1 class="intro-name">Andrew YIP</h1>
-              <div class="intro-meta">
-                <span class="intro-role">Designer & Developer</span>
-                <div class="intro-location">
-                  <span class="intro-location-dot"></span>
-                  <span class="intro-location-label">Vancouver · Canada</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="intro-logos">
-              <img class="intro-logo-item" src="/images/Delta%20Controls.svg"     alt="Delta Controls"     width="176" height="100" />
-              <img class="intro-logo-item" src="/images/Rosamary%20Diamond.svg"   alt="Rosemary Diamond"   width="176" height="100" />
-              <img class="intro-logo-item" src="/images/Blu%20bathworks.svg"      alt="Blu Bathworks"      width="176" height="100" />
-              <img class="intro-logo-item" src="/images/Yocale%20AI.svg"          alt="Yocale AI"          width="176" height="100" />
-              <img class="intro-logo-item" src="/images/RKW%20Communications.svg" alt="RKW Communications" width="176" height="100" />
-              <img class="intro-logo-item" src="/images/ANT%20Rentals.svg"        alt="ANT Rentals"        width="176" height="100" />
-            </div>
-
-          </div>
-        </div>
+    <a href="/portfolio/" class="split-panel" data-theme="dark" aria-label="I'm hiring — view Andrew Yip's portfolio">
+      <div class="split-panel-media"></div>
+      <div class="split-panel-content">
+        <h1 class="split-headline">I'm hiring</h1>
+        <span class="split-cta">andrewthyip.com/portfolio →</span>
       </div>
-    </section>
+    </a>
 
-    <!-- ── Work: Yocale ─────────────────────── -->
-    <section>
-      <div class="padding-global">
-        <div class="container-main">
-          <div class="work-featured">
-
-            <div class="work-featured-info">
-              <div class="work-featured-text">
-                <h2 class="work-featured-title">Yocale</h2>
-                <p class="work-featured-desc">Yocale is an all-in-one business management and client scheduling software designed for appointment-based businesses.</p>
-              </div>
-              <a href="/work/yocale/" class="work-featured-link">
-                See My Work →
-              </a>
-            </div>
-
-            <div class="work-featured-visual">
-              <a href="/work/yocale/">
-                <img
-                  src="/images/yocale-mockup.webp"
-                  alt="Yocale dashboard — booking management interface"
-                  class="work-featured-img"
-                  width="704" height="704"
-                  fetchpriority="high"
-                />
-              </a>
-            </div>
-
-          </div>
-        </div>
+    <a href="/services/" class="split-panel split-panel-light" data-theme="light" aria-label="I need a website — view Andrew Yip's services">
+      <div class="split-panel-media"></div>
+      <div class="split-panel-content">
+        <h1 class="split-headline">I need a website</h1>
+        <span class="split-cta">andrewthyip.com/services →</span>
       </div>
-    </section>
-
-    <!-- ── Work: Delta Controls ─────────────────────── -->
-    <section>
-      <div class="padding-global">
-        <div class="container-main">
-          <div class="work-featured">
-
-            <div class="work-featured-info">
-              <div class="work-featured-text">
-                <h2 class="work-featured-title">Delta Intelligent Building Technologies </h2>
-                <p class="work-featured-desc">The Source is a digital library dedicated to providing non-technical documents, training, and marketing materials to Delta Controls’ partners and employees.</p>
-              </div>
-              <a href="/work/delta/" class="work-featured-link">
-                Read the Case Study →
-              </a>
-            </div>
-
-            <div class="work-featured-visual">
-              <a href="/work/delta/">
-                <img
-                  src="/images/Mac-Studio-mockup.svg"
-                  alt="Delta Intelligent Building Technologies Resources Intranet Mockup"
-                  class="work-featured-img"
-                  width="704" height="704"
-                  loading="lazy"
-                />
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Work: ANT Rentals ─────────────────────── -->
-    <section>
-      <div class="padding-global">
-        <div class="container-main">
-          <div class="work-featured">
-
-            <div class="work-featured-info">
-              <div class="work-featured-text">
-                <h2 class="work-featured-title">Ant Equipment Group</h2>
-                <p class="work-featured-desc">ANT is western Canada’s largest independent source for equipment rentals and sales.</p>
-              </div>
-              <a href="/work/ant/" class="work-featured-link">
-                See My Work →
-              </a>
-            </div>
-
-            <div class="work-featured-visual">
-              <a href="/work/ant/">
-                <img
-                  src="/images/ant-mockup.svg"
-                  alt="ANT rentals blog mockup"
-                  class="work-featured-img"
-                  width="704" height="704"
-                  loading="lazy"
-                />
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ── Work: Crowd Ease ─────────────────────── -->
-    <section>
-      <div class="padding-global">
-        <div class="container-main">
-          <div class="work-featured">
-
-            <div class="work-featured-info">
-              <div class="work-featured-text">
-                <h2 class="work-featured-title">Crowd Ease</h2>
-                <p class="work-featured-desc">Crowd Ease is a mobile app that assists restaurant plan their resources and marketing strategy by providing event information and live crowd tracking.</p>
-              </div>
-              <a href="/work/crowd-ease/" class="work-featured-link">
-                Read the Case Study →
-              </a>
-            </div>
-
-            <div class="work-featured-visual">
-              <a href="/work/crowd-ease/">
-                <img
-                  src="/images/UI-CROWDEASE-1.svg"
-                  alt="Crowd Ease mobile app interface showing event tracking and live crowd data"
-                  class="work-featured-img"
-                  width="704" height="704"
-                  loading="lazy"
-                />
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
+    </a>
 
   </main>
 </BaseLayout>
+
+<style>
+  .split-gate {
+    display:    flex;
+    min-height: 100vh;
+  }
+
+  .split-panel {
+    position:        relative;
+    flex:            1;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    overflow:        hidden;
+    background:      var(--bg);
+    color:           var(--text-1);
+  }
+
+  /* ── Background photo (fades in on hover/focus) ───── */
+  .split-panel-media {
+    position:         absolute;
+    inset:            0;
+    background-image: linear-gradient(var(--scrim), var(--scrim)), url('/images/night%20background.png');
+    background-size:     cover;
+    background-position: center;
+    opacity:    0;
+    transition: opacity 0.5s var(--ease);
+  }
+
+  .split-panel-light .split-panel-media {
+    /* Lighter, theme-native tint (not --scrim, which is a fixed dark token) so the
+       already-washed-out light photo stays airy on hover instead of going muddy gray. */
+    background-image: linear-gradient(
+        color-mix(in srgb, var(--bg) 55%, transparent),
+        color-mix(in srgb, var(--bg) 55%, transparent)
+      ),
+      url('/images/light%20background.png');
+  }
+
+  /* ── Content ───────────────────────────────────────── */
+  .split-panel-content {
+    position:       relative;
+    z-index:        1;
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            var(--space-sm);
+    padding:        var(--space-md);
+    text-align:     center;
+  }
+
+  .split-headline {
+    font-family:    var(--font-display);
+    font-size:      clamp(44px, 5.5vw, 75px);
+    font-weight:    300;
+    line-height:    1.15;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+    text-wrap:      balance;
+    transition:     color 0.4s var(--ease);
+  }
+
+  .split-cta {
+    display:        inline-flex;
+    align-items:    center;
+    gap:            6px;
+    font-family:    var(--font-body);
+    font-size:      12px;
+    font-weight:    400;
+    letter-spacing: 0.26px;
+    color:          var(--text-2);
+    border:         0.5px solid transparent;
+    border-radius:  var(--r-sm);
+    padding:        10px 14px;
+    white-space:    nowrap;
+    transition:     color 0.3s var(--ease),
+                    gap 0.3s var(--ease),
+                    border-color 0.3s var(--ease),
+                    box-shadow 0.3s var(--ease);
+  }
+
+  /* ── Hover (pointer devices only, avoids a stuck reveal on touch) ── */
+  @media (hover: hover) {
+    .split-panel:hover .split-panel-media {
+      opacity: 1;
+    }
+
+    .split-panel:hover .split-headline {
+      color: var(--text-on-image);
+    }
+
+    .split-panel:hover .split-cta {
+      color:        var(--accent);
+      gap:          10px;
+      border-color: var(--accent);
+      box-shadow:   var(--neon-sm);
+    }
+
+    /* Light panel stays light on hover, so headline needs dark ink instead of
+       --text-on-image (which is a light cream tone made for dark photo backdrops). */
+    .split-panel-light:hover .split-headline {
+      color: var(--text-1);
+    }
+  }
+
+  /* ── Keyboard focus — same treatment, on every device ── */
+  .split-panel:focus-visible .split-panel-media {
+    opacity: 1;
+  }
+
+  .split-panel:focus-visible .split-headline {
+    color: var(--text-on-image);
+  }
+
+  .split-panel:focus-visible .split-cta {
+    color:        var(--accent);
+    gap:          10px;
+    border-color: var(--accent);
+    box-shadow:   var(--neon-sm);
+  }
+
+  .split-panel-light:focus-visible .split-headline {
+    color: var(--text-1);
+  }
+
+  /* ── Mobile: stack top/bottom ──────────────────────── */
+  @media (max-width: 768px) {
+    .split-gate {
+      flex-direction: column;
+    }
+
+    .split-headline {
+      font-size: clamp(32px, 9vw, 44px);
+    }
+  }
+</style>
