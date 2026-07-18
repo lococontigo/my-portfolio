@@ -6,6 +6,18 @@ Running log of every task assigned across the 5-agent team, owned by the PM. See
 
 ---
 
+## 2026-07-18 — Playwright MCP added; services hero polish (chip sizing, header width)
+- **Task:** Set up browser/screenshot capability so pages can be visually verified instead of only code-reviewed, then use it to fix two small issues Andrew spotted: the "Vancouver · Canada" chip stretching full-width, and the hero text column needing an exact 586px max-width on desktop (matching Figma).
+- **Owner:** PM (MCP setup + verification), Full-Stack Developer (CSS fixes)
+- **Status:** Done — committed locally, not pushed
+- **Notes:**
+  - Added `.mcp.json` at the project root registering the official Playwright MCP server (`npx @playwright/mcp@latest --browser chromium`). The `claude` CLI wasn't reachable from the tool-execution environment to run `claude mcp add` directly, so the project-level config file was used instead — this is committed so the capability persists across sessions without needing to redo setup.
+  - Required two restarts to fully connect (once to load the new `.mcp.json`, once after adding the `--browser chromium` flag when the default Chrome-channel launch failed), plus a one-time Chromium binary download (`npx @playwright/mcp install-browser chrome-for-testing`) since real Google Chrome wasn't installed and installing it needed admin rights.
+  - First real use: screenshotted `/services/` and confirmed visually (not just via code read) that `.intro-location` was stretching to fill its parent column instead of hugging its content — root cause was `.hero-header`'s flex column defaulting to `align-items: stretch`. Fixed with `align-self: flex-start`, matching the existing `.hero-cta` precedent in the same file.
+  - Also applied Andrew's direct request: `.hero-header` max-width changed from `44ch` to a fixed `586px` on desktop (exact Figma column width), with a `max-width: 100%` override inside the existing `≤1024px` breakpoint so tablet/mobile aren't stuck with an oversized fixed column.
+  - Verified with an actual screenshot after the fix (not just computed-style checks) — headline now wraps to 2 lines matching the Figma reference, chip hugs its content correctly.
+  - While investigating an odd dark shape visible in an earlier full-page screenshot, traced it to Astro's built-in dev toolbar (`<astro-dev-toolbar>`) — normal dev-server-only chrome, not a bug, not present in production.
+
 ## 2026-07-17 — Services hero: rebuilt to match Figma, scrim removed
 - **Task:** Andrew reported the hero layout was wrong and pointed to a specific Figma frame (node 589:486, file AyNWCHfnVugfxZsJYFo1qM) as the reference; also asked to remove the contrast scrim added in the prior QA-fix round.
 - **Owner:** PM (fetched Figma design via MCP), Full-Stack Developer (implementation)
