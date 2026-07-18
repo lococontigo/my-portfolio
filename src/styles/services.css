@@ -3,11 +3,12 @@
 ───────────────────────────────────────────── */
 
 .hero-section {
-  position:    relative;
-  height:      100vh;
-  overflow:    hidden;
-  display:     flex;
-  align-items: center;
+  position:       relative;
+  height:         100vh;
+  overflow:       hidden;
+  display:        flex;
+  align-items:    flex-end;
+  padding-bottom: var(--space-md);
 }
 
 /* Canvas (HeroFluidBg) sits behind everything at z-index 0, content above */
@@ -17,34 +18,20 @@
   width:    100%;
 }
 
+/* Two-column split: text column (left) + logo grid (right), bottom-anchored
+   within the 100vh hero. Stacks back to a single column at ≤1024px. */
 .hero-content {
-  display:        flex;
-  flex-direction: column;
-  gap:            clamp(32px, 5.5vw, 80px);
+  display:         flex;
+  flex-direction:  row;
+  justify-content: space-between;
+  align-items:     flex-end;
+  gap:             clamp(32px, 5.5vw, 80px);
 }
 
 .hero-header {
-  position:       relative;
   display:        flex;
   flex-direction: column;
   max-width:      44ch;
-}
-
-/* Scrim behind the headline/body — guarantees legible contrast against the
-   animated fluid canvas (QA 2026-07-17, Finding 1): the intro sweep and
-   click-drag splats can locally darken/lighten the canvas under the text
-   with no other guardrail. Pairs --scrim with --text-on-image, the same
-   convention used for text-over-imagery elsewhere (case-study-research.astro,
-   case-study-compare-slider.astro). Sits between the canvas (z-index 0) and
-   the text (default flow, above this z-index: -1 layer); pointer-events:
-   none keeps click-drag interaction reaching the canvas underneath. */
-.hero-header::before {
-  content:        '';
-  position:       absolute;
-  inset:          0;
-  z-index:        -1;
-  pointer-events: none;
-  background:     radial-gradient(ellipse 120% 130% at 32% 42%, var(--scrim) 0%, transparent 75%);
 }
 
 .hero-headline {
@@ -53,7 +40,7 @@
   font-weight:    300;
   line-height:    1.15;
   letter-spacing: -0.28px;
-  color:          var(--text-on-image);
+  color:          var(--text-1);
   margin-top:     var(--space-sm);
   margin-bottom:  clamp(16px, 1.7vw, 24px);
   text-wrap:      balance;
@@ -64,7 +51,7 @@
   font-size:   15px;
   font-weight: 300;
   line-height: 1.6;
-  color:       var(--text-on-image);
+  color:       var(--text-2);
   max-width:   56ch;
   margin-bottom: var(--space-md);
 }
@@ -116,19 +103,26 @@
 }
 
 /* ─────────────────────────────────────────────
-   Client logo row — verbatim from src/styles/index.css:75-130
+   Client logo grid — 2×3 grid, flush against the container's right edge,
+   bottom-aligned with the text column (Figma node 589:486). Own layout
+   (not the homepage's single-row .intro-logos pattern) — .intro-logo-item
+   itself (animation/hover) is still shared, sizing is overridden below.
 ───────────────────────────────────────────── */
 
-.intro-logos {
-  display:         flex;
-  align-items:     center;
-  justify-content: space-between;
+.hero-logos-grid {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   clamp(12px, 1.7vw, 24px);
+  flex:                  0 1 320px;
+}
+
+.hero-logos-grid .intro-logo-item {
+  width:        100%;
+  height:       auto;
+  aspect-ratio: 1.76;
 }
 
 .intro-logo-item {
-  width:           176px;
-  height:          100px;
-  flex-shrink:     1;
   object-fit:      contain;
   display:         block;
   animation:       fade-up 0.6s var(--ease) both;
@@ -149,27 +143,17 @@
 .intro-logo-item:nth-child(5) { animation-delay: 600ms; }
 .intro-logo-item:nth-child(6) { animation-delay: 700ms; }
 
-@media (max-width: 768px) {
-  .intro-logos {
-    justify-content: center;
-    flex-wrap:        wrap;
-    gap:              var(--space-sm);
+@media (max-width: 1024px) {
+  .hero-content {
+    flex-direction: column;
+    align-items:    flex-start;
   }
 
-  .intro-logo-item {
-    width:       calc((100% - 32px) / 3);
-    height:      80px;
-    flex-shrink: 0;
-  }
+  .hero-logos-grid { flex: 0 0 auto; width: 100%; }
 }
 
 @media (max-width: 520px) {
-  .intro-logos { gap: 12px; }
-
-  .intro-logo-item {
-    width:  calc((100% - 24px) / 3);
-    height: 64px;
-  }
+  .hero-logos-grid { gap: 12px; }
 }
 
 /* ─────────────────────────────────────────────
@@ -214,6 +198,28 @@
 }
 
 .btn-primary:active {
+  transform:  translateY(0);
+  box-shadow: var(--neon-sm);
+}
+
+/* Ghost — ported from andrew-ui-kit.html:463-474, adapted so the border is
+   visible at rest (var(--accent)) rather than the kit's default hover-only
+   border, per Figma node 589:486's outline-style CTA. */
+.btn-ghost {
+  background: transparent;
+  color:      var(--accent);
+  border:     0.5px solid var(--accent);
+  box-shadow: none;
+}
+
+.btn-ghost:hover {
+  background:     var(--accent-dim);
+  box-shadow:      var(--neon-md);
+  transform:       translateY(-1px);
+  letter-spacing:  0.04em;
+}
+
+.btn-ghost:active {
   transform:  translateY(0);
   box-shadow: var(--neon-sm);
 }

@@ -6,6 +6,17 @@ Running log of every task assigned across the 5-agent team, owned by the PM. See
 
 ---
 
+## 2026-07-17 — Services hero: rebuilt to match Figma, scrim removed
+- **Task:** Andrew reported the hero layout was wrong and pointed to a specific Figma frame (node 589:486, file AyNWCHfnVugfxZsJYFo1qM) as the reference; also asked to remove the contrast scrim added in the prior QA-fix round.
+- **Owner:** PM (fetched Figma design via MCP), Full-Stack Developer (implementation)
+- **Status:** Done — committed locally, not pushed
+- **Notes:**
+  - Figma reference revealed the actual intended design differs substantially from what was built: plain black-ish text with no scrim at all (not a light-text-on-scrim treatment), a bottom-anchored two-column layout (text left, client logos in a 2×3 grid flush right) rather than a vertically-centered single column with logos below, and an outline/ghost CTA button rather than a filled one.
+  - Removing the scrim reintroduces the "no guaranteed contrast against the animated canvas" risk QA flagged earlier — flagged clearly to Andrew before proceeding; he accepted this tradeoff explicitly (page is still local/pre-launch, he's actively tuning the effect via the debug panel). `--text-1` (now used again) has a much larger rest-state contrast margin (~15:1) than the removed `--text-2`-on-scrim setup did, so it's more robust even though still not formally bounded.
+  - Full-Stack Developer ported `.btn-ghost` from `andrew-ui-kit.html` (adapted so the border is visible at rest, not just on hover, per the Figma spec), built a new `.hero-logos-grid` (2×3 CSS grid) scoped to `services.css` rather than reusing the homepage's single-row `.intro-logos` pattern, and changed `.hero-section`/`.hero-content` from centered to bottom-anchored flex layout. Used the real client-logo SVGs, not the generic placeholder shapes shown in the Figma mockup.
+  - Mobile breakpoint judgment call: two-column layout collapses to stacked at ≤1024px (documented reasoning: text column + logo column need ~950px+ combined).
+  - No browser/screenshot tool available in this environment for either the subagent or PM to visually confirm the render — verification was via build success, served HTML/CSS inspection, and code review. Recommend Andrew eyeball it directly in the browser and flag anything more that's off.
+
 ## 2026-07-17 — New /services page: hero section with WebGL fluid background
 - **Task:** Build the hero section of a brand-new `/services` page (part of a bigger planned site direction — a split-screen entry choosing between the hiring/portfolio path and the services path — but scoped to just the hero for this task). Local-only, not linked from nav, not pushed to remote per Andrew's instruction.
 - **Owner:** Full-Stack Developer (build), Designer (token decisions), QA (review)
