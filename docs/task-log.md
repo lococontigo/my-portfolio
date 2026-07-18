@@ -6,6 +6,17 @@ Running log of every task assigned across the 5-agent team, owned by the PM. See
 
 ---
 
+## 2026-07-18 — Rest of /services page: full build (5 sections)
+- **Task:** Build everything below the hero per Figma node 595:530 — services offered, workflow, client work, testimonials, closing CTA.
+- **Owner:** PM (Figma research, content-ambiguity resolution), Full-Stack Developer (implementation)
+- **Status:** Done — committed locally, not pushed
+- **Notes:**
+  - Figma mockup had real, deliberate copy for the services-offered cards and closing CTA, but placeholder content elsewhere: the "workflow" section's Figma content was actually Andrew's personal career-journey timeline, not step-by-step process copy; the client-work carousel had 3 identical unedited "Delta Controls" placeholder cards with generic "Business Impact 1/2" labels; testimonial quotes used fake names (Sarah Chen etc.) that don't match the real testimonials already in `testimonials.astro`. Escalated all three before building — Andrew confirmed: reuse the real `<Timeline />` and `<Testimonials />` components as-is, and build the work carousel with the 4 real case studies using real impact stats already written elsewhere in the site (`timeline.astro`, each `work/*.astro` page's own stats).
+  - New components: `src/components/service-card.astro`, `src/components/work-carousel.astro` (scroll-snap track + prev/next + dots, TS-typed, respects `prefers-reduced-motion` by switching scroll behavior to `auto`).
+  - Judgment calls made and accepted: skipped an ambiguous empty 98px spacer rectangle in the Figma file; resolved an unmapped Figma red (`#d61300`) on card titles to `var(--text-1)` instead of inventing an unrelated color; picked "Equipment Rentals"/"Mobile App" category tags for ANT/Crowd Ease since Figma's placeholder cards didn't specify real ones.
+  - No new tokens, no `gsap.js` changes — reused the existing `data-stagger-reveal`/`data-stagger-child` hooks for the new sections.
+  - Verified with real Playwright screenshots at desktop and mobile widths, including scrolling to each section individually (a full-page screenshot initially made the work carousel look empty — turned out to be a screenshot-methodology artifact, since GSAP's scroll-triggered reveal doesn't fire without real scroll events; confirmed the actual content renders correctly once genuinely scrolled into view).
+
 ## 2026-07-18 — Playwright MCP added; services hero polish (chip sizing, header width)
 - **Task:** Set up browser/screenshot capability so pages can be visually verified instead of only code-reviewed, then use it to fix two small issues Andrew spotted: the "Vancouver · Canada" chip stretching full-width, and the hero text column needing an exact 586px max-width on desktop (matching Figma).
 - **Owner:** PM (MCP setup + verification), Full-Stack Developer (CSS fixes)

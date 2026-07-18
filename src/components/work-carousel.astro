@@ -1,0 +1,286 @@
+---
+const cards = [
+  {
+    tag:    'SaaS',
+    title:  'Yocale',
+    href:   '/work/yocale/',
+    stats:  ['5.15% click-through rate', '40% lower bounce rate'],
+    image:  '/images/yocale-mockup.webp',
+    alt:    'Yocale dashboard — booking management interface',
+  },
+  {
+    tag:    'Building Automation',
+    title:  'Delta Controls',
+    href:   '/work/delta/',
+    stats:  ['15% higher engagement', '22.5% more download conversions'],
+    image:  '/images/Mac-Studio-mockup.svg',
+    alt:    'Delta Intelligent Building Technologies resources intranet mockup',
+  },
+  {
+    tag:    'Equipment Rentals',
+    title:  'ANT Equipment Group',
+    href:   '/work/ant/',
+    stats:  ['80% more engagement connections', '40% lower bounce rate'],
+    image:  '/images/ant-mockup.svg',
+    alt:    'ANT Rentals blog mockup',
+  },
+  {
+    tag:    'Mobile App',
+    title:  'Crowd Ease',
+    href:   '/work/crowd-ease/',
+    stats:  ['Capstone Award winner', '8-week MVP build'],
+    image:  '/images/UI-CROWDEASE-1.svg',
+    alt:    'Crowd Ease mobile app interface showing event tracking and live crowd data',
+  },
+];
+---
+
+<div class="work-carousel" id="work-carousel" data-stagger-reveal>
+
+  <div class="work-carousel-track" id="work-carousel-track">
+    {cards.map((card) => (
+      <a class="work-card" href={card.href} data-stagger-child>
+        <span class="work-card-tag">{card.tag}</span>
+        <h3 class="work-card-title">{card.title}</h3>
+        <ul class="work-card-stats">
+          {card.stats.map((stat) => <li>{stat}</li>)}
+        </ul>
+        <div class="work-card-image-wrap">
+          <img src={card.image} alt={card.alt} class="work-card-image" width="704" height="704" loading="lazy" />
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <div class="work-carousel-controls">
+    <button class="work-carousel-btn" id="work-carousel-prev" aria-label="Previous project">‹</button>
+    <div class="work-carousel-dots" id="work-carousel-dots">
+      {cards.map((_, i) => (
+        <button class={`work-carousel-dot${i === 0 ? ' active' : ''}`} aria-label={`Go to project ${i + 1}`}></button>
+      ))}
+    </div>
+    <button class="work-carousel-btn" id="work-carousel-next" aria-label="Next project">›</button>
+  </div>
+
+</div>
+
+<style>
+  .work-carousel-track {
+    display:             flex;
+    gap:                 clamp(12px, 1.7vw, 24px);
+    overflow-x:          auto;
+    scroll-snap-type:    x mandatory;
+    scrollbar-width:     none;
+    -ms-overflow-style:  none;
+  }
+
+  .work-carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .work-card {
+    display:          flex;
+    flex-direction:   column;
+    flex:             0 0 clamp(260px, 32vw, 464px);
+    scroll-snap-align: start;
+    background:       var(--bg-2);
+    border-radius:    var(--r-lg);
+    padding:          var(--space-md);
+    transition:       transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  }
+
+  @media (hover: hover) {
+    .work-card:hover {
+      transform:  translateY(-4px);
+      box-shadow: var(--neon-sm);
+    }
+  }
+
+  .work-card-tag {
+    display:        inline-flex;
+    align-self:     flex-start;
+    align-items:    center;
+    padding:        4px 10px;
+    border-radius:  var(--r-pill);
+    font-family:    var(--font-body);
+    font-size:      11px;
+    font-weight:    500;
+    letter-spacing: 0.03em;
+    color:          var(--text-2);
+    background:     var(--bg-2);
+    border:         0.5px solid var(--border);
+    margin-bottom:  var(--space-sm);
+  }
+
+  .work-card-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(28px, 3vw, 39px);
+    font-weight:    500;
+    line-height:    1.15;
+    letter-spacing: -0.01em;
+    color:          var(--text-1);
+    margin-bottom:  var(--space-sm);
+    text-wrap:      balance;
+  }
+
+  .work-card-stats {
+    display:        flex;
+    flex-direction: column;
+    gap:            8px;
+    margin-bottom:  var(--space-md);
+  }
+
+  .work-card-stats li {
+    display:      flex;
+    align-items:  baseline;
+    gap:          8px;
+    font-family:  var(--font-body);
+    font-size:    14px;
+    font-weight:  400;
+    color:        var(--text-2);
+    line-height:  1.4;
+  }
+
+  .work-card-stats li::before {
+    content:       '';
+    flex-shrink:   0;
+    width:         5px;
+    height:        5px;
+    border-radius: 50%;
+    background:    var(--accent);
+    transform:     translateY(-2px);
+  }
+
+  .work-card-image-wrap {
+    margin-top:    auto;
+    aspect-ratio:  1 / 1;
+    border-radius: var(--r-md);
+    overflow:      hidden;
+  }
+
+  .work-card-image {
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease);
+  }
+
+  @media (hover: hover) {
+    .work-card:hover .work-card-image {
+      transform: scale(1.04);
+    }
+  }
+
+  /* ── Controls ────────────────────────────── */
+  .work-carousel-controls {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    gap:             var(--space-sm);
+    margin-top:      var(--space-md);
+  }
+
+  .work-carousel-btn {
+    width:           40px;
+    height:          40px;
+    display:         inline-flex;
+    align-items:     center;
+    justify-content: center;
+    background:      var(--bg-2);
+    border:          0.5px solid var(--border);
+    border-radius:   var(--r-sm);
+    color:           var(--text-2);
+    cursor:          pointer;
+    font-family:     var(--font-body);
+    font-size:       16px;
+    line-height:     1;
+    transition:      all 0.2s var(--ease);
+  }
+
+  .work-carousel-btn:hover {
+    border-color: var(--accent);
+    color:        var(--accent);
+    box-shadow:   var(--neon-sm);
+  }
+
+  .work-carousel-dots {
+    display:     flex;
+    align-items: center;
+    gap:         8px;
+  }
+
+  .work-carousel-dot {
+    width:         6px;
+    height:        6px;
+    border-radius: 50%;
+    background:    var(--border-2);
+    cursor:        pointer;
+    border:        none;
+    padding:       0;
+    transition:    all 0.25s var(--ease);
+  }
+
+  .work-carousel-dot:focus-visible {
+    outline:        2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .work-carousel-dot.active {
+    background:    var(--accent);
+    box-shadow:    var(--neon-sm);
+    width:         18px;
+    border-radius: var(--r-pill);
+  }
+
+  @media (max-width: 520px) {
+    .work-card { padding: var(--space-sm); }
+  }
+</style>
+
+<script>
+  const track = document.getElementById('work-carousel-track');
+  const prev  = document.getElementById('work-carousel-prev');
+  const next  = document.getElementById('work-carousel-next');
+  const dotsEl = document.getElementById('work-carousel-dots');
+
+  if (track && prev && next && dotsEl) {
+    const cards: HTMLElement[] = Array.from(track.querySelectorAll<HTMLElement>('.work-card'));
+    const dots: HTMLElement[]  = Array.from(dotsEl.querySelectorAll<HTMLElement>('.work-carousel-dot'));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function cardStep(): number {
+      const first = cards[0];
+      if (!first) return 0;
+      const style = getComputedStyle(track!);
+      const gap = parseFloat(style.columnGap || style.gap || '0');
+      return first.getBoundingClientRect().width + gap;
+    }
+
+    function scrollToIndex(index: number) {
+      const clamped = Math.max(0, Math.min(cards.length - 1, index));
+      track!.scrollTo({ left: cardStep() * clamped, behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+
+    function currentIndex(): number {
+      const step = cardStep();
+      return step ? Math.round(track!.scrollLeft / step) : 0;
+    }
+
+    function updateActiveDot() {
+      const idx = currentIndex();
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
+    }
+
+    prev.addEventListener('click', () => scrollToIndex(currentIndex() - 1));
+    next.addEventListener('click', () => scrollToIndex(currentIndex() + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => scrollToIndex(i)));
+
+    let scrollTimer = 0;
+    track.addEventListener('scroll', () => {
+      window.clearTimeout(scrollTimer);
+      scrollTimer = window.setTimeout(updateActiveDot, 100);
+    });
+
+    updateActiveDot();
+  }
+</script>

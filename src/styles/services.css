@@ -232,3 +232,168 @@
 @media (max-width: 520px) {
   .hero-cta { align-self: stretch; text-align: center; justify-content: center; }
 }
+
+/* ─────────────────────────────────────────────
+   Shared section heading — used by every section
+   below the hero (matches about.astro's heading scale)
+───────────────────────────────────────────── */
+
+.services-heading {
+  font-family:    var(--font-display);
+  font-size:      clamp(39px, 3.8vw, 49px);
+  font-weight:    300;
+  color:          var(--text-1);
+  letter-spacing: -0.02em;
+  text-wrap:      balance;
+}
+
+/* ─────────────────────────────────────────────
+   SERVICES PAGE — "I Can Help You With..." section
+───────────────────────────────────────────── */
+
+.help-content .services-heading {
+  margin-bottom: clamp(32px, 5.5vw, 80px);
+}
+
+.help-grid {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   clamp(12px, 1.7vw, 24px);
+  align-items:           stretch;
+}
+
+@media (max-width: 768px) {
+  .help-grid {
+    grid-template-columns: 1fr;
+    gap:                   var(--space-sm);
+  }
+}
+
+/* ─────────────────────────────────────────────
+   SERVICES PAGE — "How It's Gonna Work..." section
+───────────────────────────────────────────── */
+
+.workflow-content .services-heading {
+  margin-bottom: clamp(32px, 5.5vw, 80px);
+}
+
+.workflow-grid {
+  display:               grid;
+  grid-template-columns: minmax(0, 586px) 1fr;
+  gap:                   clamp(32px, 5.5vw, 80px);
+  align-items:           start;
+}
+
+.workflow-subtitle {
+  font-family:    var(--font-display);
+  font-size:      clamp(22px, 2.2vw, 27px);
+  font-weight:    400;
+  color:          var(--text-1);
+  letter-spacing: -0.01em;
+  margin-bottom:  var(--space-xs);
+  text-wrap:      balance;
+}
+
+.workflow-body {
+  font-family:   var(--font-body);
+  font-size:     15px;
+  font-weight:   300;
+  line-height:   1.6;
+  color:         var(--text-2);
+  max-width:     56ch;
+}
+
+.workflow-right {
+  min-width: 0;
+}
+
+@media (max-width: 1024px) {
+  .workflow-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   SERVICES PAGE — "Companies I have worked with" section
+───────────────────────────────────────────── */
+
+.companies-heading-row {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             var(--space-sm);
+  margin-bottom:   clamp(32px, 5.5vw, 80px);
+  flex-wrap:       wrap;
+}
+
+.companies-heading-row .services-heading {
+  margin-bottom: 0;
+}
+
+.companies-see-all {
+  display:        inline-flex;
+  align-items:    center;
+  gap:            6px;
+  padding:        10px 14px;
+  font-family:    var(--font-body);
+  font-size:      12px;
+  font-weight:    400;
+  color:          var(--text-2);
+  letter-spacing: 0.26px;
+  border-radius:  var(--r-sm);
+  border:         0.5px solid transparent;
+  white-space:    nowrap;
+  transition:     color 0.25s var(--ease), gap 0.25s var(--ease),
+                  border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.companies-see-all:hover {
+  color:        var(--accent);
+  gap:          10px;
+  border-color: var(--accent);
+  box-shadow:   var(--neon-sm);
+}
+
+/* ─────────────────────────────────────────────
+   SERVICES PAGE — "What People Say About Me" section
+───────────────────────────────────────────── */
+
+.services-testi-content .services-heading {
+  margin-bottom: clamp(32px, 5.5vw, 80px);
+}
+
+.services-testi-box {
+  border:        0.5px solid var(--border);
+  border-radius: var(--r-lg);
+  padding:       var(--space-md) var(--space-sm);
+  max-width:     760px;
+  margin-inline: auto;
+}
+
+/* ─────────────────────────────────────────────
+   SERVICES PAGE — Closing CTA section
+───────────────────────────────────────────── */
+
+.closing-cta-section {
+  background: var(--bg-2);
+}
+
+.closing-cta-content {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--space-md);
+  text-align:      center;
+}
+
+.closing-cta-headline {
+  font-family:    var(--font-display);
+  font-size:      clamp(44px, 5.5vw, 75px);
+  font-weight:    300;
+  line-height:    1.15;
+  letter-spacing: -0.28px;
+  color:          var(--text-1);
+  max-width:      18ch;
+  text-wrap:      balance;
+}

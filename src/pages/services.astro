@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../layouts/base-layout.astro';
 import HeroFluidBg from '../components/hero-fluid-bg.astro';
+import ServiceCard from '../components/service-card.astro';
+import Timeline from '../components/timeline.astro';
+import WorkCarousel from '../components/work-carousel.astro';
+import Testimonials from '../components/testimonials.astro';
 import '../styles/services.css';
 ---
 
@@ -57,6 +61,131 @@ import '../styles/services.css';
               <img class="intro-logo-item" src="/images/ANT%20Rentals.svg"        alt="ANT Rentals"        width="176" height="100" />
             </div>
 
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── I Can Help You With... ────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="help-content">
+
+            <h2 class="services-heading">I Can Help You With...</h2>
+
+            <div class="help-grid">
+              <ServiceCard
+                title="Design"
+                subheading="Great websites begin long before design."
+                items={[
+                  'UX Audits',
+                  'Website Strategy',
+                  'Information Architecture',
+                  'Website Redesign',
+                  'User-friendly Interface',
+                  'Responsive Website',
+                  'Design Systems',
+                  'Landing Pages',
+                ]}
+              />
+              <ServiceCard
+                title="Development"
+                subheading="A beautiful design needs implementation."
+                items={[
+                  'WordPress Development',
+                  'Webflow Development',
+                  'Responsive Development',
+                  'Accessibility Best Practices',
+                  'CMS Configuration',
+                  'Custom Front-end Development',
+                ]}
+              />
+              <ServiceCard
+                title="Full Package"
+                subheading="Design and development plus..."
+                items={[
+                  'Technical SEO Foundations',
+                  'Google Analytics Setup',
+                  'Search Console Configuration',
+                  'Performance Optimization',
+                  'Website Launch',
+                  'Website Maintenance',
+                  'Continuous Improvements',
+                ]}
+              />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── How It's Gonna Work... ────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="workflow-content">
+
+            <h2 class="services-heading">How It's Gonna Work...</h2>
+
+            <div class="workflow-grid">
+              <div class="workflow-left">
+                <h3 class="workflow-subtitle">Our Workflow</h3>
+                <p class="workflow-body">Every project follows a structured process to reduce uncertainty, encourage collaboration, and ensure every decision supports your business goals.</p>
+              </div>
+              <div class="workflow-right">
+                <Timeline />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Companies I have worked with ──────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="companies-content">
+
+            <div class="companies-heading-row">
+              <h2 class="services-heading">Companies I have worked with</h2>
+              <a href="/" class="companies-see-all">See All Projects →</a>
+            </div>
+
+            <WorkCarousel />
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── What People Say About Me ──────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="services-testi-content">
+
+            <h2 class="services-heading">What People Say About Me</h2>
+
+            <div class="services-testi-box">
+              <Testimonials />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Closing CTA ────────────────────────────── -->
+    <section class="closing-cta-section">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="closing-cta-content">
+            <h2 class="closing-cta-headline">Let's Build Something Great Together</h2>
+            <a href="/contact/" class="btn btn-ghost btn-lg">Get A Free Consultation</a>
           </div>
         </div>
       </div>
