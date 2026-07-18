@@ -40,6 +40,8 @@ npm run build    # production build
 npm run preview  # preview build output
 ```
 
+**Dev server hygiene:** when you start `npm run dev` for verification, stop it afterward using a scoped method — kill only the specific process/PID you started. **Never run a blanket process-kill command** like `taskkill /F /IM node.exe` (Windows) or `pkill node` — these kill *every* node process on the machine, not just your dev server, and can silently terminate unrelated work (other projects, editor tooling, etc.) the user has running. If you can't cleanly target just your own process, it's safer to leave the dev server running in the background than to risk killing something else.
+
 ## File structure
 ```
 src/
