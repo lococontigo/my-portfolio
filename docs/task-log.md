@@ -6,6 +6,17 @@ Running log of every task assigned across the 5-agent team, owned by the PM. See
 
 ---
 
+## 2026-07-18 — Sticky "Our Workflow" column
+- **Task:** Andrew wanted the "How It's Gonna Work..." heading + "Our Workflow" subtitle/paragraph to stick in place while the Timeline scrolls past on the right (two dispatches: sticky on the subtitle/paragraph column first, then a follow-up to pull the heading into the same sticky box since it was originally a separate full-width element above the two-column grid).
+- **Owner:** Full-Stack Developer
+- **Status:** Done — committed locally, not pushed
+- **Notes:**
+  - `.workflow-grid`'s existing `align-items: start` was already correct for sticky to work (the left column isn't stretched to match the taller right column).
+  - `.workflow-left` gets `position: sticky; top: calc(96px + var(--space-xs))` — the `96px` reuses the same nav-clearance constant already used elsewhere (`global.css`'s `scroll-margin-top`, `.main`'s `padding-top`), not a new arbitrary value.
+  - Moved `<h2 class="services-heading">` from a full-width sibling above the grid into `.workflow-left` itself (above the subtitle) so it scrolls/sticks as one unit — tightened its `margin-bottom` at desktop widths to match the established title-to-body spacing pattern, since it's no longer sitting above a full two-column grid.
+  - Sticky is explicitly disabled (`position: static`) inside the existing `≤1024px` breakpoint where the grid already stacks to one column — a stuck left column would look broken in a single-column stacked layout.
+  - Verified visually with Playwright: scrolled partway through the Timeline and confirmed heading + subtitle + paragraph stay grouped and pinned below the nav; confirmed `position: static` on mobile width.
+
 ## 2026-07-18 — Smoke animation cut off before reaching the top
 - **Task:** Andrew reported the fluid smoke looked cut off near the top of the viewport, around where the nav sits, and suggested moving the nav into the hero section to fix it.
 - **Owner:** PM (diagnosis), Full-Stack Developer (fix)
