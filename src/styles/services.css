@@ -2,13 +2,36 @@
    SERVICES PAGE — Hero section
 ───────────────────────────────────────────── */
 
+/* .hero-section is the first child of <main>, so it inherits .main's
+   padding-top (96px / 80px / 72px, global.css:108-114) meant to clear the
+   fixed nav. That pushed the whole hero box — including the fluid canvas
+   background, which fills .hero-section via inset:0 — down, leaving a flat
+   gap above the smoke where it visibly cut off short of the viewport top.
+   Pull the section up by that same amount and extend its height to match,
+   so the canvas reaches y=0 behind the nav while the bottom-anchored
+   content's position is unchanged. */
 .hero-section {
   position:       relative;
-  height:         100vh;
+  margin-top:     -96px;
+  height:         calc(90vh + 96px);
   overflow:       hidden;
   display:        flex;
   align-items:    flex-end;
   padding-bottom: var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    margin-top: -80px;
+    height:     calc(90vh + 80px);
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-section {
+    margin-top: -72px;
+    height:     calc(90vh + 72px);
+  }
 }
 
 /* Canvas (HeroFluidBg) sits behind everything at z-index 0, content above */

@@ -6,6 +6,15 @@ Running log of every task assigned across the 5-agent team, owned by the PM. See
 
 ---
 
+## 2026-07-18 — Smoke animation cut off before reaching the top
+- **Task:** Andrew reported the fluid smoke looked cut off near the top of the viewport, around where the nav sits, and suggested moving the nav into the hero section to fix it.
+- **Owner:** PM (diagnosis), Full-Stack Developer (fix)
+- **Status:** Done — committed locally, not pushed
+- **Notes:**
+  - Diagnosed the actual mechanism before implementing: nav is already `position: fixed`, so its DOM position doesn't affect stacking — moving it wouldn't change anything on its own. The real cause is `.main`'s global `padding-top` (96px/80px/72px across breakpoints, exists to clear the fixed nav), which pushes `.hero-section` — and the canvas filling it — down by that amount, so the canvas structurally never rendered in that top strip regardless of where the dye/smoke was.
+  - Fix: `.hero-section` gets a negative `margin-top` matching each breakpoint's padding exactly, with `height` extended by the same amount so the bottom-anchored content doesn't shift. No changes needed to `hero-fluid-bg.astro` — the canvas already fills `.hero-section` via `inset: 0`, so extending the section's box automatically extends the canvas.
+  - Verified structurally (canvas `getBoundingClientRect().top` now measures exactly `0`, matching the viewport) and visually (synthetic pointer events near the top produced smoke rendering with no hard clip line, confirmed via Playwright screenshot).
+
 ## 2026-07-18 — Hero background didn't match the rest of the page
 - **Task:** Andrew reported the hero's background color didn't match the rest of the page.
 - **Owner:** PM (diagnosis), Full-Stack Developer (fix)
