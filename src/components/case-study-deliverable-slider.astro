@@ -13,7 +13,7 @@ const {
   <div class="deliverable-slider-media">
     <img src={mediaSrc} alt={mediaAlt} width={mediaWidth} height={mediaHeight} loading="lazy" />
   </div>
-  <div class="deliverable-slider-marquee" data-marquee aria-label={ariaLabel}>
+  <div class="deliverable-slider-marquee" data-marquee role="group" aria-label={ariaLabel}>
     <div class="deliverable-slider-track" data-marquee-track>
       {cards.map((card) => (
         <img src={card.src} alt={card.alt} width={card.w} height={card.h} loading="lazy" />

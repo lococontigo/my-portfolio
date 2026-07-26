@@ -2,8 +2,13 @@
 import CaseStudySectionHeader from './case-study-section-header.astro';
 import { caseStudies } from '../data/case-studies.js';
 
-const { current } = Astro.props;
-const items = caseStudies.filter((item) => item.slug !== current);
+const {
+  current,
+  items: itemsProp,
+  eyebrow = 'Keep Reading',
+  title = 'More Case Studies',
+} = Astro.props;
+const items = (itemsProp ?? caseStudies).filter((item) => item.slug !== current);
 ---
 
 <section class="keep-reading-section">
@@ -11,7 +16,7 @@ const items = caseStudies.filter((item) => item.slug !== current);
     <div class="container-main">
       <div class="keep-reading-content">
 
-        <CaseStudySectionHeader eyebrow="Keep Reading" title="More Case Studies" />
+        <CaseStudySectionHeader eyebrow={eyebrow} title={title} />
 
         <div class="keep-reading-grid">
           {items.map((item) => (
@@ -97,7 +102,9 @@ const items = caseStudies.filter((item) => item.slug !== current);
     font-weight:    400;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color:          var(--text-3);
+    /* --text-2, not --text-3: category/year is real informational text
+       (WCAG AA), not decorative. */
+    color:          var(--text-2);
   }
 
   .keep-reading-card-title {

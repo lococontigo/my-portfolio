@@ -116,3 +116,15 @@
      contrast in one theme or the other on top of --accent. See docs/design-decisions.md #2. */
   --text-on-accent: #111110;
 }
+
+/* ─────────────────────────────────────────────
+   LOCALE — Traditional Chinese font override
+   Cormorant Garamond / DM Sans have no CJK glyphs, so zh-Hant pages need a
+   dedicated pairing loaded in base-layout.astro. Scoped by [lang] (set on
+   <html> per-locale) rather than a new theme fork — applies on top of
+   whichever data-theme is active, dark or light.
+───────────────────────────────────────────── */
+[lang="zh-Hant"] {
+  --font-display: 'Noto Serif TC', serif;
+  --font-body:    'Noto Sans TC', sans-serif;
+}

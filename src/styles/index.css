@@ -1,35 +1,121 @@
 /* ─────────────────────────────────────────────
-   HOMEPAGE — Brief Intro section
+   PORTFOLIO — Hero section
 ───────────────────────────────────────────── */
 
-.intro-content {
+/* Bleed the fluid canvas under the fixed nav — same trick as
+   services.css:13-35, this page just clears .main's own padding-top
+   (96px / 80px / 72px, global.css:108-114). */
+.hero-section {
+  position:       relative;
+  margin-top:     -96px;
+  height:         100vh;
+  overflow:       hidden;
+  display:        flex;
+  align-items:    flex-end;
+  padding-bottom: var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    margin-top: -80px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-section {
+    margin-top: -72px;
+  }
+}
+
+.hero-section > .padding-global {
+  position: relative;
+  z-index:  1;
+  width:    100%;
+}
+
+.hero-content {
   display:        flex;
   flex-direction: column;
-  gap:            80px;
+  gap:            var(--space-lg);
 }
 
-.intro-name {
+.hero-header {
+  display:        flex;
+  flex-direction: column;
+  max-width:      700px;
+}
+
+.hero-headline {
   font-family:    var(--font-display);
   font-size:      clamp(44px, 5.5vw, 75px);
-  margin:         0;
-  font-weight:    400;
-  line-height:    1.2;
+  font-weight:    300;
+  line-height:    1.15;
   letter-spacing: -0.28px;
   color:          var(--text-1);
+  margin-top:     var(--space-sm);
+  margin-bottom:  clamp(16px, 1.7vw, 24px);
+  text-wrap:      balance;
 }
 
-.intro-meta {
-  display:     flex;
-  align-items: center;
-  gap:         var(--space-xs);
-  margin-top:  var(--space-sm);
+.hero-headline em {
+  font-style: italic;
+  color:      var(--accent-text);
 }
 
-.intro-role {
-  font-family: var(--font-body);
-  font-size:   clamp(18px, 2vw, 26px);
-  font-weight: 400;
-  color:       var(--text-1);
+.hero-body {
+  font-family:   var(--font-body);
+  font-size:     15px;
+  font-weight:   300;
+  line-height:   1.6;
+  color:         var(--text-2);
+  max-width:     56ch;
+  margin-bottom: var(--space-md);
+}
+
+.hero-cta {
+  align-self: flex-start;
+}
+
+/* ── Buttons — duplicated from services.css:210-273 (page-scoped stylesheets
+   by design, see that file's own note on why this isn't a shared import) ── */
+.btn {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             8px;
+  padding:         10px 20px;
+  font-family:     var(--font-body);
+  font-size:       11px;
+  font-weight:     500;
+  letter-spacing:  0.02em;
+  border-radius:   var(--r-sm);
+  cursor:          pointer;
+  transition:      background 0.2s var(--ease), box-shadow 0.2s var(--ease),
+                   transform 0.1s var(--ease), letter-spacing 0.2s var(--ease);
+}
+
+.btn-ghost {
+  background: transparent;
+  color:      var(--accent-text);
+  border:     0.5px solid var(--accent);
+  box-shadow: none;
+}
+
+.btn-ghost:hover {
+  background:     var(--accent-dim);
+  box-shadow:      var(--neon-md);
+  transform:       translateY(-1px);
+  letter-spacing:  0.04em;
+}
+
+.btn-ghost:active {
+  transform:  translateY(0);
+  box-shadow: var(--neon-sm);
+}
+
+.btn-lg { padding: 14px 32px; font-size: 15px; }
+
+@media (max-width: 520px) {
+  .hero-cta { align-self: stretch; text-align: center; justify-content: center; }
 }
 
 .intro-location {
@@ -40,6 +126,7 @@
   background:    var(--accent-dim);
   border:        1px solid color-mix(in srgb, var(--accent) 25%, transparent);
   border-radius: var(--r-pill);
+  align-self:    flex-start;
 }
 
 .intro-location-dot {
@@ -102,8 +189,14 @@
 .intro-logo-item:nth-child(5) { animation-delay: 600ms; }
 .intro-logo-item:nth-child(6) { animation-delay: 700ms; }
 
-@media (max-width: 768px) {
-  .intro-content { gap: 48px; }
+/* 1120px, not the usual 768px tablet breakpoint: six fixed-176px logos need
+   ~1056px before any gap, and <img> flex items ignore flex-shrink (their
+   default min-width:auto resolves to the intrinsic size) — so the single
+   row silently overflows past .hero-section's overflow:hidden and clips
+   the trailing logos anywhere from 769px up to ~1104px wide. Measured the
+   actual overflow live before picking this value. */
+@media (max-width: 1120px) {
+  .hero-content { gap: 48px; }
 
   .intro-logos {
     justify-content: center;
@@ -119,7 +212,7 @@
 }
 
 @media (max-width: 520px) {
-  .intro-content { gap: var(--space-md); }
+  .hero-content { gap: var(--space-md); }
 
   .intro-logos { gap: 12px; }
 
@@ -168,7 +261,7 @@ section:has(.work-featured) {
 
 @media (hover: hover) {
   .work-featured:hover .work-featured-title {
-    color: var(--accent);
+    color: var(--accent-text);
   }
 }
 
@@ -198,7 +291,7 @@ section:has(.work-featured) {
 }
 
 .work-featured-link:hover {
-  color:        var(--accent);
+  color:        var(--accent-text);
   gap:          10px;
   border-color: var(--accent);
   box-shadow:   var(--neon-sm);

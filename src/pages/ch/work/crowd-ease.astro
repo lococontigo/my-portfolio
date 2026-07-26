@@ -1,0 +1,627 @@
+---
+import BaseLayout from '../../../layouts/base-layout.astro';
+import CaseStudyHero from '../../../components/case-study-hero.astro';
+import CaseStudyHighlight from '../../../components/case-study-highlight.astro';
+import CaseStudyProblem from '../../../components/case-study-problem.astro';
+import CaseStudySolution from '../../../components/case-study-solution.astro';
+import CaseStudySectionHeader from '../../../components/case-study-section-header.astro';
+import CaseStudyInsightCard from '../../../components/case-study-insight-card.astro';
+import CaseStudyKeepReading from '../../../components/case-study-keep-reading.astro';
+import { caseStudiesZh } from '../../../data/case-studies-zh.js';
+
+const sections = [
+  { id: 'highlight', label: '01-焦點' },
+  { id: 'problem',   label: '02-問題' },
+  { id: 'solution',  label: '03-方案' },
+  { id: 'research',  label: '04-研究' },
+  { id: 'design',    label: '05-設計' },
+  { id: 'identity',  label: '06-視覺形象' },
+  { id: 'takeaways', label: '07-總結' },
+];
+
+const galleryRows = [
+  [
+    { src: "/images/crowd-ease/crowd-ease-mockup-passed-events-rating.webp", alt: "已完結活動畫面,提示用戶為活動對業務的影響程度評分", width: 226, height: 494 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-event-list.webp", alt: "活動列表畫面,展示每週日曆及即將舉行的活動列表,附參與人數", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-sign-up.webp", alt: "註冊畫面,設有電郵、密碼及商業名稱欄位,並提供社交媒體註冊選項", width: 226, height: 494 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-event-detail.webp", alt: "溫哥華就業博覽的活動詳情畫面,展示日期、地點、描述及地圖預覽", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-event-filters.webp", alt: "活動篩選疊層,提供活動分類及距離選項", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-location-permission.webp", alt: "位置權限畫面,要求用戶啟用 GPS 或輸入郵政編號", width: 226, height: 492 },
+  ],
+  [
+    { src: "/images/crowd-ease/crowd-ease-mockup-profile-settings.webp", alt: "個人檔案及設定畫面,設有通知偏好及帳戶選項", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-event-list-alt.webp", alt: "活動列表畫面,展示每週日曆及即將舉行的活動列表,附參與人數", width: 226, height: 492 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-business-insights.webp", alt: "業務洞見畫面,建議專注推廣演唱會活動,並按類別細分參與數據", width: 226, height: 493 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-map-heatmap.webp", alt: "地圖畫面,展示溫哥華市中心一帶的實時人流密度熱力圖", width: 226, height: 493 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-weekly-report.webp", alt: "每週活動預覽報告,列出每日活動數量及參與人數總計", width: 226, height: 494 },
+    { src: "/images/crowd-ease/crowd-ease-mockup-passed-events.webp", alt: "已完結活動畫面,列出過往活動並提供評分選項", width: 226, height: 494 },
+  ],
+];
+---
+
+<BaseLayout title="Crowd Ease" world="light" sections={sections} translated={true} description="為 Crowd Ease 提供 UX 研究、地圖設計及專案管理 —— 一款榮獲 Capstone Award 的應用程式,協助餐廳運用實時人流數據規劃資源。">
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://andrewthyip.com/ch/" },
+      { "@type": "ListItem", "position": 2, "name": "Crowd Ease", "item": "https://andrewthyip.com/ch/work/crowd-ease/" }
+    ]
+  }
+  </script>
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Crowd Ease:餐廳管理及市場推廣策略業務生產力應用程式",
+    "description": "為 Crowd Ease 提供 UX 研究、設計系統、地圖設計及專案管理 —— 一款榮獲 Langara College Capstone Award 的手機應用程式。",
+    "url": "https://andrewthyip.com/ch/work/crowd-ease/",
+    "author": { "@type": "Person", "name": "Andrew Yip", "url": "https://andrewthyip.com" },
+    "inLanguage": "zh-Hant"
+  }
+  </script>
+  <main class="main">
+
+    <CaseStudyHero
+      title="Crowd Ease —— 餐廳管理及市場推廣策略業務生產力應用程式"
+      fullTitle="Crowd Ease:餐廳管理及市場推廣策略業務生產力應用程式"
+      accentTitle="Crowd Ease"
+      videoSrc="/videos/crowd-ease/crowd_ease_promotional_animation_v1%20(720p).mp4"
+      role={["研究", "設計系統", "地圖設計", "專案管理"]}
+      roleLabel="角色:"
+      tools={["Figma", "Adobe Suite", "Jira", "Slack"]}
+      toolsLabel="工具:"
+      duration={["策劃與研究:3 週", "構思與設計:3 週", "開發與測試:6 週"]}
+      durationLabel="時間:"
+    />
+
+    <CaseStudyHighlight
+      id="highlight"
+      eyebrow="01"
+      title="焦點"
+      stats={[
+        { value: "Capstone Award", caption: "Langara College 觀眾票選獲獎" },
+        { value: "跨職能團隊", caption: "4 位開發人員及 3 位設計師" },
+        { value: "8 週建成 MVP", caption: "敏捷開發" },
+      ]}
+      imageSrc="/images/crowd-ease/Handout-Front.svg"
+      imageAlt="Crowd Ease 宣傳單張:應用程式標誌及標語「Be in the Know - Track Events and Monitor Live Crowds with Ease!」,旁為展示實時活動人流數據的手機模型"
+    />
+
+    <CaseStudyProblem
+      id="problem"
+      eyebrow="02"
+      title="問題"
+      rows={[
+        {
+          title: "餐廳推廣可以十分困難。",
+          body: "管理層可能難以找到合適的業務推廣策略。他們需要了解有效策略的洞見,以及達致最佳成效的具體行動步驟。若缺乏管理輔助工具,小型餐廳將難以維持服務質素及銷售數量。",
+        },
+        {
+          title: "餐廳管理層在資源規劃上遇到困難。",
+          body: "資源規劃是餐廳東主及管理層最頭痛的問題之一,因為他們普遍缺乏顧客流量資訊。因此,他們可能會遇到附近有活動導致顧客湧至,或某晚生意特別淡靜的情況,結果令人手及存貨安排出現誤差。",
+        },
+      ]}
+    />
+
+    <CaseStudySolution
+      id="solution"
+      eyebrow="03"
+      title="方案"
+      rows={[
+        {
+          imageSrc: "/gifs/crowd-ease/DASHBOARD.gif",
+          imageAlt: "Crowd Ease 主頁畫面,展示每週活動參與人數的柱狀圖、「View Full Report」按鈕及推廣建議提示",
+          title: "以數據視覺化呈現業務規劃洞見",
+          body: "主頁的第一個元素是展示一週內活動參與人數的圖表,因為這個應用程式的主要目的是協助用戶準備業務規劃。數據視覺化的目標是讓用戶一目了然地輕鬆分析。然後,我們提供一些行動呼籲,提醒用戶應留意哪一天。",
+        },
+        {
+          imageSrc: "/gifs/crowd-ease/DATA-.gif",
+          imageAlt: "Crowd Ease 主頁畫面連接至完整每週報告,提供深入數據分析及業務策略建議",
+          title: "深入數據分析與策略建議",
+          body: "這是應用程式的核心 —— 用戶可在此找到市場推廣及業務規劃所需的所有分析及建議。用戶可先探索應用程式、發掘其價值,然後才需要註冊或登入以查看完整報告。從那裏,頂部箭嘴會展示簡短的每週預覽。Crowd Ease 會拆解每日活動,並提供詳細分析及業務建議。",
+          reverse: true,
+        },
+        {
+          imageSrc: "/gifs/crowd-ease/EVENT.gif",
+          imageAlt: "Crowd Ease 活動列表畫面,設有每週日期選擇器、搜尋欄及可篩選的附近活動列表",
+          title: "活動總覽與智能篩選",
+          body: "日曆讓用戶可輕鬆切換日期。用戶可透過文字搜尋、語音搜尋、活動分類或地點篩選結果。",
+        },
+        {
+          imageSrc: "/gifs/crowd-ease/MAP.gif",
+          imageAlt: "Crowd Ease 活動詳情畫面,展示「Cocktail for a Cure 2023」活動資訊、地點及實時人流密度熱力圖",
+          title: "實時人流密度與活動地點",
+          body: "團隊透過從多個 API 擷取數據建構此地圖,以顏色梯度顯示人流密度,讓用戶了解人流動態並作出相應規劃。為讓用戶對數據準確性更具信心,我們將熱力圖與顯示各活動確實地點的地圖釘結合。",
+          reverse: true,
+        },
+      ]}
+      videoSrc="/videos/crowd-ease/demo.mp4"
+    />
+
+    <section class="case-research-section" id="research">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-research">
+
+            <CaseStudySectionHeader eyebrow="04" title="研究" />
+
+            <div class="case-research-cards">
+              <CaseStudyInsightCard
+                title="管理及宣傳成效不佳"
+                body="由於缺乏輔助工具,我一直難以追蹤本地活動資訊。雖然我們有銷售點系統,但管理及宣傳流程並不順暢,對業務造成一定挑戰。"
+                attribution="餐廳經理"
+                imageSrc="/images/crowd-ease/crowd-ease-3d-night-scene.webp"
+                imageAlt="餐廳店面夜間 3D 渲染圖,設有條紋遮陽篷及亮燈招牌"
+              />
+              <CaseStudyInsightCard
+                title="準備時間短促"
+                body="作為管理層,我通常會提前一週規劃存貨及員工排班,以確保運作暢順,避免任何臨時狀況。"
+                attribution="餐廳東主"
+                imageSrc="/images/crowd-ease/crowd-ease-empty-state-error.webp"
+                imageAlt="紫色及綠色的 3D「Oops!」文字插畫"
+              />
+            </div>
+
+            <div class="case-research-image case-research-competitors">
+              <img src="/images/crowd-ease/crowd-ease-competitor-analysis.webp" alt="競爭對手分析,比較 Crowd Ease 與 Crowd Alerts、Crowd Vision 及 Crowd Connected 在實時人流追蹤、數據分析及報告,以及活動追蹤三方面的表現 —— Crowd Ease 三項均達標" width="836" height="535" loading="lazy" />
+            </div>
+
+            <div class="case-research-caption">
+              <h3 class="case-research-caption-title">競爭對手分析</h3>
+              <p class="case-research-caption-body">與競爭對手一樣,我們在高流動性行業中運用人流數據。但我們提供的不只是實時數據 —— Crowd Ease 結合附近活動資訊與人流分析,為企業提供所需洞見,以度身訂造市場推廣策略及規劃營運。</p>
+            </div>
+
+            <div class="case-research-image case-research-userflow">
+              <img src="/images/crowd-ease/crowd-ease-user-flow-diagram.webp" alt="Crowd Ease 用戶流程圖,展示新手引導、登入、主頁、地圖、活動、報告及個人檔案畫面之間的導航路徑" width="1269" height="751" loading="lazy" />
+            </div>
+
+            <div class="case-research-caption">
+              <h3 class="case-research-caption-title">用戶流程</h3>
+              <p class="case-research-caption-body">團隊在初期於用戶流程上遇到困難,因為在展開互動設計及資訊架構之前,我們尚未就核心功能達成一致意見。我們與開發人員及主要持份者舉行會議,收集有關應用程式功能流程的意見,並以此釐定項目範圍。</p>
+            </div>
+
+            <div class="case-research-image case-research-image--team" data-parallax>
+              <img src="/images/crowd-ease/crowd-ease-team-photo.webp" alt="插畫描繪團隊圍坐桌前,使用手提電腦及設計素材進行協作" width="2048" height="1196" loading="lazy" />
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-design-section" id="design">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-design">
+
+            <CaseStudySectionHeader eyebrow="05" title="設計" />
+
+            <div class="case-design-wireframes">
+              <div class="case-design-wireframes-text">
+                <h3 class="case-design-wireframes-title">線框圖</h3>
+                <p class="case-design-wireframes-body">團隊最終掌握了核心功能 —— 數據分析與報告,考慮到活動數據是決策的有效指標,加上餐廳東主的痛點在於難以坐滿餐枱。</p>
+                <p class="case-design-wireframes-body">這是一個重要的肯定,我很感激隊友信任我的設計建議。其後,我們就運作方式達成共識,並在此基礎上製作線框圖。</p>
+              </div>
+              <div class="case-design-wireframes-image">
+                <img src="/images/crowd-ease/crowdease-wireframe-drawing.webp" alt="手繪線框草圖,規劃 Crowd Ease 的主頁、地圖、活動列表及人流報告畫面,並附有註解" width="1170" height="923" loading="lazy" />
+              </div>
+            </div>
+
+            <div class="case-design-gallery">
+              {galleryRows.map((row) => (
+                <div class="case-design-gallery-row">
+                  <div class="case-design-gallery-track">
+                    {[row, row].map((set, si) => (
+                      <div class="case-design-gallery-set" aria-hidden={si === 1 ? 'true' : undefined}>
+                        {set.map((img) => (
+                          <img src={img.src} alt={si === 0 ? img.alt : ''} width={img.width} height={img.height} loading="lazy" />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-identity-section" data-theme="dark" id="identity">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-identity">
+
+            <CaseStudySectionHeader eyebrow="06" title="視覺形象" />
+
+            <div class="case-identity-intro">
+              <h3 class="case-identity-intro-title">設計系統</h3>
+              <p class="case-identity-intro-body">我負責製作 UI 套件,並根據 Google Material Design 指引使用 Illustrator 繪製圖示。我亦建立了設計系統,以維持所有畫面的一致設計美學。</p>
+            </div>
+
+            <div class="case-identity-image" data-stagger-reveal>
+              <img src="/images/crowd-ease/crowd-ease-brand-color-palette.webp" alt="Crowd Ease 品牌色彩系統:紫色、綠色、藍色及黃色色卡,色碼分別為 B687FF、90EE90、68B5DE 及 FFFA6E" width="464" height="270" loading="lazy" data-stagger-child />
+              <img src="/images/crowd-ease/crowd-ease-brand-typography.webp" alt="Crowd Ease 標題及內文所用的 Circular STD 字體示例" width="464" height="270" loading="lazy" data-stagger-child />
+              <img src="/images/crowd-ease/crowd-ease-icon-set.webp" alt="Crowd Ease 使用的線框風格 UI 圖示網格,涵蓋導航、個人檔案、通知等功能" width="464" height="270" loading="lazy" data-stagger-child />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-ia-section">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-ia">
+
+            <div class="case-ia-image">
+              <img src="/images/crowd-ease/Crowd-Ease-IA.svg" alt="Crowd Ease 資訊架構圖,展示應用程式的畫面層級及導航結構" width="1357" height="1412" loading="lazy" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-takeaways-section" id="takeaways">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-takeaways">
+
+            <CaseStudySectionHeader eyebrow="07" title="總結" />
+
+            <div class="case-takeaways-image">
+              <img src="/images/crowd-ease/crowd-ease-presentation-panelists.webp" alt="Crowd Ease 團隊向評審團及觀眾展示項目,簡報投影片展示團隊成員頭像及聯繫用的 QR code" width="2048" height="769" loading="lazy" />
+            </div>
+
+            <div class="case-takeaways-caption">
+              <h3 class="case-takeaways-caption-title">UX 設計中的獲客漏斗</h3>
+              <p class="case-takeaways-caption-body">從業務角度而言,獲客漏斗是推動用戶獲取及留存的關鍵因素。在 Crowd Ease 中,我們的工作是消除障礙,確保用戶在被要求註冊或作出購買承諾之前,先發掘產品的價值。我明白用戶下載新應用程式時會充滿期待 —— 我的工作是維持這股動力,確保他們在被要求作出承諾之前,已清楚了解當中的好處。</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CaseStudyKeepReading current="crowd-ease" items={caseStudiesZh} eyebrow="繼續閱讀" title="更多個案研究" />
+
+  </main>
+</BaseLayout>
+
+<style>
+  .main {
+    padding-top: 96px;
+    min-height:  100vh;
+  }
+
+  .page-content {
+    padding-top:    var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  /* ── 05 Research Insight ─────────────────── */
+  .case-research-cards {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-bottom:         clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-research-image {
+    margin-bottom: clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-research-image--team {
+    height:        600px;
+    overflow:      hidden;
+    border-radius: var(--r-lg);
+  }
+
+  .case-research-image--team img {
+    width:      100%;
+    height:     120%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .case-research-image--team { height: 400px; }
+  }
+
+  @media (max-width: 520px) {
+    .case-research-image--team { height: 260px; }
+  }
+
+  .case-research-image:last-child {
+    margin-bottom: 0;
+  }
+
+  .case-research-image img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-lg);
+  }
+
+  .case-research-competitors,
+  .case-research-userflow {
+    border-radius: var(--r-lg);
+    padding:       var(--space-lg);
+    margin-bottom: clamp(20px, 2.8vw, 40px);
+  }
+
+  .case-research-competitors {
+    background: var(--bg-2);
+  }
+
+  .case-research-userflow {
+    background: var(--surface);
+  }
+
+  .case-research-competitors img,
+  .case-research-userflow img {
+    max-width:     1196px;
+    margin-inline: auto;
+  }
+
+  .case-research-caption {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    max-width:             var(--max-w);
+    margin-inline:         auto;
+    margin-bottom:         clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-research-caption-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(25px, 3.1vw, 39px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+  }
+
+  .case-research-caption-body {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-1);
+  }
+
+  .case-research-ia {
+    max-width:     var(--max-w);
+    margin-inline: auto;
+    margin-top:    clamp(40px, 11vw, 128px);
+  }
+
+  .case-research-ia img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-lg);
+  }
+
+  /* ── 06 Design ───────────────────────────── */
+  .case-design-wireframes {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    align-items:           center;
+    margin-bottom:         clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-design-wireframes-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(25px, 3.1vw, 39px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+    margin-bottom:  clamp(16px, 1.7vw, 24px);
+  }
+
+  .case-design-wireframes-body {
+    font-family:   var(--font-body);
+    font-size:     16px;
+    font-weight:   300;
+    line-height:   1.6;
+    color:         var(--text-1);
+    margin-bottom: var(--space-sm);
+  }
+
+  .case-design-wireframes-body:last-child {
+    margin-bottom: 0;
+  }
+
+  .case-design-wireframes-image img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-lg);
+  }
+
+  .case-design-gallery {
+    width:          100vw;
+    margin-inline:  calc(50% - 50vw);
+    display:        flex;
+    flex-direction: column;
+    gap:            clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-design-gallery-row {
+    overflow: hidden;
+  }
+
+  .case-design-gallery-track {
+    display:     flex;
+    gap:         clamp(12px, 1.7vw, 24px);
+    width:       max-content;
+    will-change: transform;
+  }
+
+  .case-design-gallery-set {
+    display: flex;
+    gap:     clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-design-gallery img {
+    display:       block;
+    flex-shrink:   0;
+    width:         clamp(140px, 15vw, 226px);
+    height:        auto;
+    border-radius: var(--r-md);
+  }
+
+  /* ── 07 Visual Identity ──────────────────── */
+  .case-identity-section {
+    background: var(--bg);
+  }
+
+  .case-identity-intro {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-bottom:         clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-identity-intro-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(25px, 3.1vw, 39px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+  }
+
+  .case-identity-intro-body {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
+  .case-identity-image {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-identity-image img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
+  /* ── Information Architecture interlude ──── */
+  .case-ia-image {
+    background:    var(--bg-2);
+    padding:       var(--space-lg);
+    border-radius: var(--r-lg);
+  }
+
+  .case-ia-image img {
+    display:       block;
+    width:         100%;
+    max-width:     1196px;
+    height:        auto;
+    margin-inline: auto;
+    border-radius: var(--r-lg);
+  }
+
+  /* ── 08 Takeaways ─────────────────────────── */
+  .case-takeaways-image {
+    margin-bottom: clamp(32px, 5.5vw, 80px);
+  }
+
+  .case-takeaways-image img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-lg);
+  }
+
+  .case-takeaways-caption {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    max-width:             var(--max-w);
+    margin-inline:         auto;
+  }
+
+  .case-takeaways-caption-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(25px, 3.1vw, 39px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+  }
+
+  .case-takeaways-caption-body {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-1);
+  }
+
+  @media (max-width: 768px) {
+    .main { padding-top: 80px; }
+
+    .case-design-gallery { width: 100%; margin-inline: 0; }
+
+    .case-research-cards {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-research-competitors,
+    .case-research-userflow,
+    .case-ia-image {
+      padding: var(--space-md);
+    }
+
+    .case-research-caption {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-design-wireframes {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-identity-intro {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-identity-image {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-takeaways-caption {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .main { padding-top: 72px; }
+
+    .case-research-competitors,
+    .case-research-userflow,
+    .case-ia-image {
+      padding: var(--space-sm);
+    }
+  }
+</style>

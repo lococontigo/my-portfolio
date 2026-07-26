@@ -1,0 +1,74 @@
+---
+// Row of tech-stack logo badges shown under a ServiceCard summary. Each
+// logo's real brand-color SVG in public/images/tech/ is used purely as a
+// CSS mask shape (only its alpha channel matters, not its baked-in fill
+// color), then painted a single flat var(--text-1) — this guarantees solid
+// contrast against the --bg-2 badge in either theme without depending on
+// each brand's own color, which ranged as low as 1.35:1 against a light
+// background (JavaScript's yellow) when the true-color logos were tried.
+interface Tool {
+  name: string;
+  icon: string;
+}
+
+interface Props {
+  tools: Tool[];
+}
+
+const { tools } = Astro.props as Props;
+---
+
+<div class="tech-stack">
+  {tools.map((tool) => (
+    <div class="tech-stack-badge" title={tool.name}>
+      <span
+        class="tech-stack-icon"
+        role="img"
+        aria-label={`${tool.name} logo`}
+        style={`--icon-url: url(/images/tech/${tool.icon}.svg)`}
+      />
+    </div>
+  ))}
+</div>
+
+<style>
+  .tech-stack {
+    display:    flex;
+    flex-wrap:  wrap;
+    gap:        var(--space-xs);
+    margin-top: clamp(20px, 2.8vw, 40px);
+  }
+
+  .tech-stack-badge {
+    display:        flex;
+    align-items:    center;
+    justify-content: center;
+    width:          40px;
+    height:         40px;
+    flex-shrink:    0;
+    background:     var(--bg-2);
+    border:         0.5px solid var(--border);
+    border-radius:  var(--r-md);
+    transition:     border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  }
+
+  .tech-stack-badge:hover {
+    border-color: var(--border-2);
+    box-shadow:   var(--neon-sm);
+  }
+
+  .tech-stack-icon {
+    display:            block;
+    width:               20px;
+    height:              20px;
+    background-color:    var(--text-1);
+    -webkit-mask-image:  var(--icon-url);
+    mask-image:          var(--icon-url);
+    -webkit-mask-size:   contain;
+    mask-size:           contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat:         no-repeat;
+    -webkit-mask-position: center;
+    mask-position:       center;
+  }
+</style>

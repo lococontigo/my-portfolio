@@ -4,12 +4,15 @@
 
 /* .hero-section is the first child of <main>, so it inherits .main's
    padding-top (96px / 80px / 72px, global.css:108-114) meant to clear the
-   fixed nav. That pushed the whole hero box — including the fluid canvas
-   background, which fills .hero-section via inset:0 — down, leaving a flat
-   gap above the smoke where it visibly cut off short of the viewport top.
-   Pull the section up by that same amount and extend its height to match,
-   so the canvas reaches y=0 behind the nav while the bottom-anchored
-   content's position is unchanged. */
+   fixed nav. Pull the section up by that same amount and extend its height
+   to match, so the canvas (HeroFluidBg, still used by ch/services.astro)
+   reaches y=0 behind the nav while the bottom-anchored content's position
+   is unchanged.
+   NOTE: these are the shared base rules ch/services.astro still depends on
+   (it hasn't been migrated off HeroFluidBg/the logo grid yet). The English
+   page's new full-height, centered, gallery-driven look lives entirely under
+   the .hero-section-gallery modifier below — don't fold gallery-only changes
+   back into these base rules or ch/services.astro's hero breaks. */
 .hero-section {
   position:       relative;
   margin-top:     -96px;
@@ -34,15 +37,12 @@
   }
 }
 
-/* Canvas (HeroFluidBg) sits behind everything at z-index 0, content above */
 .hero-section > .padding-global {
   position: relative;
   z-index:  1;
   width:    100%;
 }
 
-/* Two-column split: text column (left) + logo grid (right), bottom-anchored
-   within the 100vh hero. Stacks back to a single column at ≤1024px. */
 .hero-content {
   display:         flex;
   flex-direction:  row;
@@ -77,10 +77,54 @@
   color:       var(--text-2);
   max-width:   56ch;
   margin-bottom: var(--space-md);
+  text-wrap:   pretty;
 }
 
 .hero-cta {
   align-self: flex-start;
+}
+
+/* ─────────────────────────────────────────────
+   Gallery hero variant — services.astro (English) only, paired with
+   HeroShowcaseGallery. Full 100vh height, centered text, both columns
+   stretched edge to edge. ch/services.astro opts out by simply not having
+   this modifier class yet.
+───────────────────────────────────────────── */
+.hero-section-gallery {
+  height:         100vh;
+  align-items:    stretch;
+  padding-bottom: 0;
+}
+
+.hero-section-gallery > .padding-global {
+  height: 100%;
+}
+
+.hero-section-gallery .container-main {
+  height: 100%;
+}
+
+.hero-section-gallery .hero-content {
+  align-items: stretch;
+  height:      100%;
+}
+
+.hero-section-gallery .hero-header {
+  align-items:     flex-start;
+  justify-content: center;
+  text-align:      left;
+  width:           100%;
+}
+
+.hero-section-gallery .hero-cta {
+  align-self: flex-start;
+}
+
+@media (max-width: 1024px) {
+  .hero-section-gallery .hero-content {
+    justify-content: center;
+    align-items:     center;
+  }
 }
 
 /* ─────────────────────────────────────────────
@@ -126,60 +170,14 @@
   white-space:    nowrap;
 }
 
-/* ─────────────────────────────────────────────
-   Client logo grid — 2×3 grid, flush against the container's right edge,
-   bottom-aligned with the text column (Figma node 589:486). Own layout
-   (not the homepage's single-row .intro-logos pattern) — .intro-logo-item
-   itself (animation/hover) is still shared, sizing is overridden below.
-───────────────────────────────────────────── */
-
-.hero-logos-grid {
-  display:               grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:                   clamp(12px, 1.7vw, 24px);
-  flex:                  0 1 320px;
-}
-
-.hero-logos-grid .intro-logo-item {
-  width:        100%;
-  height:       auto;
-  aspect-ratio: 1.76;
-}
-
-.intro-logo-item {
-  object-fit:      contain;
-  display:         block;
-  animation:       fade-up 0.6s var(--ease) both;
-  animation-delay: 200ms;
-  transition:      transform 0.25s var(--ease), filter 0.25s var(--ease);
-}
-
-@media (hover: hover) {
-  .intro-logo-item:hover {
-    transform: scale(1.08);
-    filter:    brightness(1.2) drop-shadow(0 0 8px var(--accent-dim));
-  }
-}
-
-.intro-logo-item:nth-child(2) { animation-delay: 300ms; }
-.intro-logo-item:nth-child(3) { animation-delay: 400ms; }
-.intro-logo-item:nth-child(4) { animation-delay: 500ms; }
-.intro-logo-item:nth-child(5) { animation-delay: 600ms; }
-.intro-logo-item:nth-child(6) { animation-delay: 700ms; }
-
 @media (max-width: 1024px) {
   .hero-content {
-    flex-direction: column;
-    align-items:    flex-start;
+    flex-direction:  column;
+    justify-content: center;
+    align-items:     center;
   }
 
   .hero-header { max-width: 100%; }
-
-  .hero-logos-grid { flex: 0 0 auto; width: 100%; }
-}
-
-@media (max-width: 520px) {
-  .hero-logos-grid { gap: 12px; }
 }
 
 /* ─────────────────────────────────────────────
@@ -200,7 +198,9 @@
   cursor:          pointer;
   border:          none;
   text-decoration: none;
-  transition:      all 0.2s var(--ease);
+  transition-property:       background-color, box-shadow, transform, letter-spacing;
+  transition-duration:       0.2s;
+  transition-timing-function: var(--ease);
   position:        relative;
   overflow:        hidden;
   white-space:     nowrap;
@@ -224,7 +224,7 @@
 }
 
 .btn-primary:active {
-  transform:  translateY(0);
+  transform:  translateY(0) scale(0.96);
   box-shadow: var(--neon-sm);
 }
 
@@ -233,7 +233,7 @@
    border, per Figma node 589:486's outline-style CTA. */
 .btn-ghost {
   background: transparent;
-  color:      var(--accent);
+  color:      var(--accent-text);
   border:     0.5px solid var(--accent);
   box-shadow: none;
 }
@@ -246,7 +246,7 @@
 }
 
 .btn-ghost:active {
-  transform:  translateY(0);
+  transform:  translateY(0) scale(0.96);
   box-shadow: var(--neon-sm);
 }
 
@@ -300,18 +300,6 @@
   margin-bottom: clamp(32px, 5.5vw, 80px);
 }
 
-/* Above 1024px the heading now lives inside the sticky .workflow-left box,
-   directly above .workflow-subtitle, rather than above the whole two-column
-   grid — tighten its spacing to match the established "title → body" gap
-   (see .hero-headline) instead of the full section-title gap. Mobile/tablet
-   (≤1024px, .workflow-left static/stacked) keeps the wider gap above so
-   the stacked layout reads exactly as it did before. */
-@media (min-width: 1025px) {
-  .workflow-left .services-heading {
-    margin-bottom: clamp(16px, 1.7vw, 24px);
-  }
-}
-
 .workflow-grid {
   display:               grid;
   grid-template-columns: minmax(0, 586px) 1fr;
@@ -336,6 +324,7 @@
   line-height:   1.6;
   color:         var(--text-2);
   max-width:     56ch;
+  text-wrap:     pretty;
 }
 
 .workflow-right {
@@ -393,7 +382,7 @@
 }
 
 .companies-see-all:hover {
-  color:        var(--accent);
+  color:        var(--accent-text);
   gap:          10px;
   border-color: var(--accent);
   box-shadow:   var(--neon-sm);
@@ -408,11 +397,9 @@
 }
 
 .services-testi-box {
-  border:        0.5px solid var(--border);
   border-radius: var(--r-lg);
   padding:       var(--space-md) var(--space-sm);
-  max-width:     760px;
-  margin-inline: auto;
+  width:         100%;
 }
 
 /* ─────────────────────────────────────────────

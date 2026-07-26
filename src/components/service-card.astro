@@ -1,19 +1,27 @@
 ---
+import TechStack from './tech-stack.astro';
+
+interface Tool {
+  name: string;
+  icon: string;
+}
+
 interface Props {
   title:      string;
   subheading: string;
-  items:      string[];
+  summary:    string;
+  tools?:     Tool[];
+  [key: `data-${string}`]: string | boolean | undefined;
 }
 
-const { title, subheading, items } = Astro.props as Props;
+const { title, subheading, summary, tools, ...rest } = Astro.props as Props;
 ---
 
-<div class="service-card">
+<div class="service-card" {...rest}>
   <h3 class="service-card-title">{title}</h3>
   <p class="service-card-subheading">{subheading}</p>
-  <ul class="service-card-list">
-    {items.map((item) => <li>{item}</li>)}
-  </ul>
+  <p class="service-card-summary">{summary}</p>
+  {tools && tools.length > 0 && <TechStack tools={tools} />}
 </div>
 
 <style>
@@ -32,7 +40,7 @@ const { title, subheading, items } = Astro.props as Props;
     font-weight:    300;
     line-height:    1;
     letter-spacing: -0.02em;
-    color:          var(--accent);
+    color:          var(--accent-text);
     margin-bottom:  var(--space-sm);
     text-wrap:      balance;
   }
@@ -47,21 +55,14 @@ const { title, subheading, items } = Astro.props as Props;
     text-wrap:     pretty;
   }
 
-  .service-card-list {
-    display:        flex;
-    flex-direction: column;
-    gap:            8px;
-    list-style:     disc;
-    padding-left:   var(--space-sm);
-    margin-top:     auto;
-  }
-
-  .service-card-list li {
-    font-family: var(--font-body);
-    font-size:   16px;
-    font-weight: 300;
-    line-height: 1.5;
-    color:       var(--text-2);
+  .service-card-summary {
+    font-family:   var(--font-body);
+    font-size:     16px;
+    font-weight:   300;
+    line-height:   1.5;
+    color:         var(--text-2);
+    margin-bottom: auto;
+    text-wrap:     pretty;
   }
 
   @media (max-width: 520px) {

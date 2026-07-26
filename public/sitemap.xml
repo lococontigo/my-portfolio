@@ -1,12 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://andrewthyip.com/</loc><lastmod>2026-07-18</lastmod></url>
-  <url><loc>https://andrewthyip.com/portfolio/</loc><lastmod>2026-07-18</lastmod></url>
-  <url><loc>https://andrewthyip.com/services/</loc><lastmod>2026-07-18</lastmod></url>
-  <url><loc>https://andrewthyip.com/about/</loc><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://andrewthyip.com/contact/</loc><lastmod>2026-07-02</lastmod></url>
-  <url><loc>https://andrewthyip.com/work/yocale/</loc><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://andrewthyip.com/work/ant/</loc><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://andrewthyip.com/work/delta/</loc><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://andrewthyip.com/work/crowd-ease/</loc><lastmod>2026-06-30</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://andrewthyip.com/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/ch/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/portfolio/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/portfolio/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/portfolio/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/portfolio/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/ch/portfolio/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/portfolio/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/portfolio/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/portfolio/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/services/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/services/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/services/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/services/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/ch/services/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/services/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/services/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/services/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/services/work/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/services/work/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/services/work/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/services/work/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/ch/services/work/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/services/work/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/services/work/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/services/work/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/services/about/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/services/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/services/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/services/about/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/ch/services/about/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/services/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/services/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/services/about/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/services/contact/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/services/contact/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/services/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/services/contact/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/ch/services/contact/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/services/contact/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/services/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/services/contact/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/about/</loc>
+    <lastmod>2026-06-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/about/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/ch/about/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/about/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/contact/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/contact/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/ch/contact/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/contact/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/work/yocale/</loc>
+    <lastmod>2026-06-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/work/yocale/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/work/yocale/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/work/yocale/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/ch/work/yocale/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/work/yocale/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/work/yocale/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/work/yocale/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/work/ant/</loc>
+    <lastmod>2026-06-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/work/ant/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/work/ant/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/work/ant/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/ch/work/ant/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/work/ant/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/work/ant/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/work/ant/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/work/delta/</loc>
+    <lastmod>2026-06-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/work/delta/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/work/delta/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/work/delta/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/ch/work/delta/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/work/delta/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/work/delta/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/work/delta/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/work/crowd-ease/</loc>
+    <lastmod>2026-06-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/work/crowd-ease/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/work/crowd-ease/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/work/crowd-ease/" />
+  </url>
+  <url>
+    <loc>https://andrewthyip.com/ch/work/crowd-ease/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/work/crowd-ease/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/work/crowd-ease/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/work/crowd-ease/" />
+  </url>
 </urlset>

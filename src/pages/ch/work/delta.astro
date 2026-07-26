@@ -1,0 +1,283 @@
+---
+import BaseLayout from '../../../layouts/base-layout.astro';
+import CaseStudyHero from '../../../components/case-study-hero.astro';
+import CaseStudyOverview from '../../../components/case-study-overview.astro';
+import CaseStudyHighlight from '../../../components/case-study-highlight.astro';
+import CaseStudyProblem from '../../../components/case-study-problem.astro';
+import CaseStudySolution from '../../../components/case-study-solution.astro';
+import CaseStudyResearch from '../../../components/case-study-research.astro';
+import CaseStudySectionHeader from '../../../components/case-study-section-header.astro';
+import CaseStudyKeepReading from '../../../components/case-study-keep-reading.astro';
+import { caseStudiesZh } from '../../../data/case-studies-zh.js';
+
+const sections = [
+  { id: 'overview',  label: '01-總覽' },
+  { id: 'impact',    label: '02-成效' },
+  { id: 'problem',   label: '03-問題' },
+  { id: 'solution',  label: '04-方案' },
+  { id: 'research',  label: '05-研究' },
+  { id: 'ideate',    label: '06-構思與設計' },
+  { id: 'takeaways', label: '07-總結' },
+];
+---
+
+<BaseLayout title="Delta Controls" world="light" sections={sections} translated={true} description="我如何重新設計 Delta Controls 的資源內聯網 —— 透過 UX 研究、設計及開發,改善導航及搜尋功能,並將參與度提升 15%。">
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://andrewthyip.com/ch/" },
+      { "@type": "ListItem", "position": 2, "name": "Delta Controls", "item": "https://andrewthyip.com/ch/work/delta/" }
+    ]
+  }
+  </script>
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Delta Controls 資源內聯網:The Source 2.0",
+    "description": "為 Delta Controls 內部資源平台進行 UX 研究、設計及開發 —— 將平均搜尋所需點擊次數由 4 至 6 次減至 2 至 3 次。",
+    "url": "https://andrewthyip.com/ch/work/delta/",
+    "author": { "@type": "Person", "name": "Andrew Yip", "url": "https://andrewthyip.com" },
+    "inLanguage": "zh-Hant"
+  }
+  </script>
+  <main class="main">
+
+    <CaseStudyHero
+      title="Delta Controls 資源內聯網:The Source 2.0 —— 克服導航困難與搜尋失效問題"
+      fullTitle="Delta Controls 資源內聯網:The Source 2.0 —— 克服導航困難與搜尋失效問題"
+      accentTitle="Delta Controls"
+      gifSrc="/gifs/delta/ezgif.com-crop.webp"
+      gifAspectRatio="1440 / 900"
+      gifAlt="The Source 2.0 內聯網重新設計動畫導覽,展示主頁、導航及搜尋功能"
+      role={["研究", "設計", "開發"]}
+      roleLabel="角色:"
+      tools={["市場推廣總監", "平面設計師(負責橫幅設計)", "後端開發人員"]}
+      toolsLabel="團隊:"
+      duration={["策劃與研究:7 週", "構思與設計:5 週", "開發與測試:8 週"]}
+      durationLabel="時間:"
+    />
+
+    <CaseStudyOverview
+      id="overview"
+      eyebrow="01"
+      title="總覽"
+      body="The Source 是一個數碼資料庫,專為 Delta Controls 的合作夥伴及員工提供非技術文件、培訓資料及市場推廣素材。這個項目旨在重建整個平台,帶來更直覺、更流暢的用戶體驗。"
+      imageSrc="/images/delta/The-Source-Header-1.svg"
+      imageAlt="插畫描繪一雙手捧着發光的數碼書本,四周環繞代表課程、日曆、訊息及連接裝置的圖示網絡"
+    />
+
+    <CaseStudyHighlight
+      id="impact"
+      eyebrow="02"
+      title="成效"
+      stats={[
+        { value: "2-3 次點擊", caption: "平均搜尋所需點擊次數" },
+        { value: "15% ↑", caption: "參與度" },
+        { value: "22.5% ↑", caption: "下載轉換率" },
+      ]}
+      compareBeforeSrc="/images/delta/old.svg"
+      compareAfterSrc="/images/delta/new.svg"
+      compareBeforeAlt="舊版 Source 內聯網主頁版面截圖"
+      compareAfterAlt="重新設計後的 Source 2.0 內聯網主頁版面截圖"
+      compareBeforeLabel="舊版 Source"
+      compareAfterLabel="Source 2.0"
+      compareAspectRatio="4 / 3"
+    />
+
+    <CaseStudyProblem
+      id="problem"
+      eyebrow="03"
+      title="問題"
+      headline="用戶無法有效導航及搜尋。"
+      items={[
+        { title: "A. 導航不清晰", body: "用戶平均需要 4 至 6 次點擊才能找到所需文件,浪費大量時間並降低生產力。" },
+        { title: "B. 搜尋效果不佳", body: "70% 的用戶依賴搜尋功能,但由於 WordPress 預設索引的限制,搜尋結果成效不彰。" },
+        { title: "C. 分類及版面缺乏條理", body: "標籤組織方式不一致,用戶期望更具邏輯性的內容結構。" },
+      ]}
+      imageSrc="/gifs/delta/user-problem-Source.webp"
+      imageAlt="螢幕錄影展示用戶瀏覽 The Source 原有文件庫,操作分類、搜尋及篩選工具的過程"
+    />
+
+    <CaseStudySolution
+      id="solution"
+      eyebrow="04"
+      title="方案"
+      tinted
+      mediaRows={[
+        {
+          imageSrc: "/gifs/delta/navigation.webp",
+          imageAlt: "螢幕錄影展示 The Source 2.0 重新設計的主頁,設有集中導航中心及標題為「Your Go-To Resource Hub」的橫幅",
+          title: "透過集中式資源中心簡化存取流程",
+          body: "建立與公司設計系統一致的清晰導航系統。簡化後的導航將點擊次數減至 3 至 4 次,確保更快找到所需資訊。",
+        },
+        {
+          imageSrc: "/gifs/delta/search.webp",
+          imageAlt: "螢幕錄影展示 The Source 2.0 的分類卡片及智能搜尋下拉選單,顯示「national account」及「sales and marketing」等標籤建議",
+          title: "智能搜尋提升內容發現效率",
+          body: "The Source 採用統一的智能搜尋功能,可搜尋所有文件、分類及標籤。用戶亦可填寫意見表格,通知市場推廣團隊任何缺漏的內容。",
+        },
+        {
+          imageSrc: "/gifs/delta/customisation.webp",
+          imageAlt: "螢幕錄影展示 The Source 2.0 個人化的「最近下載」版塊,顯示文件卡片以便快速存取",
+          title: "現代化、個人化的資源體驗",
+          body: "新版面會顯示每位用戶最近瀏覽及最多下載的文件,方便快速存取。",
+        },
+      ]}
+    />
+
+    <CaseStudyResearch
+      id="research"
+      eyebrow="05"
+      title="研究"
+      surveyCols={[
+        {
+          label: "現有用戶全球調查",
+          items: ["美國、加拿大、歐洲、亞洲", "匿名收集回應"],
+          imageSrc: "/images/delta/delta-controls-global-navigation.webp",
+          imageAlt: "插畫展示一個發光的數碼地球儀,以青色網絡線標示全球各地區,象徵調查的全球覆蓋範圍",
+        },
+        {
+          label: "跨部門參與者",
+          items: ["涵蓋部門:銷售、技術支援、客戶服務", "透過電郵發送邀請"],
+          imageSrc: "/images/delta/research-work-cloud%201.webp",
+          imageAlt: "用戶意見中常見詞彙組成的文字雲,「search」、「find」、「information」及「content」等字眼顯示得最大最顯眼",
+        },
+      ]}
+      stats={[
+        { value: "43%", title: "使用頻率偏低", body: "近半數用戶每月使用平台少於一次" },
+        { value: "3/5", title: "滿意度偏低", body: "平均滿意度評分顯示有極大改善空間。" },
+        { value: "69%", title: "點擊次數過多", body: "用戶需要 4 至 6 次或以上點擊才能找到所需資訊" },
+      ]}
+      imageSrc="/images/delta/delta-controls-user-feedback.webp"
+      imageAlt="Andrew Yip 於 Slack 分享調查結果的訊息截圖,包括各部門回應人數,以及有關點擊次數、滿意度及用戶痛點的重點發現"
+      quotePanels={[
+        {
+          imageSrc: "/images/delta/James-interview-screenshot%201.webp",
+          imageAlt: "業務拓展經理 James Ferdon 於視像用戶訪談中的截圖,主題為 Source Portal",
+          quote: "If people tell you to search a file at the Source, they basically tell you to go Fxxk yourself",
+          attribution: "James Ferdon, Business Development Manager",
+        },
+        {
+          imageSrc: "/images/delta/Tim-interview-screenshot%201.webp",
+          imageAlt: "銷售總監 Tim Arion 於視像用戶訪談中的截圖,主題為 Source Portal",
+          quote: "You need to be really familiar with the platform to understand you can get everything from the Index",
+          attribution: "Tim Arion, Sales Director",
+        },
+      ]}
+      journeyMapSrc="/images/delta/User-Journey-Map.svg"
+      journeyMapAlt="業務拓展經理 Anthony Jakeway 的用戶旅程地圖,展示他在 The Source 上搜尋簡報範本時的各個階段、想法、情緒、痛點及改善機會"
+      journeyMapCaption="透過與實際用戶進行深入訪談,我們找出了他們遇到主要痛點的關鍵位置。"
+    />
+
+    <CaseStudySolution
+      id="ideate"
+      eyebrow="06"
+      title="構思與設計"
+      mediaRows={[
+        {
+          compare: {
+            beforeSrc: "/images/delta/Current-Source-IA.svg",
+            afterSrc: "/images/delta/New-Source-IA.svg",
+            beforeAlt: "現有 Source 選單結構及導航路徑的資訊架構圖",
+            afterAlt: "重新設計後的 Source 2.0 導航、搜尋及文件流程資訊架構圖",
+            beforeLabel: "之前",
+            afterLabel: "之後",
+            aspectRatio: "1856 / 1408",
+          },
+          title: "資訊架構",
+          body: "此資訊架構說明了舊版本無法有效搜尋的原因,以及新版本如何解決此問題。",
+        },
+        {
+          imageSrc: "/images/delta/Flow-chart.svg",
+          imageAlt: "流程圖展示用戶從登入 Source 主頁、瀏覽資料庫頁面到找到文件的流程,包括訂閱及支援升級路徑",
+          title: "用戶流程",
+          body: "我們不希望用戶在找不到文件時流程就此中斷,因此加入了支援按鈕,讓用戶可直接聯繫市場推廣團隊。",
+        },
+        {
+          iframeSrc: "https://embed.figma.com/proto/AC3N495joFyyLbJymaIerY/The-Source?content-scaling=fixed&kind=proto&node-id=317-9858&page-id=2%3A44&scaling=scale-down&starting-point-node-id=322%3A11313&embed-host=share",
+          iframeTitle: "The Source 2.0 線框圖及原型導覽",
+          title: "線框圖與原型",
+          body: "我們向市場推廣及銷售團隊展示了此原型,並獲得良好的回饋。",
+        },
+      ]}
+    />
+
+    <section class="case-takeaways-section" id="takeaways">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-takeaways">
+
+            <CaseStudySectionHeader eyebrow="07" title="總結" />
+
+            <div class="case-takeaways-content">
+              <h3 class="case-takeaways-heading">應對技術限制與持份者的反對意見</h3>
+              <div class="case-takeaways-body">
+                <p>在建立訂閱功能期間,資訊系統(IS)團隊拒絕將合作夥伴資料庫直接連接至通訊渠道。此整合原本旨在訂閱時預先填寫用戶資訊。</p>
+                <p>我們的解決方案是利用訂閱表格內置的連接工具,並新增一個步驟讓用戶手動輸入資訊。這未必是最理想的用戶體驗,但正正凸顯了在兼顧時間與成本的同時,靈活變通、作出取捨以滿足用戶核心需求的重要性。</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CaseStudyKeepReading current="delta" items={caseStudiesZh} eyebrow="繼續閱讀" title="更多個案研究" />
+
+  </main>
+</BaseLayout>
+
+<style>
+  .main {
+    --case-accent:       var(--accent-delta);
+    --case-accent-solid: var(--accent-delta);
+    padding-top:         96px;
+    min-height:          100vh;
+  }
+
+  /* ── 07 Takeaways ─────────────────────────── */
+  .case-takeaways-content {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-takeaways-heading {
+    font-family:    var(--font-display);
+    font-size:      clamp(25px, 3.1vw, 39px);
+    font-weight:    400;
+    line-height:    1.2;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+  }
+
+  .case-takeaways-body {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-sm);
+  }
+
+  .case-takeaways-body p {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-1);
+  }
+
+  @media (max-width: 768px) {
+    .main { padding-top: 80px; }
+
+    .case-takeaways-content {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .main { padding-top: 72px; }
+  }
+</style>

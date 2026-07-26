@@ -20,7 +20,7 @@ const sections = [
 ];
 ---
 
-<BaseLayout title="Yocale" world="light" sections={sections} description="Yocale design growth system: 5.15% CTR and 40% bounce rate reduction through GTM design, landing pages, and technical SEO.">
+<BaseLayout title="Yocale" world="light" sections={sections} translated={true} description="Yocale design growth system: 5.15% CTR and 40% bounce rate reduction through GTM design, landing pages, and technical SEO.">
   <link slot="head" rel="preload" as="video" href="/videos/yocale/hero-demo.mp4" />
   <script slot="head" is:inline type="application/ld+json">
   {
@@ -226,7 +226,7 @@ const sections = [
                 <img src="/images/yocale/yocale-payment-scanner-mockup.webp" alt="Photo of a hand using a barcode scanner on a product box, overlaid with a Yocale interface card showing 'Hand cream', quantity 88, price $45.00, and brand 'Necessaire'" width="536" height="480" loading="lazy" />
               </div>
               <div class="feature-gift-cards">
-                <div class="gift-card-row" data-marquee aria-label="Yocale gift card designs: Thank You, Congrats, For You">
+                <div class="gift-card-row" data-marquee role="group" aria-label="Yocale gift card designs: Thank You, Congrats, For You">
                   <div class="gift-card-track" data-marquee-track>
                     <img src="/images/yocale/gift_cards/yocale-gift-card-thank-you.webp" alt="Yocale 'Thank You' gift card design in deep plum with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
                     <img src="/images/yocale/gift_cards/yocale-gift-card-congrats.webp" alt="Yocale 'Congrats' gift card design in deep rust with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
@@ -236,7 +236,7 @@ const sections = [
                     <img src="/images/yocale/gift_cards/yocale-gift-card-for-you.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
                   </div>
                 </div>
-                <div class="gift-card-row" data-marquee data-marquee-reverse aria-label="Yocale gift card designs: Just Because, With Love, Happy Birthday">
+                <div class="gift-card-row" data-marquee data-marquee-reverse role="group" aria-label="Yocale gift card designs: Just Because, With Love, Happy Birthday">
                   <div class="gift-card-track" data-marquee-track>
                     <img src="/images/yocale/gift_cards/yocale-gift-card-just-because.webp" alt="Yocale 'Just Because' gift card design in deep maroon with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
                     <img src="/images/yocale/gift_cards/yocale-gift-card-with-love.webp" alt="Yocale 'With Love' gift card design in deep indigo with the Yocale logo and a ring-pattern accent" width="350" height="233" loading="lazy" />
@@ -752,7 +752,7 @@ const sections = [
     border:          0.5px solid var(--border);
     border-radius:   var(--r-lg);
     background:      var(--bg-3);
-    color:           var(--text-3);
+    color:           var(--text-2);
   }
 
   .landing-video-icon {

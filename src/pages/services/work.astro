@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../../layouts/base-layout.astro';
+import '../../styles/services-work.css';
+---
+
+<BaseLayout
+  title="Work"
+  world="light"
+  navVariant="services"
+  translated={true}
+  description="A selection of client work — SaaS dashboards, enterprise intranets, brand websites, and mobile apps — designed and built by Andrew Yip."
+>
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Work · Andrew YIP",
+    "url": "https://andrewthyip.com/services/work/",
+    "description": "A selection of client work — SaaS dashboards, enterprise intranets, brand websites, and mobile apps — designed and built by Andrew Yip.",
+    "about": {
+      "@type": "Person",
+      "name": "Andrew Yip",
+      "jobTitle": "UX/UI Designer & Developer",
+      "url": "https://andrewthyip.com"
+    }
+  }
+  </script>
+
+  <main class="main">
+
+    <!-- ── Page heading ───────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-page-heading">
+            <h1 class="work-page-title">My Work</h1>
+            <p class="work-page-subtitle">A selection of projects across SaaS, enterprise, and mobile — each one built to move a real business goal forward.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Work: Yocale ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Yocale</h2>
+                <p class="work-featured-desc">Yocale is an all-in-one business management and client scheduling software designed for appointment-based businesses.</p>
+              </div>
+              <a href="/work/yocale/" class="work-featured-link">
+                See My Work →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/work/yocale/">
+                <img
+                  src="/images/yocale-mockup.webp"
+                  alt="Yocale dashboard — booking management interface"
+                  class="work-featured-img"
+                  width="704" height="704"
+                  fetchpriority="high"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Work: Delta Controls ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Delta Intelligent Building Technologies </h2>
+                <p class="work-featured-desc">The Source is a digital library dedicated to providing non-technical documents, training, and marketing materials to Delta Controls’ partners and employees.</p>
+              </div>
+              <a href="/work/delta/" class="work-featured-link">
+                Read the Case Study →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/work/delta/">
+                <img
+                  src="/images/Mac-Studio-mockup.svg"
+                  alt="Delta Intelligent Building Technologies Resources Intranet Mockup"
+                  class="work-featured-img"
+                  width="704" height="704"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Work: ANT Rentals ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Ant Equipment Group</h2>
+                <p class="work-featured-desc">ANT is western Canada’s largest independent source for equipment rentals and sales.</p>
+              </div>
+              <a href="/work/ant/" class="work-featured-link">
+                See My Work →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/work/ant/">
+                <img
+                  src="/images/ant-mockup.svg"
+                  alt="ANT rentals blog mockup"
+                  class="work-featured-img"
+                  width="704" height="704"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Work: Crowd Ease ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Crowd Ease</h2>
+                <p class="work-featured-desc">Crowd Ease is a mobile app that assists restaurant plan their resources and marketing strategy by providing event information and live crowd tracking.</p>
+              </div>
+              <a href="/work/crowd-ease/" class="work-featured-link">
+                Read the Case Study →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/work/crowd-ease/">
+                <img
+                  src="/images/UI-CROWDEASE-1.svg"
+                  alt="Crowd Ease mobile app interface showing event tracking and live crowd data"
+                  class="work-featured-img"
+                  width="704" height="704"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

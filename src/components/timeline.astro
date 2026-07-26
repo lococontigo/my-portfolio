@@ -1,81 +1,81 @@
 ---
+interface TimelineItem {
+  year?:     string;
+  title:    string;
+  emphasis?: string;
+  desc:     string;
+  current?: boolean;
+}
+
+interface Props {
+  items?: TimelineItem[];
+}
+
+// Edit milestones here — shared by about.astro and services.astro.
+// `emphasis` renders as the accent-colored italic word at the end of `title`.
+const defaultItems: TimelineItem[] = [
+  {
+    year:  '2022',
+    title: 'Arrived in ',
+    emphasis: 'Canada',
+    desc:  'Landed in Vancouver. New hemisphere, new chapter.',
+  },
+  {
+    year:  '2022',
+    title: 'WMDD Program',
+    desc:  'Started a post-graduate program in Web Design & Mobile App Design & Development at Langara College.',
+  },
+  {
+    year:  '2022',
+    title: 'Freelance Projects',
+    desc:  'Led the development of custom WordPress and e-commerce solutions for RKWINC and BLU-BATH, successfully migrating over 2,000 projects and driving a 25% increase in conversion rates.',
+  },
+  {
+    year:  '2023',
+    title: 'Ant Equipment Group',
+    desc:  'Optimized ANT EQUIPMENT GROUP’s web platform through strategic CMS integrations and homepage redesigns, resulting in a 36.7% traffic increase and a 4-to-6x surge in monthly online orders.',
+  },
+  {
+    year:  '2024',
+    title: 'Delta Controls',
+    desc:  'Designed and developed a new internal resource hub and custom CRM solution for Delta Intelligent Building Technologies, utilizing Figma and WordPress to boost user engagement by 15%.',
+  },
+  {
+    year:  '2025',
+    title: 'Yocale AI',
+    desc:  'Launched feature pages for four major product releases and built a scalable Figma/Webflow component library for Yocale, optimizing Google Ads landing pages to achieve a 5.15% CTR.',
+  },
+  {
+    year:  'Now',
+    title: 'Open for New ',
+    emphasis: 'Opportunity!',
+    desc:  'Building UX in the world of AI.',
+    current: true,
+  },
+];
+
+const { items = defaultItems } = Astro.props as Props;
 ---
 
-<div class="timeline">
-
-  <div class="timeline-item">
-    <div class="timeline-year">2022</div>
-    <div class="timeline-node"><div class="timeline-dot"></div></div>
-    <div class="timeline-body">
-      <div class="timeline-year-mobile">2022</div>
-      <div class="timeline-title">Arrived in <em>Canada</em></div>
-      <div class="timeline-desc">Landed in Vancouver. New hemisphere, new chapter.</div>
-    </div>
-  </div>
-
-  <div class="timeline-item">
-    <div class="timeline-year">2022</div>
-    <div class="timeline-node"><div class="timeline-dot"></div></div>
-    <div class="timeline-body">
-      <div class="timeline-year-mobile">2022</div>
-      <div class="timeline-title">WMDD Program</div>
-      <div class="timeline-desc">Started a post-graduate program in Web Design & Mobile App Design & Development at Langara College.</div>
-    </div>
-  </div>
-
-  <div class="timeline-item">
-    <div class="timeline-year">2022</div>
-    <div class="timeline-node"><div class="timeline-dot"></div></div>
-    <div class="timeline-body">
-      <div class="timeline-year-mobile">2022</div>
-      <div class="timeline-title">Freelance Projects</div>
-      <div class="timeline-desc">Led the development of custom WordPress and e-commerce solutions for RKWINC and BLU-BATH, successfully migrating over 2,000 projects and driving a 25% increase in conversion rates.</div>
-    </div>
-  </div>
-
-  <div class="timeline-item">
-    <div class="timeline-year">2023</div>
-    <div class="timeline-node"><div class="timeline-dot"></div></div>
-    <div class="timeline-body">
-      <div class="timeline-year-mobile">2023</div>
-      <div class="timeline-title">Ant Equipment Group</div>
-      <div class="timeline-desc">Optimized ANT EQUIPMENT GROUP’s web platform through strategic CMS integrations and homepage redesigns, resulting in a 36.7% traffic increase and a 4-to-6x surge in monthly online orders.</div>
-    </div>
-  </div>
-
-  <div class="timeline-item">
-    <div class="timeline-year">2024</div>
-    <div class="timeline-node"><div class="timeline-dot"></div></div>
-    <div class="timeline-body">
-      <div class="timeline-year-mobile">2024</div>
-      <div class="timeline-title">Delta Controls</div>
-      <div class="timeline-desc">Designed and developed a new internal resource hub and custom CRM solution for Delta Intelligent Building Technologies, utilizing Figma and WordPress to boost user engagement by 15%.</div>
-    </div>
-  </div>
-
-  <div class="timeline-item">
-    <div class="timeline-year">2025</div>
-    <div class="timeline-node"><div class="timeline-dot"></div></div>
-    <div class="timeline-body">
-      <div class="timeline-year-mobile">2025</div>
-      <div class="timeline-title">Yocale AI</div>
-      <div class="timeline-desc">Launched feature pages for four major product releases and built a scalable Figma/Webflow component library for Yocale, optimizing Google Ads landing pages to achieve a 5.15% CTR.</div>
-    </div>
-  </div>
-
-  <div class="timeline-item current">
-    <div class="timeline-year">Now</div>
-    <div class="timeline-node"><div class="timeline-dot"></div></div>
-    <div class="timeline-body">
-      <div class="timeline-year-mobile">Now</div>
-      <div class="timeline-title-row">
-        <div class="timeline-title">Open for New <em>Opportunity!</em></div>
-        <span class="timeline-current-tag">Current</span>
+<div class:list={['timeline', { 'no-year': !items.some((i) => i.year) }]}>
+  {items.map((item) => (
+    <div class:list={['timeline-item', { current: item.current }]}>
+      {item.year && <div class="timeline-year">{item.year}</div>}
+      <div class="timeline-node"><div class="timeline-dot"></div></div>
+      <div class="timeline-body">
+        {item.year && <div class="timeline-year-mobile">{item.year}</div>}
+        {item.current ? (
+          <div class="timeline-title-row">
+            <div class="timeline-title">{item.title}{item.emphasis && <em>{item.emphasis}</em>}</div>
+            <span class="timeline-current-tag">Current</span>
+          </div>
+        ) : (
+          <div class="timeline-title">{item.title}{item.emphasis && <em>{item.emphasis}</em>}</div>
+        )}
+        <div class="timeline-desc">{item.desc}</div>
       </div>
-      <div class="timeline-desc">Building UX in the world of AI.</div>
     </div>
-  </div>
-
+  ))}
 </div>
 
 <style>
@@ -108,10 +108,20 @@
     padding-bottom: 8px;
   }
 
+  /* No year column (e.g. workflow steps) — drop the year track and shift
+     the connecting line to sit under the node column instead. */
+  .timeline.no-year::before {
+    left: 16px;
+  }
+
+  .timeline.no-year .timeline-item {
+    grid-template-columns: 32px 1fr;
+  }
+
   .timeline-year {
     font-family:  var(--font-mono);
     font-size:    12px;
-    color:        var(--text-3);
+    color:        var(--text-2);
     text-align:   right;
     padding-top:  3px;
     padding-right: 14px;
@@ -134,7 +144,9 @@
     background:    var(--bg);
     border:        0.5px solid var(--border-2);
     flex-shrink:   0;
-    transition:    all 0.25s var(--ease);
+    transition-property:       background-color, border-color, box-shadow;
+    transition-duration:       0.25s;
+    transition-timing-function: var(--ease);
   }
 
   .timeline-body {
@@ -161,14 +173,14 @@
 
   .timeline-title em {
     font-style: italic;
-    color:      var(--accent);
+    color:      var(--accent-text);
   }
 
   .timeline-desc {
     font-family:  var(--font-body);
     font-size:    12px;
     font-weight:  400;
-    color:        var(--text-3);
+    color:        var(--text-2);
     line-height:  1.65;
     max-width:    440px;
     margin-bottom: 8px;
@@ -180,7 +192,7 @@
     font-size:      10px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color:          var(--text-3);
+    color:          var(--text-2);
     margin-bottom:  5px;
   }
 
@@ -218,11 +230,11 @@
   }
 
   .timeline-item.current .timeline-year {
-    color: var(--accent);
+    color: var(--accent-text);
   }
 
   .timeline-item.current .timeline-title em {
-    color: var(--accent);
+    color: var(--accent-text);
   }
 
   /* Hover */

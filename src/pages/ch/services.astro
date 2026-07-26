@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../../layouts/base-layout.astro';
+import HeroShowcaseGallery from '../../components/hero-showcase-gallery.astro';
+import ServiceCard from '../../components/service-card.astro';
+import Timeline from '../../components/timeline.astro';
+import WorkCarousel from '../../components/work-carousel.astro';
+import TestimonialsWall from '../../components/testimonials-wall.astro';
+import '../../styles/services.css';
+
+// Process steps for the "我們的工作流程" timeline below — distinct from the
+// career-history content used on ch/about.astro instead.
+const zhWorkflowItems = [
+  { title: '探索階段',   desc: '我們會先了解您的業務目標、目標受眾、競爭對手情況及現有內容。' },
+  { title: '策略規劃',   desc: '接著規劃網站架構、用戶旅程、SEO 基礎及轉換機會。' },
+  { title: 'UX 設計',    desc: '透過線框圖及用戶流程,並配合意見反饋會議,於視覺設計前反覆優化體驗。' },
+  { title: 'UI 視覺設計', desc: '視覺方向會落實成響應式版面及可重用的設計系統。' },
+  { title: '開發階段',   desc: '設計會以適當的 CMS 設定、響應式實作及效能優化方式進行開發。' },
+  { title: '測試階段',   desc: '網站會於手機裝置、無障礙設計及瀏覽器兼容性上進行全面測試,包括表單及分析工具。' },
+  { title: '網站上線',   desc: '上線當天會處理 DNS、Analytics 及 Search Console 設定,並提供使用培訓,讓您能自行管理網站。' },
+  { title: '持續增長',   desc: '上線後,每月維護、數據分析檢視、A/B 測試及功能優化會持續推動網站成長。' },
+];
+
+const zhWorkCards = [
+  {
+    tag:    'SaaS',
+    title:  'Yocale',
+    href:   '/ch/work/yocale/',
+    stats:  ['5.15% 點擊率', '跳出率下降 40%'],
+    image:  '/images/light%20logo/color%20yocale.png',
+    alt:    'Yocale 標誌',
+    width:  176,
+    height: 100,
+  },
+  {
+    tag:    '樓宇自動化',
+    title:  'Delta Controls',
+    href:   '/ch/work/delta/',
+    stats:  ['參與度提升 15%', '下載轉換率提升 22.5%'],
+    image:  '/images/Delta%20Controls.svg',
+    alt:    'Delta Controls 標誌',
+    width:  176,
+    height: 100,
+  },
+  {
+    tag:    '設備租賃',
+    title:  'ANT Equipment Group',
+    href:   '/ch/work/ant/',
+    stats:  ['互動連繫提升 80%', '跳出率下降 40%'],
+    image:  '/images/light%20logo/ant.png',
+    alt:    'ANT Rentals 標誌',
+    width:  176,
+    height: 100,
+  },
+  {
+    // Same RKWINC engagement as the "自由接案項目" timeline entry above —
+    // no case study exists for it, so this links straight to the live site.
+    tag:      'WordPress 及電商',
+    title:    'RKW Communications',
+    href:     'https://rkwinc.com/',
+    stats:    ['遷移超過 2,000 個項目', '轉換率提升 25%'],
+    image:    '/images/light%20logo/rkw.png',
+    alt:      'RKW Communications 標誌',
+    width:    176,
+    height:   100,
+    external: true,
+  },
+];
+---
+
+<BaseLayout
+  title="服務"
+  world="light"
+  navVariant="services"
+  translated={true}
+  description="為您的業務打造能助您成長的網站。Andrew Yip 提供 UX 策略、細緻設計及現代網頁開發服務 —— 設計師及開發者,現居加拿大溫哥華。"
+>
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "服務 · Andrew YIP",
+    "url": "https://andrewthyip.com/ch/services/",
+    "description": "為您的業務打造能助您成長的網站。Andrew Yip 提供 UX 策略、細緻設計及現代網頁開發服務 —— 設計師及開發者,現居加拿大溫哥華。",
+    "about": {
+      "@type": "Person",
+      "name": "Andrew Yip",
+      "jobTitle": "UX/UI 設計師及開發者",
+      "url": "https://andrewthyip.com"
+    },
+    "inLanguage": "zh-Hant"
+  }
+  </script>
+
+  <main class="main">
+
+    <!-- ── Hero ───────────────────────────────── -->
+    <section class="hero-section hero-section-gallery">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="hero-content">
+
+            <div class="hero-header">
+              <div class="intro-location">
+                <span class="intro-location-dot"></span>
+                <span class="intro-location-label">溫哥華 · 加拿大</span>
+              </div>
+
+              <h1 class="hero-headline">打造助您業務成長的網站</h1>
+
+              <p class="hero-body">您的網站不應只講求美觀,更應建立信任、引導訪客自然瀏覽,並支持您的業務目標。我結合 UX 策略、細緻設計及現代網頁開發技術,打造易用、易於管理,並為長遠增長而設的網站。</p>
+
+              <a href="/ch/services/contact/" class="btn btn-ghost btn-lg hero-cta">預約免費諮詢</a>
+            </div>
+
+            <HeroShowcaseGallery />
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── I Can Help You With... ────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="help-content">
+
+            <h2 class="services-heading">我可以為您提供</h2>
+
+            <div class="help-grid" data-stagger-reveal>
+              <ServiceCard
+                title="設計"
+                subheading="出色的網站,從設計之前就開始準備。"
+                summary="我會先進行 UX 審核、網站策略規劃與資訊架構梳理,再設計響應式、用戶友善的介面、設計系統與着陸頁面。"
+                tools={[
+                  { name: 'Figma', icon: 'figma' },
+                  { name: 'Adobe Photoshop', icon: 'adobephotoshop' },
+                  { name: 'Adobe Illustrator', icon: 'adobeillustrator' },
+                  { name: 'Adobe InDesign', icon: 'adobeindesign' },
+                  { name: 'Adobe XD', icon: 'adobexd' },
+                  { name: 'Adobe After Effects', icon: 'adobeaftereffects' },
+                ]}
+                data-stagger-child
+              />
+              <ServiceCard
+                title="開發"
+                subheading="美觀的設計,同樣需要落地實現。"
+                summary="我將設計化為現實 — 從 WordPress 與 Webflow 開發,到響應式、無障礙的客製化前端程式碼。"
+                tools={[
+                  { name: 'HTML5', icon: 'html5' },
+                  { name: 'CSS3', icon: 'css3' },
+                  { name: 'JavaScript', icon: 'javascript' },
+                  { name: 'PHP', icon: 'php' },
+                  { name: 'Git', icon: 'git' },
+                  { name: 'WordPress', icon: 'wordpress' },
+                  { name: 'Webflow', icon: 'webflow' },
+                  { name: 'Claude Code', icon: 'claude' },
+                ]}
+                data-stagger-child
+              />
+              <ServiceCard
+                title="一條龍服務"
+                subheading="設計與開發之外,還包括..."
+                summary="除設計與開發外,我還會設定Technical SEO、Google Analytics 與 Search Console、優化網站效能,並負責網站上線與後續維護。"
+                tools={[
+                  { name: 'Google Analytics', icon: 'googleanalytics' },
+                  { name: 'Google Search Console', icon: 'googlesearchconsole' },
+                  { name: 'Google Tag Manager', icon: 'googletagmanager' },
+                  { name: 'Miro', icon: 'miro' },
+                  { name: 'Trello', icon: 'trello' },
+                ]}
+                data-stagger-child
+              />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── How It's Gonna Work... ────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="workflow-content">
+
+            <h2 class="services-heading">合作流程...</h2>
+
+            <div class="workflow-grid">
+              <div class="workflow-left">
+                <h3 class="workflow-subtitle">我們的工作流程</h3>
+                <p class="workflow-body">每個項目都遵循有系統的流程,減少不確定性、促進合作,並確保每個決定都能配合您的業務目標。</p>
+              </div>
+              <div class="workflow-right">
+                <Timeline items={zhWorkflowItems} />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Companies I have worked with ──────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="companies-content">
+
+            <div class="companies-heading-row">
+              <h2 class="services-heading">曾合作的項目</h2>
+              <a href="/ch/portfolio/" class="companies-see-all">查看所有項目 →</a>
+            </div>
+
+            <WorkCarousel
+              cards={zhWorkCards}
+              prevLabel="上一個項目"
+              nextLabel="下一個項目"
+              dotLabel={(n: number) => `前往第 ${n} 個項目`}
+            />
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── What People Say About Me ──────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="services-testi-content">
+
+            <h2 class="services-heading">客戶怎樣評價我</h2>
+
+            <div class="services-testi-box">
+              <TestimonialsWall />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Closing CTA ────────────────────────────── -->
+    <section class="closing-cta-section">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="closing-cta-content">
+            <h2 class="closing-cta-headline">讓我們一起打造出色的作品</h2>
+            <a href="/ch/services/contact/" class="btn btn-ghost btn-lg">預約免費諮詢</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

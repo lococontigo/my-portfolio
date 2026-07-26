@@ -1,0 +1,1051 @@
+---
+import BaseLayout from '../../../layouts/base-layout.astro';
+import CaseStudyHero from '../../../components/case-study-hero.astro';
+import CaseStudyHighlight from '../../../components/case-study-highlight.astro';
+import CaseStudySectionHeader from '../../../components/case-study-section-header.astro';
+import CaseStudyDeliverableImage from '../../../components/case-study-deliverable-image.astro';
+import CaseStudyCompareSlider from '../../../components/case-study-compare-slider.astro';
+import CaseStudyGif from '../../../components/case-study-gif.astro';
+import CaseStudyKeepReading from '../../../components/case-study-keep-reading.astro';
+import { caseStudiesZh } from '../../../data/case-studies-zh.js';
+
+const sections = [
+  { id: 'impact',    label: '01-成效' },
+  { id: 'overview',  label: '02-總覽' },
+  { id: 'challenge', label: '03-挑戰' },
+  { id: 'approach',  label: '04-方法' },
+  { id: 'identity',  label: '05-視覺形象' },
+  { id: 'features',  label: '06-功能發佈' },
+  { id: 'landing',  label: '07-着陸頁面' },
+  { id: 'webdev',   label: '08-網頁開發' },
+];
+---
+
+<BaseLayout title="Yocale" world="light" sections={sections} translated={true} description="Yocale 設計增長系統:透過 GTM 設計、着陸頁面及技術性 SEO,將點擊率提升至 5.15%,並降低 40% 跳出率。">
+  <link slot="head" rel="preload" as="video" href="/videos/yocale/hero-demo.mp4" />
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://andrewthyip.com/ch/" },
+      { "@type": "ListItem", "position": 2, "name": "Yocale", "item": "https://andrewthyip.com/ch/work/yocale/" }
+    ]
+  }
+  </script>
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Yocale:建立輕鬆促成潛在客戶開發的設計增長系統",
+    "description": "為 SaaS 預約平台 Yocale 提供 GTM 設計、着陸頁面設計、技術性 SEO 及網頁開發服務。",
+    "url": "https://andrewthyip.com/ch/work/yocale/",
+    "author": { "@type": "Person", "name": "Andrew Yip", "url": "https://andrewthyip.com" },
+    "inLanguage": "zh-Hant"
+  }
+  </script>
+  <main class="main">
+
+    <CaseStudyHero
+      title="Yocale：建立輕鬆促成潛在客戶開發的設計增長系統"
+      fullTitle="Yocale：建立輕鬆促成潛在客戶開發的設計增長系統"
+      accentTitle="Yocale"
+      gifVideoSrc="/videos/yocale/hero-demo.mp4"
+      gifAlt="Yocale 着陸頁面設計系統動畫導覽"
+      gifAspectRatio="1440 / 900"
+      role={["GTM 設計", "Landing Page設計", "Technical SEO", "網頁開發"]}
+      roleLabel="角色:"
+      tools={["Figma", "Webflow", "Claude", "Ahrefs"]}
+      toolsLabel="工具:"
+      duration={["2025 – 2026"]}
+      durationLabel="時間:"
+    />
+
+    <CaseStudyHighlight
+      id="impact"
+      eyebrow="01"
+      title="成效"
+      stats={[
+        { value: "5.15%", caption: "點擊率" },
+        { value: "4", caption: "功能發佈次數" },
+        { value: "40% ↓", caption: "跳出率" },
+      ]}
+    />
+
+    <section class="case-overview-section" id="overview">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-overview">
+
+            <CaseStudySectionHeader eyebrow="02" title="總覽" />
+
+            <div class="case-overview-content">
+              <h3 class="case-overview-heading">Yocale</h3>
+              <div class="case-overview-body">
+                <p>Yocale 是一個雲端平台,協助美容院、醫美中心等服務型企業,在單一平台上管理預約、付款及客戶關係。</p>
+                <p>我們的標語是<em>Business Made Simple(業務化繁為簡)</em>。我們相信小型企業是經濟的支柱,我們的工作是為他們提供輕鬆營運所需的工具。</p>
+              </div>
+            </div>
+
+            <CaseStudyDeliverableImage
+              src="/gifs/yocale/yocale.homepage.gif"
+              alt="Yocale 主頁動畫導覽,展示預約管理平台"
+              width="1196"
+              height="720"
+              maxWidth="1196px"
+            />
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-challenge-section" id="challenge">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-challenge">
+
+            <CaseStudySectionHeader eyebrow="03" title="挑戰" />
+
+            <div class="case-challenge-content">
+              <h3 class="case-challenge-heading">品牌形象缺失</h3>
+              <p class="case-challenge-body">Yocale 在各個市場推廣渠道 —— 電郵、社交媒體及網站 —— 之間缺乏統一的視覺形象。此外,網站的設計及內容已經過時,需要優化以提升用戶體驗。</p>
+            </div>
+
+            <CaseStudyDeliverableImage
+              src="/images/yocale/yocale-outdated-website-challenge.webp"
+              alt="Yocale 舊版網站主頁截圖,展示「Why Yocale」及「Our Promise」版塊,附有預約日曆的平板電腦模型"
+              width="1196"
+              height="560"
+              maxWidth="1196px"
+            />
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-approach-section" id="approach">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-approach">
+
+            <CaseStudySectionHeader eyebrow="04" title="方法" />
+
+            <div class="case-approach-content">
+              <div class="case-approach-item">
+                <h3 class="case-approach-heading">建立系統</h3>
+                <p class="case-approach-body">建立可重複使用的視覺資源庫 —— 色彩、字體、元件 —— 讓品牌形象在各個市場推廣渠道保持一致,並加快交付速度。</p>
+              </div>
+              <div class="case-approach-item">
+                <h3 class="case-approach-heading">為成效而設計</h3>
+                <p class="case-approach-body">為產品 GTM 發佈及 SEO 優化設計並開發網頁。</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-identity-section" id="identity">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-identity">
+
+            <CaseStudySectionHeader eyebrow="05" title="視覺形象" />
+
+            <div class="case-identity-grid" data-stagger-reveal>
+              <img src="/images/yocale/yocale-brand-color-palette.webp" alt="Yocale 品牌色彩系統:珊瑚色 #F37063、海軍藍 #034796、珊瑚至藍色漸變,以及淺粉至藍色漸變,各附色碼" width="464" height="270" loading="lazy" data-stagger-child />
+              <img src="/images/yocale/yocale-brand-typography.webp" alt="Yocale 字體系統:General Sans 字型,標題使用常規字重,「abc123」示例使用粗體" width="464" height="270" loading="lazy" data-stagger-child />
+              <img src="/images/yocale/yocale-logo.webp" alt="Yocale 珊瑚色文字標誌及圖標標誌,附有星芒點綴" width="464" height="270" loading="lazy" data-stagger-child />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-features-section" id="features">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-features">
+
+            <CaseStudySectionHeader eyebrow="06" title="功能發佈" />
+
+            <div class="feature-grid">
+              <div class="feature-card">
+                <div class="feature-card-image">
+                  <img src="/images/yocale/invoicing.webp" alt="Yocale 發票介面,展示列明服務項目、小計、稅款及總額的收據,旁為職員手持條碼掃瞄器及產品" width="708" height="354" loading="lazy" />
+                </div>
+                <div class="feature-card-info">
+                  <span class="feature-card-number">01</span>
+                  <h3 class="feature-card-title">發票管理</h3>
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-card-image">
+                  <img src="/images/yocale/yocale-integrated-payments-landing.webp" alt="Yocale 整合付款着陸頁面,展示「Integrated Payments &amp; Point of Sale Made Simple」訊息、採用率數據及支援的付款裝置" width="708" height="355" loading="lazy" />
+                </div>
+                <div class="feature-card-info">
+                  <span class="feature-card-number">02</span>
+                  <h3 class="feature-card-title">整合付款</h3>
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-card-image">
+                  <img src="/images/yocale/yocale-buy-now-pay-later-banner.webp" alt="Yocale「先買後付」宣傳橫幅,展示手機顯示 Affirm、Klarna 及 Afterpay 付款選項" width="708" height="355" loading="lazy" />
+                </div>
+                <div class="feature-card-info">
+                  <span class="feature-card-number">03</span>
+                  <h3 class="feature-card-title">先買後付</h3>
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-card-image">
+                  <img src="/images/yocale/yocale-gift-card-feature.webp" alt="Yocale 禮品卡管理介面,展示預設面值及數碼禮品卡餘額,背景為髮型師為顧客剪髮" width="708" height="355" loading="lazy" />
+                </div>
+
+                <div class="feature-card-info">
+                  <span class="feature-card-number">04</span>
+                  <h3 class="feature-card-title">禮品卡</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-gallery">
+              <CaseStudyDeliverableImage
+                src="/images/yocale/yocale-bnpl-checkout-flow.webp"
+                alt="Yocale「先買後付」網誌文章預覽,標題為「Let Clients Book Bigger Services. You Get Paid In Full, Upfront」,數據卡展示「2-3x higher average tickets」及「0 chasing and risk」,並展示 Affirm、Afterpay 及 Klarna 標誌"
+                width="1196"
+                height="467"
+                maxWidth="1196px"
+              />
+            </div>
+
+            <div class="feature-gallery-row-2">
+              <div class="feature-scanner-image">
+                <img src="/images/yocale/yocale-payment-scanner-mockup.webp" alt="手部使用條碼掃瞄器掃描產品盒的照片,疊加 Yocale 介面卡,展示「Hand cream」、數量 88、價格 $45.00 及品牌「Necessaire」" width="536" height="480" loading="lazy" />
+              </div>
+              <div class="feature-gift-cards">
+                <div class="gift-card-row" data-marquee role="group" aria-label="Yocale 禮品卡設計:多謝、恭喜、送給你">
+                  <div class="gift-card-track" data-marquee-track>
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-thank-you.webp" alt="Yocale「多謝」禮品卡設計,深梅子色,附 Yocale 標誌及圓環圖案點綴" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-congrats.webp" alt="Yocale「恭喜」禮品卡設計,深鏽紅色,附 Yocale 標誌及圓環圖案點綴" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-for-you.webp" alt="Yocale「送給你」禮品卡設計,深海軍藍色,附 Yocale 標誌及圓環圖案點綴" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-thank-you.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-congrats.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-for-you.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                  </div>
+                </div>
+                <div class="gift-card-row" data-marquee data-marquee-reverse role="group" aria-label="Yocale 禮品卡設計:無故送禮、愛的禮物、生日快樂">
+                  <div class="gift-card-track" data-marquee-track>
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-just-because.webp" alt="Yocale「無故送禮」禮品卡設計,深慄紅色,附 Yocale 標誌及圓環圖案點綴" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-with-love.webp" alt="Yocale「愛的禮物」禮品卡設計,深靛藍色,附 Yocale 標誌及圓環圖案點綴" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-happy-birthday.webp" alt="Yocale「生日快樂」禮品卡設計,森林綠色,附 Yocale 標誌及圓環圖案點綴" width="350" height="233" loading="lazy" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-just-because.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-with-love.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                    <img src="/images/yocale/gift_cards/yocale-gift-card-happy-birthday.webp" alt="" width="350" height="233" loading="lazy" aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-gallery-row-3">
+              <CaseStudyDeliverableImage
+                src="/images/yocale/yocale-navigation-design.webp"
+                alt="Yocale 網站導航列,展開「Features」選單,展示功能分類巨型選單,包括線上日曆、線上預約、市場推廣、視像會議、客戶管理、銷售點系統、通知、Reserve with Google、客戶入口網站、業務管理、表格與註解、整合付款、發票管理、Yocale Pay 及 Yocale Marketing,背景為兩人合照的主視覺照片"
+                width="1196"
+                height="573"
+                maxWidth="1196px"
+              />
+            </div>
+
+            <div class="feature-gallery-row-4">
+              <img src="/images/yocale/yocale-never-lose-track-payment.webp" alt="Yocale 發票儀表板,展示列有日期、客戶及狀態欄位的發票列表,並展開狀態篩選下拉選單,選項包括草稿、未付款、部分付款、已付款及已作廢" width="708" height="630" loading="lazy" />
+              <img src="/images/yocale/yocale-accept-every-way-to-pay.webp" alt="Yocale 付款整合面板,展示透過 Stripe 支援的 Affirm、Klarna 及 Afterpay 卡片,各附啟用開關及編輯按鈕" width="708" height="630" loading="lazy" />
+            </div>
+
+            <div class="feature-gallery-row-5">
+              <div class="feature-gallery-row-5-grid">
+                <img src="/images/yocale/yocale-gift-card-feature-mockup.webp" alt="Yocale 手機畫面,展示手部在零售貨架旁使用手機進行整合付款,標題為「Integrated Payments &amp; Point of Sale Made Simple」" width="343" height="515" loading="lazy" />
+                <img src="/images/yocale/yocale-invoicing-feature-mockup.webp" alt="Yocale 手機畫面,標題為「Let Clients Book Bigger Services. You Get Paid In Full, Upfront」,數據卡展示「2-3x higher average tickets」及「0 chasing and risk」,並展示 Affirm、Afterpay 及 Klarna 標誌" width="343" height="515" loading="lazy" />
+                <img src="/images/yocale/yocale-integrated-payments-mockup.webp" alt="Yocale 手機畫面,展示發票建立介面,設有項目明細及簽名面板,標題為「Create Invoices In Seconds. Get Paid Fast.」" width="343" height="515" loading="lazy" />
+              </div>
+            </div>
+
+            <div class="feature-gallery-row-6">
+              <div class="feature-gallery-row-6-item">
+                <img src="/images/yocale/yocale-bnpl-mockup.webp" alt="Yocale 手機結賬畫面,展示發票「Amount due $450.00」、Affirm 及 Klarna 先買後付選項、已選取 Affirm 的付款方式選擇,以及「Confirm payment」按鈕" width="550" height="708" loading="lazy" />
+              </div>
+              <div class="feature-gallery-row-6-item">
+                <img src="/images/yocale/yocale-commission-tracking-feature.webp" alt="女士查看手機的照片,疊加「Blowdry Commission」卡片,展示由 $70.00 折至 $49.00 的優惠價及職員「Natan Jein」" width="536" height="480" loading="lazy" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-features-section" id="landing">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-features">
+
+            <CaseStudySectionHeader eyebrow="07" title="着陸頁面"/>
+
+            <div class="landing-gif-wrap">
+              <CaseStudyGif gifSrc="/gifs/yocale/0621-ezgif.com-video-to-gif-converter.gif" alt="Yocale 着陸頁面設計動畫導覽" aspectRatio="16 / 9" />
+            </div>
+
+            <div class="landing-content">
+              <h3 class="landing-content-title">轉換漏斗</h3>
+              <div class="landing-content-body">
+                <p>高轉換率的着陸頁面遵循一套經驗證的公式。每個版塊都讓訪客更接近成為潛在客戶一步:</p>
+                <ol class="landing-content-list">
+                  <li>引子 —— 以認知度及核心價值主張作開端</li>
+                  <li>核心價值 —— 展示產品如何解決他們的具體問題</li>
+                  <li>社會認證 —— 透過可信度消除疑慮,建立購買意欲</li>
+                  <li>行動呼籲 —— 推動轉換</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="landing-gallery">
+              <CaseStudyDeliverableImage
+                src="/images/yocale/yocale-landing-page-container-layout.webp"
+                alt="Yocale 着陸頁面版面,展示全寬容器結構及版塊層級"
+                width="1196"
+                height="720"
+                maxWidth="1196px"
+              />
+
+              <div class="landing-gallery-row-2">
+                <CaseStudyDeliverableImage
+                  src="/images/yocale/yocale-hero-header-design.webp"
+                  alt="Yocale 主視覺標題設計,展示標題、副標題、CTA 按鈕及手機模型,背景簡潔"
+                  width="1296"
+                  height="589"
+                  maxWidth="1196px"
+                />
+              </div>
+
+              <div class="landing-gallery-row-3">
+                <div class="landing-row-3-left">
+                  <img src="/images/yocale/yocale-client-testimonials.webp" alt="Yocale 西班牙文着陸頁面版塊,展示 Preet 及 Elena 兩位客戶的評價,附照片及引言" width="574" height="575" loading="lazy" />
+                </div>
+                <div class="landing-row-3-right">
+                  <img src="/images/yocale/yocale-spanish-landing-page-statistics.webp" alt="Yocale 西班牙文「Beneficios de Yocale」版塊,展示手提電腦模型及四項數據:缺席率下降 86%、客戶預約增加 34%、回頭預約增加 30%,以及新預約增加 64%" width="611" height="358" loading="lazy" />
+                </div>
+              </div>
+
+              <div class="landing-localization">
+                <h3 class="landing-localization-title">本地化</h3>
+                <p class="landing-localization-body">拉丁美洲既是主要服務地區,亦是核心目標受眾。為接觸講西班牙文的用戶,我們建立了一個完全本地化的着陸頁面,讓拉丁美洲銷售團隊可以直接分享。</p>
+              </div>
+
+              <div class="landing-gallery-row-4" data-parallax>
+                <img
+                  src="/images/yocale/yocale-pay-landing-page.webp"
+                  alt="Yocale Pay 全版着陸頁面,展示主視覺標題、功能亮點及行動呼籲版塊"
+                  width="1440"
+                  height="800"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="landing-gallery-row-5">
+                <CaseStudyDeliverableImage
+                  src="/images/yocale/yocale-seo-tracking-dashboard.webp"
+                  alt="Yocale 分析追蹤儀表板,展示流量數據、轉換指標及用戶行為洞見"
+                  width="1196"
+                  height="678"
+                  maxWidth="1196px"
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-webdev-section" id="webdev">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-webdev">
+
+            <CaseStudySectionHeader eyebrow="08" title="網頁開發" />
+
+            <div class="webdev-compare">
+              <CaseStudyCompareSlider
+                beforeSrc="/images/yocale/old-blog.svg"
+                afterSrc="/images/yocale/new-blog.svg"
+                beforeAlt="2023 年 Yocale 舊版網誌版面截圖,展示所有文章置於單一頁面,沒有分類結構"
+                afterAlt="2024 年重新設計的 Yocale 網誌版面截圖,展示有條理的分類及改善後的導航"
+                beforeLabel="之前"
+                afterLabel="之後"
+                aspectRatio="1440 / 1176"
+              />
+            </div>
+
+            <div class="webdev-content">
+              <h3 class="webdev-content-title">重新設計以解決 SEO 問題</h3>
+              <p class="webdev-content-body">網站的網誌版塊存在孤立頁面問題 —— 原有版面將最新 100 篇文章全放在單一頁面,但存檔中的文章數量遠超於此。我重新整理了網誌的分類結構,確保每篇文章都能被索引及發現。</p>
+            </div>
+
+            <div class="webdev-gif">
+              <CaseStudyDeliverableImage
+                src="/gifs/yocale/Figma MCP.gif"
+                alt="螢幕錄影展示 Figma 與 Webflow MCP Bridge App 根據設計自動生成網頁元件,並展示工具呼叫記錄及元素建構執行過程"
+                width="1182"
+                height="640"
+                maxWidth="1196px"
+              />
+            </div>
+
+            <div class="webdev-ai-content">
+              <h3 class="webdev-content-title">AI 正在取代我們的工作</h3>
+              <p class="webdev-content-body">Figma 及 Webflow 各自擁有 MCP,可自動生成部分網頁元件(具備適當的自動版面配置),但目前的限制是它們尚未能自動生成動畫效果。</p>
+            </div>
+
+            <div class="webdev-gif">
+              <CaseStudyDeliverableImage
+                src="/gifs/yocale/Webflow web component.gif"
+                alt="螢幕錄影展示為定價卡建構並設定可編輯屬性的 Webflow 元件,示範可重複使用網頁元件的建立過程"
+                width="932"
+                height="640"
+                maxWidth="1196px"
+              />
+            </div>
+
+            <div class="webdev-content">
+              <h3 class="webdev-content-title">Webflow 元件</h3>
+              <p class="webdev-content-body">建立可重複使用的網頁元件可縮短開發時間,確保更快交付。畢竟在 SaaS 世界裏,時間就是金錢。</p>
+            </div>
+
+            <div class="webdev-gif">
+              <CaseStudyDeliverableImage
+                src="/gifs/yocale/Notion to Figma Sync.gif"
+                alt="螢幕錄影展示 Notion to Figma Sync 外掛程式將 Notion 資料庫內容同步至 Figma 設計圖層,示範跨語言內容轉換"
+                width="868"
+                height="640"
+                maxWidth="1196px"
+              />
+            </div>
+
+            <div class="webdev-content">
+              <h3 class="webdev-content-title">Notion 轉 Figma</h3>
+              <p class="webdev-content-body">與內容撰稿人合作時,我們需要一套系統來測試內容如何配合設計運作。我發現了一個可將 Notion 資料庫與 Figma 同步的外掛程式(圖層需相應命名)。只需一鍵,即可跨不同內容及語言進行設計本地化。</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-closing-section">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-closing">
+            <div class="case-closing-media">
+              <img src="/images/yocale/yocale-client-star-ratings.webp" alt="Yocale 客戶星級評分及評價,展示平台整體客戶滿意度" width="1196" height="984" loading="lazy" data-parallax />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CaseStudyKeepReading current="yocale" items={caseStudiesZh} eyebrow="繼續閱讀" title="更多個案研究" />
+
+  </main>
+</BaseLayout>
+
+<style>
+  .main {
+    --case-accent:       var(--accent-yocale);
+    --case-accent-solid: var(--accent-yocale-2);
+    padding-top:         96px;
+    min-height:          100vh;
+  }
+
+  /* ── 02 Overview ──────────────────────────── */
+  .case-overview-content {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-bottom:         40px;
+  }
+
+  .case-overview :global(.deliverable-image) {
+    margin-bottom: 40px;
+  }
+
+  .case-overview-heading {
+    font-family: var(--font-display);
+    font-size:   39px;
+    font-weight: 400;
+    line-height: 1.2;
+    color:       var(--text-1);
+  }
+
+  .case-overview-body {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-sm);
+  }
+
+  .case-overview-body p {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
+  /* ── 03 Challenge ─────────────────────────── */
+  .case-challenge-content {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-bottom:         clamp(20px, 2.8vw, 40px);
+  }
+
+  .case-challenge-heading {
+    font-family: var(--font-display);
+    font-size:   clamp(25px, 3.1vw, 39px);
+    font-weight: 400;
+    line-height: 1.2;
+    color:       var(--text-1);
+  }
+
+  .case-challenge-body {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
+  /* ── 04 Approach ──────────────────────────── */
+  .case-approach-content {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-lg);
+  }
+
+  .case-approach-item {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-approach-heading {
+    font-family: var(--font-display);
+    font-size:   39px;
+    font-weight: 400;
+    line-height: 1.2;
+    color:       var(--text-1);
+  }
+
+  .case-approach-body {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
+  /* ── 05 Visual Identity ───────────────────── */
+  .case-identity-grid {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-identity-grid img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
+  /* ── 06 Feature Launches ──────────────────── */
+  .feature-grid {
+    display:               grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .feature-card {
+    display:        flex;
+    flex-direction: column;
+    border-radius:  var(--r-lg);
+    overflow:       hidden;
+    background:     var(--bg-2);
+  }
+
+  .feature-card-image img {
+    display:      block;
+    width:        100%;
+    height:       auto;
+    aspect-ratio: 708 / 355;
+    object-fit:   cover;
+  }
+
+  .feature-card-info {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-xs);
+    padding:        var(--space-sm);
+  }
+
+  .feature-card-number {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 400;
+    color:       var(--text-2);
+  }
+
+  .feature-card-title {
+    font-family: var(--font-display);
+    font-size:   39px;
+    font-weight: 400;
+    line-height: 1.2;
+    color:       var(--text-1);
+  }
+
+  .feature-gallery {
+    margin-top: clamp(12px, 1.7vw, 24px);
+  }
+
+  .feature-gallery-row-2 {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(12px, 1.7vw, 24px);
+    --gift-card-row-h:     clamp(107px, 14.6vw, 186px);
+  }
+
+  .feature-gallery-row-3 {
+    margin-top: clamp(12px, 1.7vw, 24px);
+  }
+
+  .feature-gallery-row-4 {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(12px, 1.7vw, 24px);
+  }
+
+  .feature-gallery-row-4 img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-lg);
+  }
+
+  .feature-gallery-row-5 {
+    margin-top:    clamp(12px, 1.7vw, 24px);
+    padding:       var(--space-md) var(--space-md) 0;
+    background:    var(--bg-2);
+    border-radius: var(--r-lg);
+  }
+
+  .feature-gallery-row-5-grid {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+    max-width:             1196px;
+    margin-inline:         auto;
+  }
+
+  .feature-gallery-row-5-grid img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
+  .feature-gallery-row-6 {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(12px, 1.7vw, 24px);
+  }
+
+  .feature-gallery-row-6-item {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    padding:         0 clamp(32px, 5.5vw, 80px);
+    background:      var(--bg-2);
+    border-radius:   var(--r-lg);
+  }
+
+  .feature-gallery-row-6-item img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
+  .feature-scanner-image {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    padding:         var(--space-md);
+    background:      var(--bg-2);
+    border-radius:   var(--r-lg);
+  }
+
+  .feature-scanner-image img {
+    display: block;
+    width:   auto;
+    height:  calc(var(--gift-card-row-h) * 2 + clamp(12px, 1.7vw, 24px));
+  }
+
+  .feature-gift-cards {
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+    gap:             clamp(12px, 1.7vw, 24px);
+    padding:         var(--space-md);
+    padding-inline:  0;
+    background:      var(--bg-2);
+    border-radius:   var(--r-lg);
+    overflow:        hidden;
+  }
+
+  .gift-card-row {
+    overflow: hidden;
+  }
+
+  .gift-card-track {
+    display:     flex;
+    gap:         clamp(12px, 1.7vw, 24px);
+    width:       max-content;
+    will-change: transform;
+  }
+
+  .gift-card-track img {
+    display:       block;
+    flex-shrink:   0;
+    width:         auto;
+    height:        var(--gift-card-row-h);
+    border-radius: var(--r-md);
+  }
+
+  /* ── 07 Landing Pages ────────────────────── */
+  .landing-gif-wrap {
+    max-width:     1440px;
+    margin-inline: auto;
+    padding:       var(--space-md);
+    background:    #000;
+    border-radius: var(--r-lg);
+  }
+
+  .landing-video-placeholder {
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    justify-content: center;
+    gap:             var(--space-xs);
+    margin-top:      clamp(32px, 5.5vw, 80px);
+    aspect-ratio:    16 / 9;
+    border:          0.5px solid var(--border);
+    border-radius:   var(--r-lg);
+    background:      var(--bg-3);
+    color:           var(--text-2);
+  }
+
+  .landing-video-icon {
+    width:  32px;
+    height: 32px;
+  }
+
+  .landing-video-label {
+    font-family:    var(--font-body);
+    font-size:      12px;
+    font-weight:    500;
+    letter-spacing: 0.01em;
+  }
+
+  .landing-content {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(20px, 2.8vw, 40px);
+  }
+
+  .landing-content-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(25px, 3.1vw, 39px);
+    font-weight:    400;
+    line-height:    1.1;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+    text-wrap:      balance;
+  }
+
+  .landing-content-body {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-xs);
+  }
+
+  .landing-content-body p,
+  .landing-content-list li {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
+  .landing-content-list {
+    padding-left: var(--space-sm);
+  }
+
+  .landing-gallery {
+    margin-top: clamp(32px, 5.5vw, 80px);
+  }
+
+  .landing-gallery :global(.deliverable-image:first-child) {
+    padding-bottom: 0;
+  }
+
+  .landing-gallery-row-2 {
+    margin-top: clamp(12px, 1.7vw, 24px);
+  }
+
+  .landing-gallery-row-3 {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(12px, 1.7vw, 24px);
+  }
+
+  .landing-row-3-left {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    padding:         var(--space-md);
+    background:      var(--accent-yocale-dark);
+    border-radius:   var(--r-lg);
+  }
+
+  .landing-row-3-right {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    padding:         var(--space-md);
+    background:      var(--bg-2);
+    border-radius:   var(--r-lg);
+  }
+
+  .landing-row-3-left img,
+  .landing-row-3-right img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
+  .landing-localization {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(20px, 2.8vw, 40px);
+  }
+
+  .landing-localization-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(25px, 3.1vw, 39px);
+    font-weight:    400;
+    line-height:    1.1;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+    text-wrap:      balance;
+  }
+
+  .landing-localization-body {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
+  .landing-gallery-row-5 {
+    margin-top: clamp(12px, 1.7vw, 24px);
+  }
+
+  .landing-gallery-row-5 :global(.deliverable-image) {
+    padding-bottom: 0;
+  }
+
+  .landing-gallery-row-4 {
+    height:        clamp(480px, 55.6vw, 800px);
+    overflow:      hidden;
+    border-radius: var(--r-lg);
+    margin-top:    80px;
+  }
+
+  .landing-gallery-row-4 img {
+    display:     block;
+    width:       100%;
+    height:      auto;
+    will-change: transform;
+  }
+
+  /* ── 08 Web Development ──────────────────── */
+  .webdev-compare {
+    margin-top: clamp(32px, 5.5vw, 80px);
+  }
+
+  .webdev-content {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(20px, 2.8vw, 40px);
+  }
+
+  .webdev-content-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(25px, 3.1vw, 39px);
+    font-weight:    400;
+    line-height:    1.1;
+    letter-spacing: -0.28px;
+    color:          var(--text-1);
+    text-wrap:      balance;
+  }
+
+  .webdev-content-body {
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color:       var(--text-2);
+  }
+
+  .webdev-gif {
+    margin-top: clamp(32px, 5.5vw, 80px);
+  }
+
+  .webdev-ai-content {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    margin-top:            clamp(20px, 2.8vw, 40px);
+  }
+
+  @media (max-width: 768px) {
+    .main { padding-top: 80px; }
+
+    .case-overview-content {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-challenge-content {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-approach-content {
+      gap: var(--space-md);
+    }
+
+    .case-approach-item {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-identity-grid {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .feature-grid {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .feature-gallery-row-2 {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .feature-gallery-row-4 {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .feature-gallery-row-5-grid {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .feature-gallery-row-6 {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .landing-content {
+      grid-template-columns: 1fr;
+    }
+
+    .landing-gallery-row-3 {
+      grid-template-columns: 1fr;
+    }
+
+    .landing-localization {
+      grid-template-columns: 1fr;
+    }
+
+    .webdev-content,
+    .webdev-ai-content {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ── Closing ──────────────────────────────── */
+  .case-closing-section {
+    padding-bottom: 0;
+    background:     var(--bg-2);
+  }
+
+  :global(.keep-reading-section) {
+    padding-block: var(--space-lg);
+  }
+
+  .case-closing-media {
+    position:      relative;
+    width:         100vw;
+    height:        800px;
+    margin-inline: calc(50% - 50vw);
+    overflow:      hidden;
+  }
+
+  .case-closing-media img {
+    position:   absolute;
+    top:        0;
+    left:       0;
+    width:      100%;
+    height:     984px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .landing-gallery-row-4 { height: clamp(280px, 55vw, 480px); }
+    .case-closing-media { height: 450px; }
+    .case-closing-media img { height: 600px; }
+  }
+
+  @media (max-width: 520px) {
+    .main { padding-top: 72px; }
+    .case-closing-media { height: 280px; }
+    .case-closing-media img { height: 400px; }
+  }
+</style>

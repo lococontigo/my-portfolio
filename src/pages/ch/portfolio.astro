@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../../layouts/base-layout.astro';
+import HeroFluidBg from '../../components/hero-fluid-bg.astro';
+import '../../styles/index.css';
+---
+
+<BaseLayout title="UX/UI 設計師及開發者" world="dark" description="居於溫哥華的 UX/UI 設計師及開發者。我為 SaaS 及企業客戶打造直覺易用的產品、設計系統及着陸頁面。" translated={true}>
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Andrew Yip",
+    "jobTitle": "UX/UI 設計師及開發者",
+    "url": "https://andrewthyip.com",
+    "sameAs": ["https://www.linkedin.com/in/andrewthyip/"],
+    "knowsAbout": ["UX 設計", "UI 設計", "網頁開發", "設計系統"],
+    "inLanguage": "zh-Hant"
+  }
+  </script>
+  <main class="main">
+
+    <!-- ── Hero ───────────────────────────────── -->
+    <section class="hero-section">
+      <HeroFluidBg debugPanel={false} theme="dark" />
+
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="hero-content">
+
+            <div class="hero-header">
+              <div class="intro-location">
+                <span class="intro-location-dot"></span>
+                <span class="intro-location-label">溫哥華 · 加拿大</span>
+              </div>
+
+              <h1 class="hero-headline">為成長中企業提供設計與開發服務</h1>
+
+              <p class="hero-body">我是 Andrew——我為 SaaS 及企業客戶打造直覺易用的產品、設計系統及着陸頁面。</p>
+
+              <a href="/ch/contact/" class="btn btn-ghost btn-lg hero-cta">聯絡我 →</a>
+            </div>
+
+            <div class="intro-logos">
+              <img class="intro-logo-item" src="/images/Delta%20Controls.svg"     alt="Delta Controls"     width="176" height="100" />
+              <img class="intro-logo-item" src="/images/Rosamary%20Diamond.svg"   alt="Rosemary Diamond"   width="176" height="100" />
+              <img class="intro-logo-item" src="/images/Blu%20bathworks.svg"      alt="Blu Bathworks"      width="176" height="100" />
+              <img class="intro-logo-item" src="/images/Yocale%20AI.svg"          alt="Yocale AI"          width="176" height="100" />
+              <img class="intro-logo-item" src="/images/RKW%20Communications.svg" alt="RKW Communications" width="176" height="100" />
+              <img class="intro-logo-item" src="/images/ANT%20Rentals.svg"        alt="ANT Rentals"        width="176" height="100" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Work: Yocale ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Yocale</h2>
+                <p class="work-featured-desc">Yocale 是一套一站式企業管理及客戶預約系統,專為預約制業務而設計。</p>
+              </div>
+              <a href="/ch/work/yocale/" class="work-featured-link">
+                查看作品 →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/ch/work/yocale/">
+                <img
+                  src="/images/yocale-mockup.webp"
+                  alt="Yocale 預約管理系統儀表板介面"
+                  class="work-featured-img"
+                  width="704" height="704"
+                  fetchpriority="high"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Work: Delta Controls ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Delta Intelligent Building Technologies </h2>
+                <p class="work-featured-desc">The Source 是一個數碼資料庫,專為 Delta Controls 的合作夥伴及員工提供非技術文件、培訓資料及市場推廣素材。</p>
+              </div>
+              <a href="/ch/work/delta/" class="work-featured-link">
+                閱讀個案研究 →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/ch/work/delta/">
+                <img
+                  src="/images/Mac-Studio-mockup.svg"
+                  alt="Delta Intelligent Building Technologies 資源平台介面"
+                  class="work-featured-img"
+                  width="704" height="704"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Work: ANT Rentals ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Ant Equipment Group</h2>
+                <p class="work-featured-desc">ANT 是加拿大西部最大型的獨立設備租賃及銷售供應商。</p>
+              </div>
+              <a href="/ch/work/ant/" class="work-featured-link">
+                查看作品 →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/ch/work/ant/">
+                <img
+                  src="/images/ant-mockup.svg"
+                  alt="ANT Rentals 網誌版面設計"
+                  class="work-featured-img"
+                  width="704" height="704"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Work: Crowd Ease ─────────────────────── -->
+    <section>
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="work-featured">
+
+            <div class="work-featured-info">
+              <div class="work-featured-text">
+                <h2 class="work-featured-title">Crowd Ease</h2>
+                <p class="work-featured-desc">Crowd Ease 是一款手機應用程式,透過提供活動資訊及實時人流追蹤,協助餐廳規劃資源及市場推廣策略。</p>
+              </div>
+              <a href="/ch/work/crowd-ease/" class="work-featured-link">
+                閱讀個案研究 →
+              </a>
+            </div>
+
+            <div class="work-featured-visual">
+              <a href="/ch/work/crowd-ease/">
+                <img
+                  src="/images/UI-CROWDEASE-1.svg"
+                  alt="Crowd Ease 手機應用程式介面,顯示活動追蹤及實時人流資料"
+                  class="work-featured-img"
+                  width="704" height="704"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

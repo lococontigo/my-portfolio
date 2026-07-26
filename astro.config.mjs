@@ -5,6 +5,16 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site:          'https://andrewthyip.com',
   trailingSlash: 'always',
+  i18n: {
+    locales: [
+      'en',
+      { path: 'ch', codes: ['zh-Hant'] },
+    ],
+    defaultLocale: 'en',
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   vite: {
     server: {
       watch: {

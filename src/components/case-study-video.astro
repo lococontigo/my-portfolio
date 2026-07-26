@@ -155,6 +155,15 @@ const muteLabel = muted ? 'Unmute video' : 'Mute video';
     }
 
     if (video instanceof HTMLVideoElement) {
+      // Autoplay is opt-out via a real pause control, but a system-level
+      // reduced-motion preference should win regardless of the autoplay
+      // prop — pause immediately on load rather than waiting for the
+      // visitor to notice and reach for the button themselves.
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        video.pause();
+        video.removeAttribute('autoplay');
+      }
+
       playBtn?.addEventListener('click', () => {
         if (video.paused) {
           video.play();

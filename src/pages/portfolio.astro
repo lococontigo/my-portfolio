@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/base-layout.astro';
+import HeroFluidBg from '../components/hero-fluid-bg.astro';
 import '../styles/index.css';
 ---
 
-<BaseLayout title="UX/UI Designer & Developer" world="dark" description="UX/UI designer and developer based in Vancouver. I build intuitive products, design systems, and landing pages for SaaS and enterprise companies.">
+<BaseLayout title="UX/UI Designer & Developer" world="dark" description="UX/UI designer and developer based in Vancouver. I build intuitive products, design systems, and landing pages for SaaS and enterprise companies." translated={true}>
   <script slot="head" is:inline type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -17,21 +18,25 @@ import '../styles/index.css';
   </script>
   <main class="main">
 
-    <!-- ── Brief Intro ────────────────────────── -->
-    <section>
+    <!-- ── Hero ───────────────────────────────── -->
+    <section class="hero-section">
+      <HeroFluidBg debugPanel={false} theme="dark" />
+
       <div class="padding-global">
         <div class="container-main">
-          <div class="intro-content">
+          <div class="hero-content">
 
-            <div class="intro-header">
-              <h1 class="intro-name">Andrew YIP</h1>
-              <div class="intro-meta">
-                <span class="intro-role">Designer & Developer</span>
-                <div class="intro-location">
-                  <span class="intro-location-dot"></span>
-                  <span class="intro-location-label">Vancouver · Canada</span>
-                </div>
+            <div class="hero-header">
+              <div class="intro-location">
+                <span class="intro-location-dot"></span>
+                <span class="intro-location-label">Vancouver · Canada</span>
               </div>
+
+              <h1 class="hero-headline">Designer &amp; Developer</h1>
+
+              <p class="hero-body">I&rsquo;m Andrew — I build intuitive products, design systems, and landing pages for SaaS and enterprise companies.</p>
+
+              <a href="/contact/" class="btn btn-ghost btn-lg hero-cta">Say hello →</a>
             </div>
 
             <div class="intro-logos">

@@ -7,6 +7,7 @@ const {
   beforeLabel = 'Before',
   afterLabel = 'After',
   aspectRatio = '16 / 9',
+  knobLabel = 'Drag to compare before and after',
 } = Astro.props;
 ---
 
@@ -22,7 +23,7 @@ const {
   <span class="compare-badge compare-badge-right">{afterLabel}</span>
 
   <div class="compare-handle"></div>
-  <div class="compare-knob" data-knob role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" aria-label="Drag to compare before and after">
+  <div class="compare-knob" data-knob role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" aria-label={knobLabel}>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <polyline points="9 6 4 12 9 18"></polyline>
       <polyline points="15 6 20 12 15 18"></polyline>

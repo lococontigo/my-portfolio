@@ -1,9 +1,56 @@
 ---
+import en from '../i18n/en.json';
+import zhHant from '../i18n/zh-hant.json';
+
+interface Props {
+  sections?: { id: string; label: string }[];
+  variant?:  'portfolio' | 'services';
+}
+
+// Same nav content/design on both sides of the site — only the Work/About/
+// Contact targets (and the logo's home link) change, since the services side
+// links to its own light-mode Work/About/Contact pages instead of the
+// dark-mode ones. Values here are the canonical English paths; the zh-Hant
+// equivalent is always the same path under a /ch prefix (routes mirror
+// 1:1), so locale is applied once below rather than duplicating this table.
+const NAV_ROUTES = {
+  portfolio: { home: '/portfolio/', work: '/portfolio/',     about: '/about/',          contact: '/contact/' },
+  services:  { home: '/services/',  work: '/services/work/', about: '/services/about/', contact: '/services/contact/' },
+} as const;
+
+// Only these English paths have a real zh-Hant counterpart. The toggle falls
+// back to the current variant's home page, in the target locale, for any
+// path not in this list, rather than linking to a 404.
+const TRANSLATED_PATHS = [
+  '/', '/portfolio/', '/about/', '/contact/',
+  '/services/', '/services/work/', '/services/about/', '/services/contact/',
+  '/work/delta/', '/work/ant/', '/work/crowd-ease/', '/work/yocale/',
+];
+
 const pathname = Astro.url.pathname;
-const { sections = [] } = Astro.props;
+const { sections = [], variant = 'portfolio' } = Astro.props as Props;
+const rawRoutes = NAV_ROUTES[variant];
+
+const locale     = Astro.currentLocale ?? 'en';
+const dict       = locale === 'zh-Hant' ? zhHant : en;
+const zhPrefix   = locale === 'zh-Hant' ? '/ch' : '';
+const routes = {
+  home:    zhPrefix + rawRoutes.home,
+  work:    zhPrefix + rawRoutes.work,
+  about:   zhPrefix + rawRoutes.about,
+  contact: zhPrefix + rawRoutes.contact,
+};
+
+// Both directions are computed up front so the toggle can show EN/中文 side
+// by side at all times, with whichever one is live rendered as plain text
+// (not a link — there's nothing to navigate to on the page you're already on).
+const enPathname   = locale === 'zh-Hant' ? (pathname.replace(/^\/ch\//, '/') || '/') : pathname;
+const isTranslated = TRANSLATED_PATHS.includes(enPathname);
+const enHref = locale === 'zh-Hant' ? (isTranslated ? enPathname : rawRoutes.home) : pathname;
+const zhHref = locale === 'zh-Hant' ? pathname : (isTranslated ? `/ch${pathname}` : `/ch${rawRoutes.home}`);
 ---
 
-<nav class="nav">
+<nav class="nav" data-variant={variant} data-case-study={sections.length > 0 ? 'true' : 'false'}>
 
   <!-- ── Bar ──────────────────────────────── -->
   <div class="padding-global">
@@ -11,16 +58,30 @@ const { sections = [] } = Astro.props;
       <div class="nav-inner">
 
         <!-- Logo mark -->
-        <a href="/portfolio/" class="nav-logo" aria-label="Andrew Yip — Home">
+        <a href={routes.home} data-nav-target="home" class="nav-logo" aria-label="Andrew Yip — Home">
           <img src="/images/andrew-yip-logo.webp" alt="Andrew Yip" class="nav-logo-img" width="60" height="60" />
         </a>
 
         <!-- Desktop links -->
         <div class="nav-links">
           <div class="nav-links-default">
-            <a href="/portfolio/" class={`nav-link${pathname === '/portfolio/' ? ' active' : ''}`}>Work</a>
-            <a href="/about/" class={`nav-link${pathname === '/about/' ? ' active' : ''}`}>About</a>
-            <a href="/contact/" class="nav-cta">Say hello →</a>
+            <a href={routes.work} data-nav-target="work" class={`nav-link${pathname === routes.work ? ' active' : ''}`}>{dict.nav.work}</a>
+            <a href={routes.about} data-nav-target="about" class={`nav-link${pathname === routes.about ? ' active' : ''}`}>{dict.nav.about}</a>
+
+            <!-- Language switch sits before the CTA. It now shares the same
+                 crossfade group as Work/About/CTA, so it hands off to the
+                 section nav in case-mode too — see the visibility rule below
+                 that keeps it out of the tab order while hidden. -->
+            <div class="nav-lang-toggle" role="group" aria-label={dict.nav.langGroupLabel}>
+              {locale === 'en'
+                ? <span class="nav-lang-option active" aria-current="true">EN</span>
+                : <a href={enHref} class="nav-lang-option">EN</a>}
+              {locale === 'zh-Hant'
+                ? <span class="nav-lang-option active" aria-current="true">中文</span>
+                : <a href={zhHref} class="nav-lang-option">中文</a>}
+            </div>
+
+            <a href={routes.contact} data-nav-target="contact" class="nav-cta">{dict.nav.sayHello}</a>
           </div>
 
           {sections.length > 0 && (
@@ -33,7 +94,7 @@ const { sections = [] } = Astro.props;
         </div>
 
         <!-- Hamburger (mobile) -->
-        <button class="nav-burger" id="nav-burger" aria-label="Toggle navigation" aria-expanded="false">
+        <button type="button" class="nav-burger" id="nav-burger" aria-label="Toggle navigation" aria-expanded="false">
           <span class="nav-burger-bar"></span>
           <span class="nav-burger-bar"></span>
         </button>
@@ -43,12 +104,20 @@ const { sections = [] } = Astro.props;
   </div>
 
   <!-- ── Mobile overlay ───────────────────── -->
-  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
-    <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Close navigation">×</button>
+  <div class="nav-mobile" id="nav-mobile" aria-hidden="true" inert>
+    <button type="button" class="nav-mobile-close" id="nav-mobile-close" aria-label="Close navigation">×</button>
     <div class="nav-mobile-inner">
-      <a href="/portfolio/" class={`nav-mobile-link${pathname === '/portfolio/' ? ' active' : ''}`}>Work</a>
-      <a href="/about/" class={`nav-mobile-link${pathname === '/about/' ? ' active' : ''}`}>About</a>
-      <a href="/contact/" class="nav-mobile-cta">Say hello →</a>
+      <a href={routes.work} data-nav-target="work" class={`nav-mobile-link${pathname === routes.work ? ' active' : ''}`}>{dict.nav.work}</a>
+      <a href={routes.about} data-nav-target="about" class={`nav-mobile-link${pathname === routes.about ? ' active' : ''}`}>{dict.nav.about}</a>
+      <div class="nav-mobile-lang-toggle" role="group" aria-label={dict.nav.langGroupLabel}>
+        {locale === 'en'
+          ? <span class="nav-lang-option active" aria-current="true">EN</span>
+          : <a href={enHref} class="nav-lang-option">EN</a>}
+        {locale === 'zh-Hant'
+          ? <span class="nav-lang-option active" aria-current="true">中文</span>
+          : <a href={zhHref} class="nav-lang-option">中文</a>}
+      </div>
+      <a href={routes.contact} data-nav-target="contact" class="nav-mobile-cta">{dict.nav.sayHello}</a>
     </div>
   </div>
 
@@ -148,7 +217,7 @@ const { sections = [] } = Astro.props;
     .nav-links-sections {
       grid-area:    1 / 1;
       justify-self: end;
-      transition:   opacity 0.3s var(--ease);
+      transition:   opacity 0.3s var(--ease), visibility 0s linear 0s;
     }
 
     .nav-links-sections {
@@ -157,16 +226,24 @@ const { sections = [] } = Astro.props;
       gap:            4px;
       opacity:        0;
       pointer-events: none;
+      visibility:     hidden;
     }
 
+    /* Hidden groups drop out of the tab order only once their fade-out
+       finishes (delay matches the opacity transition) — a visitor tabbing
+       through can never land on a link that's already invisible. */
     .nav.case-mode .nav-links-default {
       opacity:        0;
       pointer-events: none;
+      visibility:     hidden;
+      transition:     opacity 0.3s var(--ease), visibility 0s linear 0.3s;
     }
 
     .nav.case-mode .nav-links-sections {
       opacity:        1;
       pointer-events: auto;
+      visibility:     visible;
+      transition:     opacity 0.3s var(--ease), visibility 0s linear 0s;
     }
   }
 
@@ -205,7 +282,13 @@ const { sections = [] } = Astro.props;
     font-size:      12px;
     font-weight:    500;
     letter-spacing: 0.02em;
-    color:          var(--accent);
+    /* --accent-text, not --accent: light theme's teal accent is only
+       3.05:1 against --bg, failing WCAG AA text contrast (4.5:1) — the
+       border/UI-component use of --accent stays as-is since that only
+       needs 3:1. --accent-text already exists for exactly this (see
+       .intro-location-label) and is a no-op in dark theme where --accent
+       already passes. */
+    color:          var(--accent-text);
     border:         0.5px solid var(--accent);
     border-radius:  var(--r-sm);
     padding:        6px 14px;
@@ -216,6 +299,49 @@ const { sections = [] } = Astro.props;
 
   .nav-cta:hover  { background: var(--accent-dim); box-shadow: var(--neon-sm); }
   .nav-cta:active { transform: scale(0.96); }
+
+  /* ── Language toggle — two-segment switch ─ */
+  .nav-lang-toggle {
+    display:        inline-flex;
+    align-items:    center;
+    gap:            2px;
+    border:         0.5px solid var(--border-2);
+    border-radius:  var(--r-pill);
+    padding:        2px;
+    white-space:    nowrap;
+  }
+
+  .nav-lang-option {
+    display:        inline-flex;
+    align-items:    center;
+    justify-content: center;
+    font-family:    var(--font-body);
+    font-size:      11px;
+    font-weight:    500;
+    letter-spacing: 0.02em;
+    /* --text-2, not --text-3: --text-3 fails WCAG AA (2.2-2.9:1) in both
+       themes and this is a real, essential nav control, not decorative
+       micro-copy. */
+    color:          var(--text-2);
+    padding:        6px 10px;
+    border-radius:  var(--r-pill);
+    transition:     color 0.2s var(--ease), background 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+
+  a.nav-lang-option:hover {
+    color: var(--text-1);
+  }
+
+  a.nav-lang-option:focus-visible {
+    outline:        2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .nav-lang-option.active {
+    color:      var(--text-on-accent);
+    background: var(--accent);
+    box-shadow: var(--neon-sm);
+  }
 
   /* ── Hamburger ─────────────────────────── */
   .nav-burger {
@@ -284,14 +410,20 @@ const { sections = [] } = Astro.props;
     justify-content: center;
     opacity:         0;
     pointer-events:  none;
+    visibility:      hidden;
     transform:       translateY(-10px);
-    transition:      opacity 0.35s var(--ease), transform 0.35s var(--ease);
+    /* visibility drops out only once the fade-out finishes, matching the
+       case-mode nav crossfade above — keeps closed links/buttons out of
+       the tab order without an instant, jarring disappearance. */
+    transition:      opacity 0.35s var(--ease), transform 0.35s var(--ease), visibility 0s linear 0.35s;
   }
 
   .nav-mobile.open {
     opacity:        1;
     pointer-events: auto;
+    visibility:     visible;
     transform:      translateY(0);
+    transition:     opacity 0.35s var(--ease), transform 0.35s var(--ease), visibility 0s linear 0s;
   }
 
   .nav-mobile-inner {
@@ -307,7 +439,9 @@ const { sections = [] } = Astro.props;
     font-weight:    300;
     letter-spacing: -0.02em;
     line-height:    1.1;
-    color:          var(--text-3);
+    /* --text-2, not --text-3: same WCAG AA failure as .nav-lang-option —
+       this is the primary mobile nav, not decorative. */
+    color:          var(--text-2);
     transition:     color 0.2s var(--ease);
   }
 
@@ -319,7 +453,7 @@ const { sections = [] } = Astro.props;
     font-size:      12px;
     font-weight:    500;
     letter-spacing: 0.02em;
-    color:          var(--accent);
+    color:          var(--accent-text);
     border:         0.5px solid var(--accent);
     border-radius:  var(--r-sm);
     padding:        10px 24px;
@@ -329,6 +463,19 @@ const { sections = [] } = Astro.props;
 
   .nav-mobile-cta:hover  { background: var(--accent-dim); box-shadow: var(--neon-sm); }
   .nav-mobile-cta:active { transform: scale(0.96); }
+
+  .nav-mobile-lang-toggle {
+    display:        inline-flex;
+    align-items:    center;
+    gap:            2px;
+    border:         0.5px solid var(--border-2);
+    border-radius:  var(--r-pill);
+    padding:        3px;
+  }
+
+  .nav-mobile-lang-toggle .nav-lang-option {
+    padding: 8px 16px;
+  }
 
   /* ── Responsive ────────────────────────── */
   @media (max-width: 768px) {
@@ -349,6 +496,61 @@ const { sections = [] } = Astro.props;
   const burger = document.getElementById('nav-burger') as HTMLButtonElement | null;
   const mobile = document.getElementById('nav-mobile') as HTMLElement | null;
 
+  // Remember the visitor's language choice so the homepage gate can honor it
+  // on a future visit — see the redirect check in index.astro. Only the
+  // inactive segment of the switch is a real link (the active one is a
+  // non-interactive span), so this only ever fires on an actual switch.
+  document.querySelectorAll<HTMLAnchorElement>('a.nav-lang-option').forEach((link) => {
+    link.addEventListener('click', () => {
+      const targetLocale = link.getAttribute('href')?.startsWith('/ch/') ? 'zh-Hant' : 'en';
+      try { localStorage.setItem('preferredLocale', targetLocale); } catch { /* storage unavailable, non-critical */ }
+    });
+  });
+
+  // ── Entry-aware exit paths for case studies ───────────────────
+  // Two entry points lead into the same case-study pages: Portfolio (hiring
+  // persona) and Services (freelance-work persona). Every non-case-study page
+  // already tells us which world it belongs to via the nav's own `data-variant`
+  // — so stamp that into sessionStorage as "wherever the visitor currently is."
+  // A case-study page then reads it back to point Logo/Work/About/Contact at
+  // the matching home instead of always defaulting to Portfolio.
+  if (nav) {
+    const isCaseStudy = nav.dataset.caseStudy === 'true';
+    const currentVariant = nav.dataset.variant as 'portfolio' | 'services' | undefined;
+
+    if (!isCaseStudy && currentVariant) {
+      try { sessionStorage.setItem('caseStudyOrigin', currentVariant); } catch { /* storage unavailable, non-critical */ }
+    }
+
+    if (isCaseStudy) {
+      const locale = document.documentElement.lang === 'zh-Hant' ? 'zh-Hant' : 'en';
+      const prefix = locale === 'zh-Hant' ? '/ch' : '';
+      const ROUTES = {
+        portfolio: { home: `${prefix}/portfolio/`, work: `${prefix}/portfolio/`,     about: `${prefix}/about/`,          contact: `${prefix}/contact/` },
+        services:  { home: `${prefix}/services/`,  work: `${prefix}/services/work/`, about: `${prefix}/services/about/`, contact: `${prefix}/services/contact/` },
+      };
+
+      let origin: string | null = null;
+      try { origin = sessionStorage.getItem('caseStudyOrigin'); } catch { /* storage unavailable */ }
+
+      let target: Record<string, string>;
+      if (origin === 'services' || origin === 'portfolio') {
+        target = ROUTES[origin];
+      } else {
+        // Direct/cold landing (shared link, search result, bookmark) — no
+        // browsing context to read. Send every exit link to the persona-picker
+        // rather than silently guessing Portfolio.
+        const indexHref = locale === 'zh-Hant' ? '/ch/' : '/';
+        target = { home: indexHref, work: indexHref, about: indexHref, contact: indexHref };
+      }
+
+      document.querySelectorAll<HTMLAnchorElement>('[data-nav-target]').forEach((el) => {
+        const key = el.dataset.navTarget;
+        if (key && target[key]) el.setAttribute('href', target[key]);
+      });
+    }
+  }
+
   if (nav) {
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
@@ -356,44 +558,45 @@ const { sections = [] } = Astro.props;
   }
 
   if (burger && mobile) {
+    // Single source of truth for the four places that used to duplicate
+    // this toggle. `inert` is the real fix (removes the closed overlay's
+    // links/buttons from focus and hit-testing at the DOM level, not just
+    // visually) — aria-hidden is kept alongside it for older assistive-tech
+    // support that predates inert.
+    function setMobileOpen(open: boolean): void {
+      // Move focus out BEFORE hiding — setting aria-hidden/inert on a
+      // container that still holds focus (e.g. clicking the close button
+      // itself) is an ARIA-spec violation; browsers will refuse to apply
+      // it and log a console warning if focus isn't relocated first.
+      if (!open && mobile!.contains(document.activeElement)) {
+        burger!.focus();
+      }
+      mobile!.classList.toggle('open', open);
+      burger!.classList.toggle('open', open);
+      burger!.setAttribute('aria-expanded', String(open));
+      mobile!.setAttribute('aria-hidden', String(!open));
+      if (open) mobile!.removeAttribute('inert');
+      else mobile!.setAttribute('inert', '');
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
     burger.addEventListener('click', () => {
-      const isOpen = mobile.classList.toggle('open');
-      burger.classList.toggle('open');
-      burger.setAttribute('aria-expanded', String(isOpen));
-      mobile.setAttribute('aria-hidden', String(!isOpen));
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      setMobileOpen(!mobile!.classList.contains('open'));
     });
 
     mobile.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobile.classList.remove('open');
-        burger.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-        mobile.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', () => setMobileOpen(false));
     });
 
     const closeBtn = document.getElementById('nav-mobile-close');
     if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
-        mobile.classList.remove('open');
-        burger.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-        mobile.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      });
+      closeBtn.addEventListener('click', () => setMobileOpen(false));
     }
 
     // Escape key closes mobile menu
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobile.classList.contains('open')) {
-        mobile.classList.remove('open');
-        burger.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-        mobile.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-        burger.focus();
+      if (e.key === 'Escape' && mobile!.classList.contains('open')) {
+        setMobileOpen(false);
       }
     });
 

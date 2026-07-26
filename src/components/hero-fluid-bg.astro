@@ -1,12 +1,13 @@
 ---
 interface Props {
   debugPanel?: boolean;
+  theme?:      'dark' | 'light';
 }
 
-const { debugPanel = true } = Astro.props;
+const { debugPanel = true, theme = 'light' } = Astro.props;
 ---
 
-<div class="hero-fluid-bg" data-hero-fluid>
+<div class="hero-fluid-bg" data-hero-fluid data-fluid-theme={theme}>
   <canvas class="hero-fluid-canvas" data-fluid-canvas aria-hidden="true"></canvas>
 
   <div class="hero-fluid-fallback" data-fluid-fallback>
@@ -72,7 +73,6 @@ const { debugPanel = true } = Astro.props;
     height:      100%;
     display:     block;
     touch-action: none;
-    cursor:      crosshair;
   }
 
   .hero-fluid-fallback {
@@ -270,11 +270,11 @@ const { debugPanel = true } = Astro.props;
 </style>
 
 <script>
-  // Adapted from a standalone WebGL fluid-simulation prototype. This page
-  // (`/services`) is world="light" only — there is no runtime theme toggle
-  // in this codebase, so the amber/dark-theme shader branch and the
-  // MutationObserver-driven theme mix that used to live in the display
-  // shader have been removed entirely (see displayShader below).
+  // Adapted from a standalone WebGL fluid-simulation prototype. No page in
+  // this codebase toggles theme at runtime, so unlike the original prototype
+  // there's no live MutationObserver/theme-mix — each instance just picks
+  // its static light/dark display shader once at init (see displayShader
+  // below), based on the theme prop passed in from the Astro component.
 
   interface FluidConfig {
     SIM_RESOLUTION:       number;
@@ -622,10 +622,11 @@ const { debugPanel = true } = Astro.props;
         gl_FragColor = vec4(vel, 0.0, 1.0);
       }`;
 
-    // Light-theme (CA Stone) only — the amber/dark-theme (HK Night) branch
-    // and the uTheme mix used to live here; removed since this page never
-    // runs in data-theme="dark".
-    const displayShader = `
+    // Two static color branches — one per page theme, picked once at init
+    // from data-fluid-theme below. No live MutationObserver/theme-mix here:
+    // nothing in this codebase toggles theme at runtime, so each page just
+    // gets the one branch it needs.
+    const displayShaderLight = `
       precision highp float; varying vec2 vUv;
       uniform sampler2D uTexture; uniform float uGlow; uniform float uExposure;
       uniform float uVignette; uniform float uTime;
@@ -652,6 +653,32 @@ const { debugPanel = true } = Astro.props;
         col += (dn - 0.5) / 255.0;
         gl_FragColor = vec4(col, 1.0);
       }`;
+
+    const displayShaderDark = `
+      precision highp float; varying vec2 vUv;
+      uniform sampler2D uTexture; uniform float uGlow; uniform float uExposure;
+      uniform float uVignette; uniform float uTime;
+      void main(){
+        vec3 dye = texture2D(uTexture, vUv).rgb;
+        float density = max(max(dye.r, dye.g), dye.b);
+        float t = 1.0 - exp(-density * uExposure);
+        float d = distance(vUv, vec2(0.5));
+        float vig = smoothstep(0.85, 0.32, d);
+
+        vec3 cLow  = vec3(0.62, 0.22, 0.04);
+        vec3 cMid  = vec3(0.937, 0.624, 0.153);      // #EF9F27
+        vec3 cHigh = vec3(1.0, 0.95, 0.82);
+        vec3 grad = mix(cLow, cMid, smoothstep(0.0, 0.45, t));
+        grad = mix(grad, cHigh, smoothstep(0.55, 1.0, t));
+        vec3 col = vec3(0.012, 0.017, 0.030) + grad * t * uGlow;
+        col *= mix(1.0 - uVignette, 1.0, vig);
+
+        float dn = fract(sin(dot(vUv + uTime, vec2(12.9898,78.233))) * 43758.5453);
+        col += (dn - 0.5) / 255.0;
+        gl_FragColor = vec4(col, 1.0);
+      }`;
+
+    const displayShader = root.dataset.fluidTheme === 'dark' ? displayShaderDark : displayShaderLight;
 
     const blit = (() => {
       gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());

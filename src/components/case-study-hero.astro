@@ -12,9 +12,12 @@ const {
   gifAspectRatio,
   gifAlt,
   role = [],
+  roleLabel = 'Role:',
   tools = [],
   toolsLabel = 'Tool:',
   duration = [],
+  durationLabel = 'Duration:',
+  noVideoLabel = 'Demo video coming soon',
 } = Astro.props;
 
 const restTitle = accentTitle ? title.slice(accentTitle.length) : title;
@@ -42,14 +45,14 @@ const restTitle = accentTitle ? title.slice(accentTitle.length) : title;
               <svg class="case-hero-video-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M7 4v16l13-8z" />
               </svg>
-              <p class="case-hero-video-empty-label">Demo video coming soon</p>
+              <p class="case-hero-video-empty-label">{noVideoLabel}</p>
             </div>
           )}
         </div>
 
         <div class="case-hero-meta">
           <dl class="case-meta-box">
-            <dt class="case-meta-label">Role:</dt>
+            <dt class="case-meta-label">{roleLabel}</dt>
             <dd>
               <ul class="case-meta-list">
                 {role.map((item: string) => <li>{item}</li>)}
@@ -67,7 +70,7 @@ const restTitle = accentTitle ? title.slice(accentTitle.length) : title;
           </dl>
 
           <dl class="case-meta-box">
-            <dt class="case-meta-label">Duration:</dt>
+            <dt class="case-meta-label">{durationLabel}</dt>
             <dd>
               <ul class="case-meta-list">
                 {duration.map((item: string) => <li>{item}</li>)}
@@ -131,7 +134,7 @@ const restTitle = accentTitle ? title.slice(accentTitle.length) : title;
     border:         0.5px solid var(--border);
     border-radius:  var(--r-lg);
     background:     var(--bg-3);
-    color:          var(--text-3);
+    color:          var(--text-2);
   }
 
   .case-hero-video-empty-icon {

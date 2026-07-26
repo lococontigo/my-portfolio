@@ -1,65 +1,111 @@
 ---
-const cards = [
+interface WorkCard {
+  tag:      string;
+  title:    string;
+  href:     string;
+  stats:    string[];
+  image:    string;
+  alt:      string;
+  width:    number;
+  height:   number;
+  external?: boolean;
+}
+
+interface Props {
+  cards?: WorkCard[];
+  prevLabel?: string;
+  nextLabel?: string;
+  dotLabel?: (n: number) => string;
+}
+
+// Edit carousel teaser copy here — hrefs stay pointing at the (English-only,
+// for now) case study pages regardless of the card copy's language.
+const defaultCards: WorkCard[] = [
   {
     tag:    'SaaS',
     title:  'Yocale',
     href:   '/work/yocale/',
     stats:  ['5.15% click-through rate', '40% lower bounce rate'],
-    image:  '/images/yocale-mockup.webp',
-    alt:    'Yocale dashboard — booking management interface',
+    image:  '/images/light%20logo/color%20yocale.png',
+    alt:    'Yocale logo',
+    width:  176,
+    height: 100,
   },
   {
     tag:    'Building Automation',
     title:  'Delta Controls',
     href:   '/work/delta/',
     stats:  ['15% higher engagement', '22.5% more download conversions'],
-    image:  '/images/Mac-Studio-mockup.svg',
-    alt:    'Delta Intelligent Building Technologies resources intranet mockup',
+    image:  '/images/Delta%20Controls.svg',
+    alt:    'Delta Controls logo',
+    width:  176,
+    height: 100,
   },
   {
     tag:    'Equipment Rentals',
     title:  'ANT Equipment Group',
     href:   '/work/ant/',
     stats:  ['80% more engagement connections', '40% lower bounce rate'],
-    image:  '/images/ant-mockup.svg',
-    alt:    'ANT Rentals blog mockup',
+    image:  '/images/light%20logo/ant.png',
+    alt:    'ANT Rentals logo',
+    width:  176,
+    height: 100,
   },
   {
-    tag:    'Mobile App',
-    title:  'Crowd Ease',
-    href:   '/work/crowd-ease/',
-    stats:  ['Capstone Award winner', '8-week MVP build'],
-    image:  '/images/UI-CROWDEASE-1.svg',
-    alt:    'Crowd Ease mobile app interface showing event tracking and live crowd data',
+    // Real figures pulled from the "Freelance Projects" timeline entry
+    // (timeline.astro) covering this same RKWINC engagement — no case
+    // study exists for it, so this card links straight to the live site.
+    tag:      'WordPress & E-commerce',
+    title:    'RKW Communications',
+    href:     'https://rkwinc.com/',
+    stats:    ['2,000+ projects migrated', '25% increase in conversion rates'],
+    image:    '/images/light%20logo/rkw.png',
+    alt:      'RKW Communications logo',
+    width:    176,
+    height:   100,
+    external: true,
   },
 ];
+
+const {
+  cards = defaultCards,
+  prevLabel = 'Previous project',
+  nextLabel = 'Next project',
+  dotLabel = (n: number) => `Go to project ${n}`,
+} = Astro.props as Props;
 ---
 
 <div class="work-carousel" id="work-carousel" data-stagger-reveal>
 
   <div class="work-carousel-track" id="work-carousel-track">
     {cards.map((card) => (
-      <a class="work-card" href={card.href} data-stagger-child>
+      <a
+        class="work-card"
+        href={card.href}
+        target={card.external ? '_blank' : undefined}
+        rel={card.external ? 'noopener noreferrer' : undefined}
+        data-stagger-child
+      >
         <span class="work-card-tag">{card.tag}</span>
         <h3 class="work-card-title">{card.title}</h3>
         <ul class="work-card-stats">
           {card.stats.map((stat) => <li>{stat}</li>)}
         </ul>
         <div class="work-card-image-wrap">
-          <img src={card.image} alt={card.alt} class="work-card-image" width="704" height="704" loading="lazy" />
+          <img src={card.image} alt={card.alt} class="work-card-image" width={card.width} height={card.height} loading="lazy" />
         </div>
       </a>
     ))}
   </div>
 
   <div class="work-carousel-controls">
-    <button class="work-carousel-btn" id="work-carousel-prev" aria-label="Previous project">‹</button>
+    <button type="button" class="work-carousel-btn" id="work-carousel-prev" aria-label={prevLabel}>‹</button>
     <div class="work-carousel-dots" id="work-carousel-dots">
       {cards.map((_, i) => (
-        <button class={`work-carousel-dot${i === 0 ? ' active' : ''}`} aria-label={`Go to project ${i + 1}`}></button>
+        <button type="button" class={`work-carousel-dot${i === 0 ? ' active' : ''}`} aria-label={dotLabel(i + 1)}></button>
       ))}
     </div>
-    <button class="work-carousel-btn" id="work-carousel-next" aria-label="Next project">›</button>
+    <button type="button" class="work-carousel-btn" id="work-carousel-next" aria-label={nextLabel}>›</button>
   </div>
 
 </div>
@@ -67,6 +113,7 @@ const cards = [
 <style>
   .work-carousel-track {
     display:             flex;
+    align-items:         stretch;
     gap:                 clamp(12px, 1.7vw, 24px);
     overflow-x:          auto;
     scroll-snap-type:    x mandatory;
@@ -152,16 +199,19 @@ const cards = [
   }
 
   .work-card-image-wrap {
-    margin-top:    auto;
-    aspect-ratio:  1 / 1;
-    border-radius: var(--r-md);
-    overflow:      hidden;
+    margin-top:      auto;
+    border-radius:   var(--r-md);
+    overflow:        hidden;
+    display:         flex;
+    justify-content: center;
   }
 
   .work-card-image {
+    display:    block;
     width:      100%;
-    height:     100%;
-    object-fit: cover;
+    max-width:  178px;
+    height:     auto;
+    object-fit: contain;
     transition: transform 0.5s var(--ease);
   }
 
@@ -175,9 +225,10 @@ const cards = [
   .work-carousel-controls {
     display:         flex;
     align-items:     center;
-    justify-content: center;
-    gap:             var(--space-sm);
-    margin-top:      var(--space-md);
+    justify-content: space-between;
+    margin-top:      28px;
+    padding-top:     20px;
+    border-top:      0.5px solid var(--border);
   }
 
   .work-carousel-btn {
@@ -194,13 +245,19 @@ const cards = [
     font-family:     var(--font-body);
     font-size:       16px;
     line-height:     1;
-    transition:      all 0.2s var(--ease);
+    transition-property:       border-color, color, box-shadow, scale;
+    transition-duration:       0.2s;
+    transition-timing-function: var(--ease);
   }
 
   .work-carousel-btn:hover {
     border-color: var(--accent);
-    color:        var(--accent);
+    color:        var(--accent-text);
     box-shadow:   var(--neon-sm);
+  }
+
+  .work-carousel-btn:active {
+    scale: 0.96;
   }
 
   .work-carousel-dots {
@@ -210,6 +267,7 @@ const cards = [
   }
 
   .work-carousel-dot {
+    position:      relative;
     width:         6px;
     height:        6px;
     border-radius: 50%;
@@ -217,7 +275,22 @@ const cards = [
     cursor:        pointer;
     border:        none;
     padding:       0;
-    transition:    all 0.25s var(--ease);
+    transition-property:       background-color, box-shadow, width, border-radius;
+    transition-duration:       0.25s;
+    transition-timing-function: var(--ease);
+  }
+
+  /* Dots sit only 8px apart, so the hit area can't reach the usual 40px
+     minimum without overlapping a neighbor — 12px is the largest square
+     that still clears the tightest (two inactive dots) spacing. */
+  .work-carousel-dot::after {
+    content:   '';
+    position:  absolute;
+    top:       50%;
+    left:      50%;
+    width:     12px;
+    height:    12px;
+    transform: translate(-50%, -50%);
   }
 
   .work-carousel-dot:focus-visible {
@@ -238,49 +311,143 @@ const cards = [
 </style>
 
 <script>
-  const track = document.getElementById('work-carousel-track');
-  const prev  = document.getElementById('work-carousel-prev');
-  const next  = document.getElementById('work-carousel-next');
-  const dotsEl = document.getElementById('work-carousel-dots');
+  const carousel = document.getElementById('work-carousel');
+  const track    = document.getElementById('work-carousel-track');
+  const prevBtn  = document.getElementById('work-carousel-prev');
+  const nextBtn  = document.getElementById('work-carousel-next');
+  const dotsEl   = document.getElementById('work-carousel-dots');
 
-  if (track && prev && next && dotsEl) {
-    const cards: HTMLElement[] = Array.from(track.querySelectorAll<HTMLElement>('.work-card'));
-    const dots: HTMLElement[]  = Array.from(dotsEl.querySelectorAll<HTMLElement>('.work-carousel-dot'));
+  if (carousel && track && prevBtn && nextBtn && dotsEl) {
+    const realCards: HTMLElement[] = Array.from(track.querySelectorAll<HTMLElement>('.work-card'));
+    const dots: HTMLElement[] = Array.from(dotsEl.querySelectorAll<HTMLElement>('.work-carousel-dot'));
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const N = realCards.length;
+
+    // ── Infinite loop ──────────────────────────
+    // Duplicate the full set of cards before and after the real ones, so
+    // Prev/Next always has another (visually identical) card to animate
+    // toward. Once that scroll settles, we silently snap back into the real
+    // "middle" copy — the visitor sees a seamless loop, never a hard edge.
+    function cloneSet(): HTMLElement[] {
+      return realCards.map((card) => {
+        const clone = card.cloneNode(true) as HTMLElement;
+        clone.removeAttribute('data-stagger-child');
+        clone.setAttribute('aria-hidden', 'true');
+        clone.setAttribute('tabindex', '-1');
+        return clone;
+      });
+    }
+
+    cloneSet().reverse().forEach((clone) => track!.insertBefore(clone, track!.firstChild));
+    cloneSet().forEach((clone) => track!.appendChild(clone));
+
+    let activeDomIndex = N; // logical index 0 lives at dom index N (the real, middle copy)
 
     function cardStep(): number {
-      const first = cards[0];
+      const first = realCards[0];
       if (!first) return 0;
       const style = getComputedStyle(track!);
       const gap = parseFloat(style.columnGap || style.gap || '0');
       return first.getBoundingClientRect().width + gap;
     }
 
-    function scrollToIndex(index: number) {
-      const clamped = Math.max(0, Math.min(cards.length - 1, index));
-      track!.scrollTo({ left: cardStep() * clamped, behavior: reduceMotion ? 'auto' : 'smooth' });
+    function updateDots(domIndex: number) {
+      const logical = ((domIndex - N) % N + N) % N;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === logical));
     }
 
-    function currentIndex(): number {
-      const step = cardStep();
-      return step ? Math.round(track!.scrollLeft / step) : 0;
+    function scrollToDom(domIndex: number, instant = false) {
+      track!.scrollTo({ left: cardStep() * domIndex, behavior: instant || reduceMotion ? 'auto' : 'smooth' });
     }
 
-    function updateActiveDot() {
-      const idx = currentIndex();
-      dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
+    function goNext() {
+      activeDomIndex += 1;
+      scrollToDom(activeDomIndex);
     }
 
-    prev.addEventListener('click', () => scrollToIndex(currentIndex() - 1));
-    next.addEventListener('click', () => scrollToIndex(currentIndex() + 1));
-    dots.forEach((dot, i) => dot.addEventListener('click', () => scrollToIndex(i)));
+    function goPrev() {
+      activeDomIndex -= 1;
+      scrollToDom(activeDomIndex);
+    }
 
+    function goToDot(i: number) {
+      activeDomIndex = N + i;
+      scrollToDom(activeDomIndex);
+    }
+
+    // Land in the real (middle) copy on load — no animation.
+    track!.scrollLeft = cardStep() * activeDomIndex;
+    updateDots(activeDomIndex);
+
+    prevBtn.addEventListener('click', goPrev);
+    nextBtn.addEventListener('click', goNext);
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goToDot(i)));
+
+    // Settle handler — covers button/dot moves AND manual drag-scrolling.
+    // Whenever scrolling stops inside a clone zone, jump silently to the
+    // equivalent card in the real copy so the loop never runs out of cards.
     let scrollTimer = 0;
     track.addEventListener('scroll', () => {
       window.clearTimeout(scrollTimer);
-      scrollTimer = window.setTimeout(updateActiveDot, 100);
+      scrollTimer = window.setTimeout(() => {
+        const step = cardStep();
+        const measured = step ? Math.round(track!.scrollLeft / step) : activeDomIndex;
+        if (measured < N || measured >= 2 * N) {
+          const logical = ((measured - N) % N + N) % N;
+          activeDomIndex = N + logical;
+          track!.scrollLeft = cardStep() * activeDomIndex;
+        } else {
+          activeDomIndex = measured;
+        }
+        updateDots(activeDomIndex);
+      }, 100);
+    }, { passive: true });
+
+    // Card width is fluid (clamp()), so a viewport resize changes cardStep() —
+    // reposition instantly using the stored logical state, never re-derived
+    // from the (now stale) scrollLeft/step ratio.
+    window.addEventListener('resize', () => {
+      track!.scrollLeft = cardStep() * activeDomIndex;
     });
 
-    updateActiveDot();
+    // ── Autoplay ────────────────────────────────
+    // Off by default for reduced-motion visitors. Otherwise runs only while
+    // the carousel is actually on screen, and pauses on hover/focus/drag so
+    // it never fights a visitor mid-interaction.
+    const AUTOPLAY_MS = 6000;
+    let autoplayTimer = 0;
+    let inView = !('IntersectionObserver' in window);
+
+    function stopAutoplay() {
+      window.clearInterval(autoplayTimer);
+    }
+
+    function startAutoplay() {
+      if (reduceMotion || !inView || document.hidden) return;
+      stopAutoplay();
+      autoplayTimer = window.setInterval(goNext, AUTOPLAY_MS);
+    }
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          inView = entry.isIntersecting;
+          if (inView) startAutoplay(); else stopAutoplay();
+        });
+      }, { threshold: 0.4 });
+      io.observe(carousel);
+    }
+
+    track.addEventListener('pointerenter', stopAutoplay);
+    track.addEventListener('pointerleave', startAutoplay);
+    track.addEventListener('focusin', stopAutoplay);
+    track.addEventListener('focusout', (e: FocusEvent) => {
+      if (!track!.contains(e.relatedTarget as Node)) startAutoplay();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopAutoplay(); else startAutoplay();
+    });
+
+    startAutoplay();
   }
 </script>

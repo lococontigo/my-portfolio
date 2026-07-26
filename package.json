@@ -9,9 +9,23 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:a11y": "playwright test --config=tests/playwright.config.mjs tests/a11y.spec.mjs",
+    "test:functional": "playwright test --config=tests/playwright.config.mjs tests/functional.spec.mjs",
+    "test:perf": "node tests/lighthouse-audit.mjs",
+    "test:seo": "node tests/seo-html-audit.mjs",
+    "test:security": "node tests/security-headers.mjs",
+    "test:audit": "node tests/run-audit.mjs"
   },
   "dependencies": {
     "astro": "^6.4.4"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.62.0",
+    "chrome-launcher": "^1.2.1",
+    "html-validate": "^11.5.6",
+    "lighthouse": "^13.4.1",
+    "sharp": "^0.35.3"
   }
 }

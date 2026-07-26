@@ -1,16 +1,31 @@
 ---
 import BaseLayout from '../layouts/base-layout.astro';
-import HeroFluidBg from '../components/hero-fluid-bg.astro';
+import HeroShowcaseGallery from '../components/hero-showcase-gallery.astro';
 import ServiceCard from '../components/service-card.astro';
 import Timeline from '../components/timeline.astro';
 import WorkCarousel from '../components/work-carousel.astro';
-import Testimonials from '../components/testimonials.astro';
+import TestimonialsWall from '../components/testimonials-wall.astro';
 import '../styles/services.css';
+
+// Process steps for the "Our Workflow" timeline below — distinct from the
+// career-history default in Timeline.astro (used on about.astro instead).
+const workflowItems = [
+  { title: 'Discovery',   desc: 'We start by getting clear on your business goals, target audience, competitors, and existing content.' },
+  { title: 'Strategy',    desc: 'From there we map out the site architecture, user journeys, SEO foundations, and conversion opportunities.' },
+  { title: 'UX',          desc: 'Wireframes and user flows get refined through feedback sessions before any visual design begins.' },
+  { title: 'UI Design',   desc: 'A visual direction comes together into responsive layouts and a reusable design system.' },
+  { title: 'Development', desc: 'The design gets built with proper CMS setup, responsive implementation, and performance optimization.' },
+  { title: 'Testing',     desc: 'Every site is tested across mobile, accessibility, and browser compatibility, including forms and analytics.' },
+  { title: 'Launch',      desc: 'Launch day covers DNS, analytics, and Search Console setup, plus training so you can manage it yourself.' },
+  { title: 'Growth',      desc: 'After launch, monthly maintenance, analytics reviews, A/B testing, and feature enhancements keep things moving.' },
+];
 ---
 
 <BaseLayout
   title="Services"
   world="light"
+  navVariant="services"
+  translated={true}
   description="Websites built to grow your business. UX strategy, thoughtful design, and modern web development from Andrew Yip — designer and developer based in Vancouver, Canada."
 >
   <script slot="head" is:inline type="application/ld+json">
@@ -32,9 +47,7 @@ import '../styles/services.css';
   <main class="main">
 
     <!-- ── Hero ───────────────────────────────── -->
-    <section class="hero-section">
-      <HeroFluidBg debugPanel={true} />
-
+    <section class="hero-section hero-section-gallery">
       <div class="padding-global">
         <div class="container-main">
           <div class="hero-content">
@@ -49,17 +62,10 @@ import '../styles/services.css';
 
               <p class="hero-body">Your website should do more than look professional. It should build trust, guide visitors naturally, and support your business goals. I combine UX strategy, thoughtful design, and modern web development to create websites that are easy to use, easy to manage, and built for long-term growth.</p>
 
-              <a href="/contact/" class="btn btn-ghost btn-lg hero-cta">Get A Free Consultation</a>
+              <a href="/services/contact/" class="btn btn-ghost btn-lg hero-cta">Get A Free Consultation</a>
             </div>
 
-            <div class="hero-logos-grid">
-              <img class="intro-logo-item" src="/images/Delta%20Controls.svg"     alt="Delta Controls"     width="176" height="100" />
-              <img class="intro-logo-item" src="/images/Rosamary%20Diamond.svg"   alt="Rosemary Diamond"   width="176" height="100" />
-              <img class="intro-logo-item" src="/images/Blu%20bathworks.svg"      alt="Blu Bathworks"      width="176" height="100" />
-              <img class="intro-logo-item" src="/images/Yocale%20AI.svg"          alt="Yocale AI"          width="176" height="100" />
-              <img class="intro-logo-item" src="/images/RKW%20Communications.svg" alt="RKW Communications" width="176" height="100" />
-              <img class="intro-logo-item" src="/images/ANT%20Rentals.svg"        alt="ANT Rentals"        width="176" height="100" />
-            </div>
+            <HeroShowcaseGallery />
 
           </div>
         </div>
@@ -72,47 +78,52 @@ import '../styles/services.css';
         <div class="container-main">
           <div class="help-content">
 
-            <h2 class="services-heading">I Can Help You With...</h2>
+            <h2 class="services-heading">I Can Help You With</h2>
 
-            <div class="help-grid">
+            <div class="help-grid" data-stagger-reveal>
               <ServiceCard
                 title="Design"
                 subheading="Great websites begin long before design."
-                items={[
-                  'UX Audits',
-                  'Website Strategy',
-                  'Information Architecture',
-                  'Website Redesign',
-                  'User-friendly Interface',
-                  'Responsive Website',
-                  'Design Systems',
-                  'Landing Pages',
+                summary="I start with UX audits, website strategy, and information architecture, then design responsive, user-friendly interfaces, design systems, and landing pages."
+                tools={[
+                  { name: 'Figma', icon: 'figma' },
+                  { name: 'Adobe Photoshop', icon: 'adobephotoshop' },
+                  { name: 'Adobe Illustrator', icon: 'adobeillustrator' },
+                  { name: 'Adobe InDesign', icon: 'adobeindesign' },
+                  { name: 'Adobe XD', icon: 'adobexd' },
+                  { name: 'Adobe After Effects', icon: 'adobeaftereffects' },
                 ]}
+                data-stagger-child
               />
               <ServiceCard
                 title="Development"
-                subheading="A beautiful design needs implementation."
-                items={[
-                  'WordPress Development',
-                  'Webflow Development',
-                  'Responsive Development',
-                  'Accessibility Best Practices',
-                  'CMS Configuration',
-                  'Custom Front-end Development',
+                subheading="A beautiful design needs execution."
+                summary="I build what's designed — from WordPress and Webflow development to responsive, accessible, custom front-end code."
+                tools={[
+                  { name: 'HTML5', icon: 'html5' },
+                  { name: 'CSS3', icon: 'css3' },
+                  { name: 'JavaScript', icon: 'javascript' },
+                  { name: 'PHP', icon: 'php' },
+                  { name: 'Git', icon: 'git' },
+                  { name: 'WordPress', icon: 'wordpress' },
+                  { name: 'Webflow', icon: 'webflow' },
+                  { name: 'Claude Code', icon: 'claude' },
+              
                 ]}
+                data-stagger-child
               />
               <ServiceCard
                 title="Full Package"
                 subheading="Design and development plus..."
-                items={[
-                  'Technical SEO Foundations',
-                  'Google Analytics Setup',
-                  'Search Console Configuration',
-                  'Performance Optimization',
-                  'Website Launch',
-                  'Website Maintenance',
-                  'Continuous Improvements',
+                summary="Beyond design and development, I set up technical SEO, Google Analytics, and Search Console, optimize performance, and handle launch and ongoing maintenance."
+                tools={[
+                  { name: 'Google Analytics', icon: 'googleanalytics' },
+                  { name: 'Google Search Console', icon: 'googlesearchconsole' },
+                  { name: 'Google Tag Manager', icon: 'googletagmanager' },
+                  { name: 'Miro', icon: 'miro' },
+                  { name: 'Trello', icon: 'trello' },
                 ]}
+                data-stagger-child
               />
             </div>
 
@@ -127,14 +138,15 @@ import '../styles/services.css';
         <div class="container-main">
           <div class="workflow-content">
 
+            <h2 class="services-heading">How It's Gonna Work</h2>
+
             <div class="workflow-grid">
               <div class="workflow-left">
-                <h2 class="services-heading">How It's Gonna Work...</h2>
-                <h3 class="workflow-subtitle">Our Workflow</h3>
+                <h3 class="workflow-subtitle">My Workflow</h3>
                 <p class="workflow-body">Every project follows a structured process to reduce uncertainty, encourage collaboration, and ensure every decision supports your business goals.</p>
               </div>
               <div class="workflow-right">
-                <Timeline />
+                <Timeline items={workflowItems} />
               </div>
             </div>
 
@@ -150,8 +162,8 @@ import '../styles/services.css';
           <div class="companies-content">
 
             <div class="companies-heading-row">
-              <h2 class="services-heading">Companies I have worked with</h2>
-              <a href="/portfolio/" class="companies-see-all">See All Projects →</a>
+              <h2 class="services-heading">Projects I have worked with</h2>
+              <a href="/services/work/" class="companies-see-all">See All Projects →</a>
             </div>
 
             <WorkCarousel />
@@ -170,7 +182,7 @@ import '../styles/services.css';
             <h2 class="services-heading">What People Say About Me</h2>
 
             <div class="services-testi-box">
-              <Testimonials />
+              <TestimonialsWall />
             </div>
 
           </div>
@@ -184,7 +196,7 @@ import '../styles/services.css';
         <div class="container-main">
           <div class="closing-cta-content">
             <h2 class="closing-cta-headline">Let's Build Something Great Together</h2>
-            <a href="/contact/" class="btn btn-ghost btn-lg">Get A Free Consultation</a>
+            <a href="/services/contact/" class="btn btn-ghost btn-lg">Get A Free Consultation</a>
           </div>
         </div>
       </div>

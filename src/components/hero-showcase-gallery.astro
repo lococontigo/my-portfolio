@@ -1,0 +1,347 @@
+---
+// Two-column, ever-scrolling photo showcase for the services hero — replaces
+// the client-logo trust strip there. Purely decorative/atmospheric (the real
+// case-study content lives on /work/*), so the whole gallery is aria-hidden.
+//
+// Content is organized as a sequence of per-project "sets" (3 images per
+// column each). Both columns always show the SAME set at rest — the whole
+// gallery is "about" one case study at a time — then both advance together
+// to the next set: Delta Controls → Yocale → Ant → Crowd Ease → back to
+// Delta. All four sets are real, curated imagery from public/images/service-hero/.
+interface ShowcaseImage {
+  src?: string;
+  alt?: string;
+  fit?: 'cover' | 'contain';
+  bg?:  'light' | 'dark';
+  // Special-cased slide: renders the two-row auto-scrolling gift-card
+  // marquee (see below) instead of a plain <img>.
+  giftCards?: boolean;
+  // Special-cased slide: renders a looping, muted <video> instead of an
+  // <img> — path to the video file, reusing `alt` as its aria-label.
+  video?: string;
+}
+
+// Yocale's gift-card designs, reused from the real case study's own
+// .feature-gift-cards marquee (src/pages/work/yocale.astro) — same assets,
+// same two-row grouping, just scaled down to fit a 342×342 showcase tile.
+const giftCardsRow1 = [
+  { src: '/images/yocale/gift_cards/yocale-gift-card-thank-you.webp', alt: 'Yocale "Thank You" gift card design' },
+  { src: '/images/yocale/gift_cards/yocale-gift-card-congrats.webp', alt: 'Yocale "Congrats" gift card design' },
+  { src: '/images/yocale/gift_cards/yocale-gift-card-for-you.webp', alt: 'Yocale "For You" gift card design' },
+];
+const giftCardsRow2 = [
+  { src: '/images/yocale/gift_cards/yocale-gift-card-just-because.webp', alt: 'Yocale "Just Because" gift card design' },
+  { src: '/images/yocale/gift_cards/yocale-gift-card-with-love.webp', alt: 'Yocale "With Love" gift card design' },
+  { src: '/images/yocale/gift_cards/yocale-gift-card-happy-birthday.webp', alt: 'Yocale "Happy Birthday" gift card design' },
+];
+
+const columnA: ShowcaseImage[] = [
+  // Delta Controls (real)
+  { src: '/images/service-hero/delta/delta-stakeholder-interview-calls.webp', alt: 'Stakeholder video interviews during the Delta Controls research phase' },
+  { src: '/images/service-hero/delta/delta-source-hero-mockup.webp', alt: 'The Source resource hub homepage, shown on a laptop mockup' },
+  { src: '/images/service-hero/delta/delta-homepage-header.webp', alt: 'The Source homepage header on a laptop mockup' },
+  // Yocale (real)
+  { src: '/images/service-hero/yocale/yocale-buy-now-pay-later-phone.webp', alt: 'Yocale "Buy Now, Pay Later" payment option shown on a phone' },
+  { src: '/images/service-hero/yocale/yocale-create-invoices-phone.webp', alt: 'Yocale invoicing feature — Create Invoices In Seconds, Get Paid Fast' },
+  { src: '/images/service-hero/yocale/yocale-best-beauty-header.webp', alt: 'Yocale landing page header for the beauty industry' },
+  // Ant Equipment Group (real)
+  { src: '/images/service-hero/ant/ant-website-category-page.webp', alt: 'ANT Rentals equipment category page, shown on a laptop mockup' },
+  { src: '/images/service-hero/ant/ant-blog-forklift-retail.webp', alt: 'ANT Rentals blog post — Brand New Forklift For Retail' },
+  { src: '/images/service-hero/ant/ant-team-photo.webp', alt: 'The ANT Rentals team' },
+  // Crowd Ease (real)
+  { src: '/images/service-hero/crowd-ease/crowd-ease-dashboard-red-phone.webp', alt: 'Crowd Ease event analytics dashboard on a phone' },
+  { src: '/images/service-hero/crowd-ease/crowd-ease-dashboard-duotone-phone.webp', alt: 'Crowd Ease event analytics dashboard, duotone phone mockup' },
+  { src: '/images/service-hero/crowd-ease/crowd-ease-dashboard-walkthrough.webp', alt: "Crowd Ease weekly events dashboard on a phone" },
+];
+
+// Set blocks are in REVERSE order (Crowd Ease → Ant → Yocale → Delta)
+// compared to columnA. Both columns advance through their own array with
+// the exact same shared step, in the exact same direction (index
+// increasing); reversing this array is what makes column B visually slide
+// the opposite way (down) while still landing on the *same* case study as
+// column A at every rest point — see the script's comment on `direction`
+// for why.
+const columnB: ShowcaseImage[] = [
+  // Crowd Ease (real)
+  { src: '/images/service-hero/crowd-ease/crowd-ease-team-presentation.webp', alt: 'The Crowd Ease team presenting to panelists' },
+  { src: '/images/service-hero/crowd-ease/crowd-ease-logo-dark-card.webp', alt: 'Crowd Ease logo' },
+  { src: '/images/service-hero/crowd-ease/crowd-ease-color-palette.webp', alt: 'Crowd Ease brand color palette' },
+  // Ant Equipment Group (real)
+  { video: '/images/service-hero/ant/ant-brief-introduction.mp4', alt: 'ANT Rentals brief introduction video' },
+  { src: '/images/service-hero/ant/ant-rentals-logo-card.webp', alt: 'ANT Rentals logo' },
+  { src: '/images/service-hero/ant/ant-rent-coupon-card.webp', alt: 'ANT Rentals $500 rental discount promotion' },
+  // Yocale (real)
+  { src: '/images/service-hero/yocale/yocale-blowdry-commission-card.webp', alt: 'Yocale staff commission tracking — Blowdry Commission' },
+  { src: '/images/service-hero/yocale/yocale-logo-dark-card.webp', alt: 'Yocale logo' },
+  { giftCards: true },
+  // Delta Controls (real)
+  { src: '/images/service-hero/delta/delta-knowledge-hub-illustration.webp', alt: 'Concept illustration for The Source knowledge hub' },
+  { src: '/images/service-hero/delta/delta-controls-logo-card.webp', alt: 'Delta Controls logo' },
+  { src: '/images/service-hero/delta/delta-research-findings-message.webp', alt: 'Research findings shared with the Delta Controls team' },
+];
+---
+
+<div class="hero-showcase" aria-hidden="true" data-hero-showcase>
+  <div class="hero-showcase-col">
+    <div class="hero-showcase-track" data-showcase-track="up">
+      {columnA.map((img) => (
+        <div class:list={['hero-showcase-card', img.bg === 'dark' && 'is-dark']}>
+          <img src={img.src} alt={img.alt} class:list={['hero-showcase-img', img.fit === 'contain' && 'is-contain']} loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="hero-showcase-col hero-showcase-col-offset">
+    <div class="hero-showcase-track" data-showcase-track="down">
+      {columnB.map((img) => (
+        <div class:list={['hero-showcase-card', img.bg === 'dark' && 'is-dark']}>
+          {img.giftCards ? (
+            <div class="hero-gift-cards">
+              <div class="hero-gift-card-row">
+                <div class="hero-gift-card-track">
+                  {[...giftCardsRow1, ...giftCardsRow1].map((card) => (
+                    <img src={card.src} alt="" loading="lazy" />
+                  ))}
+                </div>
+              </div>
+              <div class="hero-gift-card-row hero-gift-card-row-reverse">
+                <div class="hero-gift-card-track">
+                  {[...giftCardsRow2, ...giftCardsRow2].map((card) => (
+                    <img src={card.src} alt="" loading="lazy" />
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : img.video ? (
+            <video
+              class="hero-showcase-img"
+              src={img.video}
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            />
+          ) : (
+            <img src={img.src} alt={img.alt} class:list={['hero-showcase-img', img.fit === 'contain' && 'is-contain']} loading="lazy" />
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-showcase {
+    display:   flex;
+    gap:       clamp(12px, 1.7vw, 24px);
+    height:    100%;
+    flex:      0 0 auto;
+  }
+
+  .hero-showcase-col {
+    flex:     0 0 342px;
+    overflow: hidden;
+    height:   100%;
+    position: relative;
+    border-radius: var(--r-lg);
+    /* Fade the top/bottom edges so cards visually enter/exit rather than
+       clipping hard — pure decoration, no effect on layout. */
+    mask-image: linear-gradient(to bottom, transparent 0, black 40px, black calc(100% - 40px), transparent 100%);
+  }
+
+  .hero-showcase-col-offset {
+    margin-top: clamp(24px, 6vw, 64px);
+  }
+
+  .hero-showcase-track {
+    display:        flex;
+    flex-direction: column;
+    gap:             clamp(12px, 1.7vw, 24px);
+    will-change:     transform;
+  }
+
+  /* First column — 342×450px per spec. */
+  .hero-showcase-card {
+    flex-shrink:   0;
+    width:         342px;
+    height:        450px;
+    border-radius: var(--r-lg);
+    overflow:      hidden;
+    background:    var(--surface);
+  }
+
+  /* Offset (second) column — 342×342px per spec. */
+  .hero-showcase-col-offset .hero-showcase-card {
+    height: 342px;
+  }
+
+  .hero-showcase-card.is-dark {
+    background: var(--bg);
+  }
+
+  .hero-showcase-img {
+    display:    block;
+    width:      100%;
+    height:     auto;
+    object-fit: cover;
+    /* Subtle depth ring on the photographic images — derived from --text-1
+       (near-black in light theme, near-white in dark) so it stays a neutral
+       separator without hardcoding a raw hex/rgba value. */
+    outline:        1px solid color-mix(in srgb, var(--text-1) 10%, transparent);
+    outline-offset: -1px;
+  }
+
+  .hero-showcase-img.is-contain {
+    object-fit: contain;
+    padding:    12%;
+    outline:    none;
+  }
+
+  /* ── Yocale gift-card mini-marquee ─────────
+     Pure CSS (not the GSAP data-marquee used on the real case study page):
+     this card gets cloneNode()'d three times by the vertical showcase loop
+     above, and GSAP only wires up tweens once on the original DOM nodes —
+     a CSS animation instead just works identically on every clone with no
+     extra JS re-init needed. */
+  .hero-gift-cards {
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+    gap:             clamp(12px, 1.7vw, 24px);
+    height:          100%;
+    /* Andrew-specified one-off brand tint for this card, not a reusable
+       token — same sanctioned-exception precedent as the neon-sign button
+       glow (see CLAUDE.md §11). */
+    background:      #FFEDE9;
+  }
+
+  .hero-gift-card-row {
+    overflow: hidden;
+  }
+
+  .hero-gift-card-track {
+    display: flex;
+    gap:     clamp(12px, 1.7vw, 24px);
+    width:   max-content;
+  }
+
+  .hero-gift-card-track img {
+    display:        block;
+    flex-shrink:    0;
+    width:          175px;
+    height:         auto;
+    border-radius:  var(--r-md);
+    outline:        1px solid color-mix(in srgb, var(--text-1) 10%, transparent);
+    outline-offset: -1px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-gift-card-track {
+      animation: hero-gift-card-scroll 20s linear infinite;
+    }
+
+    .hero-gift-card-row-reverse .hero-gift-card-track {
+      animation-direction: reverse;
+    }
+  }
+
+  @keyframes hero-gift-card-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 1024px) {
+    .hero-showcase { display: none; }
+  }
+</style>
+
+<script>
+  // Two vertical loops sharing one "case study" position — every step
+  // advances a full 3-card SET at once (not one card), and both columns
+  // always show the same set (Delta, then Yocale, then Crowd Ease, looping)
+  // so a visitor never sees column A on one case study and column B on
+  // another. columnB's data is pre-reversed in set order (see the .astro
+  // frontmatter above), so stepping it "backwards" through its own reversed
+  // array lands on the exact same set as column A's "forwards" step — that
+  // mismatch in raw index direction is what makes it slide visually the
+  // opposite way (down) while staying in sync. No manual controls, no
+  // pause-on-hover — this is an attention-grabbing hook, not a widget.
+  document.querySelectorAll<HTMLElement>('[data-hero-showcase]').forEach((root) => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const STEP_MS = 5000;
+    const SET_SIZE = 3;
+
+    root.querySelectorAll<HTMLElement>('[data-showcase-track]').forEach((track) => {
+      const originals = Array.from(track.children) as HTMLElement[];
+      const N = originals.length;
+      if (N === 0) return;
+
+      // Triple the sequence (clones before + after) so the track always has
+      // another card to animate toward, then silently snaps back into the
+      // real middle copy once a step settles — same trick used by the work
+      // carousel, just vertical and automatic instead of button-driven.
+      const cloneSet = () => originals.map((el) => el.cloneNode(true) as HTMLElement);
+      cloneSet().reverse().forEach((clone) => track.insertBefore(clone, track.firstChild));
+      cloneSet().forEach((clone) => track.appendChild(clone));
+
+      const isDown = track.dataset.showcaseTrack === 'down';
+      const direction = isDown ? -1 : 1;
+      // Both tracks must start on the same case study (the first set in
+      // columnA's natural order). For the reversed "down" track, that set
+      // sits at the END of its own array, not the start.
+      let index = N + (isDown ? N - SET_SIZE : 0);
+
+      function cardStep(): number {
+        const first = originals[0];
+        const style = getComputedStyle(track);
+        const gap = parseFloat(style.rowGap || style.gap || '0');
+        return first.getBoundingClientRect().height + gap;
+      }
+
+      function applyTransform(instant = false): void {
+        track.style.transition = instant ? 'none' : 'transform 1s var(--ease, cubic-bezier(0.16,1,0.3,1))';
+        track.style.transform = `translateY(${-index * cardStep()}px)`;
+      }
+
+      applyTransform(true);
+      // Web-font swap and sibling layout (hero text column, fluid canvas)
+      // can still be settling at script-init time, so cardStep() measured
+      // synchronously here may be stale — silently correct once everything
+      // has actually finished loading, same idiom as gsap.js's own
+      // `window.addEventListener('load', () => ScrollTrigger.refresh())`.
+      window.addEventListener('load', () => applyTransform(true));
+
+      if (prefersReduced) return;
+
+      track.addEventListener('transitionend', () => {
+        if (index < N || index >= 2 * N) {
+          index = N + (((index - N) % N) + N) % N;
+          applyTransform(true);
+        }
+      });
+
+      window.setInterval(() => {
+        index += direction * SET_SIZE;
+        applyTransform();
+      }, STEP_MS);
+
+      // Card height is a fluid aspect-ratio box, so a viewport resize changes
+      // cardStep() — reposition instantly at the same index rather than
+      // letting the stale pixel value leave the track visibly offset.
+      window.addEventListener('resize', () => applyTransform(true));
+    });
+
+    // The ANT video slide has no pause control of its own (the whole
+    // gallery is aria-hidden and purely decorative), so a reduced-motion
+    // preference is the only way to stop it — pause every cloned copy
+    // (cloneNode(true) above triples each track, video included).
+    if (prefersReduced) {
+      root.querySelectorAll<HTMLVideoElement>('video').forEach((video) => {
+        video.pause();
+        video.removeAttribute('autoplay');
+      });
+    }
+  });
+</script>

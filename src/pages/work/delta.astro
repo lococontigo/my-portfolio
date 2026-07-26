@@ -20,7 +20,7 @@ const sections = [
 ];
 ---
 
-<BaseLayout title="Delta Controls" world="light" sections={sections} description="How I redesigned Delta Controls' resource intranet — improving navigation, search, and engagement by 15% through UX research, design, and development.">
+<BaseLayout title="Delta Controls" world="light" sections={sections} translated={true} description="How I redesigned Delta Controls' resource intranet — improving navigation, search, and engagement by 15% through UX research, design, and development.">
   <script slot="head" is:inline type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,7 +47,7 @@ const sections = [
       title="Delta Controls Resource Intranet: The Source 2.0 — Overcoming Navigation Difficulties and Ineffective Search"
       fullTitle="Delta Controls Resource Intranet: The Source 2.0 — Overcoming Navigation Difficulties and Ineffective Search"
       accentTitle="Delta Controls"
-      gifSrc="/gifs/delta/ezgif.com-crop.gif"
+      gifSrc="/gifs/delta/ezgif.com-crop.webp"
       gifAspectRatio="1440 / 900"
       gifAlt="Animated walkthrough of The Source 2.0 intranet redesign showing the homepage, navigation, and search"
       role={["Research", "Design", "Development"]}
@@ -93,7 +93,7 @@ const sections = [
         { title: "B. Ineffective Search", body: "70% of users relied on search capabilities, but results were ineffective due to WordPress preset index constraints." },
         { title: "C. Unorganized Category & Layout", body: "Tags were inconsistently organized, and users expected a more logical content structure." },
       ]}
-      imageSrc="/gifs/delta/user-problem-Source.gif"
+      imageSrc="/gifs/delta/user-problem-Source.webp"
       imageAlt="Screen recording of a user browsing The Source's original document library, navigating categories and using the search and filter tools"
     />
 
@@ -104,22 +104,22 @@ const sections = [
       tinted
       mediaRows={[
         {
-          imageSrc: "/gifs/delta/navigation.gif",
+          imageSrc: "/gifs/delta/navigation.webp",
           imageAlt: "Animated screen recording of The Source 2.0's redesigned homepage with a centralized navigation hub and a hero banner reading 'Your Go-To Resource Hub'",
           title: "Streamlined Access Through a Centralized Resource Hub",
           body: "Create a clear navigation system that is consistent with the company's design system. Simplified navigation reduces clicks to 3-4, ensuring faster information retrieval.",
         },
         {
-          imageSrc: "/gifs/delta/search.gif",
+          imageSrc: "/gifs/delta/search.webp",
           imageAlt: "Animated screen recording of The Source 2.0's category cards and smart search dropdown showing tag suggestions like 'national account' and 'sales and marketing'",
           title: "Enhanced Discoverability with Smart Search",
           body: "The Source uses a unified smart search that allows all documents, categories, and tags to be searched. Users can also fill out a feedback form to notify the marketing team of any missing content.",
         },
         {
-          imageSrc: "/gifs/delta/customisation.gif",
+          imageSrc: "/gifs/delta/customisation.webp",
           imageAlt: "Animated screen recording of The Source 2.0's personalized 'Recently Downloaded' section showing document cards for quick access",
           title: "A Modern, Personalized Resource Experience",
-          body: "Our modern, logical layout enhances customization, featuring recent and most-downloaded documents for quick access — ensuring an efficient experience tailored to each user's needs.",
+          body: "The new layout surfaces each user's recent and most-downloaded documents for quick access.",
         },
       ]}
     />
@@ -138,7 +138,7 @@ const sections = [
         {
           label: "Cross-Functional Participants",
           items: ["Department including: sales, technical, support", "Email invitation distribution"],
-          imageSrc: "/images/delta/research-work-cloud%201.png",
+          imageSrc: "/images/delta/research-work-cloud%201.webp",
           imageAlt: "Word cloud of frequent terms from user feedback, with 'search', 'find', 'information', and 'content' shown as the largest and most prominent words",
         },
       ]}
@@ -151,13 +151,13 @@ const sections = [
       imageAlt="Screenshot of a Slack message from Andrew Yip sharing survey findings about the Source Portal, including response counts by department and key findings on click counts, satisfaction, and user pain points"
       quotePanels={[
         {
-          imageSrc: "/images/delta/James-interview-screenshot%201.png",
+          imageSrc: "/images/delta/James-interview-screenshot%201.webp",
           imageAlt: "Video call screenshot of James Ferdon, Business Development Manager, during a user interview about the Source Portal",
           quote: "If people tell you to search a file at the Source, they basically tell you to go Fxxk yourself",
           attribution: "James Ferdon, Business Development Manager",
         },
         {
-          imageSrc: "/images/delta/Tim-interview-screenshot%201.png",
+          imageSrc: "/images/delta/Tim-interview-screenshot%201.webp",
           imageAlt: "Video call screenshot of Tim Arion, Sales Director, during a user interview about the Source Portal",
           quote: "You need to be really familiar with the platform to understand you can get everything from the Index",
           attribution: "Tim Arion, Sales Director",
@@ -211,7 +211,7 @@ const sections = [
             <div class="case-takeaways-content">
               <h3 class="case-takeaways-heading">Addressing Technical Limitations and Stakeholder Pushback</h3>
               <div class="case-takeaways-body">
-                <p>The IS (Information Systems) team refused to connect the partner database directly to the communication channel while creating the subscribe function. This integration was primarily designed to pre-fill user information for a more seamless subscription experience.</p>
+                <p>The IS (Information Systems) team refused to connect the partner database directly to the communication channel while building the subscribe function. The integration was meant to pre-fill user information during subscription.</p>
                 <p>Our workaround required utilizing a built-in connector within the subscription form and adding an additional step for users to manually enter their information. It may not be ideal for user experience, but this highlights the significance of compromise and flexibility in meeting key user needs while considering time and cost.</p>
               </div>
             </div>

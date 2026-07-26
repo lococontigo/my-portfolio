@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/base-layout.astro';
 ---
 
-<BaseLayout title="Home" world="dark" description="Andrew Yip is a UX/UI designer and developer based in Vancouver. Explore his portfolio or get a new website built for your business." chrome={false}>
+<BaseLayout title="Home" world="dark" description="Andrew Yip is a UX/UI designer and developer based in Vancouver. Explore his portfolio or get a new website built for your business." chrome={false} translated={true}>
   <script slot="head" is:inline type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -12,8 +12,21 @@ import BaseLayout from '../layouts/base-layout.astro';
     "description": "Andrew Yip is a UX/UI designer and developer based in Vancouver. Explore his portfolio or get a new website built for your business."
   }
   </script>
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Andrew Yip",
+    "jobTitle": "UX/UI Designer & Developer",
+    "url": "https://andrewthyip.com",
+    "sameAs": ["https://www.linkedin.com/in/andrewthyip/"],
+    "knowsAbout": ["UX Design", "UI Design", "Web Development", "Design Systems"]
+  }
+  </script>
 
   <main class="split-gate">
+
+    <a href="/ch/" class="split-lang-toggle" aria-label="Switch to Traditional Chinese">中文</a>
 
     <a href="/portfolio/" class="split-panel" data-theme="dark" aria-label="I'm hiring — view Andrew Yip's portfolio">
       <div class="split-panel-media"></div>
@@ -26,18 +39,75 @@ import BaseLayout from '../layouts/base-layout.astro';
     <a href="/services/" class="split-panel split-panel-light" data-theme="light" aria-label="I need a website — view Andrew Yip's services">
       <div class="split-panel-media"></div>
       <div class="split-panel-content">
-        <h1 class="split-headline">I need a website</h1>
+        <h2 class="split-headline">I need a website</h2>
         <span class="split-cta">andrewthyip.com/services →</span>
       </div>
     </a>
 
   </main>
+
+  <script is:inline>
+    // Honor a language choice made via the nav toggle on a previous visit —
+    // scoped to just this entry gate (not every English page) to avoid
+    // sitewide redirect risk/flash-of-wrong-language.
+    try {
+      if (localStorage.getItem('preferredLocale') === 'zh-Hant') {
+        window.location.replace('/ch/');
+      }
+    } catch { /* storage unavailable, stay on default */ }
+
+    // This page's own toggle must update the stored preference too — otherwise
+    // clicking it to leave 'zh-Hant' still lands back on '/', the check above
+    // sees the stale value, and immediately redirects right back to /ch/,
+    // trapping the visitor in a loop where the toggle looks like it does nothing.
+    document.querySelector('.split-lang-toggle')?.addEventListener('click', () => {
+      try { localStorage.setItem('preferredLocale', 'zh-Hant'); } catch { /* storage unavailable, non-critical */ }
+    });
+  </script>
 </BaseLayout>
 
 <style>
   .split-gate {
     display:    flex;
     min-height: 100vh;
+  }
+
+  /* ── Language toggle — floats above both panels, so it can't nest inside
+     either full-bleed panel <a> (which would be invalid + break the panel's
+     own click target). Uses the page's root (dark) tokens deliberately —
+     a single visual treatment that stays legible over both halves. */
+  .split-lang-toggle {
+    position:       fixed;
+    top:            var(--space-sm);
+    left:           50%;
+    transform:      translateX(-50%);
+    z-index:        10;
+    display:        inline-flex;
+    align-items:    center;
+    justify-content: center;
+    font-family:    var(--font-body);
+    font-size:      11px;
+    font-weight:    500;
+    letter-spacing: 0.02em;
+    color:          var(--text-1);
+    background:     color-mix(in srgb, var(--bg-2) 70%, transparent);
+    backdrop-filter:         blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border:         0.5px solid var(--border-2);
+    border-radius:  var(--r-pill);
+    padding:        8px 16px;
+    transition:     color 0.2s var(--ease), border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+
+  .split-lang-toggle:hover {
+    color:        var(--accent-text);
+    border-color: var(--accent);
+    box-shadow:   var(--neon-sm);
+  }
+
+  .split-lang-toggle:focus-visible {
+    outline:        2px solid var(--accent);
+    outline-offset: 2px;
   }
 
   .split-panel {
@@ -55,7 +125,7 @@ import BaseLayout from '../layouts/base-layout.astro';
   .split-panel-media {
     position:         absolute;
     inset:            0;
-    background-image: linear-gradient(var(--scrim), var(--scrim)), url('/images/night%20background.png');
+    background-image: linear-gradient(var(--scrim), var(--scrim)), url('/images/night-background.webp');
     background-size:     cover;
     background-position: center;
     opacity:    0;
@@ -69,7 +139,7 @@ import BaseLayout from '../layouts/base-layout.astro';
         color-mix(in srgb, var(--bg) 55%, transparent),
         color-mix(in srgb, var(--bg) 55%, transparent)
       ),
-      url('/images/light%20background.png');
+      url('/images/light-background.webp');
   }
 
   /* ── Content ───────────────────────────────────────── */
@@ -125,7 +195,7 @@ import BaseLayout from '../layouts/base-layout.astro';
     }
 
     .split-panel:hover .split-cta {
-      color:        var(--accent);
+      color:        var(--accent-text);
       gap:          10px;
       border-color: var(--accent);
       box-shadow:   var(--neon-sm);
@@ -148,7 +218,7 @@ import BaseLayout from '../layouts/base-layout.astro';
   }
 
   .split-panel:focus-visible .split-cta {
-    color:        var(--accent);
+    color:        var(--accent-text);
     gap:          10px;
     border-color: var(--accent);
     box-shadow:   var(--neon-sm);

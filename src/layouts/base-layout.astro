@@ -9,6 +9,8 @@ interface Props {
   world?:       'dark' | 'light';  // HK or CA
   sections?:    { id: string; label: string }[];
   chrome?:      boolean;           // render nav + footer (default true)
+  navVariant?:  'portfolio' | 'services';
+  translated?:  boolean;           // has a real counterpart in the other locale (default false)
 }
 
 const {
@@ -17,14 +19,34 @@ const {
   world = 'dark',
   sections = [],
   chrome = true,
+  navVariant = 'portfolio',
+  translated = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const fullTitle    = `${title} · Andrew YIP`;
+
+// Astro's i18n routing gives us the active locale automatically ('en' or
+// 'zh-Hant', regardless of the '/ch/' URL segment configured in
+// astro.config.mjs). Only pages that opt in via `translated` get hreflang
+// alternates + og:locale:alternate — every other page has no real counterpart
+// in the other language, so pointing crawlers at one would be wrong.
+const locale    = Astro.currentLocale ?? 'en';
+const ogLocale  = locale === 'zh-Hant' ? 'zh_HK' : 'en_US';
+
+let enURL: URL | null = null;
+let zhURL: URL | null = null;
+if (translated) {
+  const pathname = Astro.url.pathname;
+  const enPath = locale === 'zh-Hant' ? (pathname.replace(/^\/ch\//, '/') || '/') : pathname;
+  const zhPath = locale === 'zh-Hant' ? pathname : `/ch${pathname}`;
+  enURL = new URL(enPath, Astro.site);
+  zhURL = new URL(zhPath, Astro.site);
+}
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme={world}>
+<html lang={locale} data-theme={world}>
 <head>
   <!-- Google tag (gtag.js) -->
   <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XYG0FY3YJM"></script>
@@ -41,11 +63,23 @@ const fullTitle    = `${title} · Andrew YIP`;
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalURL} />
 
+  {translated && enURL && zhURL && (
+    <>
+      <link rel="alternate" hreflang="en" href={enURL} />
+      <link rel="alternate" hreflang="zh-Hant" href={zhURL} />
+      <link rel="alternate" hreflang="x-default" href={enURL} />
+    </>
+  )}
+
   <!-- Open Graph -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content={canonicalURL} />
   <meta property="og:title"       content={fullTitle} />
   <meta property="og:description" content={description} />
+  <meta property="og:locale"      content={ogLocale} />
+  {translated && enURL && zhURL && (
+    <meta property="og:locale:alternate" content={locale === 'zh-Hant' ? 'en_US' : 'zh_HK'} />
+  )}
   <meta property="og:image"        content={new URL('/images/OG/OG.png', Astro.site)} />
   <meta property="og:image:width"  content="1200" />
   <meta property="og:image:height" content="630" />
@@ -62,10 +96,28 @@ const fullTitle    = `${title} · Andrew YIP`;
   <link rel="sitemap" href="/sitemap.xml" />
   <script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key="qOf9LJJKVNtNbX76kntFXw" async></script>
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts —loaded async (preload as style, swap media to "all"
+       on load) rather than a plain blocking <link rel="stylesheet">. A
+       normal stylesheet link blocks initial render until it's fetched and
+       parsed regardless of font-display:swap (that only governs how the
+       *fonts* behave once the CSS has already loaded) — Lighthouse traced
+       this straight to LCP, worst on zh-Hant pages which pay the cost
+       twice (this link, then the CJK one below, back to back). The
+       <noscript> fallback keeps fonts working with JS disabled. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /></noscript>
+  {locale === 'zh-Hant' && (
+    <!-- Traditional Chinese pairing — Cormorant Garamond/DM Sans have no CJK glyphs.
+         Loaded only on zh-Hant pages so English visitors don't pay for this payload. -->
+    <Fragment>
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" />
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+      <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" /></noscript>
+    </Fragment>
+  )}
 
   <!-- Design system injected via Astro build (see frontmatter import) -->
 
@@ -74,7 +126,7 @@ const fullTitle    = `${title} · Andrew YIP`;
 </head>
 <body>
   <!-- Global navigation -->
-  {chrome && <Nav sections={sections} />}
+  {chrome && <Nav sections={sections} variant={navVariant} />}
 
   <!-- Page content goes here -->
   <slot />

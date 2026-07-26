@@ -1,4 +1,9 @@
 ---
+import en from '../i18n/en.json';
+import zhHant from '../i18n/zh-hant.json';
+
+const locale = Astro.currentLocale ?? 'en';
+const dict   = locale === 'zh-Hant' ? zhHant : en;
 ---
 <footer class="footer">
   <div class="padding-global">
@@ -13,8 +18,8 @@
             class="footer-link"
             target="_blank"
             rel="noopener noreferrer"
-          >LinkedIn</a>
-          <a href="mailto:andrewthyip@gmail.com" class="footer-cta">Say hello →</a>
+          >{dict.footer.linkedin}</a>
+          <a href="mailto:andrewthyip@gmail.com" class="footer-cta">{dict.footer.sayHello}</a>
         </div>
 
       </div>
@@ -63,7 +68,10 @@
     font-family:   var(--font-body);
     font-size:     12px;
     font-weight:   400;
-    color:         var(--accent);
+    /* --accent-text, not --accent: light theme's teal is 3.05:1 against
+       --bg, failing WCAG AA text contrast — see nav.astro's .nav-cta for
+       the same fix. */
+    color:         var(--accent-text);
     border:        0.5px solid var(--accent);
     border-radius: var(--r-sm);
     padding:       6px 14px;

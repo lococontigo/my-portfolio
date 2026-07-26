@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "work": "Work",
+    "about": "About",
+    "sayHello": "Say hello →",
+    "langGroupLabel": "Language"
+  },
+  "footer": {
+    "linkedin": "LinkedIn",
+    "sayHello": "Say hello →"
+  }
+}

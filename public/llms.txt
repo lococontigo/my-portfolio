@@ -5,16 +5,25 @@
 > He specialises in product design, design systems, landing pages, and front-end development for SaaS and enterprise companies.
 > Available for freelance projects and full-time roles.
 
+## Languages
+
+This site is available in English (default, no path prefix) and Traditional Chinese (`/ch/` prefix). Every page listed below — including all 4 case studies — has a Traditional Chinese counterpart at the same path under `/ch/` (e.g. https://andrewthyip.com/ch/about/, https://andrewthyip.com/ch/work/yocale/).
+
 ## Key Pages
 
+- [Homepage](https://andrewthyip.com/): Bilingual entry gate — a split-screen chooser routing visitors to either the hiring/portfolio track (`/portfolio/`) or the "get a website built" services track (`/services/`)
 - [Portfolio & Work](https://andrewthyip.com/portfolio/): Overview of all case studies and client work
 - [Services](https://andrewthyip.com/services/): Services offered, process/workflow, client work examples, and testimonials — for businesses looking to have a website designed and built
+- [Services · Work](https://andrewthyip.com/services/work/): Same case studies as the Portfolio page, presented for the Services-page audience
+- [Services · About](https://andrewthyip.com/services/about/): Same background, philosophy, and career timeline as the About page, for the Services-page audience
+- [Services · Contact](https://andrewthyip.com/services/contact/): Same contact form as the Contact page, for the Services-page audience
 - [About Andrew Yip](https://andrewthyip.com/about/): Background, work philosophy, career timeline, skills, and testimonials
 - [Contact](https://andrewthyip.com/contact/): Contact form for project inquiries, freelance work, and full-time opportunities
 - [Yocale Case Study](https://andrewthyip.com/work/yocale/): GTM design system — 5.15% CTR lift, 40% bounce rate reduction, 22.5% download lift
 - [Delta Controls Case Study](https://andrewthyip.com/work/delta/): Enterprise intranet redesign — navigation reduced from 4–6 clicks to 2–3 clicks, 15% engagement increase
 - [Ant Equipment Group Case Study](https://andrewthyip.com/work/ant/): Brand and web design — 1,000+ monthly visitors, 80% engagement lift
 - [Crowd Ease Case Study](https://andrewthyip.com/work/crowd-ease/): Capstone Award-winning restaurant and event management mobile app (Langara College 2023, selected by audience vote)
+- [Yocale 個案研究 (Traditional Chinese)](https://andrewthyip.com/ch/work/yocale/), [Delta Controls 個案研究](https://andrewthyip.com/ch/work/delta/), [Ant Equipment Group 個案研究](https://andrewthyip.com/ch/work/ant/), [Crowd Ease 個案研究](https://andrewthyip.com/ch/work/crowd-ease/): Traditional Chinese counterparts of the 4 case studies above
 
 ## Key Facts
 

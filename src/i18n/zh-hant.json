@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "work": "作品",
+    "about": "關於我",
+    "sayHello": "聯絡我 →",
+    "langGroupLabel": "語言"
+  },
+  "footer": {
+    "linkedin": "LinkedIn",
+    "sayHello": "聯絡我 →"
+  }
+}

@@ -1,0 +1,473 @@
+---
+import BaseLayout from '../../../layouts/base-layout.astro';
+import CaseStudyHero from '../../../components/case-study-hero.astro';
+import CaseStudyHighlight from '../../../components/case-study-highlight.astro';
+import CaseStudyProblem from '../../../components/case-study-problem.astro';
+import CaseStudyKeepReading from '../../../components/case-study-keep-reading.astro';
+import CaseStudySectionHeader from '../../../components/case-study-section-header.astro';
+import CaseStudyDeliverableImage from '../../../components/case-study-deliverable-image.astro';
+import CaseStudyDeliverableSlider from '../../../components/case-study-deliverable-slider.astro';
+import { caseStudiesZh } from '../../../data/case-studies-zh.js';
+
+const sections = [
+  { id: 'impact',       label: '01-成效' },
+  { id: 'identity',     label: '02-視覺形象' },
+  { id: 'approach',     label: '04-方法' },
+  { id: 'deliverables', label: '05-成果項目' },
+];
+
+const sliderCards = [
+  { src: '/images/ant/Card/ant-equipment-card-material-handling.webp', w: 453, h: 576, alt: '物料搬運分類卡,展示伸縮臂式叉車吊起紅色配重裝置' },
+  { src: '/images/ant/Card/ant-equipment-card-aerial-work-platforms.webp',   w: 453, h: 566, alt: '高空作業平台分類卡,展示橙白色 JLG 伸縮臂式高空作業車' },
+  { src: '/images/ant/Card/ant-equipment-card-earth-moving.webp', w: 453, h: 566, alt: '土方工程分類卡,展示 John Deere 緊湊型履帶裝載機及鏟斗' },
+  { src: '/images/ant/Card/ant-equipment-card-forklifts.webp', w: 453, h: 566, alt: '叉車分類卡,展示紅色 Hangcha 叉車' },
+  { src: '/images/ant/Card/ant-equipment-card-compaction.webp', w: 453, h: 576, alt: '壓實設備分類卡,展示黃色 BOMAG 雙輪壓路機' },
+  { src: '/images/ant/Card/ant-equipment-card-air-compressors.webp', w: 453, h: 566, alt: '空氣壓縮機分類卡,展示可拖行式 ELGi 柴油空氣壓縮機' },
+];
+
+const identityRows = [
+  [
+    { src: '/images/ant/ant-xcmg-forklift-social-post.webp', w: 1080, h: 1080, alt: '社交媒體貼文宣布全新 XCMG N25 叉車及其規格' },
+    { src: '/images/ant/ant-brand-new-equipment-social-post.webp', w: 1080, h: 1080, alt: 'Ant Rentals 社交媒體貼文宣布全新設備到貨,展示運輸車運送高空作業車' },
+    { src: '/images/ant/ant-maintenance-service-social-post.webp', w: 1080, h: 1080, alt: 'Ant Rentals 社交媒體貼文介紹定期保養計劃,展示技術人員維修設備' },
+    { src: '/images/ant/ant-canada-day-social-post.webp', w: 1080, h: 1080, alt: 'Ant Rentals 加拿大國慶日 Instagram 貼文,設有楓葉圖案及建築設備' },
+  ],
+  [
+    { src: '/images/ant/ant-forklift-division-social-post.webp', w: 1080, h: 1080, alt: 'Ant Rentals 社交媒體貼文推廣叉車租賃及銷售部門' },
+    { src: '/images/ant/ant-hail-storm-recovery-social-post.webp', w: 1080, h: 1080, alt: 'Ant Rentals 社交媒體貼文提供卡加利雹災復修支援服務' },
+    { src: '/images/ant/ant-spring-projects-social-post.webp', w: 1512, h: 1512, alt: 'Ant Rentals 社交媒體貼文推廣春季項目設備預訂,展示高空作業車' },
+    { src: '/images/ant/ant-compaction-equipment-social-post.webp', w: 1080, h: 1080, alt: 'Ant Rentals 社交媒體貼文宣傳壓實設備新貨 85 折優惠' },
+  ],
+];
+---
+
+<BaseLayout title="Ant Equipment Group" world="light" sections={sections} translated={true} description="我如何建立 Ant Rentals 的數碼品牌形象 —— 透過數碼設計及 WordPress,帶動每月超過 1,000 名訪客、提升 80% 參與度,並降低 40% 跳出率。">
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://andrewthyip.com/ch/" },
+      { "@type": "ListItem", "position": 2, "name": "Ant Equipment Group", "item": "https://andrewthyip.com/ch/work/ant/" }
+    ]
+  }
+  </script>
+  <script slot="head" is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Ant Rentals:建立數碼品牌形象",
+    "description": "為加拿大西部最大型獨立設備租賃供應商 ANT Equipment Group 提供數碼設計、內容管理及網頁開發服務。",
+    "url": "https://andrewthyip.com/ch/work/ant/",
+    "author": { "@type": "Person", "name": "Andrew Yip", "url": "https://andrewthyip.com" },
+    "inLanguage": "zh-Hant"
+  }
+  </script>
+  <main class="main">
+
+    <CaseStudyHero
+      title="Ant Rentals：建立數碼品牌形象"
+      fullTitle="Ant Rentals：建立數碼品牌形象"
+      accentTitle="Ant Rentals"
+      videoSrc="/videos/ant/ant-rentals-demo.mp4"
+      role={["數碼設計", "內容管理", "網頁開發"]}
+      roleLabel="角色:"
+      tools={["Figma", "Adobe Suite", "WordPress", "HubSpot"]}
+      toolsLabel="工具:"
+      duration={["2023 – 2024"]}
+      durationLabel="時間:"
+    />
+
+    <CaseStudyHighlight
+      id="impact"
+      eyebrow="01"
+      title="成效"
+      stats={[
+        { value: ">1k", caption: "每月網站訪客" },
+        { value: "80% ↑", caption: "互動連繫" },
+        { value: "40% ↓", caption: "跳出率" },
+      ]}
+    />
+
+    <section class="case-identity-section" id="identity">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-identity">
+
+            <CaseStudySectionHeader eyebrow="02" title="視覺形象" />
+
+            <div class="case-identity-grid" data-stagger-reveal>
+              <img src="/images/ant/ant-brand-color-palette.webp" alt="Ant Rentals 品牌色彩系統色卡,附有色碼" width="464" height="212" loading="lazy" data-stagger-child />
+              <img src="/images/ant/ant-brand-typography.webp" alt="Ant Rentals 字體系統:Montserrat 字型的常規及粗體展示" width="464" height="212" loading="lazy" data-stagger-child />
+              <img src="/images/ant/ant-equipment-logo.webp" alt="Ant Rentals 標誌組合,以兩種尺寸展示" width="464" height="212" loading="lazy" data-stagger-child />
+            </div>
+
+            <div class="case-design-gallery">
+              {identityRows.map((row) => (
+                <div class="case-design-gallery-row">
+                  <div class="case-design-gallery-track">
+                    {[row, row].map((set, si) => (
+                      <div class="case-design-gallery-set" aria-hidden={si === 1 ? 'true' : undefined}>
+                        {set.map((img) => (
+                          <img src={img.src} alt={si === 0 ? img.alt : ''} width={img.w} height={img.h} loading="lazy" />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CaseStudyProblem
+      id="approach"
+      eyebrow="04"
+      title="方法"
+      rows={[
+        { title: "延伸品牌形象", body: "Ant Rentals 擁有強大的企業品牌形象及詳盡的品牌指引。我的工作是將這個形象延伸至各種市場推廣素材 —— 社交媒體貼文、網站頁面及簡報。" },
+        { title: "優化現有網站", body: "當我加入時,公司已設有 WordPress 網站。我找出了需要優化的關鍵範疇,以減少混淆並改善用戶體驗流程。" },
+        { title: "拓展更多設計", body: "除了現有的網站架構外,我亦加入了網誌版塊、招聘頁面及網上租賃系統,以擴展業務規模。" },
+      ]}
+    />
+
+    <section class="case-deliverables-section" id="deliverables">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-deliverables">
+
+            <CaseStudySectionHeader eyebrow="05" title="成果項目" />
+
+            <div class="case-deliverables-rows">
+              <div class="case-deliverables-row">
+                <img src="/images/ant/Blog.svg" alt="手提電腦模型展示 Ant Rentals WordPress 網誌頁面,設有精選文章及叉車推廣內容" width="1024" height="624" loading="lazy" />
+                <p class="case-deliverables-row-label">WordPress</p>
+              </div>
+
+              <div class="case-deliverables-row case-deliverables-row--stacked">
+                <p class="case-deliverables-row-label">網頁開發</p>
+                <div class="case-deliverables-row-images">
+                  <img src="/images/ant/rental.svg" alt="手提電腦模型展示 Ant Rentals 設備租賃頁面,設有高空作業平台、空氣壓縮機、壓實設備、土方工程及物料搬運設備等分類" width="1024" height="624" loading="lazy" />
+                  <img src="/images/ant/Career.svg" alt="手提電腦模型展示 Ant Rentals 招聘頁面,顯示本拿比一個流動維修技工職位的招聘資訊" width="1024" height="624" loading="lazy" />
+                </div>
+              </div>
+
+              <CaseStudyDeliverableImage
+                src="/images/ant/ant-website-hero-section.webp"
+                alt="Ant Rentals 網站主頁橫幅,標題為「Western Canada's Largest Independent Source for Equipment Rentals and Sales」,背景為一列黃色高空作業車,並設有「Equipment Rentals」及「Create An Account」按鈕"
+                width="1196"
+                height="485"
+                maxWidth="1196px"
+              />
+
+              <CaseStudyDeliverableSlider
+                mediaSrc="/images/ant/ant-equipment-rental-coupon.webp"
+                mediaAlt="Ant Rentals 優惠券,標題為「Save $500 on rent」,優惠碼 NEW2024,適用於 2024 年 9 月 30 日前的新網上客戶"
+                mediaWidth="514"
+                mediaHeight="591"
+                cards={sliderCards}
+                ariaLabel="Ant Rentals 設備分類"
+              />
+
+              <div class="case-deliverables-row--advantages">
+                <img src="/images/ant/ant-equipment-advantages-banner.webp" alt="橫幅展示 Ant Rentals 的優勢:全城最新車隊、準時交付保證、輕鬆網上租賃、最齊全零件選擇,以及 24/7 服務支援,背景為黃昏時分的建築設備" width="1440" height="358" loading="lazy" />
+              </div>
+
+              <div class="case-deliverables-row case-deliverables-row--reviews">
+                <div class="case-deliverables-reviews">
+                  <div class="case-deliverables-reviews-grid">
+                    <div class="case-deliverables-reviews-col">
+                      <img src="/images/ant/review-blog/ant-testimonial-samantha-swansy.webp" alt="來自 Samantha Swansy 的顧客評價卡,五星評級,標題為「Satisfied With The Facilities At Ant Equipment Rentals」" width="378" height="282" loading="lazy" />
+                      <img src="/images/ant/review-blog/ant-testimonial-ken-fisher.webp" alt="來自 Ken Fisher 的顧客評價卡,五星評級,標題為「Fantastic Team At Ant Equipment Rentals」" width="378" height="282" loading="lazy" />
+                      <img src="/images/ant/review-blog/test2.webp" alt="來自 Travis PrintPrint 的顧客評價卡,五星評級,標題為「Great Customer Service At Ant Equipment Rentals」" width="378" height="282" loading="lazy" />
+                    </div>
+                    <div class="case-deliverables-reviews-col">
+                      <img src="/images/ant/review-blog/ant-blog-post-burnaby-grand-opening.webp" alt="日期為 2023 年 11 月 17 日的網誌貼文卡,標題為「The Ant Goes Marching: Ant Equipment Rentals Burnaby, B.C.」,附有一名員工穿着 Ant Rentals Polo 衫站在設備前的照片" width="286" height="459" loading="lazy" />
+                      <img src="/images/ant/review-blog/ant-blog-post-calgary-grand-opening.webp" alt="日期為 2024 年 2 月 7 日的網誌貼文卡,標題為「Calgary, Get Ready! Ant Rentals Sets the Stage for Grand Opening!」,附有覆蓋積雪的場地及 Ant Rentals 標誌航拍照" width="286" height="371" loading="lazy" />
+                    </div>
+                  </div>
+                </div>
+                <div class="case-deliverables-calendar">
+                  <img src="/images/ant/ant-2024-wall-calendar-mockup.webp" alt="Ant Rentals 2024 年掛牆日曆模型,展示一月月曆,旁為一張伸縮臂式叉車在玻璃穹頂大堂內吊起吊車配件的照片,並附公司聯絡資料" width="586" height="759" loading="lazy" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-closing-section">
+      <div class="padding-global">
+        <div class="container-main">
+          <div class="case-closing">
+            <div class="case-closing-media">
+              <img src="/images/ant/ant-equipment-fleet-sunset.webp" alt="Ant Rentals 高空作業車、剪式升降台及伸縮臂式叉車在絢麗橙色日落天空下的剪影" width="1728" height="816" loading="lazy" data-parallax />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CaseStudyKeepReading current="ant" items={caseStudiesZh} eyebrow="繼續閱讀" title="更多個案研究" />
+
+  </main>
+</BaseLayout>
+
+<style>
+  .main {
+    --case-accent:       var(--accent-ant);
+    --case-accent-solid: var(--accent-ant);
+    padding-top:         96px;
+    min-height:          100vh;
+  }
+
+  /* ── 02 Visual Identity ──────────────────── */
+  .case-identity-grid {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-identity-grid img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
+  /* Split-track horizontal parallax gallery (driven by initGalleryRows) */
+  .case-design-gallery {
+    width:          100vw;
+    margin-inline:  calc(50% - 50vw);
+    margin-top:     clamp(20px, 2.8vw, 40px);
+    display:        flex;
+    flex-direction: column;
+    gap:            clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-design-gallery-row {
+    overflow: hidden;
+  }
+
+  .case-design-gallery-track {
+    display:     flex;
+    gap:         clamp(12px, 1.7vw, 24px);
+    width:       max-content;
+    will-change: transform;
+  }
+
+  .case-design-gallery-set {
+    display: flex;
+    gap:     clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-design-gallery img {
+    display:       block;
+    flex-shrink:   0;
+    width:         clamp(200px, 26vw, 360px);
+    height:        auto;
+    border-radius: var(--r-lg);
+  }
+
+  @media (max-width: 768px) {
+    .main { padding-top: 80px; }
+
+    .case-design-gallery { width: 100%; margin-inline: 0; }
+
+    .case-identity-grid {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+  }
+
+  /* ── 05 Deliverables ─────────────────────── */
+  .case-deliverables :global(.deliverable-slider) {
+    align-items: stretch;
+  }
+
+  .case-deliverables :global(.deliverable-slider-marquee) {
+    display:         flex;
+    align-items:     center;
+  }
+
+  .case-deliverables :global(.deliverable-slider-track img) {
+    height: 430px;
+  }
+
+  .case-deliverables-rows {
+    display:        flex;
+    flex-direction: column;
+    gap:            clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-deliverables-row {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    align-items:           center;
+    padding:               var(--space-md);
+    background:            var(--bg-2);
+    border-radius:         var(--r-lg);
+  }
+
+  .case-deliverables-row img {
+    display: block;
+    width:   100%;
+    height:  auto;
+  }
+
+  .case-deliverables-row-label {
+    font-family:    var(--font-display);
+    font-size:      clamp(39px, 5.5vw, 76px);
+    font-weight:    300;
+    line-height:    1.2;
+    text-align:     center;
+    letter-spacing: -1.04px;
+    color:          var(--case-accent, var(--accent-2));
+  }
+
+  .case-deliverables-row--stacked {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            clamp(20px, 2.8vw, 40px);
+  }
+
+  .case-deliverables-row-images {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    width:                 100%;
+  }
+
+  .case-deliverables-row--advantages {
+    display:         flex;
+    justify-content: center;
+  }
+
+  .case-deliverables-row--advantages img {
+    width:         100%;
+    height:        auto;
+    max-width:     var(--max-w);
+    border-radius: var(--r-lg);
+  }
+
+  /* Row 6 — static review/blog grid + wall calendar */
+  .case-deliverables-row--reviews {
+    gap:              24px;
+    padding:          0;
+    background:       none;
+    border-radius:    0;
+  }
+
+  .case-deliverables-reviews {
+    position:      relative;
+    overflow:      hidden;
+    aspect-ratio:  586 / 759;
+    padding:       var(--space-md);
+    background:    var(--bg-2);
+    border-radius: var(--r-lg);
+  }
+
+  .case-deliverables-reviews-grid {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   clamp(12px, 1.7vw, 24px);
+    width:                 120%;
+  }
+
+  .case-deliverables-reviews-col {
+    display:        flex;
+    flex-direction: column;
+    gap:            clamp(12px, 1.7vw, 24px);
+  }
+
+  .case-deliverables-reviews-col img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-md);
+  }
+
+  .case-deliverables-calendar {
+    display:         flex;
+    justify-content: center;
+    padding:         var(--space-md);
+    background:      var(--bg-2);
+    border-radius:   var(--r-lg);
+  }
+
+  .case-deliverables-calendar img {
+    display:       block;
+    width:         100%;
+    height:        auto;
+    border-radius: var(--r-md);
+  }
+
+  /* ── Closing ──────────────────────────────── */
+  .case-closing-section {
+    padding-bottom: 0;
+  }
+
+  :global(.keep-reading-section) {
+    padding-bottom: var(--space-lg);
+  }
+
+  .case-closing-media {
+    position:      relative;
+    width:         100vw;
+    height:        800px;
+    margin-inline: calc(50% - 50vw);
+    overflow:      hidden;
+  }
+
+  .case-closing-media img {
+    position:   absolute;
+    top:        0;
+    left:       0;
+    width:      100%;
+    height:     1200px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .case-deliverables-row {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    .case-deliverables-row-images {
+      grid-template-columns: 1fr;
+      gap:                   var(--space-sm);
+    }
+
+    /* Reviews collage: drop the cropped-peek effect, show cards naturally */
+    .case-deliverables-reviews {
+      aspect-ratio: auto;
+    }
+
+    .case-deliverables-reviews-grid {
+      width: 100%;
+    }
+
+    .case-closing-media { height: 400px; }
+
+    .case-deliverables :global(.deliverable-slider-track img) {
+      height: 280px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .main { padding-top: 72px; }
+
+    .case-closing-media { height: 280px; }
+
+    .case-deliverables :global(.deliverable-slider-track img) {
+      height: 200px;
+    }
+  }
+</style>
