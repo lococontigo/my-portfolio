@@ -1,0 +1,380 @@
+{
+  "summary": {
+    "health_score": 67,
+    "business_type": "Personal portfolio / freelance UX-UI design & development services (bilingual EN / zh-Hant)",
+    "top_findings": [
+      "andrewthyip.com does not rank for Andrew's own name in search (LinkedIn and unrelated namesakes dominate)",
+      "/work/yocale/ ships ~82MB of uncompressed GIFs on one page, one with fetchpriority=high",
+      "Confirmed-real TBT failure (up to 2200ms) on three /ch/ routes, re-verified with isolated Chrome instances",
+      "No coherent Person/ProfessionalService entity graph in structured data (zero @id usage sitewide)",
+      "/about/ and /services/about/ (and /contact/ and /services/contact/) serve identical body content at separate sitemapped URLs"
+    ],
+    "quick_wins": [
+      "301-redirect dead /ant-rentals-media-branding/ to /work/ant/ (done, needs deploy)",
+      "Add X-Content-Type-Options: nosniff header",
+      "Add datePublished/dateModified to case-study CreativeWork schema",
+      "Increase mobile nav hamburger hit area to 48x48px",
+      "Add one citable sentence around each case-study stat-card metric"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 68,
+      "what_works": [
+        "robots.txt open and correct, sitemap referenced",
+        "Canonical tags self-referencing, absolute, trailing-slash-consistent",
+        "Hreflang fully reciprocal across every EN/zh-Hant pair",
+        "Fully static/SSR output - zero JS-rendering risk for any crawler",
+        "Brotli compression on HTML responses"
+      ],
+      "findings": [
+        {
+          "title": "Multi-megabyte GIFs served on case-study pages, one with fetchpriority=high",
+          "severity": "Critical",
+          "description": "/work/yocale/ and its /ch/ twin ship ~82-90MB of GIFs across 5 files (up to 32MB single file); /work/crowd-ease/ carries a further ~11MB; 404.astro preloads a 9.4MB GIF with fetchpriority=high.",
+          "recommendation": "Convert to compressed video (mp4/webm) or WebP the same way already done for Delta Controls; remove fetchpriority=high unless verified as the actual LCP element."
+        },
+        {
+          "title": "Content-Security-Policy header missing",
+          "severity": "High",
+          "description": "No CSP anywhere on the site; vercel.json has no headers block at all.",
+          "recommendation": "Add a CSP allow-listing GTM, Ahrefs, GSAP CDN, and Google Fonts; start in Report-Only mode."
+        },
+        {
+          "title": "X-Content-Type-Options header missing",
+          "severity": "High",
+          "description": "Confirmed absent on HTML and static asset responses.",
+          "recommendation": "Add X-Content-Type-Options: nosniff in vercel.json headers block."
+        },
+        {
+          "title": "X-Frame-Options / frame-ancestors missing",
+          "severity": "High",
+          "description": "Site can be embedded in an iframe on any third-party domain - clickjacking exposure on the contact form.",
+          "recommendation": "Add X-Frame-Options: SAMEORIGIN or fold into CSP frame-ancestors."
+        },
+        {
+          "title": "www to apex redirect uses temporary 307 instead of permanent",
+          "severity": "Medium",
+          "description": "https://www.andrewthyip.com redirects with 307; apex's own HTTP-to-HTTPS upgrade correctly uses 308.",
+          "recommendation": "Set the www redirect to permanent (308) in Vercel domain settings."
+        },
+        {
+          "title": "IndexNow protocol not implemented",
+          "severity": "Medium",
+          "description": "No IndexNow key file or ping calls found; Bing/Yandex/Naver rely on normal crawl schedule instead of near-instant re-crawl.",
+          "recommendation": "Generate an IndexNow key, add the key file, ping on content changes via a simple CI step."
+        },
+        {
+          "title": "HSTS lacks includeSubDomains and preload",
+          "severity": "Medium",
+          "description": "Strict-Transport-Security present with 2-year max-age but missing both directives needed for HSTS preload list eligibility.",
+          "recommendation": "Add includeSubDomains; preload, then submit to hstspreload.org."
+        },
+        {
+          "title": "404 page has no meta robots noindex, unnecessary self-canonical",
+          "severity": "Low",
+          "description": "404 status code is normally sufficient, but this is cheap defense-in-depth.",
+          "recommendation": "Add meta name=robots content=noindex,nofollow; drop the canonical tag on 404.astro."
+        },
+        {
+          "title": "No apple-touch-icon",
+          "severity": "Low",
+          "description": "iOS Add to Home Screen falls back to a page screenshot instead of the logo.",
+          "recommendation": "Add a 180x180 apple-touch-icon.png and matching link tag."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 62,
+      "what_works": [
+        "Six real, named testimonials with verifiable employers (Delta Controls Inc., IBM)",
+        "Three of four case studies have real depth and specific metrics tied to named clients",
+        "Hreflang correct and reciprocal across every page pair"
+      ],
+      "findings": [
+        {
+          "title": "Homepage carries almost no indexable/citable content",
+          "severity": "High",
+          "description": "/ and /ch/ render ~11 words of visible text (two headlines, two CTAs); entity info exists only in JSON-LD, not visible/crawlable text.",
+          "recommendation": "Add a short always-visible positioning statement or name/role/location line near the split panels."
+        },
+        {
+          "title": "/about/ and /services/about/ are duplicate content",
+          "severity": "High",
+          "description": "Identical 679-word body text (character-for-character), both self-canonicalized, both in sitemap.xml. Same pattern on the /ch/ pair.",
+          "recommendation": "Consolidate to one canonical URL with a 301, or differentiate the copy per audience and cross-canonicalize."
+        },
+        {
+          "title": "/contact/ and /services/contact/ are duplicate content",
+          "severity": "High",
+          "description": "Identical 45-word body text, same duplication pattern as About.",
+          "recommendation": "Same fix pattern as the About duplication."
+        },
+        {
+          "title": "/portfolio/ and /services/work/ are near-duplicate hub pages",
+          "severity": "Medium",
+          "description": "Verbatim project-card descriptions, ~85%+ content overlap, differ only in framing sentence.",
+          "recommendation": "Differentiate project blurbs per page intent, or canonicalize one to the other."
+        },
+        {
+          "title": "Ant Rentals case study is significantly thinner than its siblings",
+          "severity": "Medium",
+          "description": "188 words vs. 510-857 words for Delta/Yocale/Crowd Ease; lacks their Problem/Solution structure.",
+          "recommendation": "Bring up to parity with an explicit Problem/Solution breakdown and named stakeholders."
+        },
+        {
+          "title": "No freshness/date signals on case studies",
+          "severity": "Medium",
+          "description": "No datePublished/dateModified in any CreativeWork schema; no visible published/updated date.",
+          "recommendation": "Add datePublished (completion) and dateModified (last edit) to each case study."
+        },
+        {
+          "title": "Trust signal gaps for a freelance services business",
+          "severity": "Medium",
+          "description": "Personal Gmail contact address instead of branded domain email; no phone/address; no privacy policy despite a data-collecting contact form.",
+          "recommendation": "Set up a branded email, add a short privacy note, consider stating service area/timezone explicitly."
+        },
+        {
+          "title": "/services/ is below the service-page word-count floor",
+          "severity": "Low",
+          "description": "682 words vs. a ~800-word topical-coverage guidance floor.",
+          "recommendation": "Add a lightweight FAQ block covering timeline, pricing range, and process."
+        },
+        {
+          "title": "Images with missing or empty alt attributes",
+          "severity": "Low",
+          "description": "/work/ant/ has 8 images with no alt attribute at all and 6 with empty alt; /work/crowd-ease/ has 12 with no alt attribute.",
+          "recommendation": "Audit flagged images, add descriptive alt to any conveying real content, reserve empty alt for genuinely decorative fills."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 62,
+      "what_works": [
+        "All 40 JSON-LD blocks across 24 pages are syntactically valid",
+        "Correct @context (https://schema.org) used exclusively, no Microdata/RDFa",
+        "Zero deprecated schema types found anywhere",
+        "All URLs absolute in structured data"
+      ],
+      "findings": [
+        {
+          "title": "Testimonial Review/ItemList markup is self-serving and ineligible for rich results",
+          "severity": "High",
+          "description": "Reviews about the site owner's own service, published by the site owner, on 4 canonical URLs (about, services/about, and both /ch/ twins) - against Google's review-snippet eligibility guidelines regardless of content authenticity.",
+          "recommendation": "Remove Review/ItemList typing and keep testimonials as plain HTML, or retype as a generic CreativeWork/Quotation list which doesn't carry the self-serving restriction."
+        },
+        {
+          "title": "ProfessionalService never defined as a real entity",
+          "severity": "Medium",
+          "description": "Only appears as a bare 3-property stub, copy-pasted 24 times site-wide; no address, telephone, areaServed, or links back to Person.",
+          "recommendation": "Define ProfessionalService once in full, link bidirectionally to Person via @id."
+        },
+        {
+          "title": "No @id used anywhere; Person entity duplicated with inconsistent properties",
+          "severity": "Medium",
+          "description": "Person block varies page to page with no shared identifier across roughly 10 instances.",
+          "recommendation": "Adopt one canonical Person node with @id, reference via short-form {@id: ...} elsewhere."
+        },
+        {
+          "title": "Identical testimonial payload duplicated across 4 files with no shared source",
+          "severity": "Medium",
+          "description": "Same 6-review JSON-LD block hand-copied into about.astro, services/about.astro, and both /ch/ twins.",
+          "recommendation": "Extract into a shared data file imported by all 4 pages."
+        },
+        {
+          "title": "/portfolio has no page-level schema or ItemList of its case studies",
+          "severity": "Medium",
+          "description": "Ships only the minimal Person object also used on the homepage; no WebPage/CollectionPage identity, no structured enumeration of the 4 case studies it lists.",
+          "recommendation": "Add a CollectionPage with a mainEntity ItemList referencing each case study."
+        },
+        {
+          "title": "Testimonial content on zh-Hant pages is untranslated English with no inLanguage tag",
+          "severity": "Low",
+          "description": "Sibling Person block correctly declares inLanguage zh-Hant but the following Review block has no tag and is entirely English.",
+          "recommendation": "Translate the content or explicitly mark the block inLanguage en."
+        },
+        {
+          "title": "BreadcrumbList never carries inLanguage on zh-Hant pages",
+          "severity": "Low",
+          "description": "Inconsistent with the CreativeWork block on the same page which does declare it.",
+          "recommendation": "Add inLanguage zh-Hant to BreadcrumbList blocks for consistency."
+        },
+        {
+          "title": "English-locale pages never declare inLanguage at all",
+          "severity": "Low",
+          "description": "Asymmetric pattern versus the zh-Hant side, which does declare it.",
+          "recommendation": "Add inLanguage en to EN-page JSON-LD for parity."
+        }
+      ]
+    },
+    {
+      "name": "Performance (Core Web Vitals)",
+      "score": 78,
+      "what_works": [
+        "CLS is a non-issue everywhere (0-0.041, all Good)",
+        "TTFB excellent everywhere (34-244ms)",
+        "font-display-insight shows zero estimated savings - web font loading already ruled out as an LCP cause"
+      ],
+      "findings": [
+        {
+          "title": "LCP element is text everywhere; render delay, not network, is the bottleneck",
+          "severity": "High",
+          "description": "The measured LCP element on every tested page is a headline or paragraph, never an image/video; element render delay runs 2.3-3.4 seconds despite trivial TTFB.",
+          "recommendation": "Do not spend effort re-compressing hero media to fix LCP specifically; focus on removing render-blocking work between HTML parse and first paint."
+        },
+        {
+          "title": "A ~91-94KB same-origin hashed script is the top render-blocking resource on every page",
+          "severity": "High",
+          "description": "Contributes 900-1640ms of render-blocking duration on every route tested; high-confidence identified as Ahrefs Analytics' same-origin proxy fetch.",
+          "recommendation": "Delay analytics initialization until after window.load or via requestIdleCallback."
+        },
+        {
+          "title": "Critical TBT on three /ch/ routes, confirmed real via isolated re-test",
+          "severity": "Critical",
+          "description": "/ch/services/, /ch/work/yocale/, /ch/work/delta/ scored 51-64 with TBT 1174-2200ms across two independent test runs including fresh isolated Chrome instances.",
+          "recommendation": "Fix GSAP/ScrollTrigger interaction with oversized media on /work/yocale/ (2287-2500ms attributed to gsap.min.js there specifically); independently fix the underlying media weight."
+        },
+        {
+          "title": "Case-study and portfolio pages ship 12.6-27MB of largely unoptimized media",
+          "severity": "High",
+          "description": "Multiple routes carry double-digit-MB payloads from unconverted GIFs and suspiciously large SVGs (likely embedded raster data).",
+          "recommendation": "Convert GIFs to video, investigate embedded raster data in oversized SVGs, dedupe any accidentally-doubled video fetches."
+        },
+        {
+          "title": "Chinese pages carry a consistent 1.8-2.4MB CJK webfont tax and near-double request count",
+          "severity": "Medium",
+          "description": "Noto Serif/Sans TC pre-sliced into ~28 unicode-range files per page; request counts nearly double versus English equivalents.",
+          "recommendation": "Consider whether all 3 weights of both font families are needed, or fall back to system CJK fonts for body copy."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness (GEO)",
+      "score": 69,
+      "what_works": [
+        "All major AI crawlers confirmed allowed and reachable (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)",
+        "llms.txt present, accurate, and genuinely well-maintained",
+        "Strong, descriptive image alt text on sampled pages"
+      ],
+      "findings": [
+        {
+          "title": "Key metrics isolated as bare numbers with no citable sentence",
+          "severity": "High",
+          "description": "All 4 case studies present headline stats as two disconnected paragraph tags with no subject, verb, or causal claim connecting them.",
+          "recommendation": "Add one self-contained sentence per stat connecting the number to the claim and client."
+        },
+        {
+          "title": "Case-study prose fragmented well below optimal citation length",
+          "severity": "Medium",
+          "description": "Paragraphs run 12-48 words; none reach the 134-167 word range associated with highest AI-citation rates.",
+          "recommendation": "Add one consolidated ~150-word answer paragraph per major section, prioritizing Yocale and Delta."
+        },
+        {
+          "title": "Section headings are declarative, not question-based",
+          "severity": "Medium",
+          "description": "No headings phrased as questions across any case study, reducing match rate against natural-language AI search queries.",
+          "recommendation": "Reframe 2-3 headings per case study as questions where it doesn't fight the existing design voice."
+        },
+        {
+          "title": "No datePublished/dateModified in case-study structured data",
+          "severity": "Medium",
+          "description": "AI answer engines have no freshness signal to judge whether cited metrics are current.",
+          "recommendation": "Add both date fields to each case study's CreativeWork schema."
+        },
+        {
+          "title": "Homepage carries almost no extractable text",
+          "severity": "Medium",
+          "description": "~79 words total; all entity information lives in JSON-LD rather than visible/citable prose on the URL most likely to be cited first.",
+          "recommendation": "Add a short visible or sr-only summary paragraph restating the Person entity's key facts."
+        },
+        {
+          "title": "No RSL 1.0 machine-readable licensing alongside the llms.txt content-licensing note",
+          "severity": "Low",
+          "description": "llms.txt states an attribution requirement in prose only; no machine-readable backing file.",
+          "recommendation": "Publish a minimal RSL 1.0 file if maximizing AI-search visibility is a stated goal; low priority given site scale."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 70,
+      "what_works": [
+        "Below-the-fold images use loading=lazy consistently"
+      ],
+      "findings": [
+        {
+          "title": "Missing alt attributes on case-study images",
+          "severity": "Low",
+          "description": "/work/ant/ (8 images, no alt) and /work/crowd-ease/ (12 images, no alt) have real content images with no accessibility/SEO alt text.",
+          "recommendation": "Add descriptive alt text; audit which empty-alt images are genuinely decorative versus mislabeled."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Redirect dead /ant-rentals-media-branding/ URL (done, needs deploy)",
+          "Convert /work/yocale/'s ~82MB of GIFs to compressed video/WebP",
+          "Remove unconditional fetchpriority=high from case-study-gif.astro",
+          "Fix GSAP/ScrollTrigger interaction with oversized media on /work/yocale/",
+          "Defer Ahrefs Analytics initialization until after window.load"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Resolve /about/ vs /services/about/ duplication",
+          "Resolve /contact/ vs /services/contact/ duplication",
+          "Add CSP, X-Content-Type-Options, X-Frame-Options headers",
+          "Retype or remove self-serving Review/ItemList testimonial schema",
+          "Define unified Person/ProfessionalService entity graph with @id",
+          "Fix mobile hero canvas washing out /portfolio/ text",
+          "Add citable sentences around case-study stat metrics",
+          "Add homepage identity paragraph above the funnel fork",
+          "Add testimonials and status badge to /portfolio/"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Add datePublished/dateModified to all case-study schema",
+          "Bring Ant Rentals case study to parity with siblings",
+          "Add consolidated answer paragraphs to Yocale and Delta case studies",
+          "Set up branded domain email and privacy note",
+          "Add pricing/scope signal to /services/",
+          "Increase mobile nav hamburger hit area",
+          "Add GitHub/Behance/Dribbble links if available",
+          "Reframe select headings as questions"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Fix www-to-apex redirect to permanent 308",
+          "Add HSTS includeSubDomains and preload",
+          "Implement IndexNow",
+          "Automate sitemap lastmod from git history",
+          "Add apple-touch-icon",
+          "Add long-lived immutable cache headers for media after GIF fix",
+          "Confirm LinkedIn profile lists site URL",
+          "Re-run performance audit after Phase 1 lands",
+          "Verify SXO ranking finding against real GSC data if access becomes available"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrew YIP — Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════════
+   TOKENS — pulled from src/styles/tokens.css
+═══════════════════════════════════════════ */
+:root, [data-theme="dark"] {
+  --bg:           #111110;
+  --bg-2:         #1a1a18;
+  --bg-3:         #222220;
+  --surface:      #242422;
+  --border:       #2a2a28;
+  --border-2:     #3a3a38;
+
+  --text-1:       #F0EDE6;
+  --text-2:       #A8A49C;
+  --text-3:       #5F5E5A;
+
+  --accent:       #EF9F27;
+  --accent-dim:   rgba(239,159,39,0.12);
+  --accent-2:     #534AB7;
+  --accent-2-dim: rgba(83,74,183,0.14);
+  --danger:       #D4537E;
+  --success:      #1D9E75;
+
+  --neon-sm: 0 0 6px var(--accent), 0 0 14px rgba(239,159,39,0.45);
+  --neon-md: 0 0 8px var(--accent), 0 0 22px rgba(239,159,39,0.5), 0 0 42px rgba(239,159,39,0.2);
+  --neon-lg: 0 0 10px var(--accent), 0 0 30px rgba(239,159,39,0.55), 0 0 60px rgba(239,159,39,0.25), 0 0 100px rgba(239,159,39,0.1);
+  --neon-purple: 0 0 8px #534AB7, 0 0 22px rgba(83,74,183,0.5), 0 0 42px rgba(83,74,183,0.2);
+  --neon-teal:   0 0 8px #1D9E75, 0 0 22px rgba(29,158,117,0.5), 0 0 42px rgba(29,158,117,0.2);
+
+  --ease:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
+
+  --r-sm: 3px; --r-md: 6px; --r-lg: 12px; --r-pill: 999px;
+  --theme-label: "HK Night";
+}
+
+[data-theme="light"] {
+  --bg:           #F5F3EE;
+  --bg-2:         #ECEAE4;
+  --bg-3:         #E4E1DA;
+  --surface:      #FFFFFF;
+  --border:       #D8D4CB;
+  --border-2:     #C4BFB5;
+
+  --text-1:       #1C1C1A;
+  --text-2:       #6B6860;
+  --text-3:       #A8A49C;
+
+  --accent:       #1D9E75;
+  --accent-dim:   rgba(29,158,117,0.10);
+  --accent-2:     #534AB7;
+  --accent-2-dim: rgba(83,74,183,0.10);
+  --danger:       #C0384F;
+  --success:      #1D9E75;
+
+  --neon-sm: 0 2px 12px rgba(29,158,117,0.25);
+  --neon-md: 0 4px 20px rgba(29,158,117,0.35), 0 8px 40px rgba(29,158,117,0.15);
+  --neon-lg: 0 6px 28px rgba(29,158,117,0.4), 0 12px 50px rgba(29,158,117,0.2);
+  --neon-purple: 0 4px 20px rgba(83,74,183,0.3), 0 8px 40px rgba(83,74,183,0.12);
+  --neon-teal: var(--neon-md);
+
+  --theme-label: "CA Stone";
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text-1);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  transition: background 0.5s var(--ease), color 0.5s var(--ease);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: var(--accent); color: #fff; }
+
+.wrap { max-width: 900px; margin: 0 auto; padding: 56px 24px 120px; }
+
+/* ── Cover ── */
+.cover {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 40px;
+  margin-bottom: 56px;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.cover-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cover-logo img {
+  width: 56px;
+  height: 56px;
+  display: block;
+}
+
+[data-theme="dark"] .cover-logo img { filter: invert(1); }
+
+.cover-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--text-1);
+}
+
+.cover-name em { font-style: italic; color: var(--accent); }
+
+.cover-role {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-top: 8px;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: var(--bg-2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  font-size: 11px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-2);
+  transition: all 0.3s var(--ease);
+}
+
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); box-shadow: var(--neon-sm); }
+
+.toggle-dot {
+  width: 28px; height: 16px;
+  background: var(--bg-3);
+  border-radius: 8px;
+  border: 0.5px solid var(--border-2);
+  position: relative;
+}
+
+.toggle-dot::after {
+  content: '';
+  position: absolute;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  top: 2px; left: 2px;
+  background: var(--accent);
+  transition: transform 0.3s var(--ease);
+}
+
+[data-theme="light"] .toggle-dot::after { transform: translateX(12px); }
+
+/* ── Intro statement ── */
+.intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 27px;
+  font-weight: 300;
+  line-height: 1.35;
+  color: var(--text-1);
+  max-width: 640px;
+  margin-bottom: 64px;
+}
+
+.intro em { font-style: italic; color: var(--accent); }
+
+/* ── Section scaffolding ── */
+.section { margin-bottom: 72px; }
+
+.section-label {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--text-3);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--text-1);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.section-sub { font-size: 12px; color: var(--text-3); margin-bottom: 28px; max-width: 520px; }
+
+.box {
+  background: var(--bg-2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  margin-bottom: 12px;
+}
+
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.col-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+/* ── Logo usage ── */
+.logo-plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  border-radius: var(--r-lg);
+  border: 0.5px solid var(--border);
+}
+
+.logo-plate.on-dark { background: #111110; }
+.logo-plate.on-light { background: #F5F3EE; }
+
+.logo-plate img { width: 64px; height: 64px; }
+.logo-plate.on-dark img { filter: invert(1); }
+
+.logo-caption { font-size: 11px; color: var(--text-3); text-align: center; margin-top: 10px; }
+
+.clearspace-demo {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  border: 1px dashed var(--border-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clearspace-demo img { width: 56px; height: 56px; }
+[data-theme="dark"] .clearspace-demo img { filter: invert(1); }
+
+.dont-row { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+.dont-item { text-align: center; }
+.dont-plate {
+  width: 96px; height: 96px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--r-md);
+  border: 0.5px solid var(--border);
+  background: var(--bg-3);
+  margin-bottom: 8px;
+  position: relative;
+}
+.dont-plate img { width: 40px; height: 40px; }
+[data-theme="dark"] .dont-plate img { filter: invert(1); }
+.dont-plate::after {
+  content: '✕';
+  position: absolute;
+  color: var(--danger);
+  font-size: 22px;
+  font-weight: 500;
+}
+.dont-label { font-size: 10px; color: var(--text-3); }
+
+/* ── Colors ── */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 0.5px solid var(--border);
+  margin-bottom: 20px;
+}
+
+.swatch { aspect-ratio: 1; position: relative; }
+.swatch-info {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 8px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+}
+.swatch-name { font-size: 9px; font-weight: 500; color: #fff; display: block; }
+.swatch-hex { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: rgba(255,255,255,0.75); }
+
+.token-table { border: 0.5px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
+.token-row {
+  display: grid;
+  grid-template-columns: 32px 140px 1fr auto;
+  align-items: center;
+  border-bottom: 0.5px solid var(--border);
+}
+.token-row:last-child { border-bottom: none; }
+.token-dot { width: 10px; height: 10px; border-radius: 50%; margin: 12px 11px; }
+.token-name { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); padding: 12px 0; }
+.token-desc { font-size: 11px; color: var(--text-2); padding: 12px 16px; }
+.token-val { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--text-3); padding: 12px 14px; text-align: right; }
+
+/* ── Typography ── */
+.type-sample { padding: 18px 0; border-bottom: 0.5px solid var(--border); }
+.type-sample:last-child { border-bottom: none; }
+.type-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.type-role { font-size: 8px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-3); }
+.type-spec { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--text-3); }
+
+.t-display { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; line-height: 1; letter-spacing: -0.02em; }
+.t-display em { font-style: italic; color: var(--accent); }
+.t-h1 { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; line-height: 1.1; }
+.t-h2 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; line-height: 1.2; }
+.t-label { font-size: 11px; font-weight: 500; letter-spacing: .01em; }
+.t-body { font-size: 15px; font-weight: 300; line-height: 1.7; color: var(--text-2); max-width: 520px; }
+.t-micro { font-size: 8px; text-transform: uppercase; letter-spacing: .12em; color: var(--text-3); }
+.t-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent-2); }
+
+/* ── Spacing ── */
+.spacing-row { display: flex; align-items: center; gap: 14px; padding: 8px 0; border-bottom: 0.5px solid var(--border); }
+.spacing-row:last-child { border-bottom: none; }
+.spacing-token { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); min-width: 100px; }
+.spacing-bar { height: 6px; background: var(--accent-dim); border: 0.5px solid rgba(239,159,39,0.25); border-radius: 2px; flex-shrink: 0; }
+.spacing-val { font-size: 11px; color: var(--text-3); min-width: 40px; text-align: right; }
+.spacing-use { font-size: 11px; color: var(--text-3); margin-left: auto; opacity: .7; font-style: italic; }
+
+/* ── Radius swatches ── */
+.radius-row { display: flex; gap: 20px; flex-wrap: wrap; }
+.radius-item { text-align: center; }
+.radius-box { width: 72px; height: 72px; background: var(--bg-3); border: 0.5px solid var(--border-2); margin-bottom: 8px; }
+.radius-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-2); }
+
+/* ── Motion ── */
+.ease-demo { display: flex; align-items: center; gap: 16px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
+.ease-demo:last-child { border-bottom: none; }
+.ease-name { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); min-width: 130px; }
+.ease-track { flex: 1; height: 28px; background: var(--bg-3); border-radius: 4px; overflow: hidden; position: relative; border: 0.5px solid var(--border); }
+.ease-ball { position: absolute; left: 4px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; border-radius: 50%; background: var(--accent); box-shadow: var(--neon-sm); }
+.ease-track:hover .ease-ball-sharp { left: calc(100% - 24px); transition: left 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.ease-track:hover .ease-ball-bad { left: calc(100% - 24px); transition: left 0.8s ease-in-out; background: var(--text-3); box-shadow: none; }
+.ease-note { font-size: 11px; color: var(--text-3); min-width: 130px; text-align: right; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px; font-weight: 500; letter-spacing: .02em;
+  border-radius: var(--r-sm);
+  cursor: pointer; border: none; text-decoration: none;
+  transition: all 0.2s var(--ease);
+  white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: #111110; }
+.btn-primary:hover { box-shadow: var(--neon-md); transform: translateY(-1px); letter-spacing: .04em; }
+.btn-ghost { background: transparent; color: var(--accent); border: 0.5px solid var(--bg); }
+.btn-ghost:hover { background: var(--accent-dim); box-shadow: var(--neon-md); border-color: var(--accent); transform: translateY(-1px); }
+.btn-ghost-purple { background: transparent; color: var(--accent-2); border: 0.5px solid var(--bg); }
+.btn-ghost-purple:hover { background: var(--accent-2-dim); box-shadow: var(--neon-purple); border-color: var(--accent-2); transform: translateY(-1px); }
+.btn-muted { background: var(--bg-3); color: var(--text-2); border: 0.5px solid var(--bg); }
+.btn-muted:hover { border-color: var(--border-2); color: var(--text-1); }
+
+.btn-sign {
+  background: transparent; color: var(--accent);
+  border: 1.5px solid var(--bg);
+  font-family: 'DM Sans', serif; font-size: 18px; font-weight: 400; letter-spacing: .08em;
+  padding: 10px 26px; border-radius: var(--r-sm);
+  transition: all 0.25s var(--ease); cursor: pointer;
+}
+.btn-sign:hover {
+  text-shadow: 0 0 8px var(--accent), 0 0 18px rgba(239,159,39,0.6);
+  box-shadow: var(--neon-lg), inset 0 0 20px rgba(239,159,39,0.05);
+  border-color: var(--accent);
+}
+.btn-sign-teal {
+  background: transparent; color: var(--success);
+  border: 1.5px solid var(--bg);
+  font-family: 'DM Sans', serif; font-size: 18px; font-weight: 400; letter-spacing: .08em;
+  padding: 10px 26px; border-radius: var(--r-sm);
+  transition: all 0.25s var(--ease); cursor: pointer;
+}
+.btn-sign-teal:hover {
+  text-shadow: 0 0 8px #1D9E75, 0 0 18px rgba(29,158,117,0.6);
+  box-shadow: var(--neon-teal), inset 0 0 20px rgba(29,158,117,0.05);
+  border-color: var(--success);
+}
+.sign-annotation { font-size: 11px; color: var(--text-3); margin-top: 12px; font-style: italic; }
+
+/* ── Tags ── */
+.tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px; border-radius: var(--r-pill);
+  font-size: 11px; font-weight: 500; letter-spacing: .03em;
+  border: 0.5px solid transparent;
+}
+.tag-default { background: var(--bg-3); color: var(--text-2); border-color: var(--border); }
+.tag-amber { background: rgba(239,159,39,0.10); color: var(--accent); border-color: rgba(239,159,39,0.25); }
+.tag-purple { background: var(--accent-2-dim); color: var(--accent-2); border-color: rgba(83,74,183,0.25); }
+.tag-teal { background: rgba(29,158,117,0.10); color: var(--success); border-color: rgba(29,158,117,0.25); }
+.tag-danger { background: rgba(212,83,126,0.10); color: var(--danger); border-color: rgba(212,83,126,0.25); }
+.tag-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+/* ── Forms ── */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .09em; color: var(--text-3); }
+.input {
+  width: 100%; padding: 10px 14px;
+  background: var(--bg-3); border: 0.5px solid var(--border);
+  border-radius: var(--r-sm);
+  font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text-1);
+  outline: none; transition: all 0.2s var(--ease);
+}
+.input:focus { border-color: var(--accent); box-shadow: var(--neon-sm); }
+
+/* ── Cards ── */
+.info-card { background: var(--bg-3); border: 0.5px solid var(--border); border-radius: var(--r-lg); padding: 20px; transition: all .25s var(--ease); }
+.info-card:hover { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent-dim), var(--neon-sm); }
+.info-card-icon { width: 36px; height: 36px; border-radius: var(--r-md); background: var(--accent-dim); border: 0.5px solid rgba(239,159,39,0.2); display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 14px; }
+.info-card-title { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+.info-card-body { font-size: 11px; color: var(--text-2); line-height: 1.6; }
+
+/* ── Principles list ── */
+.principle-list { display: flex; flex-direction: column; gap: 0; }
+.principle-item { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding: 14px 0; border-bottom: 0.5px solid var(--border); }
+.principle-item:last-child { border-bottom: none; }
+.principle-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); padding-top: 2px; }
+.principle-title { font-size: 13px; font-weight: 500; color: var(--text-1); margin-bottom: 3px; }
+.principle-body { font-size: 12px; color: var(--text-2); line-height: 1.6; }
+
+/* ── Footer ── */
+.footer { text-align: center; padding-top: 40px; border-top: 0.5px solid var(--border); font-size: 10px; color: var(--text-3); letter-spacing: .05em; }
+
+@media (max-width: 640px) {
+  .col-2, .col-3 { grid-template-columns: 1fr; }
+  .palette-grid { grid-template-columns: repeat(2, 1fr); }
+  .cover { flex-direction: column; align-items: flex-start; }
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 2px; }
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ── Cover ── -->
+  <header class="cover">
+    <div class="cover-logo">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABRBJREFUeAHtnGeoHFUUx39PTWzBCnaNlVg+qGhAhGiMHVERG2gsH1TEoKioiCLoBztiULEQ/KJYCSpiCViC0SjEGrFEREXRgN2I2JP1/L27eTNzd9/Ozt65O9nZH/zZ7GTevnlnzj33nHPvLIwY0QtjlIc+e5ZpA1PDtNK0dvP486Z/qTG34QywMqF/TIdRcyaZ3sAZpMG45zzDiP+940/TKpxh9Cov2pOaM9n0Fr7XzGMEp+CMkfSaH007UHM0E32G7zU3M4IrSRtGXrPctBEVZC3i8XXztZE4toXpTGrOq6YH8b3mE9O61BRNza+YtsEF3VYQljR1n0pNuRc3M4m5OGMkvWaRaR1qxiampab1m+83N60gPXVreB1IhYgRfE/GlQB/NN9rKD3JeBAea+oaaoT+4AWmPTLH9yc9nKRfTftQE6ab5tO+vfEE6SCs4XQ/NSEZdLPMxA/Cv5m2Z8jZ0LQMV0S2Q/HtNXyvuZ4h51zTHV3OkTdlveYb3Mw1lKiF+bppxy7naQr/GN9rLmJIOdj0bM5zL8D3mi9wveKhQ02oo3KeOwVXZWe95gyGjKmmJfR2x6/G79UsYci4xHQVvbGZ6TvSCZ+MczRDxNt0D7rtuAffa54ibs+oNA4wPU0xdjX9Tbq4/Mu0F2G4Ftcsa0lpwcuUu+i4mocovpimC3wA32seJQxa45rH+MKfitpDiMBWuPbCJIozA7dSmfSan03bEQYljjJI1LpMSdkV9M9CfK+5gXBoteJLXDexdNbD1T270T+aieQ1ScN8a9qY/lH99oPpPCJxJK75FCKQaRZ6B78vfCn9o6aZZs3JREJB9wTCMRt/5fJT3B0viuoyLRVHCbhCydl7hG1ma9jIEMlYI6/pp0yYY3qciKgIvInwXI5fXGpLSZFZTzFQvaFdiITiQZ72QhE0bH7BjzXH0DvXmW4lIso7FlEe8sTs1L2Q3tgJ1/OZQkTupHNPNwQ746bX7BrUvj18hq7xYiKyteld3IJamdyF7zWP5PxZrVJo6o/qLWcTNiPtxDTcVrWWcfSq1YQ8W9Wew+UuUVEjaXfioOQx6zX3dfkZbaVVezVK9dxiP9NLEX+p/kjNSNmtatt2OF85lW5cqJZFbrSQNpt46AZoG0k24eu0BqVa6G4io2TpfSLWG01OJF1cymu+wi8TlDUrmZtKZM4y3U58lPF+iL+aMCdznvb63Uhk5NIKaNMZDLop2SAs72h5jXosSuZCtCh6Ym/Ti0SO9Ak2NX3OuHFaCV+rslfsu5ABoBT9HAaLlmayhlE7YVbztZ/WaiHkrh8wADfNsKXpd9JTtxJAxZ9jCUQvazbH4+7ICgaL2pwPk96qJi/RDLWAQPRiGKXWc6kGb7Y5thg3nQchr2GU+uuBiKVUlwYByWsYbWufH/qX90Hp15GnT6vxe5zpCKpD1jDB04c8HnM4bkwvpzq0u+6gxsljmMtYM7aZriIg3QyjJpFK+8VUi0bOY4XpZpjTcTsEqhJ0W4zlPFaYiYKvMt2TTAdRPYIOm3ZM5DGaiX7Cdemrjjw66M6riT5MucsyqkupU3Ynw2g951AiuGxV6WSY85v/p8dpBtV7mQg9eZu8Lv279FarerqqYNXn0GbBaVSPx/AfOn2BklHTOfkNHlqGqNJDD9rr9z2+YXTNMwnEWJv3+mqTGaTjy0e4p0kG/Z0vGi634LbNilazSujatUX1NAK2H0aMGNEX/wGwM3uO0a8+BgAAAABJRU5ErkJggg==" alt="Andrew YIP monogram logo">
+      <div>
+        <div class="cover-name">Andrew <em>YIP</em></div>
+        <div class="cover-role">UX/UI Designer &amp; Developer</div>
+      </div>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="toggle-btn">
+      <div class="toggle-dot"></div>
+      <span id="toggle-label">HK Night</span>
+    </button>
+  </header>
+
+  <p class="intro">Two cities, one designer. <em>HK Night</em> and <em>CA Stone</em> are not just a dark and light mode — they're the two environments that shaped the work, used together across every touchpoint of the business.</p>
+
+  <!-- ── 01 Logo ── -->
+  <section class="section">
+    <div class="section-label">01 · Logo</div>
+    <div class="section-title">Mark</div>
+    <div class="section-sub">The monogram is an "A" and "Y" resolved into a single glyph. Use it standalone at small sizes; pair with the full wordmark at large sizes.</div>
+
+    <div class="col-2" style="margin-bottom:12px">
+      <div>
+        <div class="logo-plate on-dark">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABRBJREFUeAHtnGeoHFUUx39PTWzBCnaNlVg+qGhAhGiMHVERG2gsH1TEoKioiCLoBztiULEQ/KJYCSpiCViC0SjEGrFEREXRgN2I2JP1/L27eTNzd9/Ozt65O9nZH/zZ7GTevnlnzj33nHPvLIwY0QtjlIc+e5ZpA1PDtNK0dvP486Z/qTG34QywMqF/TIdRcyaZ3sAZpMG45zzDiP+940/TKpxh9Cov2pOaM9n0Fr7XzGMEp+CMkfSaH007UHM0E32G7zU3M4IrSRtGXrPctBEVZC3i8XXztZE4toXpTGrOq6YH8b3mE9O61BRNza+YtsEF3VYQljR1n0pNuRc3M4m5OGMkvWaRaR1qxiampab1m+83N60gPXVreB1IhYgRfE/GlQB/NN9rKD3JeBAea+oaaoT+4AWmPTLH9yc9nKRfTftQE6ab5tO+vfEE6SCs4XQ/NSEZdLPMxA/Cv5m2Z8jZ0LQMV0S2Q/HtNXyvuZ4h51zTHV3OkTdlveYb3Mw1lKiF+bppxy7naQr/GN9rLmJIOdj0bM5zL8D3mi9wveKhQ02oo3KeOwVXZWe95gyGjKmmJfR2x6/G79UsYci4xHQVvbGZ6TvSCZ+MczRDxNt0D7rtuAffa54ibs+oNA4wPU0xdjX9Tbq4/Mu0F2G4Ftcsa0lpwcuUu+i4mocovpimC3wA32seJQxa45rH+MKfitpDiMBWuPbCJIozA7dSmfSan03bEQYljjJI1LpMSdkV9M9CfK+5gXBoteJLXDexdNbD1T270T+aieQ1ScN8a9qY/lH99oPpPCJxJK75FCKQaRZ6B78vfCn9o6aZZs3JREJB9wTCMRt/5fJT3B0viuoyLRVHCbhCydl7hG1ma9jIEMlYI6/pp0yYY3qciKgIvInwXI5fXGpLSZFZTzFQvaFdiITiQZ72QhE0bH7BjzXH0DvXmW4lIso7FlEe8sTs1L2Q3tgJ1/OZQkTupHNPNwQ746bX7BrUvj18hq7xYiKyteld3IJamdyF7zWP5PxZrVJo6o/qLWcTNiPtxDTcVrWWcfSq1YQ8W9Wew+UuUVEjaXfioOQx6zX3dfkZbaVVezVK9dxiP9NLEX+p/kjNSNmtatt2OF85lW5cqJZFbrSQNpt46AZoG0k24eu0BqVa6G4io2TpfSLWG01OJF1cymu+wi8TlDUrmZtKZM4y3U58lPF+iL+aMCdznvb63Uhk5NIKaNMZDLop2SAs72h5jXosSuZCtCh6Ym/Ti0SO9Ak2NX3OuHFaCV+rslfsu5ABoBT9HAaLlmayhlE7YVbztZ/WaiHkrh8wADfNsKXpd9JTtxJAxZ9jCUQvazbH4+7ICgaL2pwPk96qJi/RDLWAQPRiGKXWc6kGb7Y5thg3nQchr2GU+uuBiKVUlwYByWsYbWufH/qX90Hp15GnT6vxe5zpCKpD1jDB04c8HnM4bkwvpzq0u+6gxsljmMtYM7aZriIg3QyjJpFK+8VUi0bOY4XpZpjTcTsEqhJ0W4zlPFaYiYKvMt2TTAdRPYIOm3ZM5DGaiX7Cdemrjjw66M6riT5MucsyqkupU3Ynw2g951AiuGxV6WSY85v/p8dpBtV7mQg9eZu8Lv279FarerqqYNXn0GbBaVSPx/AfOn2BklHTOfkNHlqGqNJDD9rr9z2+YXTNMwnEWJv3+mqTGaTjy0e4p0kG/Z0vGi634LbNilazSujatUX1NAK2H0aMGNEX/wGwM3uO0a8+BgAAAABJRU5ErkJggg==" alt="Monogram on dark HK Night background">
+        </div>
+        <div class="logo-caption">On dark — invert to full white</div>
+      </div>
+      <div>
+        <div class="logo-plate on-light">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABRBJREFUeAHtnGeoHFUUx39PTWzBCnaNlVg+qGhAhGiMHVERG2gsH1TEoKioiCLoBztiULEQ/KJYCSpiCViC0SjEGrFEREXRgN2I2JP1/L27eTNzd9/Ozt65O9nZH/zZ7GTevnlnzj33nHPvLIwY0QtjlIc+e5ZpA1PDtNK0dvP486Z/qTG34QywMqF/TIdRcyaZ3sAZpMG45zzDiP+940/TKpxh9Cov2pOaM9n0Fr7XzGMEp+CMkfSaH007UHM0E32G7zU3M4IrSRtGXrPctBEVZC3i8XXztZE4toXpTGrOq6YH8b3mE9O61BRNza+YtsEF3VYQljR1n0pNuRc3M4m5OGMkvWaRaR1qxiampab1m+83N60gPXVreB1IhYgRfE/GlQB/NN9rKD3JeBAea+oaaoT+4AWmPTLH9yc9nKRfTftQE6ab5tO+vfEE6SCs4XQ/NSEZdLPMxA/Cv5m2Z8jZ0LQMV0S2Q/HtNXyvuZ4h51zTHV3OkTdlveYb3Mw1lKiF+bppxy7naQr/GN9rLmJIOdj0bM5zL8D3mi9wveKhQ02oo3KeOwVXZWe95gyGjKmmJfR2x6/G79UsYci4xHQVvbGZ6TvSCZ+MczRDxNt0D7rtuAffa54ibs+oNA4wPU0xdjX9Tbq4/Mu0F2G4Ftcsa0lpwcuUu+i4mocovpimC3wA32seJQxa45rH+MKfitpDiMBWuPbCJIozA7dSmfSan03bEQYljjJI1LpMSdkV9M9CfK+5gXBoteJLXDexdNbD1T270T+aieQ1ScN8a9qY/lH99oPpPCJxJK75FCKQaRZ6B78vfCn9o6aZZs3JREJB9wTCMRt/5fJT3B0viuoyLRVHCbhCydl7hG1ma9jIEMlYI6/pp0yYY3qciKgIvInwXI5fXGpLSZFZTzFQvaFdiITiQZ72QhE0bH7BjzXH0DvXmW4lIso7FlEe8sTs1L2Q3tgJ1/OZQkTupHNPNwQ746bX7BrUvj18hq7xYiKyteld3IJamdyF7zWP5PxZrVJo6o/qLWcTNiPtxDTcVrWWcfSq1YQ8W9Wew+UuUVEjaXfioOQx6zX3dfkZbaVVezVK9dxiP9NLEX+p/kjNSNmtatt2OF85lW5cqJZFbrSQNpt46AZoG0k24eu0BqVa6G4io2TpfSLWG01OJF1cymu+wi8TlDUrmZtKZM4y3U58lPF+iL+aMCdznvb63Uhk5NIKaNMZDLop2SAs72h5jXosSuZCtCh6Ym/Ti0SO9Ak2NX3OuHFaCV+rslfsu5ABoBT9HAaLlmayhlE7YVbztZ/WaiHkrh8wADfNsKXpd9JTtxJAxZ9jCUQvazbH4+7ICgaL2pwPk96qJi/RDLWAQPRiGKXWc6kGb7Y5thg3nQchr2GU+uuBiKVUlwYByWsYbWufH/qX90Hp15GnT6vxe5zpCKpD1jDB04c8HnM4bkwvpzq0u+6gxsljmMtYM7aZriIg3QyjJpFK+8VUi0bOY4XpZpjTcTsEqhJ0W4zlPFaYiYKvMt2TTAdRPYIOm3ZM5DGaiX7Cdemrjjw66M6riT5MucsyqkupU3Ynw2g951AiuGxV6WSY85v/p8dpBtV7mQg9eZu8Lv279FarerqqYNXn0GbBaVSPx/AfOn2BklHTOfkNHlqGqNJDD9rr9z2+YXTNMwnEWJv3+mqTGaTjy0e4p0kG/Z0vGi634LbNilazSujatUX1NAK2H0aMGNEX/wGwM3uO0a8+BgAAAABJRU5ErkJggg==" alt="Monogram on light CA Stone background">
+        </div>
+        <div class="logo-caption">On light — pure black</div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="t-micro" style="margin-bottom:16px">Clear space — min. one glyph-height of padding on every side</div>
+      <div class="clearspace-demo">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABRBJREFUeAHtnGeoHFUUx39PTWzBCnaNlVg+qGhAhGiMHVERG2gsH1TEoKioiCLoBztiULEQ/KJYCSpiCViC0SjEGrFEREXRgN2I2JP1/L27eTNzd9/Ozt65O9nZH/zZ7GTevnlnzj33nHPvLIwY0QtjlIc+e5ZpA1PDtNK0dvP486Z/qTG34QywMqF/TIdRcyaZ3sAZpMG45zzDiP+940/TKpxh9Cov2pOaM9n0Fr7XzGMEp+CMkfSaH007UHM0E32G7zU3M4IrSRtGXrPctBEVZC3i8XXztZE4toXpTGrOq6YH8b3mE9O61BRNza+YtsEF3VYQljR1n0pNuRc3M4m5OGMkvWaRaR1qxiampab1m+83N60gPXVreB1IhYgRfE/GlQB/NN9rKD3JeBAea+oaaoT+4AWmPTLH9yc9nKRfTftQE6ab5tO+vfEE6SCs4XQ/NSEZdLPMxA/Cv5m2Z8jZ0LQMV0S2Q/HtNXyvuZ4h51zTHV3OkTdlveYb3Mw1lKiF+bppxy7naQr/GN9rLmJIOdj0bM5zL8D3mi9wveKhQ02oo3KeOwVXZWe95gyGjKmmJfR2x6/G79UsYci4xHQVvbGZ6TvSCZ+MczRDxNt0D7rtuAffa54ibs+oNA4wPU0xdjX9Tbq4/Mu0F2G4Ftcsa0lpwcuUu+i4mocovpimC3wA32seJQxa45rH+MKfitpDiMBWuPbCJIozA7dSmfSan03bEQYljjJI1LpMSdkV9M9CfK+5gXBoteJLXDexdNbD1T270T+aieQ1ScN8a9qY/lH99oPpPCJxJK75FCKQaRZ6B78vfCn9o6aZZs3JREJB9wTCMRt/5fJT3B0viuoyLRVHCbhCydl7hG1ma9jIEMlYI6/pp0yYY3qciKgIvInwXI5fXGpLSZFZTzFQvaFdiITiQZ72QhE0bH7BjzXH0DvXmW4lIso7FlEe8sTs1L2Q3tgJ1/OZQkTupHNPNwQ746bX7BrUvj18hq7xYiKyteld3IJamdyF7zWP5PxZrVJo6o/qLWcTNiPtxDTcVrWWcfSq1YQ8W9Wew+UuUVEjaXfioOQx6zX3dfkZbaVVezVK9dxiP9NLEX+p/kjNSNmtatt2OF85lW5cqJZFbrSQNpt46AZoG0k24eu0BqVa6G4io2TpfSLWG01OJF1cymu+wi8TlDUrmZtKZM4y3U58lPF+iL+aMCdznvb63Uhk5NIKaNMZDLop2SAs72h5jXosSuZCtCh6Ym/Ti0SO9Ak2NX3OuHFaCV+rslfsu5ABoBT9HAaLlmayhlE7YVbztZ/WaiHkrh8wADfNsKXpd9JTtxJAxZ9jCUQvazbH4+7ICgaL2pwPk96qJi/RDLWAQPRiGKXWc6kGb7Y5thg3nQchr2GU+uuBiKVUlwYByWsYbWufH/qX90Hp15GnT6vxe5zpCKpD1jDB04c8HnM4bkwvpzq0u+6gxsljmMtYM7aZriIg3QyjJpFK+8VUi0bOY4XpZpjTcTsEqhJ0W4zlPFaYiYKvMt2TTAdRPYIOm3ZM5DGaiX7Cdemrjjw66M6riT5MucsyqkupU3Ynw2g951AiuGxV6WSY85v/p8dpBtV7mQg9eZu8Lv279FarerqqYNXn0GbBaVSPx/AfOn2BklHTOfkNHlqGqNJDD9rr9z2+YXTNMwnEWJv3+mqTGaTjy0e4p0kG/Z0vGi634LbNilazSujatUX1NAK2H0aMGNEX/wGwM3uO0a8+BgAAAABJRU5ErkJggg==" alt="Monogram with clear space guide">
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="t-micro" style="margin-bottom:16px">Don't</div>
+      <div class="dont-row">
+        <div class="dont-item">
+          <div class="dont-plate">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABRBJREFUeAHtnGeoHFUUx39PTWzBCnaNlVg+qGhAhGiMHVERG2gsH1TEoKioiCLoBztiULEQ/KJYCSpiCViC0SjEGrFEREXRgN2I2JP1/L27eTNzd9/Ozt65O9nZH/zZ7GTevnlnzj33nHPvLIwY0QtjlIc+e5ZpA1PDtNK0dvP486Z/qTG34QywMqF/TIdRcyaZ3sAZpMG45zzDiP+940/TKpxh9Cov2pOaM9n0Fr7XzGMEp+CMkfSaH007UHM0E32G7zU3M4IrSRtGXrPctBEVZC3i8XXztZE4toXpTGrOq6YH8b3mE9O61BRNza+YtsEF3VYQljR1n0pNuRc3M4m5OGMkvWaRaR1qxiampab1m+83N60gPXVreB1IhYgRfE/GlQB/NN9rKD3JeBAea+oaaoT+4AWmPTLH9yc9nKRfTftQE6ab5tO+vfEE6SCs4XQ/NSEZdLPMxA/Cv5m2Z8jZ0LQMV0S2Q/HtNXyvuZ4h51zTHV3OkTdlveYb3Mw1lKiF+bppxy7naQr/GN9rLmJIOdj0bM5zL8D3mi9wveKhQ02oo3KeOwVXZWe95gyGjKmmJfR2x6/G79UsYci4xHQVvbGZ6TvSCZ+MczRDxNt0D7rtuAffa54ibs+oNA4wPU0xdjX9Tbq4/Mu0F2G4Ftcsa0lpwcuUu+i4mocovpimC3wA32seJQxa45rH+MKfitpDiMBWuPbCJIozA7dSmfSan03bEQYljjJI1LpMSdkV9M9CfK+5gXBoteJLXDexdNbD1T270T+aieQ1ScN8a9qY/lH99oPpPCJxJK75FCKQaRZ6B78vfCn9o6aZZs3JREJB9wTCMRt/5fJT3B0viuoyLRVHCbhCydl7hG1ma9jIEMlYI6/pp0yYY3qciKgIvInwXI5fXGpLSZFZTzFQvaFdiITiQZ72QhE0bH7BjzXH0DvXmW4lIso7FlEe8sTs1L2Q3tgJ1/OZQkTupHNPNwQ746bX7BrUvj18hq7xYiKyteld3IJamdyF7zWP5PxZrVJo6o/qLWcTNiPtxDTcVrWWcfSq1YQ8W9Wew+UuUVEjaXfioOQx6zX3dfkZbaVVezVK9dxiP9NLEX+p/kjNSNmtatt2OF85lW5cqJZFbrSQNpt46AZoG0k24eu0BqVa6G4io2TpfSLWG01OJF1cymu+wi8TlDUrmZtKZM4y3U58lPF+iL+aMCdznvb63Uhk5NIKaNMZDLop2SAs72h5jXosSuZCtCh6Ym/Ti0SO9Ak2NX3OuHFaCV+rslfsu5ABoBT9HAaLlmayhlE7YVbztZ/WaiHkrh8wADfNsKXpd9JTtxJAxZ9jCUQvazbH4+7ICgaL2pwPk96qJi/RDLWAQPRiGKXWc6kGb7Y5thg3nQchr2GU+uuBiKVUlwYByWsYbWufH/qX90Hp15GnT6vxe5zpCKpD1jDB04c8HnM4bkwvpzq0u+6gxsljmMtYM7aZriIg3QyjJpFK+8VUi0bOY4XpZpjTcTsEqhJ0W4zlPFaYiYKvMt2TTAdRPYIOm3ZM5DGaiX7Cdemrjjw66M6riT5MucsyqkupU3Ynw2g951AiuGxV6WSY85v/p8dpBtV7mQg9eZu8Lv279FarerqqYNXn0GbBaVSPx/AfOn2BklHTOfkNHlqGqNJDD9rr9z2+YXTNMwnEWJv3+mqTGaTjy0e4p0kG/Z0vGi634LbNilazSujatUX1NAK2H0aMGNEX/wGwM3uO0a8+BgAAAABJRU5ErkJggg==" alt="Stretched monogram" style="transform:scaleX(1.6)">
+          </div>
+          <div class="dont-label">Don't stretch</div>
+        </div>
+        <div class="dont-item">
+          <div class="dont-plate" style="background:var(--accent)">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABRBJREFUeAHtnGeoHFUUx39PTWzBCnaNlVg+qGhAhGiMHVERG2gsH1TEoKioiCLoBztiULEQ/KJYCSpiCViC0SjEGrFEREXRgN2I2JP1/L27eTNzd9/Ozt65O9nZH/zZ7GTevnlnzj33nHPvLIwY0QtjlIc+e5ZpA1PDtNK0dvP486Z/qTG34QywMqF/TIdRcyaZ3sAZpMG45zzDiP+940/TKpxh9Cov2pOaM9n0Fr7XzGMEp+CMkfSaH007UHM0E32G7zU3M4IrSRtGXrPctBEVZC3i8XXztZE4toXpTGrOq6YH8b3mE9O61BRNza+YtsEF3VYQljR1n0pNuRc3M4m5OGMkvWaRaR1qxiampab1m+83N60gPXVreB1IhYgRfE/GlQB/NN9rKD3JeBAea+oaaoT+4AWmPTLH9yc9nKRfTftQE6ab5tO+vfEE6SCs4XQ/NSEZdLPMxA/Cv5m2Z8jZ0LQMV0S2Q/HtNXyvuZ4h51zTHV3OkTdlveYb3Mw1lKiF+bppxy7naQr/GN9rLmJIOdj0bM5zL8D3mi9wveKhQ02oo3KeOwVXZWe95gyGjKmmJfR2x6/G79UsYci4xHQVvbGZ6TvSCZ+MczRDxNt0D7rtuAffa54ibs+oNA4wPU0xdjX9Tbq4/Mu0F2G4Ftcsa0lpwcuUu+i4mocovpimC3wA32seJQxa45rH+MKfitpDiMBWuPbCJIozA7dSmfSan03bEQYljjJI1LpMSdkV9M9CfK+5gXBoteJLXDexdNbD1T270T+aieQ1ScN8a9qY/lH99oPpPCJxJK75FCKQaRZ6B78vfCn9o6aZZs3JREJB9wTCMRt/5fJT3B0viuoyLRVHCbhCydl7hG1ma9jIEMlYI6/pp0yYY3qciKgIvInwXI5fXGpLSZFZTzFQvaFdiITiQZ72QhE0bH7BjzXH0DvXmW4lIso7FlEe8sTs1L2Q3tgJ1/OZQkTupHNPNwQ746bX7BrUvj18hq7xYiKyteld3IJamdyF7zWP5PxZrVJo6o/qLWcTNiPtxDTcVrWWcfSq1YQ8W9Wew+UuUVEjaXfioOQx6zX3dfkZbaVVezVK9dxiP9NLEX+p/kjNSNmtatt2OF85lW5cqJZFbrSQNpt46AZoG0k24eu0BqVa6G4io2TpfSLWG01OJF1cymu+wi8TlDUrmZtKZM4y3U58lPF+iL+aMCdznvb63Uhk5NIKaNMZDLop2SAs72h5jXosSuZCtCh6Ym/Ti0SO9Ak2NX3OuHFaCV+rslfsu5ABoBT9HAaLlmayhlE7YVbztZ/WaiHkrh8wADfNsKXpd9JTtxJAxZ9jCUQvazbH4+7ICgaL2pwPk96qJi/RDLWAQPRiGKXWc6kGb7Y5thg3nQchr2GU+uuBiKVUlwYByWsYbWufH/qX90Hp15GnT6vxe5zpCKpD1jDB04c8HnM4bkwvpzq0u+6gxsljmMtYM7aZriIg3QyjJpFK+8VUi0bOY4XpZpjTcTsEqhJ0W4zlPFaYiYKvMt2TTAdRPYIOm3ZM5DGaiX7Cdemrjjw66M6riT5MucsyqkupU3Ynw2g951AiuGxV6WSY85v/p8dpBtV7mQg9eZu8Lv279FarerqqYNXn0GbBaVSPx/AfOn2BklHTOfkNHlqGqNJDD9rr9z2+YXTNMwnEWJv3+mqTGaTjy0e4p0kG/Z0vGi634LbNilazSujatUX1NAK2H0aMGNEX/wGwM3uO0a8+BgAAAABJRU5ErkJggg==" alt="Monogram on clashing accent background" style="filter:invert(0)">
+          </div>
+          <div class="dont-label">Don't place on accent color</div>
+        </div>
+        <div class="dont-item">
+          <div class="dont-plate">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABRBJREFUeAHtnGeoHFUUx39PTWzBCnaNlVg+qGhAhGiMHVERG2gsH1TEoKioiCLoBztiULEQ/KJYCSpiCViC0SjEGrFEREXRgN2I2JP1/L27eTNzd9/Ozt65O9nZH/zZ7GTevnlnzj33nHPvLIwY0QtjlIc+e5ZpA1PDtNK0dvP486Z/qTG34QywMqF/TIdRcyaZ3sAZpMG45zzDiP+940/TKpxh9Cov2pOaM9n0Fr7XzGMEp+CMkfSaH007UHM0E32G7zU3M4IrSRtGXrPctBEVZC3i8XXztZE4toXpTGrOq6YH8b3mE9O61BRNza+YtsEF3VYQljR1n0pNuRc3M4m5OGMkvWaRaR1qxiampab1m+83N60gPXVreB1IhYgRfE/GlQB/NN9rKD3JeBAea+oaaoT+4AWmPTLH9yc9nKRfTftQE6ab5tO+vfEE6SCs4XQ/NSEZdLPMxA/Cv5m2Z8jZ0LQMV0S2Q/HtNXyvuZ4h51zTHV3OkTdlveYb3Mw1lKiF+bppxy7naQr/GN9rLmJIOdj0bM5zL8D3mi9wveKhQ02oo3KeOwVXZWe95gyGjKmmJfR2x6/G79UsYci4xHQVvbGZ6TvSCZ+MczRDxNt0D7rtuAffa54ibs+oNA4wPU0xdjX9Tbq4/Mu0F2G4Ftcsa0lpwcuUu+i4mocovpimC3wA32seJQxa45rH+MKfitpDiMBWuPbCJIozA7dSmfSan03bEQYljjJI1LpMSdkV9M9CfK+5gXBoteJLXDexdNbD1T270T+aieQ1ScN8a9qY/lH99oPpPCJxJK75FCKQaRZ6B78vfCn9o6aZZs3JREJB9wTCMRt/5fJT3B0viuoyLRVHCbhCydl7hG1ma9jIEMlYI6/pp0yYY3qciKgIvInwXI5fXGpLSZFZTzFQvaFdiITiQZ72QhE0bH7BjzXH0DvXmW4lIso7FlEe8sTs1L2Q3tgJ1/OZQkTupHNPNwQ746bX7BrUvj18hq7xYiKyteld3IJamdyF7zWP5PxZrVJo6o/qLWcTNiPtxDTcVrWWcfSq1YQ8W9Wew+UuUVEjaXfioOQx6zX3dfkZbaVVezVK9dxiP9NLEX+p/kjNSNmtatt2OF85lW5cqJZFbrSQNpt46AZoG0k24eu0BqVa6G4io2TpfSLWG01OJF1cymu+wi8TlDUrmZtKZM4y3U58lPF+iL+aMCdznvb63Uhk5NIKaNMZDLop2SAs72h5jXosSuZCtCh6Ym/Ti0SO9Ak2NX3OuHFaCV+rslfsu5ABoBT9HAaLlmayhlE7YVbztZ/WaiHkrh8wADfNsKXpd9JTtxJAxZ9jCUQvazbH4+7ICgaL2pwPk96qJi/RDLWAQPRiGKXWc6kGb7Y5thg3nQchr2GU+uuBiKVUlwYByWsYbWufH/qX90Hp15GnT6vxe5zpCKpD1jDB04c8HnM4bkwvpzq0u+6gxsljmMtYM7aZriIg3QyjJpFK+8VUi0bOY4XpZpjTcTsEqhJ0W4zlPFaYiYKvMt2TTAdRPYIOm3ZM5DGaiX7Cdemrjjw66M6riT5MucsyqkupU3Ynw2g951AiuGxV6WSY85v/p8dpBtV7mQg9eZu8Lv279FarerqqYNXn0GbBaVSPx/AfOn2BklHTOfkNHlqGqNJDD9rr9z2+YXTNMwnEWJv3+mqTGaTjy0e4p0kG/Z0vGi634LbNilazSujatUX1NAK2H0aMGNEX/wGwM3uO0a8+BgAAAABJRU5ErkJggg==" alt="Monogram with an added drop shadow" style="filter:drop-shadow(4px 4px 6px rgba(0,0,0,0.6)) invert(1)">
+          </div>
+          <div class="dont-label">Don't add effects (shadows, gradients)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 02 Colors ── -->
+  <section class="section">
+    <div class="section-label">02 · Colors</div>
+    <div class="section-title">Palette</div>
+    <div class="section-sub">Two worlds, one bridging accent. Scorpio purple appears identically in both themes.</div>
+
+    <div class="palette-grid">
+      <div class="swatch" style="background:#111110"><div class="swatch-info"><span class="swatch-name">HK Night bg</span><span class="swatch-hex">#111110</span></div></div>
+      <div class="swatch" style="background:#EF9F27"><div class="swatch-info"><span class="swatch-name">Amber accent</span><span class="swatch-hex">#EF9F27</span></div></div>
+      <div class="swatch" style="background:#534AB7"><div class="swatch-info"><span class="swatch-name">Scorpio purple</span><span class="swatch-hex">#534AB7</span></div></div>
+      <div class="swatch" style="background:#D4537E"><div class="swatch-info"><span class="swatch-name">Signal (dark)</span><span class="swatch-hex">#D4537E</span></div></div>
+      <div class="swatch" style="background:#F5F3EE;border:0.5px solid #DDD8CB"><div class="swatch-info" style="background:rgba(0,0,0,0.35)"><span class="swatch-name">CA Stone bg</span><span class="swatch-hex">#F5F3EE</span></div></div>
+      <div class="swatch" style="background:#1D9E75"><div class="swatch-info"><span class="swatch-name">Teal accent</span><span class="swatch-hex">#1D9E75</span></div></div>
+      <div class="swatch" style="background:#534AB7"><div class="swatch-info"><span class="swatch-name">Scorpio purple</span><span class="swatch-hex">#534AB7</span></div></div>
+      <div class="swatch" style="background:#C0384F"><div class="swatch-info"><span class="swatch-name">Signal (light)</span><span class="swatch-hex">#C0384F</span></div></div>
+    </div>
+
+    <div class="token-table">
+      <div class="token-row"><div class="token-dot" style="background:#111110;border:0.5px solid #333"></div><div class="token-name">--bg</div><div class="token-desc">Page background — flips per world</div><div class="token-val">#111110 / #F5F3EE</div></div>
+      <div class="token-row"><div class="token-dot" style="background:var(--accent)"></div><div class="token-name">--accent</div><div class="token-desc">Primary — amber (HK) · teal (CA)</div><div class="token-val">#EF9F27 / #1D9E75</div></div>
+      <div class="token-row"><div class="token-dot" style="background:#534AB7"></div><div class="token-name">--accent-2</div><div class="token-desc">Scorpio purple — same in both worlds</div><div class="token-val">#534AB7</div></div>
+      <div class="token-row"><div class="token-dot" style="background:#D4537E"></div><div class="token-name">--danger</div><div class="token-desc">Error / signal</div><div class="token-val">#D4537E / #C0384F</div></div>
+      <div class="token-row"><div class="token-dot" style="background:#1D9E75"></div><div class="token-name">--success</div><div class="token-desc">Success — same in both worlds</div><div class="token-val">#1D9E75</div></div>
+    </div>
+  </section>
+
+  <!-- ── 03 Typography ── -->
+  <section class="section">
+    <div class="section-label">03 · Typography</div>
+    <div class="section-title">Type scale</div>
+    <div class="section-sub">Cormorant Garamond carries the depth. DM Sans carries the structure. JetBrains Mono for code/tokens.</div>
+
+    <div class="box">
+      <div class="type-sample">
+        <div class="type-meta"><span class="type-role">Display</span><span class="type-spec">Cormorant Garamond · 300 · 47px</span></div>
+        <div class="t-display">Andrew <em>YIP</em></div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta"><span class="type-role">Heading 1</span><span class="type-spec">Cormorant Garamond · 400 · 36px</span></div>
+        <div class="t-h1">Selected Work</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta"><span class="type-role">Heading 2</span><span class="type-spec">Cormorant Garamond · 400 · 27px</span></div>
+        <div class="t-h2">The Problem Worth Solving</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta"><span class="type-role">Label / UI</span><span class="type-spec">DM Sans · 500 · 11px</span></div>
+        <div class="t-label">Interface Design · Front-end Development</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta"><span class="type-role">Body</span><span class="type-spec">DM Sans · 300 · 15px · 1.6 leading</span></div>
+        <div class="t-body">Design and code, treated as one discipline. Every project moves the client one step closer to a goal — nothing ships without a reason.</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta"><span class="type-role">Micro / Label</span><span class="type-spec">DM Sans · 400 · 8px · 0.12em tracking</span></div>
+        <div class="t-micro">Case Study · Interface Design</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta"><span class="type-role">Monospace</span><span class="type-spec">JetBrains Mono · 400 · 11px</span></div>
+        <div class="t-mono">cubic-bezier(0.16, 1, 0.3, 1)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 04 Spacing ── -->
+  <section class="section">
+    <div class="section-label">04 · Spacing</div>
+    <div class="section-title">Scale</div>
+    <div class="section-sub">Base 8px. Every gap and padding traces back to this scale — never an arbitrary value.</div>
+
+    <div class="box" style="padding:8px 20px">
+      <div class="spacing-row"><div class="spacing-token">--space-xs</div><div class="spacing-bar" style="width:8px"></div><div class="spacing-val">8px</div><div class="spacing-use">Icon ↔ label</div></div>
+      <div class="spacing-row"><div class="spacing-token">--space-sm</div><div class="spacing-bar" style="width:16px"></div><div class="spacing-val">16px</div><div class="spacing-use">Button / input inner padding</div></div>
+      <div class="spacing-row"><div class="spacing-token">--space-md</div><div class="spacing-bar" style="width:32px"></div><div class="spacing-val">32px</div><div class="spacing-use">Image ↔ text, sibling components</div></div>
+      <div class="spacing-row"><div class="spacing-token">--space-lg</div><div class="spacing-bar" style="width:64px"></div><div class="spacing-val">64px</div><div class="spacing-use">Content blocks within a section</div></div>
+      <div class="spacing-row"><div class="spacing-token">--space-xl</div><div class="spacing-bar" style="width:128px"></div><div class="spacing-val">128px</div><div class="spacing-use">Between major page sections</div></div>
+      <div class="spacing-row"><div class="spacing-token">--space-2xl</div><div class="spacing-bar" style="width:240px"></div><div class="spacing-val">240px</div><div class="spacing-use">Hero padding, full-bleed gaps</div></div>
+    </div>
+  </section>
+
+  <!-- ── 05 Radius & Motion ── -->
+  <section class="section">
+    <div class="section-label">05 · Radius &amp; Motion</div>
+    <div class="section-title">Shape and movement</div>
+    <div class="section-sub">Sharp ease-out is the signature — never ease-in-out or linear.</div>
+
+    <div class="box">
+      <div class="t-micro" style="margin-bottom:16px">Border radius</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:var(--r-sm)"></div><div class="radius-label">--r-sm · 3px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:var(--r-md)"></div><div class="radius-label">--r-md · 6px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:var(--r-lg)"></div><div class="radius-label">--r-lg · 12px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:var(--r-pill)"></div><div class="radius-label">--r-pill · 999px</div></div>
+      </div>
+    </div>
+
+    <div class="box" style="padding:8px 20px">
+      <div class="ease-demo">
+        <div class="ease-name">--ease (sharp)</div>
+        <div class="ease-track"><div class="ease-ball ease-ball-sharp"></div></div>
+        <div class="ease-note">Use this — always</div>
+      </div>
+      <div class="ease-demo">
+        <div class="ease-name">ease-in-out</div>
+        <div class="ease-track"><div class="ease-ball ease-ball-bad" style="background:var(--text-3);box-shadow:none"></div></div>
+        <div class="ease-note">Too passive — avoid</div>
+      </div>
+    </div>
+    <div class="section-sub" style="margin-top:12px;margin-bottom:0">Hover a track to preview the motion.</div>
+  </section>
+
+  <!-- ── 06 Buttons ── -->
+  <section class="section">
+    <div class="section-label">06 · Buttons</div>
+    <div class="section-title">Buttons</div>
+    <div class="section-sub">The neon sign is the signature interaction — hover to see the glow.</div>
+
+    <div class="box">
+      <div class="t-micro" style="margin-bottom:16px">Neon sign — signature</div>
+      <div class="row">
+        <button class="btn-sign">Say Hello</button>
+        <button class="btn-sign-teal">Read More</button>
+      </div>
+      <div class="sign-annotation">Amber glows on HK Night, teal glows on CA Stone.</div>
+    </div>
+
+    <div class="box">
+      <div class="t-micro" style="margin-bottom:16px">Standard</div>
+      <div class="row">
+        <button class="btn btn-primary">View case study</button>
+        <button class="btn btn-ghost">Explore work</button>
+        <button class="btn btn-ghost-purple">See process</button>
+        <button class="btn btn-muted">Dismiss</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 07 Tags ── -->
+  <section class="section">
+    <div class="section-label">07 · Tags</div>
+    <div class="section-title">Labels</div>
+    <div class="box">
+      <div class="row">
+        <span class="tag tag-default">Interface Design</span>
+        <span class="tag tag-amber"><span class="tag-dot"></span>HK Night</span>
+        <span class="tag tag-teal"><span class="tag-dot"></span>CA Stone</span>
+        <span class="tag tag-purple">Scorpio</span>
+        <span class="tag tag-danger">NDA</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 08 Forms ── -->
+  <section class="section">
+    <div class="section-label">08 · Forms</div>
+    <div class="section-title">Inputs</div>
+    <div class="box">
+      <div class="col-2">
+        <div class="field">
+          <label class="field-label">Name</label>
+          <input class="input" type="text" placeholder="Your name">
+        </div>
+        <div class="field">
+          <label class="field-label">Email</label>
+          <input class="input" type="email" placeholder="you@studio.com">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 09 Cards ── -->
+  <section class="section">
+    <div class="section-label">09 · Cards</div>
+    <div class="section-title">Info cards</div>
+    <div class="col-3">
+      <div class="info-card">
+        <div class="info-card-icon">⬡</div>
+        <div class="info-card-title">Design</div>
+        <div class="info-card-body">Systems thinking from concept to component.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon" style="background:var(--accent-2-dim);border-color:rgba(83,74,183,0.2)">⬡</div>
+        <div class="info-card-title">Develop</div>
+        <div class="info-card-body">Code that does exactly what the design intended.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon" style="background:rgba(29,158,117,0.1);border-color:rgba(29,158,117,0.2)">⬡</div>
+        <div class="info-card-title">Build</div>
+        <div class="info-card-body">End-to-end ownership, problem to production.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 10 Voice & Principles ── -->
+  <section class="section">
+    <div class="section-label">10 · Voice &amp; Principles</div>
+    <div class="section-title">How the brand behaves</div>
+    <div class="section-sub">Applies to every client touchpoint — site, proposals, invoices, email.</div>
+
+    <div class="box">
+      <div class="principle-list">
+        <div class="principle-item">
+          <div class="principle-num">01</div>
+          <div><div class="principle-title">Outcome-driven</div><div class="principle-body">Every piece of communication moves the reader toward a goal — understanding the work, booking a call, signing off. Cut anything that doesn't.</div></div>
+        </div>
+        <div class="principle-item">
+          <div class="principle-num">02</div>
+          <div><div class="principle-title">Trust by transparency</div><div class="principle-body">Real names, real roles, real links. No placeholder content, ever, in anything client-facing.</div></div>
+        </div>
+        <div class="principle-item">
+          <div class="principle-num">03</div>
+          <div><div class="principle-title">Micro-interactions, macro impact</div><div class="principle-body">Hover and focus states are deliberate, never decorative. HK Night = electric/neon. CA Stone = soft/warm.</div></div>
+        </div>
+        <div class="principle-item">
+          <div class="principle-num">04</div>
+          <div><div class="principle-title">Motion with intent</div><div class="principle-body">Animation communicates state or hierarchy, never decoration for its own sake. Sharp ease-out only.</div></div>
+        </div>
+        <div class="principle-item">
+          <div class="principle-num">05</div>
+          <div><div class="principle-title">Accessible by default</div><div class="principle-body">Visible focus states, sufficient contrast in both worlds, descriptive alt text — non-negotiable.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">Andrew YIP — Brand Guidelines · Duality System · HK Night × CA Stone</div>
+
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const label = document.getElementById('toggle-label');
+  if (html.dataset.theme === 'dark') {
+    html.dataset.theme = 'light';
+    label.textContent = 'CA Stone';
+  } else {
+    html.dataset.theme = 'dark';
+    label.textContent = 'HK Night';
+  }
+}
+</script>
+
+</body>
+</html>
