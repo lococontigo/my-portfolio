@@ -1,5 +1,5 @@
 ---
-const { gifSrc, videoSrc, alt, aspectRatio = '16 / 9' } = Astro.props;
+const { gifSrc, videoSrc, alt, aspectRatio = '16 / 9', priority = false } = Astro.props;
 ---
 
 <div class="case-gif-wrap" style={`aspect-ratio: ${aspectRatio};`}>
@@ -7,8 +7,10 @@ const { gifSrc, videoSrc, alt, aspectRatio = '16 / 9' } = Astro.props;
     <video class="case-gif" autoplay loop muted playsinline>
       <source src={videoSrc} type="video/mp4" />
     </video>
-  ) : (
+  ) : priority ? (
     <img class="case-gif" src={gifSrc} alt={alt} fetchpriority="high" />
+  ) : (
+    <img class="case-gif" src={gifSrc} alt={alt} loading="lazy" />
   )}
 </div>
 
