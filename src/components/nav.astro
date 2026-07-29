@@ -13,8 +13,14 @@ interface Props {
 // dark-mode ones. Values here are the canonical English paths; the zh-Hant
 // equivalent is always the same path under a /ch prefix (routes mirror
 // 1:1), so locale is applied once below rather than duplicating this table.
+// Portfolio side has no contact page of its own — "Say hello" opens a mail
+// client directly instead. Services side keeps its real /services/contact/
+// page. mailto: hrefs are locale-agnostic, so they're excluded from the
+// zhPrefix prepend below rather than living under a fake /ch/ variant.
+const PORTFOLIO_CONTACT = 'mailto:andrewthyip@gmail.com';
+
 const NAV_ROUTES = {
-  portfolio: { home: '/portfolio/', work: '/portfolio/',     about: '/about/',          contact: '/contact/' },
+  portfolio: { home: '/portfolio/', work: '/portfolio/',     about: '/about/',          contact: PORTFOLIO_CONTACT },
   services:  { home: '/services/',  work: '/services/work/', about: '/services/about/', contact: '/services/contact/' },
 } as const;
 
@@ -22,7 +28,7 @@ const NAV_ROUTES = {
 // back to the current variant's home page, in the target locale, for any
 // path not in this list, rather than linking to a 404.
 const TRANSLATED_PATHS = [
-  '/', '/portfolio/', '/about/', '/contact/',
+  '/', '/portfolio/', '/about/',
   '/services/', '/services/work/', '/services/about/', '/services/contact/',
   '/work/delta/', '/work/ant/', '/work/crowd-ease/', '/work/yocale/',
 ];
@@ -38,7 +44,7 @@ const routes = {
   home:    zhPrefix + rawRoutes.home,
   work:    zhPrefix + rawRoutes.work,
   about:   zhPrefix + rawRoutes.about,
-  contact: zhPrefix + rawRoutes.contact,
+  contact: rawRoutes.contact.startsWith('mailto:') ? rawRoutes.contact : zhPrefix + rawRoutes.contact,
 };
 
 // Both directions are computed up front so the toggle can show EN/中文 side
@@ -345,6 +351,7 @@ const zhHref = locale === 'zh-Hant' ? pathname : (isTranslated ? `/ch${pathname}
 
   /* ── Hamburger ─────────────────────────── */
   .nav-burger {
+    position:        relative;
     display:         none;
     flex-direction:  column;
     justify-content: center;
@@ -354,6 +361,16 @@ const zhHref = locale === 'zh-Hant' ? pathname : (isTranslated ? `/ch${pathname}
     padding:         4px;
     color:           var(--text-2);
     transition:      color 0.2s var(--ease);
+  }
+
+  /* Invisible hit-area expansion to the recommended 48x48px touch target —
+     the visual icon stays 40x40 so it doesn't inflate the compact mobile
+     nav bar's height (particularly at the 520px breakpoint, where
+     .nav-inner is only 48px tall including padding). */
+  .nav-burger::before {
+    content:  '';
+    position: absolute;
+    inset:    -4px;
   }
 
   .nav-burger:hover { color: var(--text-1); }
@@ -526,7 +543,7 @@ const zhHref = locale === 'zh-Hant' ? pathname : (isTranslated ? `/ch${pathname}
       const locale = document.documentElement.lang === 'zh-Hant' ? 'zh-Hant' : 'en';
       const prefix = locale === 'zh-Hant' ? '/ch' : '';
       const ROUTES = {
-        portfolio: { home: `${prefix}/portfolio/`, work: `${prefix}/portfolio/`,     about: `${prefix}/about/`,          contact: `${prefix}/contact/` },
+        portfolio: { home: `${prefix}/portfolio/`, work: `${prefix}/portfolio/`,     about: `${prefix}/about/`,          contact: 'mailto:andrewthyip@gmail.com' },
         services:  { home: `${prefix}/services/`,  work: `${prefix}/services/work/`, about: `${prefix}/services/about/`, contact: `${prefix}/services/contact/` },
       };
 

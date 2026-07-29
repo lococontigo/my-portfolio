@@ -1,4 +1,9 @@
 {
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/ant-rentals-media-branding", "destination": "/work/ant/", "permanent": true },
+    { "source": "/contact", "destination": "/portfolio/", "permanent": true },
+    { "source": "/ch/contact", "destination": "/ch/portfolio/", "permanent": true }
+  ]
 }

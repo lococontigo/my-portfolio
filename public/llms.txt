@@ -16,9 +16,8 @@ This site is available in English (default, no path prefix) and Traditional Chin
 - [Services](https://andrewthyip.com/services/): Services offered, process/workflow, client work examples, and testimonials — for businesses looking to have a website designed and built
 - [Services · Work](https://andrewthyip.com/services/work/): Same case studies as the Portfolio page, presented for the Services-page audience
 - [Services · About](https://andrewthyip.com/services/about/): Same background, philosophy, and career timeline as the About page, for the Services-page audience
-- [Services · Contact](https://andrewthyip.com/services/contact/): Same contact form as the Contact page, for the Services-page audience
-- [About Andrew Yip](https://andrewthyip.com/about/): Background, work philosophy, career timeline, skills, and testimonials
-- [Contact](https://andrewthyip.com/contact/): Contact form for project inquiries, freelance work, and full-time opportunities
+- [Services · Contact](https://andrewthyip.com/services/contact/): Contact form for prospective website-build clients
+- [About Andrew Yip](https://andrewthyip.com/about/): Background, work philosophy, career timeline, skills, and testimonials. The "Say hello" CTA opens a mailto link (andrewthyip@gmail.com) rather than a separate contact page
 - [Yocale Case Study](https://andrewthyip.com/work/yocale/): GTM design system — 5.15% CTR lift, 40% bounce rate reduction, 22.5% download lift
 - [Delta Controls Case Study](https://andrewthyip.com/work/delta/): Enterprise intranet redesign — navigation reduced from 4–6 clicks to 2–3 clicks, 15% engagement increase
 - [Ant Equipment Group Case Study](https://andrewthyip.com/work/ant/): Brand and web design — 1,000+ monthly visitors, 80% engagement lift

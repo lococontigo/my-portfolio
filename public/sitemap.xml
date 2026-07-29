@@ -99,20 +99,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/about/" />
   </url>
   <url>
-    <loc>https://andrewthyip.com/contact/</loc>
-    <lastmod>2026-07-02</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/contact/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/contact/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/contact/" />
-  </url>
-  <url>
-    <loc>https://andrewthyip.com/ch/contact/</loc>
-    <lastmod>2026-07-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/contact/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://andrewthyip.com/ch/contact/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://andrewthyip.com/contact/" />
-  </url>
-  <url>
     <loc>https://andrewthyip.com/work/yocale/</loc>
     <lastmod>2026-06-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://andrewthyip.com/work/yocale/" />
