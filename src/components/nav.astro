@@ -40,6 +40,10 @@ const rawRoutes = NAV_ROUTES[variant];
 const locale     = Astro.currentLocale ?? 'en';
 const dict       = locale === 'zh-Hant' ? zhHant : en;
 const zhPrefix   = locale === 'zh-Hant' ? '/ch' : '';
+
+// CTA copy differs by which side of the site you're on — portfolio is
+// hiring-persona ("Say hello"), services is client-persona ("Get a quote").
+const ctaLabel = variant === 'services' ? dict.nav.getQuote : dict.nav.sayHello;
 const routes = {
   home:    zhPrefix + rawRoutes.home,
   work:    zhPrefix + rawRoutes.work,
@@ -87,7 +91,7 @@ const zhHref = locale === 'zh-Hant' ? pathname : (isTranslated ? `/ch${pathname}
                 : <a href={zhHref} class="nav-lang-option">中文</a>}
             </div>
 
-            <a href={routes.contact} data-nav-target="contact" class="nav-cta">{dict.nav.sayHello}</a>
+            <a href={routes.contact} data-nav-target="contact" class="nav-cta">{ctaLabel}</a>
           </div>
 
           {sections.length > 0 && (
@@ -123,7 +127,7 @@ const zhHref = locale === 'zh-Hant' ? pathname : (isTranslated ? `/ch${pathname}
           ? <span class="nav-lang-option active" aria-current="true">中文</span>
           : <a href={zhHref} class="nav-lang-option">中文</a>}
       </div>
-      <a href={routes.contact} data-nav-target="contact" class="nav-mobile-cta">{dict.nav.sayHello}</a>
+      <a href={routes.contact} data-nav-target="contact" class="nav-mobile-cta">{ctaLabel}</a>
     </div>
   </div>
 

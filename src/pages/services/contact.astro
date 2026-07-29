@@ -36,6 +36,7 @@ import BaseLayout from '../../layouts/base-layout.astro';
             </div>
 
             <div class="contact-card">
+              <div id="contact-step1">
               <form id="contact-form" class="contact-form" novalidate>
 
                 <!-- Honeypot — Web3Forms spam check, hidden from humans -->
@@ -72,11 +73,17 @@ import BaseLayout from '../../layouts/base-layout.astro';
                   </div>
                 </div>
 
-                <button type="submit" class="contact-submit">Send Message</button>
+                <button type="submit" class="contact-submit">Schedule A Call →</button>
 
                 <p id="contact-status" class="contact-status" role="status" aria-live="polite"></p>
 
               </form>
+              </div>
+
+              <div id="contact-step2" class="contact-step2" hidden>
+                
+                <div id="calendly-embed" class="calendly-embed"></div>
+              </div>
             </div>
 
           </div>
@@ -152,6 +159,62 @@ import BaseLayout from '../../layouts/base-layout.astro';
         });
       }
 
+      // Step 1 -> step 2 crossfade. Both steps stay in normal document flow
+      // (not absolutely positioned/overlapping), since the calendar embed
+      // is much taller than the form and permanently reserving that height
+      // during step 1 would leave a large empty gap under the form — so
+      // this is a sequential fade-out-then-fade-in rather than a true
+      // overlapping crossfade, timed to the CSS transition duration below.
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var STEP_TRANSITION_MS = prefersReducedMotion ? 0 : 300;
+
+      function goToStep2() {
+        var step1 = document.getElementById('contact-step1');
+        var step2 = document.getElementById('contact-step2');
+
+        step1.classList.add('is-leaving');
+        window.setTimeout(function () {
+          step1.hidden = true;
+          step2.hidden = false;
+          step2.classList.add('is-entering');
+          void step2.offsetHeight; // force reflow so is-entering's starting state is committed before we remove it
+          step2.classList.remove('is-entering');
+        }, STEP_TRANSITION_MS);
+      }
+
+      // Calendly's widget script/CSS is only fetched once a visitor actually
+      // finishes step 1 — no reason to ship it to everyone who lands on this
+      // page but never submits.
+      function loadCalendlyAndInit(name, email) {
+        function init() {
+          window.Calendly.initInlineWidget({
+            url: 'https://calendly.com/andrewthyip/30min?primary_color=1d9e75',
+            parentElement: document.getElementById('calendly-embed'),
+            prefill: { name: name, email: email },
+            // Without this, the container is a fixed guess and the iframe
+            // doesn't reliably fill it. With it, Calendly resizes the
+            // parent element itself to match the real content height as
+            // the visitor moves through date -> time -> confirmation.
+            resize: true
+          });
+        }
+
+        if (window.Calendly) {
+          init();
+          return;
+        }
+
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://assets.calendly.com/assets/external/widget.css';
+        document.head.appendChild(link);
+
+        var script = document.createElement('script');
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.onload = init;
+        document.head.appendChild(script);
+      }
+
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
 
@@ -186,8 +249,12 @@ import BaseLayout from '../../layouts/base-layout.astro';
           if (response.ok) {
             status.textContent = 'Thanks — your message has been sent. I’ll reply as soon as I can.';
             status.classList.add('is-success');
-            form.reset();
-            resetFieldStates();
+
+            var visitorName  = senderName;
+            var visitorEmail = (formData.get('email') || '').toString().trim();
+
+            goToStep2();
+            loadCalendlyAndInit(visitorName, visitorEmail);
           } else {
             status.textContent = 'Error: ' + (data.message || 'something went wrong. Please try again.');
             status.classList.add('is-error');
@@ -248,6 +315,16 @@ import BaseLayout from '../../layouts/base-layout.astro';
     border:        0.5px solid var(--border);
     border-radius: var(--r-lg);
     padding:       clamp(24px, 2.8vw, 40px);
+  }
+
+  /* Step 2 is the Calendly handoff — it renders its own white card via the
+     embed itself, so the wrapping card's background/border would just
+     double up as a frame around a frame. Keyed off the same `hidden`
+     attribute already toggled in the step-transition script, no extra
+     state needed. */
+  .contact-card:has(#contact-step2:not([hidden])) {
+    background: none;
+    border:     none;
   }
 
   .contact-form-grid {
@@ -384,6 +461,43 @@ import BaseLayout from '../../layouts/base-layout.astro';
   .contact-submit:disabled {
     opacity: 0.6;
     cursor:  default;
+  }
+
+  /* ── Step transition ───────────────────── */
+  #contact-step1,
+  #contact-step2 {
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+
+  #contact-step1.is-leaving {
+    opacity:   0;
+    transform: translateY(-8px);
+  }
+
+  #contact-step2.is-entering {
+    opacity:   0;
+    transform: translateY(8px);
+  }
+
+  /* ── Step 2 — Calendly handoff ─────────── */
+  .contact-step2-intro {
+    font-family:   var(--font-body);
+    font-size:     15px;
+    font-weight:   300;
+    color:         var(--text-1);
+    margin-bottom: var(--space-sm);
+  }
+
+  .calendly-embed {
+    width: 100%;
+    /* The `resize: true` option passed to Calendly.initInlineWidget() (see
+       the script below) makes Calendly itself resize this element to the
+       real content height as the visitor moves through date -> time ->
+       confirmation — this min-height is only the floor shown for the brief
+       moment before that resize first fires, so it doesn't collapse to 0
+       and flash/jump. Composed from the spacing scale rather than a raw
+       px value (3 * --space-2xl = 720px). */
+    min-height: calc(var(--space-2xl) * 3);
   }
 
   /* ── Status line ───────────────────────── */
