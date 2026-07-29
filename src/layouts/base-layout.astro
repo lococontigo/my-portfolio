@@ -11,6 +11,12 @@ interface Props {
   chrome?:      boolean;           // render nav + footer (default true)
   navVariant?:  'portfolio' | 'services';
   translated?:  boolean;           // has a real counterpart in the other locale (default false)
+  // Overrides the self-referencing canonical below. Only for pages that are a
+  // deliberate near-duplicate of another real page on the site (e.g.
+  // /services/about/ mirrors /about/ for a different audience) — points
+  // crawlers at the one URL that should actually get indexed, instead of
+  // letting the mirror compete with it as separate duplicate content.
+  canonicalPath?: string;
 }
 
 const {
@@ -21,9 +27,10 @@ const {
   chrome = true,
   navVariant = 'portfolio',
   translated = false,
+  canonicalPath,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, Astro.site);
 const fullTitle    = `${title} · Andrew YIP`;
 
 // Astro's i18n routing gives us the active locale automatically ('en' or
@@ -63,6 +70,44 @@ if (translated) {
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalURL} />
 
+  <!-- Canonical Person/ProfessionalService entity graph — emitted on every
+       page (not just /about) so any page's own JSON-LD can reference
+       {"@id": "https://andrewthyip.com/#person"} instead of repeating an
+       inline Person object with a shifting property set. Google resolves
+       @id within a single page's JSON-LD, not across page loads, so the
+       full node has to actually be present here on every page rather than
+       just linked by URL fragment. See docs/design-decisions.md if this
+       entity's data ever needs to change. -->
+  <script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://andrewthyip.com/#person",
+        "name": "Andrew Yip",
+        "jobTitle": "UX/UI Designer & Developer",
+        "url": "https://andrewthyip.com/",
+        "image": "https://andrewthyip.com/images/andrew-yip-designer-photo.webp",
+        "email": "mailto:andrewthyip@gmail.com",
+        "sameAs": ["https://www.linkedin.com/in/andrewthyip/"],
+        "knowsAbout": ["UX Design", "UI Design", "Web Development", "Design Systems"],
+        "alumniOf": { "@type": "EducationalOrganization", "name": "Langara College" },
+        "worksFor": { "@id": "https://andrewthyip.com/#service" }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://andrewthyip.com/#service",
+        "name": "Andrew Yip — UX/UI Design & Development",
+        "url": "https://andrewthyip.com/",
+        "founder": { "@id": "https://andrewthyip.com/#person" },
+        "areaServed": "Vancouver, BC, Canada",
+        "sameAs": ["https://www.linkedin.com/in/andrewthyip/"]
+      }
+    ]
+  }
+  </script>
+
   {translated && enURL && zhURL && (
     <>
       <link rel="alternate" hreflang="en" href={enURL} />
@@ -94,7 +139,21 @@ if (translated) {
   <link rel="icon" type="image/png"     href="/images/andrew-yip-logo.png"      media="(prefers-color-scheme: light)" />
   <link rel="icon" type="image/svg+xml" href="/images/new%20logodark.svg"        media="(prefers-color-scheme: dark)" />
   <link rel="sitemap" href="/sitemap.xml" />
-  <script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key="qOf9LJJKVNtNbX76kntFXw" async></script>
+  <script is:inline>
+    // Ahrefs' same-origin analytics proxy fetches its collector payload
+    // through a randomized per-load path on this domain, which Lighthouse
+    // flags as 900-1640ms of render-blocking work even with `async` set —
+    // async only defers *fetching this script tag*, not the internal proxy
+    // fetch it kicks off the moment it executes. Deferring the whole tag's
+    // creation to `load` keeps analytics working without competing with
+    // real content for render time.
+    window.addEventListener('load', () => {
+      const s = document.createElement('script');
+      s.src = 'https://analytics.ahrefs.com/analytics.js';
+      s.dataset.key = 'qOf9LJJKVNtNbX76kntFXw';
+      document.head.appendChild(s);
+    });
+  </script>
 
   <!-- Google Fonts —loaded async (preload as style, swap media to "all"
        on load) rather than a plain blocking <link rel="stylesheet">. A
