@@ -1,5 +1,6 @@
 ---
 import CaseStudySectionHeader from './case-study-section-header.astro';
+import CaseStudyGlobe from './case-study-globe.astro';
 
 const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quotePanels = [], journeyMapSrc, journeyMapAlt, journeyMapCaption } = Astro.props;
 ---
@@ -13,14 +14,18 @@ const { eyebrow, title, id, surveyCols = [], stats = [], imageSrc, imageAlt, quo
 
         {surveyCols.length > 0 && (
           <div class="case-research-survey-grid">
-            {surveyCols.map((col: { label: string; items: string[]; imageSrc: string; imageAlt: string }) => (
+            {surveyCols.map((col: { label: string; items: string[]; imageSrc: string; imageAlt: string; globe?: boolean }) => (
               <div class="case-research-survey-col">
                 <span class="case-research-survey-label">{col.label}</span>
                 <ul class="case-research-survey-list">
                   {col.items.map((item: string) => <li>{item}</li>)}
                 </ul>
                 <div class="case-research-survey-image">
-                  <img src={col.imageSrc} alt={col.imageAlt} loading="lazy" />
+                  {col.globe ? (
+                    <CaseStudyGlobe fallbackSrc={col.imageSrc} fallbackAlt={col.imageAlt} />
+                  ) : (
+                    <img src={col.imageSrc} alt={col.imageAlt} loading="lazy" />
+                  )}
                 </div>
               </div>
             ))}
