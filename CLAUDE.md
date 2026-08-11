@@ -13,6 +13,8 @@ The portfolio has two visual worlds that physically represent Andrew's biography
 
 These aren't just light/dark modes — they are distinct emotional environments that together tell the story of two cities shaping one designer. Every design decision should reinforce this duality.
 
+**See `DESIGN.md` for the full design-system reference** (color roles, type hierarchy, component states, spacing/depth rules, responsive behavior, and agent prompt templates) — this file covers technical/dev conventions, `DESIGN.md` covers visual/design-system rules. Keep them in sync: a token, component state, or breakpoint change belongs in both if it affects how UI should look.
+
 ## Design principles
 Apply these alongside the Duality concept on every design decision:
 
