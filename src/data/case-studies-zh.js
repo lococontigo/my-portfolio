@@ -6,7 +6,7 @@ export const caseStudiesZh = [
     category: '手機應用程式',
     year: '2023',
     description: '活動追蹤及實時人流監察應用程式',
-    imageSrc: '/images/UI-CROWDEASE-1.svg',
+    imageSrc: '/images/UI-CROWDEASE-1.webp',
     imageAlt: 'Crowd Ease 手機應用程式介面,顯示活動追蹤及實時人流資料畫面',
   },
   {
@@ -26,7 +26,7 @@ export const caseStudiesZh = [
     category: '網頁平台',
     year: '2025',
     description: '為工業合作夥伴而設的資源內聯網',
-    imageSrc: '/images/Mac-Studio-mockup.svg',
+    imageSrc: '/images/Mac-Studio-mockup.webp',
     imageAlt: 'Delta Intelligent Building Technologies 資源平台介面',
   },
   {
@@ -36,7 +36,7 @@ export const caseStudiesZh = [
     category: '網頁設計',
     year: '2024',
     description: '設備租賃及銷售平台',
-    imageSrc: '/images/ant-mockup.svg',
+    imageSrc: '/images/ant-mockup.webp',
     imageAlt: 'ANT Equipment Group 設備租賃網站介面',
   },
 ];

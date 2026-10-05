@@ -6,7 +6,7 @@ export const caseStudies = [
     category: 'Mobile App',
     year: '2023',
     description: 'Event tracking & live crowd monitoring app',
-    imageSrc: '/images/UI-CROWDEASE-1.svg',
+    imageSrc: '/images/UI-CROWDEASE-1.webp',
     imageAlt: 'Crowd Ease app interface mockup showing event tracking and live crowd data screens',
   },
   {
@@ -26,7 +26,7 @@ export const caseStudies = [
     category: 'Web Platform',
     year: '2025',
     description: 'Resources intranet for industrial partners',
-    imageSrc: '/images/Mac-Studio-mockup.svg',
+    imageSrc: '/images/Mac-Studio-mockup.webp',
     imageAlt: 'Delta Intelligent Building Technologies resources intranet mockup',
   },
   {
@@ -36,7 +36,7 @@ export const caseStudies = [
     category: 'Web Design',
     year: '2024',
     description: 'Equipment rental & sales platform',
-    imageSrc: '/images/ant-mockup.svg',
+    imageSrc: '/images/ant-mockup.webp',
     imageAlt: 'ANT Equipment Group rentals website mockup',
   },
 ];
